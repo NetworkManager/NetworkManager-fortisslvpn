@@ -1,0 +1,173 @@
+# Japanese message catalog for NetworkManager-fortisslvpn
+# This file is distributed under the same license as the NetworkManager-openvpn package.
+# Satoru SATOH <ss@gnome.gr.jp>, 2006, 2007.
+# Hajime Taira <htaira@redhat.com>, 2011.
+# NISHIBORI Kiyotaka <ml.nishibori.kiyotaka@gmail.com>, 2011.
+# OKANO Takayoshi <kano@na.rim.or.jp>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: NetworkManager-fortisslvpn master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-16 10:26+0200\n"
+"PO-Revision-Date: 2012-01-01 19:56+0900\n"
+"Last-Translator: Jiro Matsuzawa <jmatsuzawa@src.gnome.org>\n"
+"Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Otherwise, we have no saved password, or the password flags indicated
+#. * that the password should never be saved.
+#.
+#: ../auth-dialog/main.c:154
+#, c-format
+msgid "You need to authenticate to access the Virtual Private Network '%s'."
+msgstr "仮想プライベートネットワーク %s にアクセスするには認証が必要です。"
+
+#: ../auth-dialog/main.c:163 ../auth-dialog/main.c:183
+msgid "Authenticate VPN"
+msgstr "認証 VPN"
+
+#: ../auth-dialog/main.c:165 ../properties/nm-fortisslvpn-dialog.ui.h:8
+msgid "Password:"
+msgstr "パスワード:"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:1
+msgid "<b>General</b>"
+msgstr "<b>一般</b>"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:2
+msgid ""
+"SSLVPN server IP or name.\n"
+"config: the first parameter of fortisslvpn"
+msgstr ""
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:4
+msgid "_Gateway:"
+msgstr "ゲートウェイ(_G):"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:5
+msgid "<b>Authentication</b>"
+msgstr "<b>認証</b>"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:6
+msgid "Show password"
+msgstr "パスワードを表示します。"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:7
+msgid "Password passed to SSLVPN when prompted for it."
+msgstr ""
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:9
+msgid ""
+"Set the name used for authenticating the local system to the peer to "
+"<name>.\n"
+"config: user <name>"
+msgstr ""
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:11
+msgid "User name:"
+msgstr "ユーザー名:"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:12
+#, fuzzy
+msgid "<b>Security</b>"
+msgstr "<b>一般</b>"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:13
+msgid "Trusted certificate:"
+msgstr ""
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:14
+msgid ""
+"<i>A SHA256 sum of the X509 certificate that will be accepted even if the "
+"certificate is not trusted by a certificate authority</i>"
+msgstr ""
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:15
+msgid "Default"
+msgstr "デフォルト"
+
+#: ../properties/nm-fortisslvpn.c:48
+msgid "Fortinet SSLVPN"
+msgstr ""
+
+#: ../properties/nm-fortisslvpn.c:49
+msgid "Compatible with Fortinet SSLVPN servers."
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:132
+msgid "Could not find secrets (connection invalid, no vpn setting)."
+msgstr ""
+"VPN シークレットが見つかりません。(接続が無効か、VPN 設定されていません。)"
+
+#: ../src/nm-fortisslvpn-service.c:144
+msgid "Invalid VPN username."
+msgstr "無効な VPN ユーザー名です。"
+
+#: ../src/nm-fortisslvpn-service.c:153
+msgid "Missing VPN username."
+msgstr "VPN ユーザー名がありません。"
+
+#: ../src/nm-fortisslvpn-service.c:163
+msgid "Missing or invalid VPN password."
+msgstr "VPN パスワードが不足しているか、無効です。"
+
+#: ../src/nm-fortisslvpn-service.c:387
+#, c-format
+msgid "invalid gateway '%s'"
+msgstr "無効なゲートウェイ %s"
+
+#: ../src/nm-fortisslvpn-service.c:401
+#, c-format
+msgid "invalid integer property '%s'"
+msgstr "数値型パラメーター %s が無効な数値です。"
+
+#: ../src/nm-fortisslvpn-service.c:411
+#, c-format
+msgid "invalid boolean property '%s' (not yes or no)"
+msgstr ""
+"ブーリアン型パラメーター %s が無効な値です。(値はyes、noではありません)"
+
+#: ../src/nm-fortisslvpn-service.c:418
+#, c-format
+msgid "unhandled property '%s' type %s"
+msgstr "対処できない %s 型パラメーターの %s"
+
+#: ../src/nm-fortisslvpn-service.c:429
+#, c-format
+msgid "property '%s' invalid or not supported"
+msgstr "パラメーター %s は無効かサポートされていません。"
+
+#: ../src/nm-fortisslvpn-service.c:446
+msgid "No VPN configuration options."
+msgstr "VPN 構成オプションがありません。"
+
+#: ../src/nm-fortisslvpn-service.c:466
+#, c-format
+msgid "Missing required option '%s'."
+msgstr "必須オプション %s が不足しています。"
+
+#: ../src/nm-fortisslvpn-service.c:486
+msgid "No VPN secrets!"
+msgstr "VPN シークレットがありません。"
+
+#: ../src/nm-fortisslvpn-service.c:589
+msgid "Could not find the openfortivpn binary."
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:897
+msgid "Don't quit when VPN connection terminates"
+msgstr "VPN 接続が切断された時に終了しないでください。"
+
+#: ../src/nm-fortisslvpn-service.c:898
+msgid "Enable verbose debug logging (may expose passwords)"
+msgstr "詳細なデバッグ情報の保存を有効にする。(パスワードも含まれます。)"
+
+#: ../src/nm-fortisslvpn-service.c:921
+msgid ""
+"nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
+"with Fortinet) to NetworkManager."
+msgstr ""

@@ -1,0 +1,6 @@
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
+auth-dialog/main.c
+[type: gettext/glade]properties/nm-fortisslvpn-dialog.ui
+properties/nm-fortisslvpn.c
+src/nm-fortisslvpn-service.c

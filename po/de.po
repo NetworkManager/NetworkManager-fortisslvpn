@@ -1,0 +1,185 @@
+# German translation of networkmanager-pptp.
+# Copyright (C) 2005 Dan Williams <dcbw@redhat.com>
+# This file is distributed under the same license as the NetworkManager package.
+# Thomas Gier <info@thomasgier.de>, 2007.
+# Hauke Mehrtens <hauke@hauke-m.de>, 2008.
+# Mario Blättermann <mario.blaettermann@gmail.com>, 2009, 2011.
+# Christian Kirbach <Christian.Kirbach@googlemail.com>, 2012.
+# Wolfgang Stöggl <c72578@yahoo.de>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: NetworkManager-fortisslvpn master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-16 10:26+0200\n"
+"PO-Revision-Date: 2012-08-11 08:35+0200\n"
+"Last-Translator: Wolfgang Stoeggl <c72578@yahoo.de>\n"
+"Language-Team: Deutsch <gnome-de@gnome.org>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 2.91.5\n"
+
+#. Otherwise, we have no saved password, or the password flags indicated
+#. * that the password should never be saved.
+#.
+#: ../auth-dialog/main.c:154
+#, c-format
+msgid "You need to authenticate to access the Virtual Private Network '%s'."
+msgstr ""
+"Sie müssen sich legitimieren, um auf das Virtuelle Private Netz »%s« "
+"zuzugreifen."
+
+#: ../auth-dialog/main.c:163 ../auth-dialog/main.c:183
+msgid "Authenticate VPN"
+msgstr "VPN legitimieren"
+
+#: ../auth-dialog/main.c:165 ../properties/nm-fortisslvpn-dialog.ui.h:8
+msgid "Password:"
+msgstr "Passwort:"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:1
+msgid "<b>General</b>"
+msgstr "<b>Allgemein</b>"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:2
+msgid ""
+"SSLVPN server IP or name.\n"
+"config: the first parameter of fortisslvpn"
+msgstr ""
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:4
+msgid "_Gateway:"
+msgstr "_Gateway:"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:5
+msgid "<b>Authentication</b>"
+msgstr "<b>Legitimierung</b>"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:6
+msgid "Show password"
+msgstr "Passwort zeigen"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:7
+msgid "Password passed to SSLVPN when prompted for it."
+msgstr ""
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:9
+msgid ""
+"Set the name used for authenticating the local system to the peer to "
+"<name>.\n"
+"config: user <name>"
+msgstr ""
+"Den Namen zur Authentifizierung des lokalen Systems gegenüber dem Partner "
+"festlegen als <Name>.\n"
+"config: user <Name>"
+
+# CHECK: accelerator
+#: ../properties/nm-fortisslvpn-dialog.ui.h:11
+msgid "User name:"
+msgstr "Benutzername:"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:12
+#, fuzzy
+msgid "<b>Security</b>"
+msgstr "<b>Allgemein</b>"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:13
+msgid "Trusted certificate:"
+msgstr ""
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:14
+msgid ""
+"<i>A SHA256 sum of the X509 certificate that will be accepted even if the "
+"certificate is not trusted by a certificate authority</i>"
+msgstr ""
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:15
+msgid "Default"
+msgstr "Standard"
+
+#: ../properties/nm-fortisslvpn.c:48
+msgid "Fortinet SSLVPN"
+msgstr ""
+
+#: ../properties/nm-fortisslvpn.c:49
+msgid "Compatible with Fortinet SSLVPN servers."
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:132
+msgid "Could not find secrets (connection invalid, no vpn setting)."
+msgstr ""
+"Geheimnisse konnten nicht gefunden werden (Verbindung ungültig, keine VPN-"
+"Einstellungen)"
+
+#: ../src/nm-fortisslvpn-service.c:144
+msgid "Invalid VPN username."
+msgstr "Ungültiger VPN-Benutzername."
+
+#: ../src/nm-fortisslvpn-service.c:153
+msgid "Missing VPN username."
+msgstr "VPN-Benutzername fehlt."
+
+#: ../src/nm-fortisslvpn-service.c:163
+msgid "Missing or invalid VPN password."
+msgstr "Fehlendes oder ungültiges VPN-Passwort."
+
+#: ../src/nm-fortisslvpn-service.c:387
+#, c-format
+msgid "invalid gateway '%s'"
+msgstr "Ungültiges Gateway »%s«"
+
+#: ../src/nm-fortisslvpn-service.c:401
+#, c-format
+msgid "invalid integer property '%s'"
+msgstr "Ungültige Ganzzahl-Eigenschaft »%s«"
+
+#: ../src/nm-fortisslvpn-service.c:411
+#, c-format
+msgid "invalid boolean property '%s' (not yes or no)"
+msgstr "Ungültige boolesche Eigenschaft »%s« (nicht »yes« oder »no«)"
+
+#: ../src/nm-fortisslvpn-service.c:418
+#, c-format
+msgid "unhandled property '%s' type %s"
+msgstr "Unbehandelte Eigenschaft »%s« des Typs %s"
+
+#: ../src/nm-fortisslvpn-service.c:429
+#, c-format
+msgid "property '%s' invalid or not supported"
+msgstr "Eingenschaft »%s« ist ungültig oder wird nicht unterstützt"
+
+#: ../src/nm-fortisslvpn-service.c:446
+msgid "No VPN configuration options."
+msgstr "Keine VPN-Konfigurationsoptionen."
+
+#: ../src/nm-fortisslvpn-service.c:466
+#, c-format
+msgid "Missing required option '%s'."
+msgstr "Benötigte Option »%s« fehlt."
+
+#: ../src/nm-fortisslvpn-service.c:486
+msgid "No VPN secrets!"
+msgstr "Keine VPN-Geheimnisse!"
+
+#: ../src/nm-fortisslvpn-service.c:589
+msgid "Could not find the openfortivpn binary."
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:897
+msgid "Don't quit when VPN connection terminates"
+msgstr "Nicht beenden, wenn die VPN-Verbindung beendet wird"
+
+#: ../src/nm-fortisslvpn-service.c:898
+msgid "Enable verbose debug logging (may expose passwords)"
+msgstr ""
+"Ausführliche Protokollierung zur Fehlerdiagnose erlauben (könnte Passwörter "
+"sichtbar machen)"
+
+#: ../src/nm-fortisslvpn-service.c:921
+msgid ""
+"nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
+"with Fortinet) to NetworkManager."
+msgstr ""

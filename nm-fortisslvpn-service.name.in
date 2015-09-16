@@ -1,0 +1,9 @@
+[VPN Connection]
+name=fortisslvpn
+service=org.freedesktop.NetworkManager.fortisslvpn
+program=@LIBEXECDIR@/nm-fortisslvpn-service
+
+[GNOME]
+auth-dialog=@LIBEXECDIR@/nm-fortisslvpn-auth-dialog
+properties=@PLUGINDIR@/libnm-fortisslvpn-properties
+supports-external-ui-mode=true

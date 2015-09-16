@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:gnome="http://api.gnome.org/doap-extensions#"
+         xmlns="http://usefulinc.com/ns/doap#">
+
+  <name xml:lang="en">network-manager-fortisslvpn</name>
+  <shortdesc xml:lang="en">Fortinet SSLVPN support for NetworkManager</shortdesc>
+
+  <homepage rdf:resource="https://wiki.gnome.org/Projects/NetworkManager" />
+  <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/networkmanager-list" />
+  <download-page rdf:resource="http://download.gnome.org/sources/NetworkManager-fortisslvpn/" />
+  <bug-database rdf:resource="https://bugzilla.gnome.org/browse.cgi?product=NetworkManager&amp;component=VPN:%20fortisslvpn" />
+  <category rdf:resource="http://api.gnome.org/doap-extensions#development" />
+
+  <maintainer>
+    <foaf:Person>
+      <foaf:name>Lubomir Rintel</foaf:name>
+      <foaf:mbox rdf:resource="mailto:lkundrak@v3.sk" />
+      <gnome:userid>lkundrak</gnome:userid>
+    </foaf:Person>
+  </maintainer>
+
+</Project>
+

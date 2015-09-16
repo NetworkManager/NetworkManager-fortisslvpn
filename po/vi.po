@@ -1,0 +1,169 @@
+# Vietnamese translation for NetworkManager PPTP.
+# Copyright © 2008 Free Software Foundation, Inc.
+# Clytie Siddall <clytie@riverland.net.au>, 2006-2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: NetworkManager-fortisslvpn\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-16 10:26+0200\n"
+"PO-Revision-Date: 2008-06-06 14:48+0930\n"
+"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+"Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: LocFactoryEditor 1.7b3\n"
+
+#. Otherwise, we have no saved password, or the password flags indicated
+#. * that the password should never be saved.
+#.
+#: ../auth-dialog/main.c:154
+#, c-format
+msgid "You need to authenticate to access the Virtual Private Network '%s'."
+msgstr ""
+
+#: ../auth-dialog/main.c:163 ../auth-dialog/main.c:183
+msgid "Authenticate VPN"
+msgstr ""
+
+#: ../auth-dialog/main.c:165 ../properties/nm-fortisslvpn-dialog.ui.h:8
+msgid "Password:"
+msgstr ""
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:1
+msgid "<b>General</b>"
+msgstr ""
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:2
+msgid ""
+"SSLVPN server IP or name.\n"
+"config: the first parameter of fortisslvpn"
+msgstr ""
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:4
+msgid "_Gateway:"
+msgstr "Cổn_g ra:"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:5
+msgid "<b>Authentication</b>"
+msgstr ""
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:6
+msgid "Show password"
+msgstr ""
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:7
+msgid "Password passed to SSLVPN when prompted for it."
+msgstr ""
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:9
+msgid ""
+"Set the name used for authenticating the local system to the peer to "
+"<name>.\n"
+"config: user <name>"
+msgstr ""
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:11
+msgid "User name:"
+msgstr ""
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:12
+msgid "<b>Security</b>"
+msgstr ""
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:13
+msgid "Trusted certificate:"
+msgstr ""
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:14
+msgid ""
+"<i>A SHA256 sum of the X509 certificate that will be accepted even if the "
+"certificate is not trusted by a certificate authority</i>"
+msgstr ""
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:15
+msgid "Default"
+msgstr ""
+
+#: ../properties/nm-fortisslvpn.c:48
+msgid "Fortinet SSLVPN"
+msgstr ""
+
+#: ../properties/nm-fortisslvpn.c:49
+msgid "Compatible with Fortinet SSLVPN servers."
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:132
+msgid "Could not find secrets (connection invalid, no vpn setting)."
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:144
+msgid "Invalid VPN username."
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:153
+msgid "Missing VPN username."
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:163
+msgid "Missing or invalid VPN password."
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:387
+#, c-format
+msgid "invalid gateway '%s'"
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:401
+#, c-format
+msgid "invalid integer property '%s'"
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:411
+#, c-format
+msgid "invalid boolean property '%s' (not yes or no)"
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:418
+#, c-format
+msgid "unhandled property '%s' type %s"
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:429
+#, c-format
+msgid "property '%s' invalid or not supported"
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:446
+msgid "No VPN configuration options."
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:466
+#, c-format
+msgid "Missing required option '%s'."
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:486
+msgid "No VPN secrets!"
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:589
+msgid "Could not find the openfortivpn binary."
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:897
+msgid "Don't quit when VPN connection terminates"
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:898
+msgid "Enable verbose debug logging (may expose passwords)"
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:921
+msgid ""
+"nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
+"with Fortinet) to NetworkManager."
+msgstr ""
