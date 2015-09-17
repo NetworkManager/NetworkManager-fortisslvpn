@@ -546,7 +546,7 @@ nm_find_openfortivpn (void)
 			NULL
 		};
 
-	const char  **openfortivpn_binary = openfortivpn_binary_paths;
+	const char **openfortivpn_binary = openfortivpn_binary_paths;
 
 	while (*openfortivpn_binary != NULL) {
 		if (g_file_test (*openfortivpn_binary, G_FILE_TEST_EXISTS))
@@ -569,9 +569,7 @@ pppd_timed_out (gpointer user_data)
 }
 
 static gboolean
-run_openfortivpn (NMFortisslvpnPlugin *plugin,
-                           NMSettingVPN *s_vpn,
-                           GError **error)
+run_openfortivpn (NMFortisslvpnPlugin *plugin, NMSettingVPN *s_vpn, GError **error)
 {
 	NMFortisslvpnPluginPrivate *priv = NM_FORTISSLVPN_PLUGIN_GET_PRIVATE (plugin);
 	NMFortisslvpnPppServicePrivate *service_priv = NM_FORTISSLVPN_PPP_SERVICE_GET_PRIVATE (priv->service);
@@ -713,9 +711,7 @@ service_ip4_config_cb (NMFortisslvpnPppService *service,
 }
 
 static gboolean
-real_connect (NMVPNPlugin   *plugin,
-              NMConnection  *connection,
-              GError       **error)
+real_connect (NMVPNPlugin *plugin, NMConnection *connection, GError **error)
 {
 	NMFortisslvpnPluginPrivate *priv = NM_FORTISSLVPN_PLUGIN_GET_PRIVATE (plugin);
 	NMSettingVPN *s_vpn;
@@ -860,7 +856,7 @@ nm_fortisslvpn_plugin_class_init (NMFortisslvpnPluginClass *fortisslvpn_class)
 
 	/* virtual methods */
 	object_class->dispose = dispose;
-	parent_class->connect    = real_connect;
+	parent_class->connect = real_connect;
 	parent_class->need_secrets = real_need_secrets;
 	parent_class->disconnect = real_disconnect;
 }

@@ -10,8 +10,8 @@ AM_CPPFLAGS =							\
 libexec_PROGRAMS = nm-fortisslvpn-service
 
 nm_fortisslvpn_service_SOURCES =				\
-				nm-fortisslvpn-service.c	\
-				nm-fortisslvpn-service.h
+	nm-fortisslvpn-service.c				\
+	nm-fortisslvpn-service.h
 
 nm-fortisslvpn-pppd-service-glue.h: $(top_srcdir)/src/nm-fortisslvpn-pppd-service.xml
 	dbus-binding-tool --prefix=nm_fortisslvpn_pppd_service --mode=glib-server --output=$@ $<
