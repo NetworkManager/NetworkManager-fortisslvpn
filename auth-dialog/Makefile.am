@@ -7,10 +7,7 @@ nm_fortisslvpn_auth_dialog_CPPFLAGS =		\
 	$(NMGTK_CFLAGS)				\
 	$(LIBSECRET_CFLAGS)			\
 	-I$(top_srcdir)				\
-	-DICONDIR=\""$(datadir)/pixmaps"\"	\
 	-DUIDIR=\""$(uidir)"\"			\
-	-DBINDIR=\""$(bindir)"\"		\
-	-DG_DISABLE_DEPRECATED			\
 	-DVERSION=\"$(VERSION)\"
 
 nm_fortisslvpn_auth_dialog_SOURCES =		\
