@@ -1,3 +1,8 @@
+fortisslvpn_statedir = $(sharedstatedir)/$(PACKAGE)
+
+install-data-hook:
+	$(mkinstalldirs) -m 0700 $(DESTDIR)$(fortisslvpn_statedir)
+
 AM_CPPFLAGS =							\
 	$(DBUS_GLIB_CFLAGS)					\
 	$(GLIB_CFLAGS)						\
@@ -5,6 +10,7 @@ AM_CPPFLAGS =							\
 	-I$(top_srcdir)						\
 	-DG_DISABLE_DEPRECATED					\
 	-DNM_FORTISSLVPN_LOCALEDIR=\"$(datadir)/locale\"	\
+	-DNM_FORTISSLVPN_STATEDIR=\"$(fortisslvpn_statedir)\"	\
 	-DPLUGINDIR=\"$(PPPD_PLUGIN_DIR)\" 
 
 libexec_PROGRAMS = nm-fortisslvpn-service

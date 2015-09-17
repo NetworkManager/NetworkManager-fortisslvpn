@@ -37,6 +37,8 @@
 #include <locale.h>
 #include <errno.h>
 
+#include <glib.h>
+#include <glib/gstdio.h>
 #include <glib/gi18n.h>
 #include <dbus/dbus.h>
 #include <dbus/dbus-glib.h>
@@ -313,6 +315,7 @@ typedef struct {
 	guint32 ppp_timeout_handler;
 	NMFortisslvpnPppService *service;
 	NMConnection *connection;
+	char *config_file;
 } NMFortisslvpnPluginPrivate;
 
 #define NM_FORTISSLVPN_PLUGIN_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), NM_TYPE_FORTISSLVPN_PLUGIN, NMFortisslvpnPluginPrivate))
@@ -490,6 +493,40 @@ validate_secrets (NMSettingVPN *s_vpn, GError **error)
 	return *error ? FALSE : TRUE;
 }
 
+static gboolean
+ensure_killed (gpointer data)
+{
+	int pid = GPOINTER_TO_INT (data);
+
+	if (kill (pid, 0) == 0)
+		kill (pid, SIGKILL);
+
+	return FALSE;
+}
+
+static void
+cleanup_plugin (NMFortisslvpnPlugin *plugin)
+{
+	NMFortisslvpnPluginPrivate *priv = NM_FORTISSLVPN_PLUGIN_GET_PRIVATE (plugin);
+
+	if (priv->pid) {
+		if (kill (priv->pid, SIGTERM) == 0)
+			g_timeout_add (2000, ensure_killed, GINT_TO_POINTER (priv->pid));
+		else
+			kill (priv->pid, SIGKILL);
+
+		g_message ("Terminated ppp daemon with PID %d.", priv->pid);
+		priv->pid = 0;
+	}
+
+	g_clear_object (&priv->connection);
+	g_clear_object (&priv->service);
+	if (priv->config_file) {
+		g_unlink (priv->config_file);
+		g_clear_pointer (&priv->config_file, g_free);
+	}
+}
+
 static void
 openfortivpn_watch_cb (GPid pid, gint status, gpointer user_data)
 {
@@ -533,6 +570,7 @@ openfortivpn_watch_cb (GPid pid, gint status, gpointer user_data)
 	}
 
 	nm_vpn_plugin_set_state (NM_VPN_PLUGIN (plugin), NM_VPN_SERVICE_STATE_STOPPED);
+	cleanup_plugin (plugin);
 }
 
 static const char *
@@ -572,7 +610,6 @@ static gboolean
 run_openfortivpn (NMFortisslvpnPlugin *plugin, NMSettingVPN *s_vpn, GError **error)
 {
 	NMFortisslvpnPluginPrivate *priv = NM_FORTISSLVPN_PLUGIN_GET_PRIVATE (plugin);
-	NMFortisslvpnPppServicePrivate *service_priv = NM_FORTISSLVPN_PPP_SERVICE_GET_PRIVATE (priv->service);
 	GPid pid;
 	const char *openfortivpn;
 	GPtrArray *argv;
@@ -591,6 +628,9 @@ run_openfortivpn (NMFortisslvpnPlugin *plugin, NMSettingVPN *s_vpn, GError **err
 	argv = g_ptr_array_new_with_free_func (g_free);
 	g_ptr_array_add (argv, (gpointer) g_strdup (openfortivpn));
 
+	g_ptr_array_add (argv, (gpointer) g_strdup ("-c"));
+	g_ptr_array_add (argv, (gpointer) g_strdup (priv->config_file));
+
 	g_ptr_array_add (argv, (gpointer) g_strdup ("--no-routes"));
 	g_ptr_array_add (argv, (gpointer) g_strdup ("--no-dns"));
 
@@ -599,12 +639,6 @@ run_openfortivpn (NMFortisslvpnPlugin *plugin, NMSettingVPN *s_vpn, GError **err
 
 	if (debug)
 		g_ptr_array_add (argv, (gpointer) g_strdup ("-vvv"));
-
-	g_ptr_array_add (argv, (gpointer) g_strdup ("-u"));
-	g_ptr_array_add (argv, (gpointer) g_strdup (service_priv->username));
-
-	g_ptr_array_add (argv, (gpointer) g_strdup ("-p"));
-	g_ptr_array_add (argv, (gpointer) g_strdup (service_priv->password));
 
 	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_TRUSTED_CERT);
 	if (value) {
@@ -714,7 +748,10 @@ static gboolean
 real_connect (NMVPNPlugin *plugin, NMConnection *connection, GError **error)
 {
 	NMFortisslvpnPluginPrivate *priv = NM_FORTISSLVPN_PLUGIN_GET_PRIVATE (plugin);
+	NMFortisslvpnPppServicePrivate *service_priv;
 	NMSettingVPN *s_vpn;
+	mode_t old_umask;
+	gchar *config;
 
 	s_vpn = NM_SETTING_VPN (nm_connection_get_setting (connection, NM_TYPE_SETTING_VPN));
 	g_assert (s_vpn);
@@ -743,6 +780,25 @@ real_connect (NMVPNPlugin *plugin, NMConnection *connection, GError **error)
 	if (debug)
 		nm_connection_dump (connection);
 
+	/* Create the configuration file so that we don't expose
+	 * secrets on the command line */
+	service_priv = NM_FORTISSLVPN_PPP_SERVICE_GET_PRIVATE (priv->service);
+	priv->config_file = g_strdup_printf (NM_FORTISSLVPN_STATEDIR "/%s.config",
+	                                     nm_connection_get_uuid (connection));
+	config = g_strdup_printf ("username = %s\npassword = %s\n",
+	                          service_priv->username,
+	                          service_priv->password);
+	old_umask = umask (0077);
+	if (!g_file_set_contents (priv->config_file, config, -1, error)) {
+		g_clear_pointer (&priv->config_file, g_free);
+		umask (old_umask);
+		g_free (config);
+		return FALSE;
+	}
+	umask (old_umask);
+	g_free (config);
+
+	/* Run the acutal openfortivpn process */
 	return run_openfortivpn (NM_FORTISSLVPN_PLUGIN (plugin), s_vpn, error);
 }
 
@@ -776,34 +832,9 @@ real_need_secrets (NMVPNPlugin *plugin,
 }
 
 static gboolean
-ensure_killed (gpointer data)
-{
-	int pid = GPOINTER_TO_INT (data);
-
-	if (kill (pid, 0) == 0)
-		kill (pid, SIGKILL);
-
-	return FALSE;
-}
-
-static gboolean
 real_disconnect (NMVPNPlugin *plugin, GError **err)
 {
-	NMFortisslvpnPluginPrivate *priv = NM_FORTISSLVPN_PLUGIN_GET_PRIVATE (plugin);
-
-	if (priv->pid) {
-		if (kill (priv->pid, SIGTERM) == 0)
-			g_timeout_add (2000, ensure_killed, GINT_TO_POINTER (priv->pid));
-		else
-			kill (priv->pid, SIGKILL);
-
-		g_message ("Terminated ppp daemon with PID %d.", priv->pid);
-		priv->pid = 0;
-	}
-
-	g_clear_object (&priv->connection);
-	g_clear_object (&priv->service);
-
+	cleanup_plugin (NM_FORTISSLVPN_PLUGIN (plugin));
 	return TRUE;
 }
 
@@ -833,11 +864,7 @@ state_changed_cb (GObject *object, NMVPNServiceState state, gpointer user_data)
 static void
 dispose (GObject *object)
 {
-	NMFortisslvpnPluginPrivate *priv = NM_FORTISSLVPN_PLUGIN_GET_PRIVATE (object);
-
-	g_clear_object (&priv->connection);
-	g_clear_object (&priv->service);
-
+	cleanup_plugin (NM_FORTISSLVPN_PLUGIN (object));
 	G_OBJECT_CLASS (nm_fortisslvpn_plugin_parent_class)->dispose (object);
 }
 
