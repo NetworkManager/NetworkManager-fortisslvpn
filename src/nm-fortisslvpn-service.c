@@ -333,6 +333,7 @@ typedef struct {
 static ValidProperty valid_properties[] = {
 	{ NM_FORTISSLVPN_KEY_GATEWAY,           G_TYPE_STRING, TRUE },
 	{ NM_FORTISSLVPN_KEY_USER,              G_TYPE_STRING, TRUE },
+	{ NM_FORTISSLVPN_KEY_CA,                G_TYPE_STRING, FALSE },
 	{ NM_FORTISSLVPN_KEY_TRUSTED_CERT,      G_TYPE_STRING, FALSE },
 	{ NM_FORTISSLVPN_KEY_PASSWORD"-flags",  G_TYPE_UINT, FALSE },
 	{ NULL,                                 G_TYPE_NONE, FALSE }
@@ -347,6 +348,34 @@ static gboolean
 validate_gateway (const char *gateway)
 {
 	if (!gateway || !strlen (gateway) || !isalnum (*gateway))
+		return FALSE;
+
+	return TRUE;
+}
+
+/* This is a bit half-assed. We should check that the user doesn't
+ * abuse this to access files he ordinarily shouldn't, but we an't do
+ * any better than this for we don't have any information about the
+ * identity of the user that activates the connection.
+ * We should probably get the certificate inline or something. */
+static gboolean
+validate_ca (const char *ca)
+{
+	struct stat ca_stat;
+
+	/* Tolerate only absolute paths */
+	if (!ca || !strlen (ca) || *ca != '/')
+		return FALSE;
+
+	if (stat (ca, &ca_stat) == -1)
+		return FALSE;
+
+	/* Allow only ordinary files */
+	if (!(ca_stat.st_mode & S_IFREG))
+		return FALSE;
+
+	/* Allow only world-readable files */
+	if ((ca_stat.st_mode & 0444) != 0444)
 		return FALSE;
 
 	return TRUE;
@@ -388,6 +417,14 @@ validate_one_property (const char *key, const char *value, gpointer user_data)
 				             NM_VPN_PLUGIN_ERROR,
 				             NM_VPN_PLUGIN_ERROR_BAD_ARGUMENTS,
 				             _("invalid gateway '%s'"),
+				             value);
+				return;
+			} else if (   !strcmp (prop.name, NM_FORTISSLVPN_KEY_CA)
+			           && !validate_ca (value)) {
+				g_set_error (info->error,
+				             NM_VPN_PLUGIN_ERROR,
+				             NM_VPN_PLUGIN_ERROR_BAD_ARGUMENTS,
+				             _("invalid certificate authority '%s'"),
 				             value);
 				return;
 			}
@@ -639,6 +676,12 @@ run_openfortivpn (NMFortisslvpnPlugin *plugin, NMSettingVPN *s_vpn, GError **err
 
 	if (debug)
 		g_ptr_array_add (argv, (gpointer) g_strdup ("-vvv"));
+
+	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_CA);
+	if (value) {
+		g_ptr_array_add (argv, (gpointer) g_strdup ("--ca-file"));
+		g_ptr_array_add (argv, (gpointer) g_strdup (value));
+	}
 
 	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_TRUSTED_CERT);
 	if (value) {

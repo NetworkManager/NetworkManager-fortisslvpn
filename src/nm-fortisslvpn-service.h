@@ -51,6 +51,7 @@
 #define NM_FORTISSLVPN_KEY_GATEWAY           "gateway"
 #define NM_FORTISSLVPN_KEY_USER              "user"
 #define NM_FORTISSLVPN_KEY_PASSWORD          "password"
+#define NM_FORTISSLVPN_KEY_CA                "ca"
 #define NM_FORTISSLVPN_KEY_TRUSTED_CERT      "trusted-cert"
 
 typedef struct {
