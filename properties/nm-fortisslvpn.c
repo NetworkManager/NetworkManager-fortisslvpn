@@ -76,6 +76,7 @@ typedef struct {
 	GtkWindowGroup *window_group;
 	gboolean window_added;
 	gboolean new_connection;
+	gchar *trusted_cert;
 } FortisslvpnPluginUiWidgetPrivate;
 
 
@@ -219,6 +220,53 @@ init_password_icon (FortisslvpnPluginUiWidget *self,
 }
 
 static gboolean
+advanced_dialog_delete_cb (GtkWidget *dialog, gpointer user_data)
+{
+	/* Don't destroy it. */
+	return TRUE;
+}
+
+static void
+advanced_dialog_response_cb (GtkWidget *dialog, gint response, gpointer user_data)
+{
+	FortisslvpnPluginUiWidget *self = FORTISSLVPN_PLUGIN_UI_WIDGET (user_data);
+	FortisslvpnPluginUiWidgetPrivate *priv = FORTISSLVPN_PLUGIN_UI_WIDGET_GET_PRIVATE (self);
+	GtkEntry *entry = GTK_ENTRY (gtk_builder_get_object (priv->builder, "trusted_cert_entry"));
+
+	g_assert (entry);
+	if (response == GTK_RESPONSE_OK) {
+		g_free (priv->trusted_cert);
+		priv->trusted_cert = g_strdup (gtk_entry_get_text (entry));
+		stuff_changed_cb (NULL, self);
+	} else {
+		gtk_entry_set_text (entry, priv->trusted_cert);
+	}
+
+	gtk_widget_hide (dialog);
+}
+
+static void
+advanced_button_clicked_cb (GtkWidget *button, gpointer user_data)
+{
+	FortisslvpnPluginUiWidget *self = FORTISSLVPN_PLUGIN_UI_WIDGET (user_data);
+	FortisslvpnPluginUiWidgetPrivate *priv = FORTISSLVPN_PLUGIN_UI_WIDGET_GET_PRIVATE (self);
+	GtkWidget *dialog = GTK_WIDGET (gtk_builder_get_object (priv->builder, "advanced_dialog"));
+	g_assert (dialog);
+
+	if (!priv->window_added) {
+		GtkWidget *toplevel = gtk_widget_get_toplevel (priv->widget);
+
+		g_assert (gtk_widget_is_toplevel (toplevel));
+		gtk_window_group_add_window (priv->window_group, GTK_WINDOW (toplevel));
+		gtk_window_group_add_window (priv->window_group, GTK_WINDOW (dialog));
+		gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (toplevel));
+		priv->window_added = TRUE;
+	}
+
+	gtk_widget_show_all (dialog);
+}
+
+static gboolean
 init_plugin_ui (FortisslvpnPluginUiWidget *self, NMConnection *connection, GError **error)
 {
 	FortisslvpnPluginUiWidgetPrivate *priv = FORTISSLVPN_PLUGIN_UI_WIDGET_GET_PRIVATE (self);
@@ -255,13 +303,12 @@ init_plugin_ui (FortisslvpnPluginUiWidget *self, NMConnection *connection, GErro
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "trusted_cert_entry"));
 	if (!widget)
 		return FALSE;
-	gtk_size_group_add_widget (priv->group, widget);
 	if (s_vpn) {
-		value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_TRUSTED_CERT);
-		if (value && strlen (value))
-			gtk_entry_set_text (GTK_ENTRY (widget), value);
+		priv->trusted_cert = g_strdup (nm_setting_vpn_get_data_item (s_vpn,
+		                                                             NM_FORTISSLVPN_KEY_TRUSTED_CERT));
+		if (priv->trusted_cert && strlen (priv->trusted_cert))
+			gtk_entry_set_text (GTK_ENTRY (widget), priv->trusted_cert);
 	}
-	g_signal_connect (G_OBJECT (widget), "changed", G_CALLBACK (stuff_changed_cb), self);
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "show_passwords_checkbutton"));
 	g_return_val_if_fail (widget != NULL, FALSE);
@@ -282,6 +329,17 @@ init_plugin_ui (FortisslvpnPluginUiWidget *self, NMConnection *connection, GErro
 	                    s_vpn,
 	                    NM_FORTISSLVPN_KEY_PASSWORD,
 	                    "user_password_entry");
+
+	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "advanced_dialog"));
+	if (!widget)
+		return FALSE;
+	g_signal_connect (G_OBJECT (widget), "response", G_CALLBACK (advanced_dialog_response_cb), self);
+	g_signal_connect (G_OBJECT (widget), "delete-event", G_CALLBACK (advanced_dialog_delete_cb), NULL);
+
+	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "advanced_button"));
+	if (!widget)
+		return FALSE;
+	g_signal_connect (G_OBJECT (widget), "clicked", G_CALLBACK (advanced_button_clicked_cb), self);
 
 	return TRUE;
 }
@@ -362,10 +420,10 @@ update_connection (NMVpnPluginUiWidgetInterface *iface,
 	                         NM_FORTISSLVPN_KEY_PASSWORD);
 
 	/* Trusted certificate */
-	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "trusted_cert_entry"));
-	str = gtk_entry_get_text (GTK_ENTRY (widget));
-	if (str && strlen (str))
-		nm_setting_vpn_add_data_item (s_vpn, NM_FORTISSLVPN_KEY_TRUSTED_CERT, str);
+	if (priv->trusted_cert && strlen (priv->trusted_cert))
+		nm_setting_vpn_add_data_item (s_vpn,
+		                              NM_FORTISSLVPN_KEY_TRUSTED_CERT,
+		                              priv->trusted_cert);
 
 	nm_connection_add_setting (connection, NM_SETTING (s_vpn));
 	valid = TRUE;
