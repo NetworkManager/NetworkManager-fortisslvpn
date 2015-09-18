@@ -137,16 +137,7 @@ _service_cache_credentials (NMFortisslvpnPppService *self,
 
 	/* Username; try SSLVPN specific username first, then generic username */
 	username = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_USER);
-	if (username && strlen (username)) {
-		/* FIXME: This check makes about 0 sense. */
-		if (!username || !strlen (username)) {
-			g_set_error_literal (error,
-			                     NM_VPN_PLUGIN_ERROR,
-			                     NM_VPN_PLUGIN_ERROR_CONNECTION_INVALID,
-			                    _("Invalid VPN username."));
-			return FALSE;
-		}
-	} else {
+	if (!username || !strlen (username)) {
 		username = nm_setting_vpn_get_user_name (s_vpn);
 		if (!username || !strlen (username)) {
 			g_set_error_literal (error,
