@@ -25,7 +25,10 @@ EXTRA_DIST = nm-fortisslvpn-service.name.in		\
 	$(iconfile)					\
 	intltool-extract.in				\
 	intltool-merge.in				\
-	intltool-update.in
+	intltool-update.in				\
+	contrib/README					\
+	contrib/fortiserve.pl				\
+	contrib/sslproxy.pl
 
 CLEANFILES = $(nmvpnservice_DATA) $(desktop_DATA) *~
 DISTCLEANFILES = intltool-extract intltool-merge intltool-update
