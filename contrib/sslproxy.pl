@@ -63,6 +63,7 @@ sub serve_client
 
 	my $backend = new IO::Socket::SSL (
 		SSL_verify_mode => SSL_VERIFY_NONE,
+		SSL_cipher_list => 'ALL',
 		PeerAddr => shift,
 	) or die $!;
 
