@@ -77,14 +77,14 @@ sub serve_client
 
 		if ($poll->events ($client) == IO::Poll::POLLIN) {
 			my $buf;
-			$client->sysread ($buf, 4096);
+			$client->sysread ($buf, 65535);
 			dump_chunk ('client', $buf);
 			exit unless length $buf;
 			print $backend $buf;
 		}
 		if ($poll->events ($backend) == IO::Poll::POLLIN) {
 			my $buf;
-			$backend->sysread ($buf, 4096);
+			$backend->sysread ($buf, 65535);
 			dump_chunk ('backend', $buf);
 			exit unless length $buf;
 			print $client $buf;
