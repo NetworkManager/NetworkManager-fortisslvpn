@@ -261,6 +261,8 @@ sub serve_request
 			'<input type="hidden" NAME="text3" value="0:1666">',
 			'<input type="hidden" NAME="text7" value="0">',
 		);
+	} elsif ($request->uri eq '/remote/fortisslvpn_xml') {
+		$response = new HTTP::Response (200 => 'OK', [], 'something');
 	} elsif ($request->uri eq '/remote/sslvpn-tunnel') {
 		do_ppp ($client);
 		$response = new HTTP::Response (200 => 'OK', 'something');
