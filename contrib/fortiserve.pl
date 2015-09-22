@@ -251,7 +251,16 @@ sub serve_request
 	} elsif ($request->uri eq '/remote/index') {
 		$response = new HTTP::Response (200 => 'OK', [], 'something');
 	} elsif ($request->uri eq '/remote/fortisslvpn') {
-		$response = new HTTP::Response (200 => 'OK', [], "\x00\x06\x50\x50\x00\x00");
+		$response = new HTTP::Response (200 => 'OK', [], join '', map { "$_\n" }
+			'<!-- SSL-VPN protocol version:',
+			'embed.FGTversion = 1;',
+			'fortisslvpn.FGTversion = 1',
+			'-->',
+			'',
+			'<input type="hidden" NAME="text6" VALUE="10.112.65.0/255.255.255.0,10.113.0.0/255.255.0.0,185.103.145.0/255.255.255.0,10.112.0.0/255.255.224.0">',
+			'<input type="hidden" NAME="text3" value="0:1666">',
+			'<input type="hidden" NAME="text7" value="0">',
+		);
 	} elsif ($request->uri eq '/remote/sslvpn-tunnel') {
 		do_ppp ($client);
 		$response = new HTTP::Response (200 => 'OK', 'something');
