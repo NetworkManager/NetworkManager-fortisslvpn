@@ -46,6 +46,11 @@ use Pod::Usage;
 use strict;
 use warnings;
 
+my $local = '0.0.0.0:10443';
+my $cert = 'server.crt';
+my $key = 'server.key';
+my $pppd = 'pppd';
+
 # Gereate a RFC 1662 (appendix C.1) FCS-16 table
 sub fcs16
 {
@@ -172,14 +177,14 @@ sub do_ppp
 
 	my $poll = new IO::Poll;
 	my $pty = new IO::Pty;
-	my $pppd = fork;
+	my $ppp = fork;
 
 	my $client_in = '';
 	my $pty_in = '';
 	my $client_out = '';
 	my $pty_out = "\x7e";
 
-	die $! unless defined $pppd;
+	die $! unless defined $ppp;
 
 	# This disables echo. pppd would disable it too, however the client
 	# might race for a chance to talk to us before pppd sets things up and
@@ -190,11 +195,11 @@ sub do_ppp
 	$pty->blocking (0);
 	$client->blocking (0);
 
+	exec ($pppd, $pty->ttyname, qw/38400 noipdefault noaccomp noauth
 	# debug logfile chudak
-	exec ('pppd', $pty->ttyname, qw/38400 noipdefault noaccomp noauth
 		ms-dns 6.6.6.7 ms-dns 8.8.8.8 noccp
 		default-asyncmap nopcomp nodefaultroute :1.1.1.2 nodetach
-		lcp-max-configure 40 usepeerdns mru 1024/) or die $! unless $pppd;
+		lcp-max-configure 40 usepeerdns mru 1024/) or die $! unless $ppp;
 
 	$poll->mask ($_ => IO::Poll::POLLIN | IO::Poll::POLLERR)
 		foreach ($client, $pty);
@@ -234,7 +239,7 @@ sub do_ppp
 LOGOUT:
 	$client->blocking (1);
 
-	kill 'TERM' => $pppd;
+	kill 'TERM' => $ppp;
 }
 
 # Dispatch a response for an URI
@@ -319,18 +324,22 @@ Use the specified key to decrypt the server certificate.
 
 Defaults to F<server.key>.
 
+=item B<--pppd> B<< <file> >>
+
+Use the specified command in place of a PPP daemon. You can use
+F<antipppd.pl> to simulate actual Fortigate traffic.
+
+Defaults to F<pppd>.
+
 =back
 
 =cut
-
-my $local = '0.0.0.0:10443';
-my $cert = 'server.crt';
-my $key = 'server.key';
 
 new Getopt::Long::Parser (config => ['no_ignore_case'])->getoptions (
 	'local=s' => \$local,
 	'cert=s' => \$cert,
 	'key=s' => \$key,
+	'pppd=s' => \$pppd,
 	'h|help' => sub { pod2usage (-exitval => 0, -verbose => 1) },
 	'H|man' => sub { pod2usage (-exitval => 0, -verbose => 2) },
 ) or pod2usage (2);
@@ -367,6 +376,10 @@ Listen on the default C<localhost:10443> address.
 
 Open a connection using the L<openfortivpn(1)> client.
 
+=item B<fortiserve.pl --pppd ./antipppd.pl>
+
+Run with the Fortigate L<pppd(8)> mockup.
+
 =back
 
 =head1 BUGS
@@ -389,7 +402,7 @@ C<Content-Size> to use and doesn't terminate HTTP/1.1 Keep-Alive.
 
 =head1 SEE ALSO
 
-L<openfortivpn(1)>
+L<openfortivpn(1)>, L<pppd(8)>
 
 =head1 COPYRIGHT
 
