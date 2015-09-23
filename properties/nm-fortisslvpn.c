@@ -306,8 +306,9 @@ init_plugin_ui (FortisslvpnPluginUiWidget *self, NMConnection *connection, GErro
 	if (s_vpn) {
 		priv->trusted_cert = g_strdup (nm_setting_vpn_get_data_item (s_vpn,
 		                                                             NM_FORTISSLVPN_KEY_TRUSTED_CERT));
-		if (priv->trusted_cert && strlen (priv->trusted_cert))
-			gtk_entry_set_text (GTK_ENTRY (widget), priv->trusted_cert);
+		if (!priv->trusted_cert)
+			priv->trusted_cert = g_strdup ("");
+		gtk_entry_set_text (GTK_ENTRY (widget), priv->trusted_cert);
 	}
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "show_passwords_checkbutton"));
