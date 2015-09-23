@@ -263,6 +263,7 @@ advanced_button_clicked_cb (GtkWidget *button, gpointer user_data)
 		priv->window_added = TRUE;
 	}
 
+	gtk_widget_grab_focus (GTK_WIDGET (gtk_builder_get_object (priv->builder, "ok_button")));
 	gtk_widget_show_all (dialog);
 }
 
