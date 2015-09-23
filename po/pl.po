@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: network-manager-fortisslvpn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-19 09:44+0200\n"
+"POT-Creation-Date: 2015-09-23 23:57+0200\n"
 "PO-Revision-Date: 2015-09-19 09:45+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
@@ -51,16 +51,16 @@ msgid "<b>Security</b>"
 msgstr "<b>Zabezpieczenia</b>"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:3
-msgid "Trusted certificate:"
-msgstr "Zaufany certyfikat:"
+msgid ""
+"A SHA256 sum of the X509 certificate that will be accepted even if the "
+"certificate is not trusted by a certificate authority."
+msgstr ""
+"Suma kontrolna SHA256 certyfikatu X.509 przyjmowanego nawet, jeśli "
+"certyfikat nie jest zaufany przez CA."
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:4
-msgid ""
-"<i>A SHA256 sum of the X509 certificate that will be accepted even if the "
-"certificate is not trusted by a certificate authority</i>"
-msgstr ""
-"<i>Suma kontrolna SHA256 certyfikatu X.509 przyjmowanego nawet, jeśli "
-"certyfikat nie jest zaufany przez CA</i>"
+msgid "Trusted certificate:"
+msgstr "Zaufany certyfikat:"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:5
 msgid "<b>General</b>"

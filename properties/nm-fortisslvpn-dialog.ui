@@ -92,6 +92,7 @@
                       <object class="GtkEntry" id="trusted_cert_entry">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="tooltip_text" translatable="yes">A SHA256 sum of the X509 certificate that will be accepted even if the certificate is not trusted by a certificate authority.</property>
                         <property name="hexpand">True</property>
                         <property name="max_length">64</property>
                         <property name="width_chars">48</property>
@@ -113,19 +114,6 @@
                       <packing>
                         <property name="left_attach">0</property>
                         <property name="top_attach">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="label3">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">&lt;i&gt;A SHA256 sum of the X509 certificate that will be accepted even if the certificate is not trusted by a certificate authority&lt;/i&gt;</property>
-                        <property name="use_markup">True</property>
-                        <property name="wrap">True</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">2</property>
                       </packing>
                     </child>
                   </object>
