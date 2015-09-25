@@ -43,12 +43,18 @@
 #include <nm-setting-ip4-config.h>
 #include <nm-ui-utils.h>
 
+#define FORTISSLVPN_PLUGIN_UI_ERROR                     NM_SETTING_VPN_ERROR
+#define FORTISSLVPN_PLUGIN_UI_ERROR_INVALID_PROPERTY    NM_SETTING_VPN_ERROR_INVALID_PROPERTY
+
 #define nm_simple_connection_new nm_connection_new
 
 #else /* !NM_OPENVPN_OLD */
 
 #include <NetworkManager.h>
 #include <nma-ui-utils.h>
+
+#define FORTISSLVPN_PLUGIN_UI_ERROR                     NM_CONNECTION_ERROR
+#define FORTISSLVPN_PLUGIN_UI_ERROR_INVALID_PROPERTY    NM_CONNECTION_ERROR_INVALID_PROPERTY
 
 #endif
 
@@ -95,39 +101,6 @@ typedef struct {
 	gboolean new_connection;
 	gchar *trusted_cert;
 } FortisslvpnPluginUiWidgetPrivate;
-
-
-GQuark
-fortisslvpn_plugin_ui_error_quark (void)
-{
-	static GQuark error_quark = 0;
-
-	if (G_UNLIKELY (error_quark == 0))
-		error_quark = g_quark_from_static_string ("fortisslvpn-plugin-ui-error-quark");
-
-	return error_quark;
-}
-
-/* This should really be standard. */
-#define ENUM_ENTRY(NAME, DESC) { NAME, "" #NAME "", DESC }
-
-GType
-fortisslvpn_plugin_ui_error_get_type (void)
-{
-	static GType etype = 0;
-
-	if (etype == 0) {
-		static const GEnumValue values[] = {
-			/* Unknown error. */
-			ENUM_ENTRY (FORTISSLVPN_PLUGIN_UI_ERROR_UNKNOWN, "UnknownError"),
-			/* The specified property was invalid. */
-			ENUM_ENTRY (FORTISSLVPN_PLUGIN_UI_ERROR_INVALID_PROPERTY, "InvalidProperty"),
-			{ 0, 0, 0 }
-		};
-		etype = g_enum_register_static ("FortisslvpnPluginUiError", values);
-	}
-	return etype;
-}
 
 static gboolean
 check_validity (FortisslvpnPluginUiWidget *self, GError **error)

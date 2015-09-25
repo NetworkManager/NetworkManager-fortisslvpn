@@ -25,19 +25,6 @@
 
 #include <glib-object.h>
 
-typedef enum
-{
-	FORTISSLVPN_PLUGIN_UI_ERROR_UNKNOWN = 0,
-	FORTISSLVPN_PLUGIN_UI_ERROR_INVALID_PROPERTY,
-} FortisslvpnPluginUiError;
-
-#define FORTISSLVPN_TYPE_PLUGIN_UI_ERROR (fortisslvpn_plugin_ui_error_get_type ()) 
-GType fortisslvpn_plugin_ui_error_get_type (void);
-
-#define FORTISSLVPN_PLUGIN_UI_ERROR (fortisslvpn_plugin_ui_error_quark ())
-GQuark fortisslvpn_plugin_ui_error_quark (void);
-
-
 #define FORTISSLVPN_TYPE_PLUGIN_UI            (fortisslvpn_plugin_ui_get_type ())
 #define FORTISSLVPN_PLUGIN_UI(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), FORTISSLVPN_TYPE_PLUGIN_UI, FortisslvpnPluginUi))
 #define FORTISSLVPN_PLUGIN_UI_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), FORTISSLVPN_TYPE_PLUGIN_UI, FortisslvpnPluginUiClass))
