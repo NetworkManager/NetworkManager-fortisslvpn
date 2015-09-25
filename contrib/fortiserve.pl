@@ -196,7 +196,6 @@ sub do_ppp
 	$client->blocking (0);
 
 	exec ($pppd, $pty->ttyname, qw/38400 noipdefault noaccomp noauth
-	# debug logfile chudak
 		ms-dns 6.6.6.7 ms-dns 8.8.8.8 noccp
 		default-asyncmap nopcomp nodefaultroute :1.1.1.2 nodetach
 		lcp-max-configure 40 usepeerdns mru 1024/) or die $! unless $ppp;
@@ -252,7 +251,7 @@ sub serve_request
 
 	if ($request->uri eq '/remote/logincheck') {
 		$response = new HTTP::Response (200 => 'OK', [], 'something');
-		$response->header ('Set-Cookie' => 'SVPNCOOKIE=something;');
+		#$response->header ('Set-Cookie' => 'SVPNCOOKIE=something;');
 	} elsif ($request->uri eq '/remote/index') {
 		$response = new HTTP::Response (200 => 'OK', [], 'something');
 	} elsif ($request->uri eq '/remote/fortisslvpn') {

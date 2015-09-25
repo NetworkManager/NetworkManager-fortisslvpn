@@ -3,6 +3,9 @@ name=fortisslvpn
 service=org.freedesktop.NetworkManager.fortisslvpn
 program=@LIBEXECDIR@/nm-fortisslvpn-service
 
+[libnm]
+plugin=@PLUGINDIR@/libnm-vpn-plugin-fortisslvpn.so
+
 [GNOME]
 auth-dialog=@LIBEXECDIR@/nm-fortisslvpn-auth-dialog
 properties=@PLUGINDIR@/libnm-fortisslvpn-properties
