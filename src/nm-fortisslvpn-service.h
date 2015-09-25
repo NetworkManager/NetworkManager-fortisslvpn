@@ -21,12 +21,21 @@
  * (C) Copyright 2015 Lubomir Rintel
  */
 
-#ifndef NM_FORTISSLVPN_PLUGIN_H
-#define NM_FORTISSLVPN_PLUGIN_H
+#ifndef NM_FORTISSLVPN_SERVICE_H
+#define NM_FORTISSLVPN_SERVICE_H
 
 #include <glib.h>
 #include <glib-object.h>
 #include <nm-vpn-plugin.h>
+
+#include "nm-fortisslvpn-service-defines.h"
+
+#define DBUS_TYPE_G_MAP_OF_VARIANT (dbus_g_type_get_map ("GHashTable", G_TYPE_STRING, G_TYPE_VALUE))
+
+/* For the pppd plugin <-> VPN plugin service */
+#define NM_DBUS_SERVICE_FORTISSLVPN_PPP    "org.freedesktop.NetworkManager.fortisslvpn-ppp"
+#define NM_DBUS_PATH_FORTISSLVPN_PPP       "/org/freedesktop/NetworkManager/fortisslvpn/ppp"
+#define NM_DBUS_INTERFACE_FORTISSLVPN_PPP  "org.freedesktop.NetworkManager.fortisslvpn.ppp"
 
 #define NM_TYPE_FORTISSLVPN_PLUGIN            (nm_fortisslvpn_plugin_get_type ())
 #define NM_FORTISSLVPN_PLUGIN(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), NM_TYPE_FORTISSLVPN_PLUGIN, NMFortisslvpnPlugin))
@@ -34,25 +43,6 @@
 #define NM_IS_FORTISSLVPN_PLUGIN(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), NM_TYPE_FORTISSLVPN_PLUGIN))
 #define NM_IS_FORTISSLVPN_PLUGIN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), NM_TYPE_FORTISSLVPN_PLUGIN))
 #define NM_FORTISSLVPN_PLUGIN_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), NM_TYPE_FORTISSLVPN_PLUGIN, NMFortisslvpnPluginClass))
-
-/* For the pppd plugin <-> VPN plugin service */
-#define DBUS_TYPE_G_MAP_OF_VARIANT (dbus_g_type_get_map ("GHashTable", G_TYPE_STRING, G_TYPE_VALUE))
-
-#define NM_DBUS_SERVICE_FORTISSLVPN_PPP    "org.freedesktop.NetworkManager.fortisslvpn-ppp"
-#define NM_DBUS_PATH_FORTISSLVPN_PPP       "/org/freedesktop/NetworkManager/fortisslvpn/ppp"
-#define NM_DBUS_INTERFACE_FORTISSLVPN_PPP  "org.freedesktop.NetworkManager.fortisslvpn.ppp"
-
-
-/* For the NM <-> VPN plugin service */
-#define NM_DBUS_SERVICE_FORTISSLVPN    "org.freedesktop.NetworkManager.fortisslvpn"
-#define NM_DBUS_INTERFACE_FORTISSLVPN  "org.freedesktop.NetworkManager.fortisslvpn"
-#define NM_DBUS_PATH_FORTISSLVPN       "/org/freedesktop/NetworkManager/fortisslvpn"
-
-#define NM_FORTISSLVPN_KEY_GATEWAY           "gateway"
-#define NM_FORTISSLVPN_KEY_USER              "user"
-#define NM_FORTISSLVPN_KEY_PASSWORD          "password"
-#define NM_FORTISSLVPN_KEY_CA                "ca"
-#define NM_FORTISSLVPN_KEY_TRUSTED_CERT      "trusted-cert"
 
 typedef struct {
 	NMVPNPlugin parent;
@@ -66,4 +56,4 @@ GType nm_fortisslvpn_plugin_get_type (void);
 
 NMFortisslvpnPlugin *nm_fortisslvpn_plugin_new (void);
 
-#endif /* NM_FORTISSLVPN_PLUGIN_H */
+#endif /* NM_FORTISSLVPN_SERVICE_H */

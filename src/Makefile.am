@@ -17,6 +17,7 @@ libexec_PROGRAMS = nm-fortisslvpn-service
 
 nm_fortisslvpn_service_SOURCES =				\
 	nm-fortisslvpn-service.c				\
+	nm-fortisslvpn-service-defines.h			\
 	nm-fortisslvpn-service.h
 
 nm-fortisslvpn-pppd-service-glue.h: $(top_srcdir)/src/nm-fortisslvpn-pppd-service.xml
