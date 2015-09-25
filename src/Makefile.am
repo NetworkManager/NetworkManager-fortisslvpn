@@ -6,7 +6,7 @@ install-data-hook:
 AM_CPPFLAGS =							\
 	$(DBUS_GLIB_CFLAGS)					\
 	$(GLIB_CFLAGS)						\
-	$(NM_CFLAGS)						\
+	$(LIBNM_GLIB_CFLAGS)					\
 	-I$(top_srcdir)						\
 	-DG_DISABLE_DEPRECATED					\
 	-DNM_FORTISSLVPN_LOCALEDIR=\"$(datadir)/locale\"	\
@@ -26,7 +26,7 @@ nm-fortisslvpn-pppd-service-glue.h: $(top_srcdir)/src/nm-fortisslvpn-pppd-servic
 nm_fortisslvpn_service_LDADD =					\
 	$(DBUS_GLIB_LIBS)					\
 	$(GLIB_LIBS)						\
-	$(NM_LIBS)
+	$(LIBNM_GLIB_LIBS)
 
 pppd_plugindir = $(PPPD_PLUGIN_DIR)
 pppd_plugin_LTLIBRARIES = nm-fortisslvpn-pppd-plugin.la
@@ -38,14 +38,14 @@ nm_fortisslvpn_pppd_plugin_la_SOURCES =				\
 nm_fortisslvpn_pppd_plugin_la_CPPFLAGS =			\
 	$(DBUS_GLIB_CFLAGS)					\
 	$(GLIB_CFLAGS)						\
-	$(NM_CFLAGS)
+	$(LIBNM_GLIB_CFLAGS)
 
 nm_fortisslvpn_pppd_plugin_la_LDFLAGS = -module -avoid-version
 
 nm_fortisslvpn_pppd_plugin_la_LIBADD =				\
 	$(DBUS_GLIB_LIBS)					\
 	$(GLIB_LIBS)						\
-	$(NM_LIBS)
+	$(LIBNM_GLIB_LIBS)
 
 BUILT_SOURCES = nm-fortisslvpn-pppd-service-glue.h
 

@@ -23,25 +23,25 @@ common_CFLAGS =						\
 	-DVERSION=\"$(VERSION)\"
 
 libnm_vpn_plugin_fortisslvpn_la_CFLAGS =		\
-	$(NM_CFLAGS)					\
-	$(NMGTK_CFLAGS)					\
+	$(LIBNM_GLIB_CFLAGS)				\
+	$(LIBNM_GTK_CFLAGS)				\
 	$(common_CFLAGS)
 
 libnm_fortisslvpn_properties_la_CFLAGS =		\
 	-DNM_OPENVPN_OLD				\
-	$(NM_CFLAGS)					\
-	$(NMGTK_CFLAGS)					\
+	$(LIBNM_GLIB_CFLAGS)				\
+	$(LIBNM_GTK_CFLAGS)				\
 	$(common_CFLAGS)
 
 libnm_vpn_plugin_fortisslvpn_la_LIBADD =		\
 	$(GTK_LIBS)					\
-	$(NM_LIBS)					\
-	$(NMGTK_LIBS)
+	$(LIBNM_GLIB_LIBS)				\
+	$(LIBNM_GTK_LIBS)
 
 libnm_fortisslvpn_properties_la_LIBADD =		\
 	$(GTK_LIBS)					\
-	$(NM_LIBS)					\
-	$(NMGTK_LIBS)
+	$(LIBNM_GLIB_LIBS)				\
+	$(LIBNM_GTK_LIBS)
 
 libnm_vpn_plugin_fortisslvpn_la_LDFLAGS =		\
 	-avoid-version
