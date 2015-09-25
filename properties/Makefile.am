@@ -1,7 +1,9 @@
 plugindir = $(libdir)/NetworkManager
-plugin_LTLIBRARIES = 					\
-	libnm-vpn-plugin-fortisslvpn.la			\
-	libnm-fortisslvpn-properties.la
+
+plugin_LTLIBRARIES = libnm-vpn-plugin-fortisslvpn.la
+if WITH_LIBNM_GLIB
+plugin_LTLIBRARIES += libnm-fortisslvpn-properties.la
+endif
 
 libnm_vpn_plugin_fortisslvpn_la_SOURCES =		\
 	nm-fortisslvpn.c				\
