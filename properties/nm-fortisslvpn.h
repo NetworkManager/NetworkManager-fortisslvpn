@@ -25,46 +25,46 @@
 
 #include <glib-object.h>
 
-#define FORTISSLVPN_TYPE_PLUGIN_UI            (fortisslvpn_plugin_ui_get_type ())
-#define FORTISSLVPN_PLUGIN_UI(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), FORTISSLVPN_TYPE_PLUGIN_UI, FortisslvpnPluginUi))
-#define FORTISSLVPN_PLUGIN_UI_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), FORTISSLVPN_TYPE_PLUGIN_UI, FortisslvpnPluginUiClass))
-#define FORTISSLVPN_IS_PLUGIN_UI(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), FORTISSLVPN_TYPE_PLUGIN_UI))
-#define FORTISSLVPN_IS_PLUGIN_UI_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), FORTISSLVPN_TYPE_PLUGIN_UI))
-#define FORTISSLVPN_PLUGIN_UI_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), FORTISSLVPN_TYPE_PLUGIN_UI, FortisslvpnPluginUiClass))
+#define FORTISSLVPN_TYPE_EDITOR_PLUGIN            (fortisslvpn_editor_plugin_get_type ())
+#define FORTISSLVPN_EDITOR_PLUGIN(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), FORTISSLVPN_TYPE_EDITOR_PLUGIN, FortisslvpnEditorPlugin))
+#define FORTISSLVPN_EDITOR_PLUGIN_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), FORTISSLVPN_TYPE_EDITOR_PLUGIN, FortisslvpnEditorPluginClass))
+#define FORTISSLVPN_IS_EDITOR_PLUGIN(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), FORTISSLVPN_TYPE_EDITOR_PLUGIN))
+#define FORTISSLVPN_IS_EDITOR_PLUGIN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), FORTISSLVPN_TYPE_EDITOR_PLUGIN))
+#define FORTISSLVPN_EDITOR_PLUGIN_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), FORTISSLVPN_TYPE_EDITOR_PLUGIN, FortisslvpnEditorPluginClass))
 
-typedef struct _FortisslvpnPluginUi FortisslvpnPluginUi;
-typedef struct _FortisslvpnPluginUiClass FortisslvpnPluginUiClass;
+typedef struct _FortisslvpnEditorPlugin FortisslvpnEditorPlugin;
+typedef struct _FortisslvpnEditorPluginClass FortisslvpnEditorPluginClass;
 
-struct _FortisslvpnPluginUi {
+struct _FortisslvpnEditorPlugin {
 	GObject parent;
 };
 
-struct _FortisslvpnPluginUiClass {
+struct _FortisslvpnEditorPluginClass {
 	GObjectClass parent;
 };
 
-GType fortisslvpn_plugin_ui_get_type (void);
+GType fortisslvpn_editor_plugin_get_type (void);
 
 
-#define FORTISSLVPN_TYPE_PLUGIN_UI_WIDGET            (fortisslvpn_plugin_ui_widget_get_type ())
-#define FORTISSLVPN_PLUGIN_UI_WIDGET(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), FORTISSLVPN_TYPE_PLUGIN_UI_WIDGET, FortisslvpnPluginUiWidget))
-#define FORTISSLVPN_PLUGIN_UI_WIDGET_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), FORTISSLVPN_TYPE_PLUGIN_UI_WIDGET, FortisslvpnPluginUiWidgetClass))
-#define FORTISSLVPN_IS_PLUGIN_UI_WIDGET(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), FORTISSLVPN_TYPE_PLUGIN_UI_WIDGET))
-#define FORTISSLVPN_IS_PLUGIN_UI_WIDGET_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), FORTISSLVPN_TYPE_PLUGIN_UI_WIDGET))
-#define FORTISSLVPN_PLUGIN_UI_WIDGET_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), FORTISSLVPN_TYPE_PLUGIN_UI_WIDGET, FortisslvpnPluginUiWidgetClass))
+#define FORTISSLVPN_TYPE_EDITOR            (fortisslvpn_editor_get_type ())
+#define FORTISSLVPN_EDITOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), FORTISSLVPN_TYPE_EDITOR, FortisslvpnEditor))
+#define FORTISSLVPN_EDITOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), FORTISSLVPN_TYPE_EDITOR, FortisslvpnEditorClass))
+#define FORTISSLVPN_IS_EDITOR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), FORTISSLVPN_TYPE_EDITOR))
+#define FORTISSLVPN_IS_EDITOR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), FORTISSLVPN_TYPE_EDITOR))
+#define FORTISSLVPN_EDITOR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), FORTISSLVPN_TYPE_EDITOR, FortisslvpnEditorClass))
 
-typedef struct _FortisslvpnPluginUiWidget FortisslvpnPluginUiWidget;
-typedef struct _FortisslvpnPluginUiWidgetClass FortisslvpnPluginUiWidgetClass;
+typedef struct _FortisslvpnEditor FortisslvpnEditor;
+typedef struct _FortisslvpnEditorClass FortisslvpnEditorClass;
 
-struct _FortisslvpnPluginUiWidget {
+struct _FortisslvpnEditor {
 	GObject parent;
 };
 
-struct _FortisslvpnPluginUiWidgetClass {
+struct _FortisslvpnEditorClass {
 	GObjectClass parent;
 };
 
-GType fortisslvpn_plugin_ui_widget_get_type (void);
+GType fortisslvpn_editor_get_type (void);
 
 #endif	/* _NM_FORTISSLVPN_H_ */
 

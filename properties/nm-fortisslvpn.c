@@ -43,8 +43,8 @@
 #include <nm-setting-ip4-config.h>
 #include <nm-ui-utils.h>
 
-#define FORTISSLVPN_PLUGIN_UI_ERROR                     NM_SETTING_VPN_ERROR
-#define FORTISSLVPN_PLUGIN_UI_ERROR_INVALID_PROPERTY    NM_SETTING_VPN_ERROR_INVALID_PROPERTY
+#define FORTISSLVPN_EDITOR_PLUGIN_ERROR                     NM_SETTING_VPN_ERROR
+#define FORTISSLVPN_EDITOR_PLUGIN_ERROR_INVALID_PROPERTY    NM_SETTING_VPN_ERROR_INVALID_PROPERTY
 
 #define nm_simple_connection_new nm_connection_new
 
@@ -53,8 +53,8 @@
 #include <NetworkManager.h>
 #include <nma-ui-utils.h>
 
-#define FORTISSLVPN_PLUGIN_UI_ERROR                     NM_CONNECTION_ERROR
-#define FORTISSLVPN_PLUGIN_UI_ERROR_INVALID_PROPERTY    NM_CONNECTION_ERROR_INVALID_PROPERTY
+#define FORTISSLVPN_EDITOR_PLUGIN_ERROR                     NM_CONNECTION_ERROR
+#define FORTISSLVPN_EDITOR_PLUGIN_ERROR_INVALID_PROPERTY    NM_CONNECTION_ERROR_INVALID_PROPERTY
 
 #endif
 
@@ -76,21 +76,21 @@ enum {
 	PROP_SERVICE
 };
 
-static void fortisslvpn_plugin_ui_interface_init (NMVpnEditorPluginInterface *iface_class);
+static void fortisslvpn_editor_plugin_interface_init (NMVpnEditorPluginInterface *iface_class);
 
-G_DEFINE_TYPE_EXTENDED (FortisslvpnPluginUi, fortisslvpn_plugin_ui, G_TYPE_OBJECT, 0,
+G_DEFINE_TYPE_EXTENDED (FortisslvpnEditorPlugin, fortisslvpn_editor_plugin, G_TYPE_OBJECT, 0,
                         G_IMPLEMENT_INTERFACE (NM_TYPE_VPN_EDITOR_PLUGIN,
-                                               fortisslvpn_plugin_ui_interface_init))
+                                               fortisslvpn_editor_plugin_interface_init))
 
 /************** UI widget class **************/
 
-static void fortisslvpn_plugin_ui_widget_interface_init (NMVpnEditorInterface *iface_class);
+static void fortisslvpn_editor_interface_init (NMVpnEditorInterface *iface_class);
 
-G_DEFINE_TYPE_EXTENDED (FortisslvpnPluginUiWidget, fortisslvpn_plugin_ui_widget, G_TYPE_OBJECT, 0,
+G_DEFINE_TYPE_EXTENDED (FortisslvpnEditor, fortisslvpn_editor, G_TYPE_OBJECT, 0,
                         G_IMPLEMENT_INTERFACE (NM_TYPE_VPN_EDITOR,
-                                               fortisslvpn_plugin_ui_widget_interface_init))
+                                               fortisslvpn_editor_interface_init))
 
-#define FORTISSLVPN_PLUGIN_UI_WIDGET_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), FORTISSLVPN_TYPE_PLUGIN_UI_WIDGET, FortisslvpnPluginUiWidgetPrivate))
+#define FORTISSLVPN_EDITOR_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), FORTISSLVPN_TYPE_EDITOR, FortisslvpnEditorPrivate))
 
 typedef struct {
 	GtkBuilder *builder;
@@ -100,12 +100,12 @@ typedef struct {
 	gboolean window_added;
 	gboolean new_connection;
 	gchar *trusted_cert;
-} FortisslvpnPluginUiWidgetPrivate;
+} FortisslvpnEditorPrivate;
 
 static gboolean
-check_validity (FortisslvpnPluginUiWidget *self, GError **error)
+check_validity (FortisslvpnEditor *self, GError **error)
 {
-	FortisslvpnPluginUiWidgetPrivate *priv = FORTISSLVPN_PLUGIN_UI_WIDGET_GET_PRIVATE (self);
+	FortisslvpnEditorPrivate *priv = FORTISSLVPN_EDITOR_GET_PRIVATE (self);
 	GtkWidget *widget;
 	const char *str;
 
@@ -113,8 +113,8 @@ check_validity (FortisslvpnPluginUiWidget *self, GError **error)
 	str = gtk_entry_get_text (GTK_ENTRY (widget));
 	if (!str || !strlen (str)) {
 		g_set_error (error,
-		             FORTISSLVPN_PLUGIN_UI_ERROR,
-		             FORTISSLVPN_PLUGIN_UI_ERROR_INVALID_PROPERTY,
+		             FORTISSLVPN_EDITOR_PLUGIN_ERROR,
+		             FORTISSLVPN_EDITOR_PLUGIN_ERROR_INVALID_PROPERTY,
 		             NM_FORTISSLVPN_KEY_GATEWAY);
 		return FALSE;
 	}
@@ -125,17 +125,17 @@ check_validity (FortisslvpnPluginUiWidget *self, GError **error)
 static void
 stuff_changed_cb (GtkWidget *widget, gpointer user_data)
 {
-	g_signal_emit_by_name (FORTISSLVPN_PLUGIN_UI_WIDGET (user_data), "changed");
+	g_signal_emit_by_name (FORTISSLVPN_EDITOR (user_data), "changed");
 }
 
 static void
-setup_password_widget (FortisslvpnPluginUiWidget *self,
+setup_password_widget (FortisslvpnEditor *self,
                        const char *entry_name,
                        NMSettingVpn *s_vpn,
                        const char *secret_name,
                        gboolean new_connection)
 {
-	FortisslvpnPluginUiWidgetPrivate *priv = FORTISSLVPN_PLUGIN_UI_WIDGET_GET_PRIVATE (self);
+	FortisslvpnEditorPrivate *priv = FORTISSLVPN_EDITOR_GET_PRIVATE (self);
 	GtkWidget *widget;
 	const char *value;
 
@@ -152,9 +152,9 @@ setup_password_widget (FortisslvpnPluginUiWidget *self,
 }
 
 static void
-show_toggled_cb (GtkCheckButton *button, FortisslvpnPluginUiWidget *self)
+show_toggled_cb (GtkCheckButton *button, FortisslvpnEditor *self)
 {
-	FortisslvpnPluginUiWidgetPrivate *priv = FORTISSLVPN_PLUGIN_UI_WIDGET_GET_PRIVATE (self);
+	FortisslvpnEditorPrivate *priv = FORTISSLVPN_EDITOR_GET_PRIVATE (self);
 	GtkWidget *widget;
 	gboolean visible;
 
@@ -170,18 +170,18 @@ password_storage_changed_cb (GObject *entry,
                              GParamSpec *pspec,
                              gpointer user_data)
 {
-	FortisslvpnPluginUiWidget *self = FORTISSLVPN_PLUGIN_UI_WIDGET (user_data);
+	FortisslvpnEditor *self = FORTISSLVPN_EDITOR (user_data);
 
 	stuff_changed_cb (NULL, self);
 }
 
 static void
-init_password_icon (FortisslvpnPluginUiWidget *self,
+init_password_icon (FortisslvpnEditor *self,
                     NMSettingVpn *s_vpn,
                     const char *secret_key,
                     const char *entry_name)
 {
-	FortisslvpnPluginUiWidgetPrivate *priv = FORTISSLVPN_PLUGIN_UI_WIDGET_GET_PRIVATE (self);
+	FortisslvpnEditorPrivate *priv = FORTISSLVPN_EDITOR_GET_PRIVATE (self);
 	GtkWidget *entry;
 	const char *value = NULL;
 	NMSettingSecretFlags pw_flags = NM_SETTING_SECRET_FLAG_NONE;
@@ -219,8 +219,8 @@ advanced_dialog_delete_cb (GtkWidget *dialog, gpointer user_data)
 static void
 advanced_dialog_response_cb (GtkWidget *dialog, gint response, gpointer user_data)
 {
-	FortisslvpnPluginUiWidget *self = FORTISSLVPN_PLUGIN_UI_WIDGET (user_data);
-	FortisslvpnPluginUiWidgetPrivate *priv = FORTISSLVPN_PLUGIN_UI_WIDGET_GET_PRIVATE (self);
+	FortisslvpnEditor *self = FORTISSLVPN_EDITOR (user_data);
+	FortisslvpnEditorPrivate *priv = FORTISSLVPN_EDITOR_GET_PRIVATE (self);
 	GtkEntry *entry = GTK_ENTRY (gtk_builder_get_object (priv->builder, "trusted_cert_entry"));
 
 	g_assert (entry);
@@ -238,8 +238,8 @@ advanced_dialog_response_cb (GtkWidget *dialog, gint response, gpointer user_dat
 static void
 advanced_button_clicked_cb (GtkWidget *button, gpointer user_data)
 {
-	FortisslvpnPluginUiWidget *self = FORTISSLVPN_PLUGIN_UI_WIDGET (user_data);
-	FortisslvpnPluginUiWidgetPrivate *priv = FORTISSLVPN_PLUGIN_UI_WIDGET_GET_PRIVATE (self);
+	FortisslvpnEditor *self = FORTISSLVPN_EDITOR (user_data);
+	FortisslvpnEditorPrivate *priv = FORTISSLVPN_EDITOR_GET_PRIVATE (self);
 	GtkWidget *dialog = GTK_WIDGET (gtk_builder_get_object (priv->builder, "advanced_dialog"));
 	g_assert (dialog);
 
@@ -258,9 +258,9 @@ advanced_button_clicked_cb (GtkWidget *button, gpointer user_data)
 }
 
 static gboolean
-init_plugin_ui (FortisslvpnPluginUiWidget *self, NMConnection *connection, GError **error)
+init_editor_plugin (FortisslvpnEditor *self, NMConnection *connection, GError **error)
 {
-	FortisslvpnPluginUiWidgetPrivate *priv = FORTISSLVPN_PLUGIN_UI_WIDGET_GET_PRIVATE (self);
+	FortisslvpnEditorPrivate *priv = FORTISSLVPN_EDITOR_GET_PRIVATE (self);
 	NMSettingVpn *s_vpn;
 	GtkWidget *widget;
 	const char *value;
@@ -351,8 +351,8 @@ init_plugin_ui (FortisslvpnPluginUiWidget *self, NMConnection *connection, GErro
 static GObject *
 get_widget (NMVpnEditor *iface)
 {
-	FortisslvpnPluginUiWidget *self = FORTISSLVPN_PLUGIN_UI_WIDGET (iface);
-	FortisslvpnPluginUiWidgetPrivate *priv = FORTISSLVPN_PLUGIN_UI_WIDGET_GET_PRIVATE (self);
+	FortisslvpnEditor *self = FORTISSLVPN_EDITOR (iface);
+	FortisslvpnEditorPrivate *priv = FORTISSLVPN_EDITOR_GET_PRIVATE (self);
 
 	return G_OBJECT (priv->widget);
 }
@@ -392,8 +392,8 @@ update_connection (NMVpnEditor *iface,
                    NMConnection *connection,
                    GError **error)
 {
-	FortisslvpnPluginUiWidget *self = FORTISSLVPN_PLUGIN_UI_WIDGET (iface);
-	FortisslvpnPluginUiWidgetPrivate *priv = FORTISSLVPN_PLUGIN_UI_WIDGET_GET_PRIVATE (self);
+	FortisslvpnEditor *self = FORTISSLVPN_EDITOR (iface);
+	FortisslvpnEditorPrivate *priv = FORTISSLVPN_EDITOR_GET_PRIVATE (self);
 	NMSettingVpn *s_vpn;
 	GtkWidget *widget;
 	const char *str;
@@ -451,10 +451,10 @@ is_new_func (const char *key, const char *value, gpointer user_data)
 }
 
 static NMVpnEditor *
-nm_vpn_plugin_ui_widget_interface_new (NMConnection *connection, GError **error)
+nm_vpn_editor_interface_new (NMConnection *connection, GError **error)
 {
 	NMVpnEditor *object;
-	FortisslvpnPluginUiWidgetPrivate *priv;
+	FortisslvpnEditorPrivate *priv;
 	char *ui_file;
 	gboolean new = TRUE;
 	NMSettingVpn *s_vpn;
@@ -462,13 +462,13 @@ nm_vpn_plugin_ui_widget_interface_new (NMConnection *connection, GError **error)
 	if (error)
 		g_return_val_if_fail (*error == NULL, NULL);
 
-	object = g_object_new (FORTISSLVPN_TYPE_PLUGIN_UI_WIDGET, NULL);
+	object = g_object_new (FORTISSLVPN_TYPE_EDITOR, NULL);
 	if (!object) {
-		g_set_error (error, FORTISSLVPN_PLUGIN_UI_ERROR, 0, "could not create fortisslvpn object");
+		g_set_error (error, FORTISSLVPN_EDITOR_PLUGIN_ERROR, 0, "could not create fortisslvpn object");
 		return NULL;
 	}
 
-	priv = FORTISSLVPN_PLUGIN_UI_WIDGET_GET_PRIVATE (object);
+	priv = FORTISSLVPN_EDITOR_GET_PRIVATE (object);
 
 	ui_file = g_strdup_printf ("%s/%s", UIDIR, "nm-fortisslvpn-dialog.ui");
 	priv->builder = gtk_builder_new ();
@@ -479,7 +479,7 @@ nm_vpn_plugin_ui_widget_interface_new (NMConnection *connection, GError **error)
 		g_warning ("Couldn't load builder file: %s",
 		           error && *error ? (*error)->message : "(unknown)");
 		g_clear_error (error);
-		g_set_error (error, FORTISSLVPN_PLUGIN_UI_ERROR, 0,
+		g_set_error (error, FORTISSLVPN_EDITOR_PLUGIN_ERROR, 0,
 		             "could not load required resources at %s", ui_file);
 		g_free (ui_file);
 		g_object_unref (object);
@@ -489,7 +489,7 @@ nm_vpn_plugin_ui_widget_interface_new (NMConnection *connection, GError **error)
 
 	priv->widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "fortisslvpn-vbox"));
 	if (!priv->widget) {
-		g_set_error (error, FORTISSLVPN_PLUGIN_UI_ERROR, 0, "could not load UI widget");
+		g_set_error (error, FORTISSLVPN_EDITOR_PLUGIN_ERROR, 0, "could not load UI widget");
 		g_object_unref (object);
 		return NULL;
 	}
@@ -502,7 +502,7 @@ nm_vpn_plugin_ui_widget_interface_new (NMConnection *connection, GError **error)
 		nm_setting_vpn_foreach_data_item (s_vpn, is_new_func, &new);
 	priv->new_connection = new;
 
-	if (!init_plugin_ui (FORTISSLVPN_PLUGIN_UI_WIDGET (object), connection, error)) {
+	if (!init_editor_plugin (FORTISSLVPN_EDITOR (object), connection, error)) {
 		g_object_unref (object);
 		return NULL;
 	}
@@ -513,8 +513,8 @@ nm_vpn_plugin_ui_widget_interface_new (NMConnection *connection, GError **error)
 static void
 dispose (GObject *object)
 {
-	FortisslvpnPluginUiWidget *plugin = FORTISSLVPN_PLUGIN_UI_WIDGET (object);
-	FortisslvpnPluginUiWidgetPrivate *priv = FORTISSLVPN_PLUGIN_UI_WIDGET_GET_PRIVATE (plugin);
+	FortisslvpnEditor *plugin = FORTISSLVPN_EDITOR (object);
+	FortisslvpnEditorPrivate *priv = FORTISSLVPN_EDITOR_GET_PRIVATE (plugin);
 	GtkWidget *widget;
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "user_password_entry"));
@@ -534,26 +534,26 @@ dispose (GObject *object)
 	if (priv->builder)
 		g_object_unref (priv->builder);
 
-	G_OBJECT_CLASS (fortisslvpn_plugin_ui_widget_parent_class)->dispose (object);
+	G_OBJECT_CLASS (fortisslvpn_editor_parent_class)->dispose (object);
 }
 
 static void
-fortisslvpn_plugin_ui_widget_class_init (FortisslvpnPluginUiWidgetClass *req_class)
+fortisslvpn_editor_class_init (FortisslvpnEditorClass *req_class)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (req_class);
 
-	g_type_class_add_private (req_class, sizeof (FortisslvpnPluginUiWidgetPrivate));
+	g_type_class_add_private (req_class, sizeof (FortisslvpnEditorPrivate));
 
 	object_class->dispose = dispose;
 }
 
 static void
-fortisslvpn_plugin_ui_widget_init (FortisslvpnPluginUiWidget *plugin)
+fortisslvpn_editor_init (FortisslvpnEditor *plugin)
 {
 }
 
 static void
-fortisslvpn_plugin_ui_widget_interface_init (NMVpnEditorInterface *iface_class)
+fortisslvpn_editor_interface_init (NMVpnEditorInterface *iface_class)
 {
 	/* interface implementation */
 	iface_class->get_widget = get_widget;
@@ -569,7 +569,7 @@ get_capabilities (NMVpnEditorPlugin *iface)
 static NMVpnEditor *
 get_editor (NMVpnEditorPlugin *iface, NMConnection *connection, GError **error)
 {
-	return nm_vpn_plugin_ui_widget_interface_new (connection, error);
+	return nm_vpn_editor_interface_new (connection, error);
 }
 
 static void
@@ -593,7 +593,7 @@ get_property (GObject *object, guint prop_id,
 }
 
 static void
-fortisslvpn_plugin_ui_class_init (FortisslvpnPluginUiClass *req_class)
+fortisslvpn_editor_plugin_class_init (FortisslvpnEditorPluginClass *req_class)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (req_class);
 
@@ -613,12 +613,12 @@ fortisslvpn_plugin_ui_class_init (FortisslvpnPluginUiClass *req_class)
 }
 
 static void
-fortisslvpn_plugin_ui_init (FortisslvpnPluginUi *plugin)
+fortisslvpn_editor_plugin_init (FortisslvpnEditorPlugin *plugin)
 {
 }
 
 static void
-fortisslvpn_plugin_ui_interface_init (NMVpnEditorPluginInterface *iface_class)
+fortisslvpn_editor_plugin_interface_init (NMVpnEditorPluginInterface *iface_class)
 {
 	/* interface implementation */
 	iface_class->get_editor = get_editor;
@@ -638,6 +638,6 @@ nm_vpn_editor_plugin_factory (GError **error)
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 
-	return g_object_new (FORTISSLVPN_TYPE_PLUGIN_UI, NULL);
+	return g_object_new (FORTISSLVPN_TYPE_EDITOR_PLUGIN, NULL);
 }
 
