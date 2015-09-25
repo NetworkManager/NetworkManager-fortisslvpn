@@ -30,7 +30,8 @@ m4/lt*.m4
 auth-dialog/nm-fortisslvpn-auth-dialog
 nm-fortisslvpn-service.name
 nm-fortisslvpn.desktop
-src/nm-fortisslvpn-pppd-service-glue.h
+src/nm-fortisslvpn-pppd-service-dbus.c
+src/nm-fortisslvpn-pppd-service-dbus.h
 src/nm-fortisslvpn-service
 
 /NetworkManager-fortisslvpn-*.tar*

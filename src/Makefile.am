@@ -4,9 +4,8 @@ install-data-hook:
 	$(mkinstalldirs) -m 0700 $(DESTDIR)$(fortisslvpn_statedir)
 
 AM_CPPFLAGS =							\
-	$(DBUS_GLIB_CFLAGS)					\
 	$(GLIB_CFLAGS)						\
-	$(LIBNM_GLIB_CFLAGS)					\
+	$(LIBNM_CFLAGS)						\
 	-I$(top_srcdir)						\
 	-DG_DISABLE_DEPRECATED					\
 	-DNM_FORTISSLVPN_LOCALEDIR=\"$(datadir)/locale\"	\
@@ -20,13 +19,29 @@ nm_fortisslvpn_service_SOURCES =				\
 	nm-fortisslvpn-service-defines.h			\
 	nm-fortisslvpn-service.h
 
-nm-fortisslvpn-pppd-service-glue.h: $(top_srcdir)/src/nm-fortisslvpn-pppd-service.xml
-	dbus-binding-tool --prefix=nm_fortisslvpn_pppd_service --mode=glib-server --output=$@ $<
+# D-Bus stuff
+noinst_LTLIBRARIES = libnm-fortisslvpn-pppd-service-dbus.la
+
+nodist_libnm_fortisslvpn_pppd_service_dbus_la_SOURCES =		\
+	nm-fortisslvpn-pppd-service-dbus.c			\
+	nm-fortisslvpn-pppd-service-dbus.h
+
+libnm_fortisslvpn_pppd_service_dbus_la_CPPFLAGS = $(filter-out -DGLIB_VERSION_MAX_ALLOWED%,$(AM_CPPFLAGS))
+
+nm-fortisslvpn-pppd-service-dbus.h: $(top_srcdir)/src/nm-fortisslvpn-pppd-service.xml
+	$(AM_V_GEN) gdbus-codegen \
+		--generate-c-code $(basename $@) \
+		--c-namespace NMDBus \
+		--interface-prefix org.freedesktop \
+		$<
+
+nm-fortisslvpn-pppd-service-dbus.c:
+	@true
 
 nm_fortisslvpn_service_LDADD =					\
-	$(DBUS_GLIB_LIBS)					\
 	$(GLIB_LIBS)						\
-	$(LIBNM_GLIB_LIBS)
+	$(LIBNM_LIBS)						\
+	libnm-fortisslvpn-pppd-service-dbus.la
 
 pppd_plugindir = $(PPPD_PLUGIN_DIR)
 pppd_plugin_LTLIBRARIES = nm-fortisslvpn-pppd-plugin.la
@@ -36,18 +51,16 @@ nm_fortisslvpn_pppd_plugin_la_SOURCES =				\
 	nm-ppp-status.h
 
 nm_fortisslvpn_pppd_plugin_la_CPPFLAGS =			\
-	$(DBUS_GLIB_CFLAGS)					\
 	$(GLIB_CFLAGS)						\
-	$(LIBNM_GLIB_CFLAGS)
+	$(LIBNM_CFLAGS)
 
 nm_fortisslvpn_pppd_plugin_la_LDFLAGS = -module -avoid-version
 
 nm_fortisslvpn_pppd_plugin_la_LIBADD =				\
-	$(DBUS_GLIB_LIBS)					\
 	$(GLIB_LIBS)						\
-	$(LIBNM_GLIB_LIBS)
+	$(LIBNM_LIBS)
 
-BUILT_SOURCES = nm-fortisslvpn-pppd-service-glue.h
+BUILT_SOURCES = nm-fortisslvpn-pppd-service-dbus.h nm-fortisslvpn-pppd-service-dbus.c
 
 CLEANFILES = $(BUILT_SOURCES)
 

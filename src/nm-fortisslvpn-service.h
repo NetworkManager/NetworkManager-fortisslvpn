@@ -26,7 +26,9 @@
 
 #include <glib.h>
 #include <glib-object.h>
-#include <nm-vpn-plugin.h>
+
+#include <NetworkManager.h>
+#include <nm-vpn-service-plugin.h>
 
 #include "nm-fortisslvpn-service-defines.h"
 
@@ -45,11 +47,11 @@
 #define NM_FORTISSLVPN_PLUGIN_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), NM_TYPE_FORTISSLVPN_PLUGIN, NMFortisslvpnPluginClass))
 
 typedef struct {
-	NMVPNPlugin parent;
+	NMVpnServicePlugin parent;
 } NMFortisslvpnPlugin;
 
 typedef struct {
-	NMVPNPluginClass parent;
+	NMVpnServicePluginClass parent;
 } NMFortisslvpnPluginClass;
 
 GType nm_fortisslvpn_plugin_get_type (void);
