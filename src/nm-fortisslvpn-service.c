@@ -326,6 +326,8 @@ static ValidProperty valid_properties[] = {
 	{ NM_FORTISSLVPN_KEY_USER,              G_TYPE_STRING, TRUE },
 	{ NM_FORTISSLVPN_KEY_CA,                G_TYPE_STRING, FALSE },
 	{ NM_FORTISSLVPN_KEY_TRUSTED_CERT,      G_TYPE_STRING, FALSE },
+	{ NM_FORTISSLVPN_KEY_CERT,              G_TYPE_STRING, FALSE },
+	{ NM_FORTISSLVPN_KEY_KEY,               G_TYPE_STRING, FALSE },
 	{ NM_FORTISSLVPN_KEY_PASSWORD"-flags",  G_TYPE_UINT, FALSE },
 	{ NULL,                                 G_TYPE_NONE, FALSE }
 };
@@ -671,6 +673,18 @@ run_openfortivpn (NMFortisslvpnPlugin *plugin, NMSettingVPN *s_vpn, GError **err
 	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_CA);
 	if (value) {
 		g_ptr_array_add (argv, (gpointer) g_strdup ("--ca-file"));
+		g_ptr_array_add (argv, (gpointer) g_strdup (value));
+	}
+
+	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_CERT);
+	if (value) {
+		g_ptr_array_add (argv, (gpointer) g_strdup ("--user-cert"));
+		g_ptr_array_add (argv, (gpointer) g_strdup (value));
+	}
+
+	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_KEY);
+	if (value) {
+		g_ptr_array_add (argv, (gpointer) g_strdup ("--user-key"));
 		g_ptr_array_add (argv, (gpointer) g_strdup (value));
 	}
 
