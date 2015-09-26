@@ -343,6 +343,27 @@ init_plugin_ui (FortisslvpnPluginUiWidget *self, NMConnection *connection, GErro
 	}
 	g_signal_connect (G_OBJECT (widget), "update-preview", G_CALLBACK (stuff_changed_cb), self);
 
+	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "cert_chooser"));
+	if (!widget)
+		return FALSE;
+	gtk_size_group_add_widget (priv->group, widget);
+	if (s_vpn) {
+		value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_CERT);
+		if (value && strlen (value))
+			gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (widget), value);
+	}
+	g_signal_connect (G_OBJECT (widget), "update-preview", G_CALLBACK (stuff_changed_cb), self);
+
+	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "key_chooser"));
+	if (!widget)
+		return FALSE;
+	gtk_size_group_add_widget (priv->group, widget);
+	if (s_vpn) {
+		value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_KEY);
+		if (value && strlen (value))
+			gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (widget), value);
+	}
+	g_signal_connect (G_OBJECT (widget), "update-preview", G_CALLBACK (stuff_changed_cb), self);
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "advanced_dialog"));
 	if (!widget)
@@ -438,6 +459,18 @@ update_connection (NMVpnPluginUiWidgetInterface *iface,
 	str = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (widget));
 	if (str && strlen (str))
 		nm_setting_vpn_add_data_item (s_vpn, NM_FORTISSLVPN_KEY_CA, str);
+
+	/* User certificate */
+	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "cert_chooser"));
+	str = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (widget));
+	if (str && strlen (str))
+		nm_setting_vpn_add_data_item (s_vpn, NM_FORTISSLVPN_KEY_CERT, str);
+
+	/* User key */
+	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "key_chooser"));
+	str = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (widget));
+	if (str && strlen (str))
+		nm_setting_vpn_add_data_item (s_vpn, NM_FORTISSLVPN_KEY_KEY, str);
 
 	/* Trusted certificate */
 	if (priv->trusted_cert && strlen (priv->trusted_cert))
