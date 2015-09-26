@@ -33,6 +33,8 @@
 #define NM_FORTISSLVPN_KEY_USER              "user"
 #define NM_FORTISSLVPN_KEY_PASSWORD          "password"
 #define NM_FORTISSLVPN_KEY_CA                "ca"
+#define NM_FORTISSLVPN_KEY_CERT              "cert"
+#define NM_FORTISSLVPN_KEY_KEY               "key"
 #define NM_FORTISSLVPN_KEY_TRUSTED_CERT      "trusted-cert"
 
 #endif /* NM_FORTISSLVPN_PLUGIN_H */
