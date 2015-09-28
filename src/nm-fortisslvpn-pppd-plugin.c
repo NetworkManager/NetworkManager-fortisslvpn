@@ -130,7 +130,6 @@ get_ip4_routes (void)
 {
 	GVariantBuilder builder;
 	GVariant *value;
-	char *tmp;
 	int i;
 
 	g_variant_builder_init (&builder, G_VARIANT_TYPE ("aau"));
@@ -198,7 +197,6 @@ nm_ip_up (void *data, int arg)
 	GVariantBuilder builder;
 	const gchar *str;
 	GVariant *val;
-	int i;
 
 	g_return_if_fail (G_IS_DBUS_PROXY (proxy));
 
