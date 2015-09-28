@@ -31,11 +31,16 @@
 #include <glib.h>
 #include <glib-object.h>
 #include <dbus/dbus-glib.h>
+#include <stdlib.h>
 
 #include "nm-fortisslvpn-service.h"
 #include "nm-ppp-status.h"
 
 #include <nm-utils.h>
+
+/* These are here because nm-dbus-glib-types.h isn't exported */
+#define DBUS_TYPE_G_ARRAY_OF_UINT          (dbus_g_type_get_collection ("GArray", G_TYPE_UINT))
+#define DBUS_TYPE_G_ARRAY_OF_ARRAY_OF_UINT (dbus_g_type_get_collection ("GPtrArray", DBUS_TYPE_G_ARRAY_OF_UINT))
 
 int plugin_init (void);
 
@@ -156,6 +161,72 @@ value_destroy (gpointer data)
 	g_slice_free (GValue, val);
 }
 
+static GValue *
+get_ip4_routes (void)
+{
+	GPtrArray *routes;
+	GValue *value = NULL;
+	int i;
+
+	routes = g_ptr_array_new ();
+
+	for (i = 0; i < 100; i++) {
+		GArray *array;
+		gchar *var;
+		const gchar *str;
+		in_addr_t dest, gateway;
+		guint32 metric, prefix;
+
+		var = g_strdup_printf ("VPN_ROUTE_DEST_%d", i);
+		str = g_getenv (var);
+		g_free (var);
+		if (!str || !*str)
+			break;
+		dest = inet_addr (str);
+
+		var = g_strdup_printf ("VPN_ROUTE_MASK_%d", i);
+		str = g_getenv (var);
+		g_free (var);
+		if (!str || !*str)
+			prefix = 32;
+		else
+			prefix = nm_utils_ip4_netmask_to_prefix (inet_addr (str));
+
+		var = g_strdup_printf ("VPN_ROUTE_GATEWAY_%d", i);
+		str = g_getenv (var);
+		g_free (var);
+		if (!str || !*str)
+			gateway = 0;
+		else
+			gateway = inet_addr (str);
+
+		var = g_strdup_printf ("VPN_ROUTE_METRIC_%d", i);
+		str = g_getenv (var);
+		g_free (var);
+		if (!str || !*str)
+			metric = 0;
+		else
+			metric = atol (str);
+
+		array = g_array_sized_new (FALSE, TRUE, sizeof (guint32), 4);
+		g_array_append_val (array, dest);
+		g_array_append_val (array, prefix);
+		g_array_append_val (array, gateway);
+		g_array_append_val (array, metric);
+		g_ptr_array_add (routes, array);
+	}
+
+	if (routes->len > 0) {
+		value = g_new0 (GValue, 1);
+		g_value_init (value, DBUS_TYPE_G_ARRAY_OF_ARRAY_OF_UINT);
+		g_value_take_boxed (value, routes);
+	} else {
+		g_ptr_array_free (routes, TRUE);
+	}
+
+	return value;
+}
+
 static void
 nm_ip_up (void *data, int arg)
 {
@@ -165,6 +236,7 @@ nm_ip_up (void *data, int arg)
 	GHashTable *hash;
 	GArray *array;
 	GValue *val;
+	const gchar *str;
 
 	g_return_if_fail (DBUS_IS_G_PROXY (proxy));
 
@@ -180,6 +252,18 @@ nm_ip_up (void *data, int arg)
 
 	g_hash_table_insert (hash, NM_VPN_PLUGIN_IP4_CONFIG_TUNDEV, 
 					 str_to_gvalue (ifname));
+
+	str = g_getenv ("VPN_GATEWAY");
+	if (str) {
+		g_hash_table_insert (hash, NM_VPN_PLUGIN_IP4_CONFIG_EXT_GATEWAY,
+		                           g_variant_new_uint32 (inet_addr (str)));
+	} else {
+		g_warning ("nm-fortisslvpn-ppp-plugin: (%s): no external gateway!", __func__);
+	}
+
+	val = get_ip4_routes ();
+	if (val)
+		g_hash_table_insert (hash, NM_VPN_PLUGIN_IP4_CONFIG_ROUTES, val);
 
 	/* Prefer the peer options remote address first, _unless_ pppd made the
 	 * address up, at which point prefer the local options remote address,
