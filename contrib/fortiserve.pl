@@ -266,7 +266,24 @@ sub serve_request
 			'<input type="hidden" NAME="text7" value="0">',
 		);
 	} elsif ($request->uri eq '/remote/fortisslvpn_xml') {
-		$response = new HTTP::Response (200 => 'OK', [], 'something');
+		$response = new HTTP::Response (200 => 'OK', [], join '', map { "$_\n" }
+			"<?xml version='1.0' encoding='utf-8'?>",
+			"<sslvpn-tunnel ver='1'>",
+			"  <fos platform='FG100D' major='5' minor='02' patch='4' build='0688' branch='688' />",
+			"  <client-config save-password='off' keep-alive='off' auto-connect='off' />",
+			"  <ipv4>",
+			"    <assigned-addr ipv4='192.168.1.6' />",
+			"    <split-tunnel-info>",
+			"      <addr ip='10.112.65.0' mask='255.255.255.0' />",
+			"      <addr ip='10.113.0.0' mask='255.255.0.0' />",
+			"      <addr ip='185.103.145.0' mask='255.255.255.0' />",
+			"      <addr ip='10.112.0.0' mask='255.255.224.0' />",
+			"    </split-tunnel-info>",
+			"  </ipv4>",
+			"  <idle-timeout val='300' />",
+			"  <auth-timeout val='28800' />",
+			"</sslvpn-tunnel>",
+		);
 	} elsif ($request->uri eq '/remote/sslvpn-tunnel') {
 		do_ppp ($client);
 		$response = new HTTP::Response (200 => 'OK', 'something');
