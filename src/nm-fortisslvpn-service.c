@@ -180,7 +180,8 @@ nm_fortisslvpn_ppp_service_new (NMConnection *connection, GError **error)
 	                                   "org.freedesktop.DBus",
 	                                   "/org/freedesktop/DBus",
 	                                   "org.freedesktop.DBus");
-	g_assert (proxy);
+	if (!proxy)
+		goto out;
 	success = dbus_g_proxy_call (proxy, "RequestName", error,
 	                             G_TYPE_STRING, NM_DBUS_SERVICE_FORTISSLVPN_PPP,
 	                             G_TYPE_UINT, 0,
@@ -198,8 +199,7 @@ nm_fortisslvpn_ppp_service_new (NMConnection *connection, GError **error)
 	 * plugin when it asks for them.
 	 */
 	if (!_service_cache_credentials (self, connection, error)) {
-		g_object_unref (self);
-		self = NULL;
+		g_clear_object (&self);
 		goto out;
 	}
 
@@ -800,6 +800,8 @@ real_connect (NMVPNPlugin *plugin, NMConnection *connection, GError **error)
 	NMSettingVPN *s_vpn;
 	mode_t old_umask;
 	gchar *config;
+
+	g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
 	s_vpn = NM_SETTING_VPN (nm_connection_get_setting (connection, NM_TYPE_SETTING_VPN));
 	g_assert (s_vpn);
