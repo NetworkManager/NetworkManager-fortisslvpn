@@ -182,7 +182,8 @@ nm_fortisslvpn_ppp_service_new (NMConnection *connection, GError **error)
 	                               "/org/freedesktop/DBus",
 	                               "org.freedesktop.DBus",
 	                               NULL, error);
-	g_assert (proxy);
+	if (!proxy)
+		goto out;
 	ret = g_dbus_proxy_call_sync (proxy,
 	                              "RequestName",
 	                              g_variant_new ("(su)", NM_DBUS_SERVICE_FORTISSLVPN_PPP, 0),
@@ -204,8 +205,7 @@ nm_fortisslvpn_ppp_service_new (NMConnection *connection, GError **error)
 	 * plugin when it asks for them.
 	 */
 	if (!_service_cache_credentials (self, connection, error)) {
-		g_object_unref (self);
-		self = NULL;
+		g_clear_object (&self);
 		goto out;
 	}
 
@@ -213,8 +213,10 @@ nm_fortisslvpn_ppp_service_new (NMConnection *connection, GError **error)
 	if (!g_dbus_interface_skeleton_export (G_DBUS_INTERFACE_SKELETON (priv->dbus_skeleton),
 	                                       bus,
 	                                       NM_DBUS_PATH_FORTISSLVPN_PPP,
-	                                       error))
+	                                       error)) {
+		g_clear_object (&self);
 		goto out;
+	}
 
 	g_dbus_connection_register_object (bus, NM_DBUS_PATH_FORTISSLVPN_PPP,
 	                                   nmdbus_network_manager_fortisslvpn_ppp_interface_info (),
@@ -238,6 +240,7 @@ nm_fortisslvpn_ppp_service_dispose (GObject *object)
 {
 	NMFortisslvpnPppServicePrivate *priv = NM_FORTISSLVPN_PPP_SERVICE_GET_PRIVATE (object);
 
+	g_dbus_interface_skeleton_unexport (G_DBUS_INTERFACE_SKELETON (priv->dbus_skeleton));
 	g_signal_handlers_disconnect_by_func (priv->dbus_skeleton, handle_set_state, object);
 	g_signal_handlers_disconnect_by_func (priv->dbus_skeleton, handle_set_ip4_config, object);
 
@@ -806,6 +809,8 @@ real_connect (NMVpnServicePlugin *plugin, NMConnection *connection, GError **err
 	NMSettingVpn *s_vpn;
 	mode_t old_umask;
 	gchar *config;
+
+	g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
 	s_vpn = NM_SETTING_VPN (nm_connection_get_setting (connection, NM_TYPE_SETTING_VPN));
 	g_assert (s_vpn);
