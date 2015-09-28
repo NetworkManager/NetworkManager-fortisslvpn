@@ -946,13 +946,19 @@ NMFortisslvpnPlugin *
 nm_fortisslvpn_plugin_new (void)
 {
 	NMFortisslvpnPlugin *plugin;
+	GError *error = NULL;
 
-	plugin = g_object_new (NM_TYPE_FORTISSLVPN_PLUGIN,
-	                       NM_VPN_SERVICE_PLUGIN_DBUS_SERVICE_NAME,
-	                       NM_DBUS_SERVICE_FORTISSLVPN,
-	                       NULL);
-	if (plugin)
+	plugin = (NMFortisslvpnPlugin *) g_initable_new (NM_TYPE_FORTISSLVPN_PLUGIN, NULL, &error,
+	                                                 NM_VPN_SERVICE_PLUGIN_DBUS_SERVICE_NAME,
+	                                                 NM_DBUS_SERVICE_FORTISSLVPN,
+	                                                 NULL);
+	if (plugin) {
 		g_signal_connect (G_OBJECT (plugin), "state-changed", G_CALLBACK (state_changed_cb), NULL);
+	} else {
+		g_warning ("Failed to initialize a plugin instance: %s", error->message);
+		g_error_free (error);
+	}
+
 	return plugin;
 }
 
