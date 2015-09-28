@@ -256,7 +256,7 @@ nm_ip_up (void *data, int arg)
 	str = g_getenv ("VPN_GATEWAY");
 	if (str) {
 		g_hash_table_insert (hash, NM_VPN_PLUGIN_IP4_CONFIG_EXT_GATEWAY,
-		                           g_variant_new_uint32 (inet_addr (str)));
+		                           uint_to_gvalue (inet_addr (str)));
 	} else {
 		g_warning ("nm-fortisslvpn-ppp-plugin: (%s): no external gateway!", __func__);
 	}
