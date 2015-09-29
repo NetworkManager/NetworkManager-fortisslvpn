@@ -162,7 +162,7 @@ value_destroy (gpointer data)
 }
 
 static GValue *
-get_ip4_routes (void)
+get_ip4_routes (in_addr_t ouraddr)
 {
 	GPtrArray *routes;
 	GValue *value = NULL;
@@ -196,7 +196,7 @@ get_ip4_routes (void)
 		str = g_getenv (var);
 		g_free (var);
 		if (!str || !*str)
-			gateway = 0;
+			gateway = ouraddr;
 		else
 			gateway = inet_addr (str);
 
@@ -261,7 +261,7 @@ nm_ip_up (void *data, int arg)
 		g_warning ("nm-fortisslvpn-ppp-plugin: (%s): no external gateway!", __func__);
 	}
 
-	val = get_ip4_routes ();
+	val = get_ip4_routes (opts.ouraddr);
 	if (val)
 		g_hash_table_insert (hash, NM_VPN_PLUGIN_IP4_CONFIG_ROUTES, val);
 
