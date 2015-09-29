@@ -126,7 +126,7 @@ nm_phasechange (void *data, int arg)
 }
 
 static GVariant *
-get_ip4_routes (void)
+get_ip4_routes (in_addr_t ouraddr)
 {
 	GVariantBuilder builder;
 	GVariant *value;
@@ -160,7 +160,7 @@ get_ip4_routes (void)
 		str = g_getenv (var);
 		g_free (var);
 		if (!str || !*str)
-			gateway = 0;
+			gateway = ouraddr;
 		else
 			gateway = inet_addr (str);
 
@@ -223,7 +223,7 @@ nm_ip_up (void *data, int arg)
 		g_warning ("nm-fortisslvpn-ppp-plugin: (%s): no external gateway!", __func__);
 	}
 
-	val = get_ip4_routes ();
+	val = get_ip4_routes (opts.ouraddr);
 	if (val)
 		g_variant_builder_add (&builder, "{sv}", NM_VPN_PLUGIN_IP4_CONFIG_ROUTES, val);
 
