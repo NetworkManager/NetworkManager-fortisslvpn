@@ -1,4 +1,17 @@
 =======================================================
+network-manager-fortisslvpn-1.0.6
+=======================================================
+
+This is a new stable release of network-manager-fortisslvpn.  Notable changes include:
+
+* Updated Polish and Lithuanian translations
+* Added tools to aid testing the plugin without an actual SSLVPN server
+* Added support for split VPN (route push) setups
+* Specifying a CA to validate the server identity is not supported
+* Users can now use certificate authentication in addition to name and password
+* Error handling is now more robust
+
+=======================================================
 network-manager-fortisslvpn-1.0.0
 =======================================================
 
