@@ -619,27 +619,12 @@ openfortivpn_watch_cb (GPid pid, gint status, gpointer user_data)
 	waitpid (priv->pid, NULL, WNOHANG);
 	priv->pid = 0;
 
-	/* Must be after data->state is set since signals use data->state */
-	switch (error) {
-	case 16:
-		/* hangup */
-		// FIXME: better failure reason
-		nm_vpn_service_plugin_failure (NM_VPN_SERVICE_PLUGIN (plugin), NM_VPN_PLUGIN_FAILURE_CONNECT_FAILED);
-		break;
-	case 2:
-		/* Couldn't log in due to bad user/pass */
-		nm_vpn_service_plugin_failure (NM_VPN_SERVICE_PLUGIN (plugin), NM_VPN_PLUGIN_FAILURE_LOGIN_FAILED);
-		break;
-	case 1:
-		/* Other error (couldn't bind to address, etc) */
-		nm_vpn_service_plugin_failure (NM_VPN_SERVICE_PLUGIN (plugin), NM_VPN_PLUGIN_FAILURE_CONNECT_FAILED);
-		break;
-	default:
-		break;
-	}
+	/* TODO: Better error indication from openfortivpn. */
+	if (error)
+		nm_vpn_service_plugin_failure (NM_VPN_SERVICE_PLUGIN (plugin),
+		                               NM_VPN_PLUGIN_FAILURE_CONNECT_FAILED);
 
 	nm_vpn_service_plugin_set_state (NM_VPN_SERVICE_PLUGIN (plugin), NM_VPN_SERVICE_STATE_STOPPED);
-	cleanup_plugin (plugin);
 }
 
 static const char *
