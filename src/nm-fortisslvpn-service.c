@@ -603,11 +603,8 @@ openfortivpn_watch_cb (GPid pid, gint status, gpointer user_data)
 	NMFortisslvpnPluginPrivate *priv = NM_FORTISSLVPN_PLUGIN_GET_PRIVATE (plugin);
 	guint error = 0;
 
-	if (WIFEXITED (status)) {
+	if (WIFEXITED (status))
 		error = WEXITSTATUS (status);
-		if (error != 0)
-			g_warning ("openfortivpn exited with error code %d", error);
-	}
 	else if (WIFSTOPPED (status))
 		g_warning ("openfortivpn stopped unexpectedly with signal %d", WSTOPSIG (status));
 	else if (WIFSIGNALED (status))
@@ -623,8 +620,8 @@ openfortivpn_watch_cb (GPid pid, gint status, gpointer user_data)
 	if (error)
 		nm_vpn_service_plugin_failure (NM_VPN_SERVICE_PLUGIN (plugin),
 		                               NM_VPN_PLUGIN_FAILURE_CONNECT_FAILED);
-
-	nm_vpn_service_plugin_set_state (NM_VPN_SERVICE_PLUGIN (plugin), NM_VPN_SERVICE_STATE_STOPPED);
+	else
+		nm_vpn_service_plugin_disconnect (NM_VPN_SERVICE_PLUGIN (plugin), NULL);
 }
 
 static const char *
@@ -763,19 +760,8 @@ service_ppp_state_cb (NMFortisslvpnPppService *service,
                       guint32 ppp_state,
                       NMFortisslvpnPlugin *plugin)
 {
-	NMVpnServiceState plugin_state = nm_vpn_service_plugin_get_state (NM_VPN_SERVICE_PLUGIN (plugin));
-
-	switch (ppp_state) {
-	case NM_PPP_STATUS_DEAD:
-	case NM_PPP_STATUS_DISCONNECT:
-		if (plugin_state == NM_VPN_SERVICE_STATE_STARTED)
-			nm_vpn_service_plugin_disconnect (NM_VPN_SERVICE_PLUGIN (plugin), NULL);
-		else if (plugin_state == NM_VPN_SERVICE_STATE_STARTING)
-			nm_vpn_service_plugin_failure (NM_VPN_SERVICE_PLUGIN (plugin), NM_VPN_PLUGIN_FAILURE_CONNECT_FAILED);
-		break;
-	default:
-		break;
-	}
+	if (ppp_state == NM_PPP_STATUS_DEAD || ppp_state == NM_PPP_STATUS_DISCONNECT)
+		nm_vpn_service_plugin_disconnect (NM_VPN_SERVICE_PLUGIN (plugin), NULL);
 }
 
 static void
