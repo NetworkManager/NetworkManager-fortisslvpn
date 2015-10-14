@@ -55,6 +55,6 @@ typedef struct {
 
 GType nm_fortisslvpn_plugin_get_type (void);
 
-NMFortisslvpnPlugin *nm_fortisslvpn_plugin_new (void);
+NMFortisslvpnPlugin *nm_fortisslvpn_plugin_new (const char *bus_name);
 
 #endif /* NM_FORTISSLVPN_SERVICE_H */

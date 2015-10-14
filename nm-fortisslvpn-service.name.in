@@ -2,6 +2,7 @@
 name=fortisslvpn
 service=org.freedesktop.NetworkManager.fortisslvpn
 program=@LIBEXECDIR@/nm-fortisslvpn-service
+supports-multiple-connections=true
 
 [libnm]
 plugin=@PLUGINDIR@/libnm-vpn-plugin-fortisslvpn.so
