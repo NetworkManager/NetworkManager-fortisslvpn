@@ -52,289 +52,6 @@
 static gboolean debug = FALSE;
 
 /********************************************************/
-/* ppp plugin <-> fortisslvpn-service object            */
-/********************************************************/
-
-/* We have a separate object to handle ppp plugin requests from
- * historical reason, because dbus-glib didn't allow multiple
- * interfaces registed on one GObject.
- */
-
-#define NM_TYPE_FORTISSLVPN_PPP_SERVICE            (nm_fortisslvpn_ppp_service_get_type ())
-#define NM_FORTISSLVPN_PPP_SERVICE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), NM_TYPE_FORTISSLVPN_PPP_SERVICE, NMFortisslvpnPppService))
-#define NM_FORTISSLVPN_PPP_SERVICE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), NM_TYPE_FORTISSLVPN_PPP_SERVICE, NMFortisslvpnPppServiceClass))
-#define NM_IS_FORTISSLVPN_PPP_SERVICE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), NM_TYPE_FORTISSLVPN_PPP_SERVICE))
-#define NM_IS_FORTISSLVPN_PPP_SERVICE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), NM_TYPE_FORTISSLVPN_PPP_SERVICE))
-#define NM_FORTISSLVPN_PPP_SERVICE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), NM_TYPE_FORTISSLVPN_PPP_SERVICE, NMFortisslvpnPppServiceClass))
-
-typedef struct {
-	GObject parent;
-} NMFortisslvpnPppService;
-
-typedef struct {
-	GObjectClass parent;
-
-	/* Signals */
-	void (*plugin_alive) (NMFortisslvpnPppService *self);
-	void (*ppp_state) (NMFortisslvpnPppService *self, guint32 state);
-	void (*ip4_config) (NMFortisslvpnPppService *self, GVariant *config);
-} NMFortisslvpnPppServiceClass;
-
-GType nm_fortisslvpn_ppp_service_get_type (void);
-
-G_DEFINE_TYPE (NMFortisslvpnPppService, nm_fortisslvpn_ppp_service, G_TYPE_OBJECT)
-
-static gboolean
-handle_set_state (NMDBusNetworkManagerFortisslvpnPpp *object,
-                  GDBusMethodInvocation *invocation,
-                  guint arg_state,
-                  gpointer user_data);
-
-static gboolean
-handle_set_ip4_config (NMDBusNetworkManagerFortisslvpnPpp *object,
-                       GDBusMethodInvocation *invocation,
-                       GVariant *arg_config,
-                       gpointer user_data);
-
-#define NM_FORTISSLVPN_PPP_SERVICE_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), NM_TYPE_FORTISSLVPN_PPP_SERVICE, NMFortisslvpnPppServicePrivate))
-
-typedef struct {
-	char *username;
-	char *password;
-	NMDBusNetworkManagerFortisslvpnPpp *dbus_skeleton;
-} NMFortisslvpnPppServicePrivate;
-
-enum {
-	PLUGIN_ALIVE,
-	PPP_STATE,
-	IP4_CONFIG,
-
-	LAST_SIGNAL
-};
-static guint signals[LAST_SIGNAL] = { 0 };
-
-static gboolean
-_service_cache_credentials (NMFortisslvpnPppService *self,
-                            NMConnection *connection,
-                            GError **error)
-{
-	NMFortisslvpnPppServicePrivate *priv = NM_FORTISSLVPN_PPP_SERVICE_GET_PRIVATE (self);
-	NMSettingVpn *s_vpn;
-	const char *username, *password;
-
-	g_return_val_if_fail (self != NULL, FALSE);
-	g_return_val_if_fail (connection != NULL, FALSE);
-
-	s_vpn = (NMSettingVpn *) nm_connection_get_setting (connection, NM_TYPE_SETTING_VPN);
-	if (!s_vpn) {
-		g_set_error_literal (error,
-		                     NM_VPN_PLUGIN_ERROR,
-		                     NM_VPN_PLUGIN_ERROR_INVALID_CONNECTION,
-		                     _("Could not find secrets (connection invalid, no vpn setting)."));
-		return FALSE;
-	}
-
-	/* Username; try SSLVPN specific username first, then generic username */
-	username = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_USER);
-	if (!username || !strlen (username)) {
-		username = nm_setting_vpn_get_user_name (s_vpn);
-		if (!username || !strlen (username)) {
-			g_set_error_literal (error,
-			                     NM_VPN_PLUGIN_ERROR,
-			                     NM_VPN_PLUGIN_ERROR_INVALID_CONNECTION,
-			                     _("Missing VPN username."));
-			return FALSE;
-		}
-	}
-
-	password = nm_setting_vpn_get_secret (s_vpn, NM_FORTISSLVPN_KEY_PASSWORD);
-	if (!password || !strlen (password)) {
-		g_set_error_literal (error,
-		                     NM_VPN_PLUGIN_ERROR,
-		                     NM_VPN_PLUGIN_ERROR_INVALID_CONNECTION,
-		                     _("Missing or invalid VPN password."));
-		return FALSE;
-	}
-
-	priv->username = g_strdup (username);
-	priv->password = g_strdup (password);
-	return TRUE;
-}
-
-static NMFortisslvpnPppService *
-nm_fortisslvpn_ppp_service_new (NMConnection *connection, GError **error)
-{
-	NMFortisslvpnPppService *self = NULL;
-	NMFortisslvpnPppServicePrivate *priv;
-	GDBusConnection *bus;
-	GDBusProxy *proxy;
-	GVariant *ret;
-
-	bus = g_bus_get_sync (G_BUS_TYPE_SYSTEM, NULL, error);
-	if (!bus)
-		return NULL;
-
-	proxy = g_dbus_proxy_new_sync (bus,
-	                               G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES |
-	                               G_DBUS_PROXY_FLAGS_DO_NOT_CONNECT_SIGNALS,
-	                               NULL,
-	                               "org.freedesktop.DBus",
-	                               "/org/freedesktop/DBus",
-	                               "org.freedesktop.DBus",
-	                               NULL, error);
-	if (!proxy)
-		goto out;
-	ret = g_dbus_proxy_call_sync (proxy,
-	                              "RequestName",
-	                              g_variant_new ("(su)", NM_DBUS_SERVICE_FORTISSLVPN_PPP, 0),
-	                              G_DBUS_CALL_FLAGS_NONE, -1,
-	                              NULL, error);
-	g_object_unref (proxy);
-	if (!ret) {
-		if (error && *error)
-			g_dbus_error_strip_remote_error (*error);
-		goto out;
-	}
-	g_variant_unref (ret);
-
-	self = (NMFortisslvpnPppService *) g_object_new (NM_TYPE_FORTISSLVPN_PPP_SERVICE, NULL);
-	g_assert (self);
-	priv = NM_FORTISSLVPN_PPP_SERVICE_GET_PRIVATE (self);
-
-	/* Cache the username and password so we can relay the secrets to the pppd
-	 * plugin when it asks for them.
-	 */
-	if (!_service_cache_credentials (self, connection, error)) {
-		g_clear_object (&self);
-		goto out;
-	}
-
-	priv->dbus_skeleton = nmdbus_network_manager_fortisslvpn_ppp_skeleton_new ();
-	if (!g_dbus_interface_skeleton_export (G_DBUS_INTERFACE_SKELETON (priv->dbus_skeleton),
-	                                       bus,
-	                                       NM_DBUS_PATH_FORTISSLVPN_PPP,
-	                                       error)) {
-		g_clear_object (&self);
-		goto out;
-	}
-
-	g_dbus_connection_register_object (bus, NM_DBUS_PATH_FORTISSLVPN_PPP,
-	                                   nmdbus_network_manager_fortisslvpn_ppp_interface_info (),
-	                                   NULL, NULL, NULL, NULL);
-
-	g_signal_connect (priv->dbus_skeleton, "handle-set-state", G_CALLBACK (handle_set_state), self);
-	g_signal_connect (priv->dbus_skeleton, "handle-set-ip4-config", G_CALLBACK (handle_set_ip4_config), self);
-
-out:
-	g_clear_object (&bus);
-	return self;
-}
-
-static void
-nm_fortisslvpn_ppp_service_init (NMFortisslvpnPppService *self)
-{
-}
-
-static void
-nm_fortisslvpn_ppp_service_dispose (GObject *object)
-{
-	NMFortisslvpnPppServicePrivate *priv = NM_FORTISSLVPN_PPP_SERVICE_GET_PRIVATE (object);
-
-	g_dbus_interface_skeleton_unexport (G_DBUS_INTERFACE_SKELETON (priv->dbus_skeleton));
-	g_signal_handlers_disconnect_by_func (priv->dbus_skeleton, handle_set_state, object);
-	g_signal_handlers_disconnect_by_func (priv->dbus_skeleton, handle_set_ip4_config, object);
-
-	G_OBJECT_CLASS (nm_fortisslvpn_ppp_service_parent_class)->dispose (object);
-}
-
-static void
-finalize (GObject *object)
-{
-	NMFortisslvpnPppServicePrivate *priv = NM_FORTISSLVPN_PPP_SERVICE_GET_PRIVATE (object);
-
-	/* Get rid of the cached username and password */
-	g_free (priv->username);
-	if (priv->password) {
-		memset (priv->password, 0, strlen (priv->password));
-		g_free (priv->password);
-	}
-
-	G_OBJECT_CLASS (nm_fortisslvpn_ppp_service_parent_class)->finalize (object);
-}
-
-static void
-nm_fortisslvpn_ppp_service_class_init (NMFortisslvpnPppServiceClass *service_class)
-{
-	GObjectClass *object_class = G_OBJECT_CLASS (service_class);
-
-	g_type_class_add_private (service_class, sizeof (NMFortisslvpnPppServicePrivate));
-
-	/* virtual methods */
-	object_class->dispose = nm_fortisslvpn_ppp_service_dispose;
-	object_class->finalize = finalize;
-
-	/* Signals */
-	signals[PLUGIN_ALIVE] =
-		g_signal_new ("plugin-alive",
-		              G_OBJECT_CLASS_TYPE (object_class),
-		              G_SIGNAL_RUN_FIRST,
-		              G_STRUCT_OFFSET (NMFortisslvpnPppServiceClass, plugin_alive),
-		              NULL, NULL,
-		              g_cclosure_marshal_VOID__VOID,
-		              G_TYPE_NONE, 0);
-
-	signals[PPP_STATE] =
-		g_signal_new ("ppp-state",
-		              G_OBJECT_CLASS_TYPE (object_class),
-		              G_SIGNAL_RUN_FIRST,
-		              G_STRUCT_OFFSET (NMFortisslvpnPppServiceClass, ppp_state),
-		              NULL, NULL,
-		              g_cclosure_marshal_VOID__UINT,
-		              G_TYPE_NONE, 1, G_TYPE_UINT);
-
-	signals[IP4_CONFIG] =
-		g_signal_new ("ip4-config",
-		              G_OBJECT_CLASS_TYPE (object_class),
-		              G_SIGNAL_RUN_FIRST,
-		              G_STRUCT_OFFSET (NMFortisslvpnPppServiceClass, ip4_config),
-		              NULL, NULL,
-		              NULL,
-		              G_TYPE_NONE, 1, G_TYPE_VARIANT);
-}
-
-static gboolean
-handle_set_state (NMDBusNetworkManagerFortisslvpnPpp *object,
-                  GDBusMethodInvocation *invocation,
-                  guint arg_state,
-                  gpointer user_data)
-{
-	NMFortisslvpnPppService *self = NM_FORTISSLVPN_PPP_SERVICE (user_data);
-
-	g_signal_emit (G_OBJECT (self), signals[PLUGIN_ALIVE], 0);
-	g_signal_emit (G_OBJECT (self), signals[PPP_STATE], 0, arg_state);
-	g_dbus_method_invocation_return_value (invocation, NULL);
-	return TRUE;
-}
-
-static gboolean
-handle_set_ip4_config (NMDBusNetworkManagerFortisslvpnPpp *object,
-                       GDBusMethodInvocation *invocation,
-                       GVariant *arg_config,
-                       gpointer user_data)
-{
-	NMFortisslvpnPppService *self = NM_FORTISSLVPN_PPP_SERVICE (user_data);
-
-	g_message ("FORTISSLVPN service (IP Config Get) reply received.");
-	g_signal_emit (G_OBJECT (self), signals[PLUGIN_ALIVE], 0);
-
-	/* Just forward the pppd plugin config up to our superclass; no need to modify it */
-	g_signal_emit (G_OBJECT (self), signals[IP4_CONFIG], 0, arg_config);
-
-	return TRUE;
-}
-
-
-/********************************************************/
 /* The VPN plugin service                               */
 /********************************************************/
 
@@ -343,9 +60,9 @@ G_DEFINE_TYPE (NMFortisslvpnPlugin, nm_fortisslvpn_plugin, NM_TYPE_VPN_SERVICE_P
 typedef struct {
 	GPid pid;
 	guint32 ppp_timeout_handler;
-	NMFortisslvpnPppService *service;
 	NMConnection *connection;
 	char *config_file;
+	NMDBusNetworkManagerFortisslvpnPpp *dbus_skeleton;
 } NMFortisslvpnPluginPrivate;
 
 #define NM_FORTISSLVPN_PLUGIN_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), NM_TYPE_FORTISSLVPN_PLUGIN, NMFortisslvpnPluginPrivate))
@@ -589,7 +306,6 @@ cleanup_plugin (NMFortisslvpnPlugin *plugin)
 	}
 
 	g_clear_object (&priv->connection);
-	g_clear_object (&priv->service);
 	if (priv->config_file) {
 		g_unlink (priv->config_file);
 		g_clear_pointer (&priv->config_file, g_free);
@@ -748,38 +464,73 @@ remove_timeout_handler (NMFortisslvpnPlugin *plugin)
 	}
 }
 
-static void
-service_plugin_alive_cb (NMFortisslvpnPppService *service,
-                         NMFortisslvpnPlugin *plugin)
+static gboolean
+handle_set_state (NMDBusNetworkManagerFortisslvpnPpp *object,
+                  GDBusMethodInvocation *invocation,
+                  guint arg_state,
+                  gpointer user_data)
 {
-	remove_timeout_handler (plugin);
+	remove_timeout_handler (NM_FORTISSLVPN_PLUGIN (user_data));
+	if (arg_state == NM_PPP_STATUS_DEAD || arg_state == NM_PPP_STATUS_DISCONNECT)
+		nm_vpn_service_plugin_disconnect (NM_VPN_SERVICE_PLUGIN (user_data), NULL);
+
+	g_dbus_method_invocation_return_value (invocation, NULL);
+	return TRUE;
 }
 
-static void
-service_ppp_state_cb (NMFortisslvpnPppService *service,
-                      guint32 ppp_state,
-                      NMFortisslvpnPlugin *plugin)
+static gboolean
+handle_set_ip4_config (NMDBusNetworkManagerFortisslvpnPpp *object,
+                       GDBusMethodInvocation *invocation,
+                       GVariant *arg_config,
+                       gpointer user_data)
 {
-	if (ppp_state == NM_PPP_STATUS_DEAD || ppp_state == NM_PPP_STATUS_DISCONNECT)
-		nm_vpn_service_plugin_disconnect (NM_VPN_SERVICE_PLUGIN (plugin), NULL);
+	g_message ("FORTISSLVPN service (IP Config Get) reply received.");
+
+	remove_timeout_handler (NM_FORTISSLVPN_PLUGIN (user_data));
+	nm_vpn_service_plugin_set_ip4_config (NM_VPN_SERVICE_PLUGIN (user_data), arg_config);
+
+	return TRUE;
 }
 
-static void
-service_ip4_config_cb (NMFortisslvpnPppService *service,
-                       GVariant *config,
-                       NMVpnServicePlugin *plugin)
+static gboolean
+get_credentials (NMSettingVpn *s_vpn,
+                 const char **username,
+                 const char **password,
+                 GError **error)
 {
-	nm_vpn_service_plugin_set_ip4_config (plugin, config);
+	/* Username; try SSLVPN specific username first, then generic username */
+	*username = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_USER);
+	if (!*username || !strlen (*username)) {
+		*username = nm_setting_vpn_get_user_name (s_vpn);
+		if (!*username || !strlen (*username)) {
+			g_set_error_literal (error,
+			                     NM_VPN_PLUGIN_ERROR,
+			                     NM_VPN_PLUGIN_ERROR_INVALID_CONNECTION,
+			                     _("Missing VPN username."));
+			return FALSE;
+		}
+	}
+
+	*password = nm_setting_vpn_get_secret (s_vpn, NM_FORTISSLVPN_KEY_PASSWORD);
+	if (!*password || !strlen (*password)) {
+		g_set_error_literal (error,
+		                     NM_VPN_PLUGIN_ERROR,
+		                     NM_VPN_PLUGIN_ERROR_INVALID_CONNECTION,
+		                     _("Missing or invalid VPN password."));
+		return FALSE;
+	}
+
+	return TRUE;
 }
 
 static gboolean
 real_connect (NMVpnServicePlugin *plugin, NMConnection *connection, GError **error)
 {
 	NMFortisslvpnPluginPrivate *priv = NM_FORTISSLVPN_PLUGIN_GET_PRIVATE (plugin);
-	NMFortisslvpnPppServicePrivate *service_priv;
 	NMSettingVpn *s_vpn;
 	mode_t old_umask;
 	gchar *config;
+	const char *username, *password;
 
 	g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
@@ -792,32 +543,21 @@ real_connect (NMVpnServicePlugin *plugin, NMConnection *connection, GError **err
 	if (!validate_secrets (s_vpn, error))
 		return FALSE;
 
-	/* Start our pppd plugin helper service */
-	g_clear_object (&priv->service);
-	g_clear_object (&priv->connection);
-
-	/* Start our helper D-Bus service that the pppd plugin sends state changes to */
-	priv->service = nm_fortisslvpn_ppp_service_new (connection, error);
-	if (!priv->service)
+	if (!get_credentials (s_vpn, &username, &password, error))
 		return FALSE;
 
+	g_clear_object (&priv->connection);
 	priv->connection = g_object_ref (connection);
-
-	g_signal_connect (G_OBJECT (priv->service), "plugin-alive", G_CALLBACK (service_plugin_alive_cb), plugin);
-	g_signal_connect (G_OBJECT (priv->service), "ppp-state", G_CALLBACK (service_ppp_state_cb), plugin);
-	g_signal_connect (G_OBJECT (priv->service), "ip4-config", G_CALLBACK (service_ip4_config_cb), plugin);
 
 	if (debug)
 		nm_connection_dump (connection);
 
 	/* Create the configuration file so that we don't expose
 	 * secrets on the command line */
-	service_priv = NM_FORTISSLVPN_PPP_SERVICE_GET_PRIVATE (priv->service);
 	priv->config_file = g_strdup_printf (NM_FORTISSLVPN_STATEDIR "/%s.config",
 	                                     nm_connection_get_uuid (connection));
 	config = g_strdup_printf ("username = %s\npassword = %s\n",
-	                          service_priv->username,
-	                          service_priv->password);
+	                          username, password);
 	old_umask = umask (0077);
 	if (!g_file_set_contents (priv->config_file, config, -1, error)) {
 		g_clear_pointer (&priv->config_file, g_free);
@@ -884,7 +624,6 @@ state_changed_cb (GObject *object, NMVpnServiceState state, gpointer user_data)
 	case NM_VPN_SERVICE_STATE_STOPPED:
 		remove_timeout_handler (NM_FORTISSLVPN_PLUGIN (object));
 		g_clear_object (&priv->connection);
-		g_clear_object (&priv->service);
 		break;
 	default:
 		break;
@@ -894,7 +633,21 @@ state_changed_cb (GObject *object, NMVpnServiceState state, gpointer user_data)
 static void
 dispose (GObject *object)
 {
+	NMFortisslvpnPluginPrivate *priv = NM_FORTISSLVPN_PLUGIN_GET_PRIVATE (object);
+	GDBusInterfaceSkeleton *skeleton = NULL;
+
+	if (priv->dbus_skeleton)
+		skeleton = G_DBUS_INTERFACE_SKELETON (priv->dbus_skeleton);
+
 	cleanup_plugin (NM_FORTISSLVPN_PLUGIN (object));
+
+	if (skeleton) {
+		if (g_dbus_interface_skeleton_get_object_path (skeleton))
+			g_dbus_interface_skeleton_unexport (skeleton);
+		g_signal_handlers_disconnect_by_func (skeleton, handle_set_state, object);
+		g_signal_handlers_disconnect_by_func (skeleton, handle_set_ip4_config, object);
+	}
+
 	G_OBJECT_CLASS (nm_fortisslvpn_plugin_parent_class)->dispose (object);
 }
 
@@ -922,6 +675,8 @@ NMFortisslvpnPlugin *
 nm_fortisslvpn_plugin_new (void)
 {
 	NMFortisslvpnPlugin *plugin;
+	NMFortisslvpnPluginPrivate *priv;
+	GDBusConnection *connection;
 	GError *error = NULL;
 
 	plugin = (NMFortisslvpnPlugin *) g_initable_new (NM_TYPE_FORTISSLVPN_PLUGIN, NULL, &error,
@@ -935,6 +690,28 @@ nm_fortisslvpn_plugin_new (void)
 		g_error_free (error);
 	}
 
+	connection = nm_vpn_service_plugin_get_connection (NM_VPN_SERVICE_PLUGIN (plugin)),
+	priv = NM_FORTISSLVPN_PLUGIN_GET_PRIVATE (plugin);
+	priv->dbus_skeleton = nmdbus_network_manager_fortisslvpn_ppp_skeleton_new ();
+	if (!g_dbus_interface_skeleton_export (G_DBUS_INTERFACE_SKELETON (priv->dbus_skeleton),
+	                                       connection,
+	                                       NM_DBUS_PATH_FORTISSLVPN_PPP,
+	                                       &error)) {
+		g_warning ("Failed to export helper interface: %s", error->message);
+		g_error_free (error);
+		g_clear_object (&plugin);
+		goto out;
+	}
+
+	g_dbus_connection_register_object (connection, NM_VPN_DBUS_PLUGIN_PATH,
+	                                   nmdbus_network_manager_fortisslvpn_ppp_interface_info (),
+	                                   NULL, NULL, NULL, NULL);
+
+	g_signal_connect (priv->dbus_skeleton, "handle-set-state", G_CALLBACK (handle_set_state), plugin);
+	g_signal_connect (priv->dbus_skeleton, "handle-set-ip4-config", G_CALLBACK (handle_set_ip4_config), plugin);
+
+out:
+	g_clear_object (&connection);
 	return plugin;
 }
 

@@ -35,7 +35,6 @@
 #define DBUS_TYPE_G_MAP_OF_VARIANT (dbus_g_type_get_map ("GHashTable", G_TYPE_STRING, G_TYPE_VALUE))
 
 /* For the pppd plugin <-> VPN plugin service */
-#define NM_DBUS_SERVICE_FORTISSLVPN_PPP    "org.freedesktop.NetworkManager.fortisslvpn-ppp"
 #define NM_DBUS_PATH_FORTISSLVPN_PPP       "/org/freedesktop/NetworkManager/fortisslvpn/ppp"
 #define NM_DBUS_INTERFACE_FORTISSLVPN_PPP  "org.freedesktop.NetworkManager.fortisslvpn.ppp"
 
