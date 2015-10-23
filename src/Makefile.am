@@ -7,7 +7,6 @@ AM_CPPFLAGS =							\
 	$(GLIB_CFLAGS)						\
 	$(LIBNM_CFLAGS)						\
 	-I$(top_srcdir)						\
-	-DG_DISABLE_DEPRECATED					\
 	-DNM_FORTISSLVPN_LOCALEDIR=\"$(datadir)/locale\"	\
 	-DNM_FORTISSLVPN_STATEDIR=\"$(fortisslvpn_statedir)\"	\
 	-DPLUGINDIR=\"$(PPPD_PLUGIN_DIR)\" 

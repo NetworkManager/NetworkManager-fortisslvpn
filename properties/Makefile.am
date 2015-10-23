@@ -20,8 +20,7 @@ common_CFLAGS =						\
 	$(GTK_CFLAGS)					\
 	-I$(top_srcdir)					\
 	-DUIDIR=\""$(uidir)"\"				\
-	-DLOCALEDIR=\""$(datadir)/locale"\"		\
-	-DG_DISABLE_DEPRECATED
+	-DLOCALEDIR=\""$(datadir)/locale"\"
 
 libnm_vpn_plugin_fortisslvpn_la_CFLAGS =		\
 	$(LIBNM_CFLAGS)					\
