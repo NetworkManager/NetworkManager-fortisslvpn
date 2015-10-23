@@ -7,8 +7,7 @@ nm_fortisslvpn_auth_dialog_CPPFLAGS =		\
 	$(LIBNMA_CFLAGS)			\
 	$(LIBSECRET_CFLAGS)			\
 	-I$(top_srcdir)				\
-	-DUIDIR=\""$(uidir)"\"			\
-	-DVERSION=\"$(VERSION)\"
+	-DUIDIR=\""$(uidir)"\"
 
 nm_fortisslvpn_auth_dialog_SOURCES =		\
 	main.c
