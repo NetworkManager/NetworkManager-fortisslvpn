@@ -179,7 +179,7 @@ get_ip4_routes (in_addr_t ouraddr)
 	}
 
 	value = g_variant_builder_end (&builder);
-	if (i > 1)
+	if (i > 0)
 		return value;
 
 	g_variant_unref (value);
