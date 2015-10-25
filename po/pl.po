@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: network-manager-fortisslvpn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-04 19:51+0200\n"
-"PO-Revision-Date: 2015-10-04 19:52+0200\n"
+"POT-Creation-Date: 2015-10-25 19:54+0100\n"
+"PO-Revision-Date: 2015-10-25 19:55+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -132,76 +132,75 @@ msgstr "SSLVPN Fortinet"
 msgid "Compatible with Fortinet SSLVPN servers."
 msgstr "Zgodny z serwerami VPN Fortinet."
 
-#: ../src/nm-fortisslvpn-service.c:133
-msgid "Could not find secrets (connection invalid, no vpn setting)."
-msgstr ""
-"Nie można odnaleźć haseł (połączenie jest nieprawidłowe, brak ustawień VPN)."
-
-#: ../src/nm-fortisslvpn-service.c:145
-msgid "Missing VPN username."
-msgstr "Brak nazwy użytkownika VPN."
-
-#: ../src/nm-fortisslvpn-service.c:155
-msgid "Missing or invalid VPN password."
-msgstr "Brak hasła VPN lub jest nieprawidłowe."
-
-#: ../src/nm-fortisslvpn-service.c:451
+#: ../src/nm-fortisslvpn-service.c:168
 #, c-format
 msgid "invalid gateway '%s'"
 msgstr "nieprawidłowa brama „%s”"
 
-#: ../src/nm-fortisslvpn-service.c:459
+#: ../src/nm-fortisslvpn-service.c:176
 #, c-format
 msgid "invalid certificate authority '%s'"
 msgstr "nieprawidłowe CA „%s”"
 
-#: ../src/nm-fortisslvpn-service.c:473
+#: ../src/nm-fortisslvpn-service.c:190
 #, c-format
 msgid "invalid integer property '%s'"
 msgstr "nieprawidłowa własność liczby całkowitej „%s”"
 
-#: ../src/nm-fortisslvpn-service.c:483
+#: ../src/nm-fortisslvpn-service.c:200
 #, c-format
 msgid "invalid boolean property '%s' (not yes or no)"
 msgstr ""
 "nieprawidłowa własność zmiennej logicznej „%s” (nie wynosi „yes” lub „no”)"
 
-#: ../src/nm-fortisslvpn-service.c:490
+#: ../src/nm-fortisslvpn-service.c:207
 #, c-format
 msgid "unhandled property '%s' type %s"
 msgstr "nieobsługiwana własność „%s” typu „%s”"
 
-#: ../src/nm-fortisslvpn-service.c:501
+#: ../src/nm-fortisslvpn-service.c:218
 #, c-format
 msgid "property '%s' invalid or not supported"
 msgstr "własność „%s” jest nieprawidłowa lub nieobsługiwana"
 
-#: ../src/nm-fortisslvpn-service.c:518
+#: ../src/nm-fortisslvpn-service.c:235
 msgid "No VPN configuration options."
 msgstr "Brak opcji konfiguracji VPN."
 
-#: ../src/nm-fortisslvpn-service.c:538
+#: ../src/nm-fortisslvpn-service.c:255
 #, c-format
 msgid "Missing required option '%s'."
 msgstr "Brak wymaganej opcji „%s”."
 
-#: ../src/nm-fortisslvpn-service.c:558
+#: ../src/nm-fortisslvpn-service.c:275
 msgid "No VPN secrets!"
 msgstr "Brak haseł VPN."
 
-#: ../src/nm-fortisslvpn-service.c:693
+#: ../src/nm-fortisslvpn-service.c:391
 msgid "Could not find the openfortivpn binary."
 msgstr "Nie można odnaleźć pliku binarnego openfortivpn."
 
-#: ../src/nm-fortisslvpn-service.c:985
+#: ../src/nm-fortisslvpn-service.c:509
+msgid "Missing VPN username."
+msgstr "Brak nazwy użytkownika VPN."
+
+#: ../src/nm-fortisslvpn-service.c:519
+msgid "Missing or invalid VPN password."
+msgstr "Brak hasła VPN lub jest nieprawidłowe."
+
+#: ../src/nm-fortisslvpn-service.c:733
 msgid "Don't quit when VPN connection terminates"
 msgstr "Nie kończy działania, kiedy połączenie VPN jest kończone"
 
-#: ../src/nm-fortisslvpn-service.c:986
+#: ../src/nm-fortisslvpn-service.c:734
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr "Włącza więcej komunikatów debugowania (może wyjawić hasła)"
 
-#: ../src/nm-fortisslvpn-service.c:1009
+#: ../src/nm-fortisslvpn-service.c:735
+msgid "D-Bus name to use for this instance"
+msgstr "Nazwa D-Bus dla tego wystąpienia"
+
+#: ../src/nm-fortisslvpn-service.c:758
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
