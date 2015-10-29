@@ -57,7 +57,8 @@ nm_fortisslvpn_pppd_plugin_la_LDFLAGS = -module -avoid-version
 
 nm_fortisslvpn_pppd_plugin_la_LIBADD =				\
 	$(GLIB_LIBS)						\
-	$(LIBNM_LIBS)
+	$(LIBNM_LIBS)						\
+	libnm-fortisslvpn-pppd-service-dbus.la
 
 BUILT_SOURCES = nm-fortisslvpn-pppd-service-dbus.h nm-fortisslvpn-pppd-service-dbus.c
 

@@ -29,9 +29,9 @@
 #include <arpa/inet.h>
 #include <dlfcn.h>
 #include <glib.h>
-#include <gio/gio.h>
 #include <stdlib.h>
 
+#include "nm-fortisslvpn-pppd-service-dbus.h"
 #include "nm-fortisslvpn-service.h"
 #include "nm-ppp-status.h"
 
@@ -41,7 +41,7 @@ int plugin_init (void);
 
 char pppd_version[] = VERSION;
 
-static GDBusProxy *proxy = NULL;
+static NMDBusFortisslvpnPpp *proxy = NULL;
 
 static void
 nm_phasechange (void *data, int arg)
@@ -49,7 +49,7 @@ nm_phasechange (void *data, int arg)
 	NMPPPStatus ppp_status = NM_PPP_STATUS_UNKNOWN;
 	char *ppp_phase;
 
-	g_return_if_fail (G_IS_DBUS_PROXY (proxy));
+	g_return_if_fail (NMDBUS_IS_FORTISSLVPN_PPP_PROXY (proxy));
 
 	switch (arg) {
 	case PHASE_DEAD:
@@ -116,12 +116,10 @@ nm_phasechange (void *data, int arg)
 	           ppp_phase);
 
 	if (ppp_status != NM_PPP_STATUS_UNKNOWN) {
-		g_dbus_proxy_call (proxy,
-		                   "SetState",
-		                   g_variant_new ("(u)", ppp_status),
-		                   G_DBUS_CALL_FLAGS_NONE, -1,
-		                   NULL,
-		                   NULL, NULL);
+		nmdbus_fortisslvpn_ppp_call_set_state (proxy,
+		                                       ppp_status,
+		                                       NULL,
+		                                       NULL, NULL);
 	}
 }
 
@@ -198,7 +196,7 @@ nm_ip_up (void *data, int arg)
 	const gchar *str;
 	GVariant *val;
 
-	g_return_if_fail (G_IS_DBUS_PROXY (proxy));
+	g_return_if_fail (NMDBUS_IS_FORTISSLVPN_PPP_PROXY (proxy));
 
 	g_message ("nm-fortisslvpn-ppp-plugin: (%s): ip-up event", __func__);
 
@@ -276,12 +274,10 @@ nm_ip_up (void *data, int arg)
 
 	g_message ("nm-fortisslvpn-ppp-plugin: (%s): sending Ip4Config to NetworkManager-fortisslvpn...", __func__);
 
-	g_dbus_proxy_call (proxy,
-	                   "SetIp4Config",
-	                   g_variant_new ("(a{sv})", &builder),
-	                   G_DBUS_CALL_FLAGS_NONE, -1,
-	                   NULL,
-	                   NULL, NULL);
+	nmdbus_fortisslvpn_ppp_call_set_ip4_config (proxy,
+	                                            g_variant_new ("(a{sv})", &builder),
+	                                            NULL,
+	                                            NULL, NULL);
 }
 
 static void
@@ -311,13 +307,11 @@ plugin_init (void)
 
 	g_message ("nm-fortisslvpn-ppp-plugin: (%s): initializing", __func__);
 
-        proxy = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
-                                               G_DBUS_PROXY_FLAGS_NONE,
-                                               NULL,
-                                               bus_name,
-                                               NM_DBUS_PATH_FORTISSLVPN_PPP,
-                                               NM_DBUS_INTERFACE_FORTISSLVPN_PPP,
-                                               NULL, &err);
+        proxy = nmdbus_fortisslvpn_ppp_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
+                                                               G_DBUS_PROXY_FLAGS_NONE,
+                                                               bus_name,
+                                                               NM_DBUS_PATH_FORTISSLVPN_PPP,
+                                                               NULL, &err);
 	if (!proxy) {
 		g_warning ("nm-fortisslvpn-pppd-plugin: (%s): couldn't create D-Bus proxy: (%d) %s",
 		           __func__,
