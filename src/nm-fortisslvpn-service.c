@@ -62,7 +62,7 @@ typedef struct {
 	guint32 ppp_timeout_handler;
 	NMConnection *connection;
 	char *config_file;
-	NMDBusNetworkManagerFortisslvpnPpp *dbus_skeleton;
+	NMDBusFortisslvpnPpp *dbus_skeleton;
 } NMFortisslvpnPluginPrivate;
 
 #define NM_FORTISSLVPN_PLUGIN_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), NM_TYPE_FORTISSLVPN_PLUGIN, NMFortisslvpnPluginPrivate))
@@ -465,7 +465,7 @@ remove_timeout_handler (NMFortisslvpnPlugin *plugin)
 }
 
 static gboolean
-handle_set_state (NMDBusNetworkManagerFortisslvpnPpp *object,
+handle_set_state (NMDBusFortisslvpnPpp *object,
                   GDBusMethodInvocation *invocation,
                   guint arg_state,
                   gpointer user_data)
@@ -474,12 +474,12 @@ handle_set_state (NMDBusNetworkManagerFortisslvpnPpp *object,
 	if (arg_state == NM_PPP_STATUS_DEAD || arg_state == NM_PPP_STATUS_DISCONNECT)
 		nm_vpn_service_plugin_disconnect (NM_VPN_SERVICE_PLUGIN (user_data), NULL);
 
-	g_dbus_method_invocation_return_value (invocation, NULL);
+	nmdbus_fortisslvpn_ppp_complete_set_state (object, invocation);
 	return TRUE;
 }
 
 static gboolean
-handle_set_ip4_config (NMDBusNetworkManagerFortisslvpnPpp *object,
+handle_set_ip4_config (NMDBusFortisslvpnPpp *object,
                        GDBusMethodInvocation *invocation,
                        GVariant *arg_config,
                        gpointer user_data)
@@ -489,6 +489,7 @@ handle_set_ip4_config (NMDBusNetworkManagerFortisslvpnPpp *object,
 	remove_timeout_handler (NM_FORTISSLVPN_PLUGIN (user_data));
 	nm_vpn_service_plugin_set_ip4_config (NM_VPN_SERVICE_PLUGIN (user_data), arg_config);
 
+	nmdbus_fortisslvpn_ppp_complete_set_ip4_config (object, invocation);
 	return TRUE;
 }
 
@@ -691,7 +692,7 @@ nm_fortisslvpn_plugin_new (const char *bus_name)
 
 	connection = nm_vpn_service_plugin_get_connection (NM_VPN_SERVICE_PLUGIN (plugin)),
 	priv = NM_FORTISSLVPN_PLUGIN_GET_PRIVATE (plugin);
-	priv->dbus_skeleton = nmdbus_network_manager_fortisslvpn_ppp_skeleton_new ();
+	priv->dbus_skeleton = nmdbus_fortisslvpn_ppp_skeleton_new ();
 	if (!g_dbus_interface_skeleton_export (G_DBUS_INTERFACE_SKELETON (priv->dbus_skeleton),
 	                                       connection,
 	                                       NM_DBUS_PATH_FORTISSLVPN_PPP,
@@ -703,7 +704,7 @@ nm_fortisslvpn_plugin_new (const char *bus_name)
 	}
 
 	g_dbus_connection_register_object (connection, NM_VPN_DBUS_PLUGIN_PATH,
-	                                   nmdbus_network_manager_fortisslvpn_ppp_interface_info (),
+	                                   nmdbus_fortisslvpn_ppp_interface_info (),
 	                                   NULL, NULL, NULL, NULL);
 
 	g_signal_connect (priv->dbus_skeleton, "handle-set-state", G_CALLBACK (handle_set_state), plugin);

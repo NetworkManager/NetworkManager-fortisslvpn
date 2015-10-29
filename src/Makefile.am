@@ -31,7 +31,7 @@ nm-fortisslvpn-pppd-service-dbus.h: $(top_srcdir)/src/nm-fortisslvpn-pppd-servic
 	$(AM_V_GEN) gdbus-codegen \
 		--generate-c-code $(basename $@) \
 		--c-namespace NMDBus \
-		--interface-prefix org.freedesktop \
+		--interface-prefix org.freedesktop.NetworkManager \
 		$<
 
 nm-fortisslvpn-pppd-service-dbus.c:
