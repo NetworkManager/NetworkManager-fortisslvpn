@@ -1,4 +1,16 @@
 =======================================================
+NetworkManager-fortisslvpn-1.0.8
+Overview of changes since NetworkManager-fortisslvpn-1.0.6
+=======================================================
+
+This is a new stable release of NetworkManager-fortisslvpn.  Notable changes include:
+
+* Fixed error status handling
+* User --pppd-plugin instead of deprecated --plugin option
+* Updated German, Hungarian, Swedish, Italian, Portuguese, and Brazilian
+  Portuguese translations
+
+=======================================================
 network-manager-fortisslvpn-1.0.6
 =======================================================
 
