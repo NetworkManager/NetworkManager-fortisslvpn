@@ -4,14 +4,15 @@
 #
 # Jakub Friedl <jfriedl@suse.cz>, 2006.
 # Jiří Eischmann <jiri@eischmann.cz>, 2008.
-# Zdeněk Hataš <zdenek.hatas@gmail.com>, 2009, 2010, 2011, 2012.
+# Zdeněk Hataš <zdenek.hatas@gmail.com>, 2009, 2010, 2011, 2012, 2015.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: NetworkManager-fortisslvpn\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-16 10:26+0200\n"
-"PO-Revision-Date: 2012-03-23 12:49+0100\n"
+"Project-Id-Version: NetworkManager-fortisslvpn nm-1.0\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=NetworkManager&keywords=I18N+L10N&component=VPN: fortisslvpn\n"
+"POT-Creation-Date: 2015-09-28 10:16+0000\n"
+"PO-Revision-Date: 2015-12-01 17:09+0100\n"
 "Last-Translator: Zdeněk Hataš <zdenek.hatas@gmail.com>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -34,37 +35,59 @@ msgstr "Pro přístup k virtuální privátní síti „%s“ musíte provést a
 msgid "Authenticate VPN"
 msgstr "Autentizovat VPN"
 
-#: ../auth-dialog/main.c:165 ../properties/nm-fortisslvpn-dialog.ui.h:8
+#: ../auth-dialog/main.c:165 ../properties/nm-fortisslvpn-dialog.ui.h:12
 msgid "Password:"
 msgstr "Heslo:"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:1
+msgid "SSLVPN Advanced Options"
+msgstr "Pokročilé volby SSLVPN"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:2
+msgid "<b>Security</b>"
+msgstr "<b>Zabezpečení</b>"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:3
+msgid ""
+"A SHA256 sum of the X509 certificate that will be accepted even if the "
+"certificate is not trusted by a certificate authority."
+msgstr ""
+"Součet SHA256 certifikátu X509, který bude přijat i v případě, že certifikát není pro "
+"certifikační autoritu důvěryhodný."
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:4
+msgid "Trusted certificate:"
+msgstr "Důvěryhodný certifikát:"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:5
 msgid "<b>General</b>"
 msgstr "<b>Obecné</b>"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:2
+#: ../properties/nm-fortisslvpn-dialog.ui.h:6
 msgid ""
 "SSLVPN server IP or name.\n"
 "config: the first parameter of fortisslvpn"
 msgstr ""
+"Název nebo IP serveru SSLVPN.\n"
+"config: první parametr pro fortisslvpn"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:4
+#: ../properties/nm-fortisslvpn-dialog.ui.h:8
 msgid "_Gateway:"
 msgstr "_Brána:"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:5
+#: ../properties/nm-fortisslvpn-dialog.ui.h:9
 msgid "<b>Authentication</b>"
 msgstr "<b>Autentizace</b>"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:6
+#: ../properties/nm-fortisslvpn-dialog.ui.h:10
 msgid "Show password"
 msgstr "Zobrazit heslo"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:7
+#: ../properties/nm-fortisslvpn-dialog.ui.h:11
 msgid "Password passed to SSLVPN when prompted for it."
-msgstr ""
+msgstr "Heslo poskytnuté SSLVPN, pokud o něj požádá."
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:9
+#: ../properties/nm-fortisslvpn-dialog.ui.h:13
 msgid ""
 "Set the name used for authenticating the local system to the peer to "
 "<name>.\n"
@@ -74,105 +97,109 @@ msgstr ""
 "<název>.\n"
 "config: user <název>"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:11
+#: ../properties/nm-fortisslvpn-dialog.ui.h:15
 msgid "User name:"
 msgstr "Uživatelské jméno:"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:12
-#, fuzzy
-msgid "<b>Security</b>"
-msgstr "<b>Obecné</b>"
+#: ../properties/nm-fortisslvpn-dialog.ui.h:16
+msgid "CA Certificate:"
+msgstr "Certifikát CA:"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:13
-msgid "Trusted certificate:"
-msgstr ""
+#: ../properties/nm-fortisslvpn-dialog.ui.h:17
+msgid "User Key:"
+msgstr "Uživatelský klíč:"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:14
-msgid ""
-"<i>A SHA256 sum of the X509 certificate that will be accepted even if the "
-"certificate is not trusted by a certificate authority</i>"
-msgstr ""
+#: ../properties/nm-fortisslvpn-dialog.ui.h:18
+msgid "User Certificate:"
+msgstr "Uživatelský certifikát:"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:15
+#: ../properties/nm-fortisslvpn-dialog.ui.h:19
+msgid "A_dvanced..."
+msgstr "Po_kročilé…"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:20
 msgid "Default"
 msgstr "Výchozí"
 
 #: ../properties/nm-fortisslvpn.c:48
 msgid "Fortinet SSLVPN"
-msgstr ""
+msgstr "Fortinet SSLVPN"
 
 #: ../properties/nm-fortisslvpn.c:49
 msgid "Compatible with Fortinet SSLVPN servers."
-msgstr ""
+msgstr "Kompatibilní se servery Fortinet SSLVPN."
 
-#: ../src/nm-fortisslvpn-service.c:132
+#: ../src/nm-fortisslvpn-service.c:134
 msgid "Could not find secrets (connection invalid, no vpn setting)."
 msgstr "Nelze nalézt hesla (neplatné připojení, žádná nastavení vpn)."
 
-#: ../src/nm-fortisslvpn-service.c:144
-msgid "Invalid VPN username."
-msgstr "Neplatné jméno uživatele VPN."
-
-#: ../src/nm-fortisslvpn-service.c:153
+#: ../src/nm-fortisslvpn-service.c:146
 msgid "Missing VPN username."
 msgstr "Chybí jméno uživatele VPN."
 
-#: ../src/nm-fortisslvpn-service.c:163
+#: ../src/nm-fortisslvpn-service.c:156
 msgid "Missing or invalid VPN password."
 msgstr "Chybějící nebo neplatné heslo VPN."
 
-#: ../src/nm-fortisslvpn-service.c:387
+#: ../src/nm-fortisslvpn-service.c:412
 #, c-format
 msgid "invalid gateway '%s'"
 msgstr "neplatná brána „%s“"
 
-#: ../src/nm-fortisslvpn-service.c:401
+#: ../src/nm-fortisslvpn-service.c:420
+#, c-format
+msgid "invalid certificate authority '%s'"
+msgstr "neplatná certifikační autorita „%s“"
+
+#: ../src/nm-fortisslvpn-service.c:434
 #, c-format
 msgid "invalid integer property '%s'"
-msgstr "neplatná číselná volba „%s“"
+msgstr "neplatná celočíselná vlastnost „%s“"
 
-#: ../src/nm-fortisslvpn-service.c:411
+#: ../src/nm-fortisslvpn-service.c:444
 #, c-format
 msgid "invalid boolean property '%s' (not yes or no)"
-msgstr "neplatná pravdivostní volba „%s“ (není ano či ne)"
+msgstr "neplatná pravdivostní vlastnost „%s“ (není ano či ne)"
 
-#: ../src/nm-fortisslvpn-service.c:418
+#: ../src/nm-fortisslvpn-service.c:451
 #, c-format
 msgid "unhandled property '%s' type %s"
-msgstr "neošetřená volba „%s“ typu %s"
+msgstr "neošetřená vlastnost „%s“ typu %s"
 
-#: ../src/nm-fortisslvpn-service.c:429
+#: ../src/nm-fortisslvpn-service.c:462
 #, c-format
 msgid "property '%s' invalid or not supported"
-msgstr "volba „%s“ není platná nebo podporovaná"
+msgstr "vlastnost „%s“ není platná nebo podporovaná"
 
-#: ../src/nm-fortisslvpn-service.c:446
+#: ../src/nm-fortisslvpn-service.c:479
 msgid "No VPN configuration options."
 msgstr "Žádné volby nastavení VPN."
 
-#: ../src/nm-fortisslvpn-service.c:466
+#: ../src/nm-fortisslvpn-service.c:499
 #, c-format
 msgid "Missing required option '%s'."
 msgstr "Chybí požadovaná volba „%s“."
 
-#: ../src/nm-fortisslvpn-service.c:486
+#: ../src/nm-fortisslvpn-service.c:519
 msgid "No VPN secrets!"
 msgstr "Žádná hesla VPN!"
 
-#: ../src/nm-fortisslvpn-service.c:589
+#: ../src/nm-fortisslvpn-service.c:654
 msgid "Could not find the openfortivpn binary."
-msgstr ""
+msgstr "Nelze nalézt program openfortivpn."
 
-#: ../src/nm-fortisslvpn-service.c:897
+#: ../src/nm-fortisslvpn-service.c:970
 msgid "Don't quit when VPN connection terminates"
 msgstr "Neukončovat při uzavření spojení VPN"
 
-#: ../src/nm-fortisslvpn-service.c:898
+#: ../src/nm-fortisslvpn-service.c:971
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr "Povolit podrobný ladicí výpis (může prozradit hesla)"
 
-#: ../src/nm-fortisslvpn-service.c:921
+#: ../src/nm-fortisslvpn-service.c:994
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
 msgstr ""
+"Modul nm-fortisslvpn-service poskytuje integraci SSLVPN (kompatibilní s Fortinet) pro "
+"NetworkManager."
