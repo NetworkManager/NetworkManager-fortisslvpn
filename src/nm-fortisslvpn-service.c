@@ -682,6 +682,7 @@ nm_fortisslvpn_plugin_new (const char *bus_name)
 
 	plugin = (NMFortisslvpnPlugin *) g_initable_new (NM_TYPE_FORTISSLVPN_PLUGIN, NULL, &error,
 	                                                 NM_VPN_SERVICE_PLUGIN_DBUS_SERVICE_NAME, bus_name,
+	                                                 NM_VPN_SERVICE_PLUGIN_DBUS_WATCH_PEER, !debug,
 	                                                 NULL);
 	if (plugin) {
 		g_signal_connect (G_OBJECT (plugin), "state-changed", G_CALLBACK (state_changed_cb), NULL);
