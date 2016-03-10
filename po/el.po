@@ -3,19 +3,21 @@
 #
 # Kostas Papadimas <pkst@gnome.org>, 2007.
 # Jennie Petoumenou <epetoumenou@gmail.com>, 2008.
+# Yannis Koutsoukos <giankoyt@gmail.com>, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn.HEAD\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-16 10:26+0200\n"
-"PO-Revision-Date: 2014-06-07 13:49+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=NetworkManager&keywords=I18N+L10N&component=VPN: fortisslvpn\n"
+"POT-Creation-Date: 2016-03-10 02:03+0000\n"
+"PO-Revision-Date: 2016-03-04 13:51+0200\n"
 "Last-Translator: Tom Tryfonidis <tomtryf@gmail.com>\n"
 "Language-Team: Greek <team@gnome.gr>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.4\n"
+"X-Generator: Poedit 1.8.7\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. Otherwise, we have no saved password, or the password flags indicated
@@ -32,148 +34,180 @@ msgstr ""
 msgid "Authenticate VPN"
 msgstr "Πιστοποίηση VPN"
 
-#: ../auth-dialog/main.c:165 ../properties/nm-fortisslvpn-dialog.ui.h:8
+#: ../auth-dialog/main.c:165 ../properties/nm-fortisslvpn-dialog.ui.h:12
 msgid "Password:"
 msgstr "Κωδικός πρόσβασης:"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:1
+msgid "SSLVPN Advanced Options"
+msgstr "Προχωρημένες επιλογές SSLVPN"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:2
+msgid "<b>Security</b>"
+msgstr "<b>Ασφάλεια</b>"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:3
+msgid ""
+"A SHA256 sum of the X509 certificate that will be accepted even if the "
+"certificate is not trusted by a certificate authority."
+msgstr ""
+"Ένα SHA256 sum του πιστοποιητικού Χ509 που θα γίνεται δεκτό ακόμη και αν το "
+"πιστοποιητικό δεν είναι έμπιστο από μια αρχή πιστοποίησης."
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:4
+msgid "Trusted certificate:"
+msgstr "Αξιόπιστο πιστοποιητικό:"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:5
 msgid "<b>General</b>"
 msgstr "<b>Γενικά</b>"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:2
+#: ../properties/nm-fortisslvpn-dialog.ui.h:6
 msgid ""
 "SSLVPN server IP or name.\n"
 "config: the first parameter of fortisslvpn"
 msgstr ""
+"Διεύθυνση διακομιστή SSLVPN ή όνομα.\n"
+"ρύθμιση: η πρώτη παράμετρος του fortisslvpn"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:4
+#: ../properties/nm-fortisslvpn-dialog.ui.h:8
 msgid "_Gateway:"
-msgstr "Πύ_λη:"
+msgstr "Πύλ_η δικτύου:"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:5
+#: ../properties/nm-fortisslvpn-dialog.ui.h:9
 msgid "<b>Authentication</b>"
 msgstr "<b>Πιστοποίηση</b>"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:6
+#: ../properties/nm-fortisslvpn-dialog.ui.h:10
 msgid "Show password"
 msgstr "Εμφάνιση κωδικού πρόσβασης"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:7
+#: ../properties/nm-fortisslvpn-dialog.ui.h:11
 msgid "Password passed to SSLVPN when prompted for it."
-msgstr ""
+msgstr "Ο κωδικός πρόσβασης πέρασε στο SSLVPN όταν σας ζητήθηκε για αυτό."
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:9
+#: ../properties/nm-fortisslvpn-dialog.ui.h:13
 msgid ""
 "Set the name used for authenticating the local system to the peer to "
 "<name>.\n"
 "config: user <name>"
 msgstr ""
-"Ορίστε το όνομα που χρησιμοποιείται για τη πιστοποίηση του τοπικού "
+"Ορίστε το όνομα που θα χρησιμοποιηθεί για τη πιστοποίηση του τοπικού "
 "συστήματος στον ομότιμο σε <name>.\n"
-"config: user <name>"
+"ρύθμιση: χρήστης <name>"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:11
+#: ../properties/nm-fortisslvpn-dialog.ui.h:15
 msgid "User name:"
 msgstr "Όνομα χρήστη:"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:12
-#, fuzzy
-msgid "<b>Security</b>"
-msgstr "<b>Γενικά</b>"
+#: ../properties/nm-fortisslvpn-dialog.ui.h:16
+msgid "CA Certificate:"
+msgstr "Πιστοποιητικό CA :"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:13
-msgid "Trusted certificate:"
-msgstr ""
+#: ../properties/nm-fortisslvpn-dialog.ui.h:17
+msgid "User Key:"
+msgstr "Κλειδί χρήστη:"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:14
-msgid ""
-"<i>A SHA256 sum of the X509 certificate that will be accepted even if the "
-"certificate is not trusted by a certificate authority</i>"
-msgstr ""
+#: ../properties/nm-fortisslvpn-dialog.ui.h:18
+msgid "User Certificate:"
+msgstr "Πιστοποιητικό χρήστη:"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:15
+#: ../properties/nm-fortisslvpn-dialog.ui.h:19
+msgid "A_dvanced..."
+msgstr "_Για προχωρημένους..."
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:20
 msgid "Default"
 msgstr "Προεπιλεγμένη"
 
-#: ../properties/nm-fortisslvpn.c:48
+#: ../properties/nm-fortisslvpn.c:64
 msgid "Fortinet SSLVPN"
-msgstr ""
+msgstr "Fortinet SSLVPN"
 
-#: ../properties/nm-fortisslvpn.c:49
+#: ../properties/nm-fortisslvpn.c:65
 msgid "Compatible with Fortinet SSLVPN servers."
-msgstr ""
+msgstr "Συμβατό με διακομιστές Fortinet SSLVPN."
 
-#: ../src/nm-fortisslvpn-service.c:132
-msgid "Could not find secrets (connection invalid, no vpn setting)."
-msgstr ""
-"Αδύνατη η εύρεση μυστικών (μη έγκυρη σύνδεση, δεν υπάρχουν vpn ρυθμίσεις)"
-
-#: ../src/nm-fortisslvpn-service.c:144
-msgid "Invalid VPN username."
-msgstr "Μη έγκυρο όνομα χρήστη VPN."
-
-#: ../src/nm-fortisslvpn-service.c:153
-msgid "Missing VPN username."
-msgstr "Λείπει το όνομα χρήστη VPN."
-
-#: ../src/nm-fortisslvpn-service.c:163
-msgid "Missing or invalid VPN password."
-msgstr "Λείπει ή μη έγκυρος κωδικός πρόσβασης VPN."
-
-#: ../src/nm-fortisslvpn-service.c:387
+#: ../src/nm-fortisslvpn-service.c:168
 #, c-format
 msgid "invalid gateway '%s'"
-msgstr "Μη έγκυρη πύλη '%s'"
+msgstr "Μη έγκυρη πύλη δκτύου '%s'"
 
-#: ../src/nm-fortisslvpn-service.c:401
+#: ../src/nm-fortisslvpn-service.c:176
+#, c-format
+msgid "invalid certificate authority '%s'"
+msgstr "Μη έγκυρη αρχή έκδοσης πιστοποιητικών '%s'"
+
+#: ../src/nm-fortisslvpn-service.c:190
 #, c-format
 msgid "invalid integer property '%s'"
-msgstr "Μη έγκυρη ακέραια τιμή '%s'"
+msgstr "Μη έγκυρη ακέραια ιδιότητα '%s'"
 
-#: ../src/nm-fortisslvpn-service.c:411
+#: ../src/nm-fortisslvpn-service.c:200
 #, c-format
 msgid "invalid boolean property '%s' (not yes or no)"
-msgstr "μη έγκυρη λογική τιμή '%s' (ούτε ναι ή όχι)"
+msgstr "Μη έγκυρη λογική τιμή '%s' (ούτε ναι ή όχι)"
 
-#: ../src/nm-fortisslvpn-service.c:418
+#: ../src/nm-fortisslvpn-service.c:207
 #, c-format
 msgid "unhandled property '%s' type %s"
-msgstr "απρόσμενη τιμή '%s' τύπου %s"
+msgstr "Ανεπίλυτη τιμή '%s' τύπου %s"
 
-#: ../src/nm-fortisslvpn-service.c:429
+#: ../src/nm-fortisslvpn-service.c:218
 #, c-format
 msgid "property '%s' invalid or not supported"
-msgstr "Μη έγκυρη ή μη υποστηριζόμενη τιμή '%s'"
+msgstr "Μη έγκυρη ή μη υποστηριζόμενη ιδιότητα '%s'"
 
-#: ../src/nm-fortisslvpn-service.c:446
+#: ../src/nm-fortisslvpn-service.c:235
 msgid "No VPN configuration options."
 msgstr "Δεν υπάρχουν επιλογές ρύθμισης παραμέτρων VPN."
 
-#: ../src/nm-fortisslvpn-service.c:466
+#: ../src/nm-fortisslvpn-service.c:255
 #, c-format
 msgid "Missing required option '%s'."
 msgstr "Λείπει η απαιτούμενη επιλογή '%s'."
 
-#: ../src/nm-fortisslvpn-service.c:486
+#: ../src/nm-fortisslvpn-service.c:275
 msgid "No VPN secrets!"
 msgstr "Δεν υπάρχουν απόρρητα VPN!"
 
-#: ../src/nm-fortisslvpn-service.c:589
+#: ../src/nm-fortisslvpn-service.c:391
 msgid "Could not find the openfortivpn binary."
-msgstr ""
+msgstr "Αδύνατη η εύρεση του εκτελέσιμου openfortivpn."
 
-#: ../src/nm-fortisslvpn-service.c:897
+#: ../src/nm-fortisslvpn-service.c:510
+msgid "Missing VPN username."
+msgstr "Λείπει το όνομα χρήστη VPN."
+
+#: ../src/nm-fortisslvpn-service.c:520
+msgid "Missing or invalid VPN password."
+msgstr "Λείπει ή μη έγκυρος κωδικός πρόσβασης VPN."
+
+#: ../src/nm-fortisslvpn-service.c:735
 msgid "Don't quit when VPN connection terminates"
 msgstr "Να μην γίνει έξοδος όταν η σύνδεση VPN τερματίζει."
 
-#: ../src/nm-fortisslvpn-service.c:898
+#: ../src/nm-fortisslvpn-service.c:736
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr ""
 "Ενεργοποίηση καταγραφής εντοπισμού σφαλμάτων (μπορεί να εκθέσει τους "
 "κωδικούς πρόσβασης)"
 
-#: ../src/nm-fortisslvpn-service.c:921
+#: ../src/nm-fortisslvpn-service.c:737
+msgid "D-Bus name to use for this instance"
+msgstr "Ονομασία D-Bus που θα χρησιμοποιηθεί για αυτή τη συνεδρία"
+
+#: ../src/nm-fortisslvpn-service.c:760
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
 msgstr ""
+"Το nm-fortisslvpn-service παρέχει ολοκληρωμένες δυνατότητες SSLVPN (συμβατό "
+"με Fortinet) στο NetworkManager."
+
+#~ msgid "Could not find secrets (connection invalid, no vpn setting)."
+#~ msgstr ""
+#~ "Αδύνατη η εύρεση μυστικών (μη έγκυρη σύνδεση, δεν υπάρχουν vpn ρυθμίσεις)"
+
+#~ msgid "Invalid VPN username."
+#~ msgstr "Μη έγκυρο όνομα χρήστη VPN."
