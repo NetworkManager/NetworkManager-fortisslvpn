@@ -275,7 +275,7 @@ nm_ip_up (void *data, int arg)
 	g_message ("nm-fortisslvpn-ppp-plugin: (%s): sending Ip4Config to NetworkManager-fortisslvpn...", __func__);
 
 	nmdbus_fortisslvpn_ppp_call_set_ip4_config (proxy,
-	                                            g_variant_new ("(a{sv})", &builder),
+	                                            g_variant_builder_end (&builder),
 	                                            NULL,
 	                                            NULL, NULL);
 }
