@@ -308,7 +308,7 @@ plugin_init (void)
 	g_message ("nm-fortisslvpn-ppp-plugin: (%s): initializing", __func__);
 
         proxy = nmdbus_fortisslvpn_ppp_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
-                                                               G_DBUS_PROXY_FLAGS_NONE,
+                                                               G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
                                                                bus_name,
                                                                NM_DBUS_PATH_FORTISSLVPN_PPP,
                                                                NULL, &err);
