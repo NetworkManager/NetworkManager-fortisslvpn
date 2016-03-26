@@ -1,20 +1,24 @@
-# SOME DESCRIPTIVE TITLE.
-# This file is distributed under the same license as the PACKAGE package.
-# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2012.
+# Serbian translation of network-manager
+# Courtesy of Prevod.org team (http://prevod.org/) -- 2012—2016.
+# This file is distributed under the same license as the network-manager package.
+#
+# Translators: 
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2012—2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-16 10:26+0200\n"
-"PO-Revision-Date: 2012-03-14 11:49+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=Network"
+"Manager&keywords=I18N+L10N&component=VPN: fortisslvpn\n"
+"POT-Creation-Date: 2016-03-26 02:24+0000\n"
+"PO-Revision-Date: 2016-03-26 10:40+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
+"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
 
 #. Otherwise, we have no saved password, or the password flags indicated
@@ -31,145 +35,176 @@ msgstr ""
 msgid "Authenticate VPN"
 msgstr "Потврди ВПН"
 
-#: ../auth-dialog/main.c:165 ../properties/nm-fortisslvpn-dialog.ui.h:8
+#: ../auth-dialog/main.c:165 ../properties/nm-fortisslvpn-dialog.ui.h:12
 msgid "Password:"
 msgstr "Лозинка:"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:1
+msgid "SSLVPN Advanced Options"
+msgstr "Напредне опције за ССЛВПН"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:2
+msgid "<b>Security</b>"
+msgstr "<b>Безбедност</b>"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:3
+msgid ""
+"A SHA256 sum of the X509 certificate that will be accepted even if the "
+"certificate is not trusted by a certificate authority."
+msgstr ""
+"SHA256 сума X509 уверења која ће бити прихваћена чак и када уверење није "
+"оверено од стране издавача уверења."
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:4
+msgid "Trusted certificate:"
+msgstr "Поверљиво уверење:"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:5
 msgid "<b>General</b>"
 msgstr "<b>Опште</b>"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:2
+#: ../properties/nm-fortisslvpn-dialog.ui.h:6
 msgid ""
 "SSLVPN server IP or name.\n"
 "config: the first parameter of fortisslvpn"
 msgstr ""
+"ИП или назив ССЛВПН сервера.\n"
+"подешавање: први параметар за „fortisslvpn“"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:4
+#: ../properties/nm-fortisslvpn-dialog.ui.h:8
 msgid "_Gateway:"
 msgstr "_Мрежни пролаз:"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:5
+#: ../properties/nm-fortisslvpn-dialog.ui.h:9
 msgid "<b>Authentication</b>"
 msgstr "<b>Пријава</b>"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:6
+#: ../properties/nm-fortisslvpn-dialog.ui.h:10
 msgid "Show password"
 msgstr "Прикажи лозинку"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:7
+#: ../properties/nm-fortisslvpn-dialog.ui.h:11
 msgid "Password passed to SSLVPN when prompted for it."
-msgstr ""
+msgstr "Лозинка која се прослеђује ССЛВПН-у када је затражи."
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:9
+#: ../properties/nm-fortisslvpn-dialog.ui.h:13
 msgid ""
 "Set the name used for authenticating the local system to the peer to "
 "<name>.\n"
 "config: user <name>"
 msgstr ""
 "Подесите назив коришћен за пријављивање локалног система парљаку на <name>.\n"
-"подешавање: корисник <name>"
-
-#: ../properties/nm-fortisslvpn-dialog.ui.h:11
-msgid "User name:"
-msgstr "Корисничко име:"
-
-#: ../properties/nm-fortisslvpn-dialog.ui.h:12
-#, fuzzy
-msgid "<b>Security</b>"
-msgstr "<b>Опште</b>"
-
-#: ../properties/nm-fortisslvpn-dialog.ui.h:13
-msgid "Trusted certificate:"
-msgstr ""
-
-#: ../properties/nm-fortisslvpn-dialog.ui.h:14
-msgid ""
-"<i>A SHA256 sum of the X509 certificate that will be accepted even if the "
-"certificate is not trusted by a certificate authority</i>"
-msgstr ""
+"подешавање: user <име>"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:15
+msgid "User name:"
+msgstr "Корисник:"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:16
+msgid "CA Certificate:"
+msgstr "Уверење издавача уверења:"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:17
+#| msgid "User name:"
+msgid "User Key:"
+msgstr "Кориснички кључ:"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:18
+msgid "User Certificate:"
+msgstr "Корисничко уверење:"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:19
+msgid "A_dvanced..."
+msgstr "_Напредно..."
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:20
 msgid "Default"
 msgstr "Основно"
 
 #: ../properties/nm-fortisslvpn.c:48
 msgid "Fortinet SSLVPN"
-msgstr ""
+msgstr "Фортинет ССЛВПН"
 
 #: ../properties/nm-fortisslvpn.c:49
 msgid "Compatible with Fortinet SSLVPN servers."
-msgstr ""
+msgstr "Сагласно са Фортинет ССЛВПН серверима."
 
-#: ../src/nm-fortisslvpn-service.c:132
+#: ../src/nm-fortisslvpn-service.c:134
 msgid "Could not find secrets (connection invalid, no vpn setting)."
 msgstr "Не могу да пронађем тајне (веза је неисправна, нема впн подешавања)."
 
-#: ../src/nm-fortisslvpn-service.c:144
-msgid "Invalid VPN username."
-msgstr "Неисправно ВПН корисничко име."
-
-#: ../src/nm-fortisslvpn-service.c:153
+#: ../src/nm-fortisslvpn-service.c:146
 msgid "Missing VPN username."
 msgstr "Недостаје ВПН корисничко име."
 
-#: ../src/nm-fortisslvpn-service.c:163
+#: ../src/nm-fortisslvpn-service.c:156
 msgid "Missing or invalid VPN password."
 msgstr "Недостаје или је неисправна ВПН лозинка."
 
-#: ../src/nm-fortisslvpn-service.c:387
+#: ../src/nm-fortisslvpn-service.c:412
 #, c-format
 msgid "invalid gateway '%s'"
 msgstr "неисправан мрежни пролаз „%s“"
 
-#: ../src/nm-fortisslvpn-service.c:401
+#: ../src/nm-fortisslvpn-service.c:420
+#, c-format
+#| msgid "invalid integer property '%s'"
+msgid "invalid certificate authority '%s'"
+msgstr "неисправан издавач уверења „%s“"
+
+#: ../src/nm-fortisslvpn-service.c:434
 #, c-format
 msgid "invalid integer property '%s'"
 msgstr "неисправно својство целог броја „%s“"
 
-#: ../src/nm-fortisslvpn-service.c:411
+#: ../src/nm-fortisslvpn-service.c:444
 #, c-format
 msgid "invalid boolean property '%s' (not yes or no)"
 msgstr "неисправно логичко својство „%s“ (није „да“ или „не“)"
 
-#: ../src/nm-fortisslvpn-service.c:418
+#: ../src/nm-fortisslvpn-service.c:451
 #, c-format
 msgid "unhandled property '%s' type %s"
 msgstr "неруковано својство „%s“ врсте %s"
 
-#: ../src/nm-fortisslvpn-service.c:429
+#: ../src/nm-fortisslvpn-service.c:462
 #, c-format
 msgid "property '%s' invalid or not supported"
 msgstr "својство „%s“ је неисправно или није подржано"
 
-#: ../src/nm-fortisslvpn-service.c:446
+#: ../src/nm-fortisslvpn-service.c:479
 msgid "No VPN configuration options."
 msgstr "Нема опција за ВПН подешавање."
 
-#: ../src/nm-fortisslvpn-service.c:466
+#: ../src/nm-fortisslvpn-service.c:499
 #, c-format
 msgid "Missing required option '%s'."
 msgstr "Недостаје затражена опција „%s“."
 
-#: ../src/nm-fortisslvpn-service.c:486
+#: ../src/nm-fortisslvpn-service.c:519
 msgid "No VPN secrets!"
 msgstr "Нема ВПН тајни!"
 
-#: ../src/nm-fortisslvpn-service.c:589
+#: ../src/nm-fortisslvpn-service.c:640
 msgid "Could not find the openfortivpn binary."
-msgstr ""
+msgstr "Не могу да нађем извршни програм за „openfortivpn“."
 
-#: ../src/nm-fortisslvpn-service.c:897
+#: ../src/nm-fortisslvpn-service.c:956
 msgid "Don't quit when VPN connection terminates"
 msgstr "Не прекида када се завршава ВПН веза"
 
-#: ../src/nm-fortisslvpn-service.c:898
+#: ../src/nm-fortisslvpn-service.c:957
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr ""
 "Укључује опширно записивање зарад исправљања грешака (може да изложи лозинке)"
 
-#: ../src/nm-fortisslvpn-service.c:921
+#: ../src/nm-fortisslvpn-service.c:980
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
 msgstr ""
+"нм-фортисслвпн-услуга обезбеђује Управнику мреже обједињену могућност ССЛВПН-"
+"а (сагласну са Фортинетом)"
+
+#~ msgid "Invalid VPN username."
+#~ msgstr "Неисправно ВПН корисничко име."
