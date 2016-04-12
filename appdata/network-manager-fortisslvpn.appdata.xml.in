@@ -20,9 +20,9 @@
     <keyword>SSLVPN</keyword>
   </keywords>
 
-  <_description>
-    <p>Support for configuring Fortinet SSLVPN virtual private network connections.</p>
-  </_description>
+  <description>
+    <_p>Support for configuring Fortinet SSLVPN virtual private network connections.</_p>
+  </description>
 
   <screenshots>
     <screenshot type="default">
