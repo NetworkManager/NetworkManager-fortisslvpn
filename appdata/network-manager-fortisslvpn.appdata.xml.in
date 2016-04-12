@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright Lubomir Rintel 2016 -->
 <component type="addon">
   <id>network-manager-fortisslvpn</id>
   <project_license>GPL-2.0+</project_license>
@@ -8,7 +9,6 @@
   <_name>Fortinet SSLVPN client</_name>
   <_summary>Client for Fortinet SSLVPN virtual private networks</_summary>
 
-  <icon type="stock">preferences-system-network</icon>
   <keywords>
     <keyword>network</keyword>
     <keyword>manager</keyword>
