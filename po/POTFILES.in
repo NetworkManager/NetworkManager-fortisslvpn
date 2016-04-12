@@ -1,7 +1,7 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
-auth-dialog/main.c
 appdata/network-manager-fortisslvpn.appdata.xml.in
-[type: gettext/glade]properties/nm-fortisslvpn-dialog.ui
+auth-dialog/main.c
 properties/nm-fortisslvpn.c
 src/nm-fortisslvpn-service.c
+[type: gettext/glade]properties/nm-fortisslvpn-dialog.ui
