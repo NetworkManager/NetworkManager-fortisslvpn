@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="addon">
+  <id>network-manager-fortisslvpn</id>
+  <project_license>GPL-2.0+</project_license>
+  <metadata_license>CC0-1.0</metadata_license>
+  <extends>nm-connection-editor.desktop</extends>
+  <extends>gnome-control-center.desktop</extends>
+  <_name>NetworkManager Fortinet SSLVPN</_name>
+  <_summary>Fortinet SSLVPN support for NetworkManager</_summary>
+
+  <description>
+    <p>NetworkManager is a system service for managing and configuring your
+    network connections and devices.</p>
+    <p>The is package enables support for connecting to Fortinet SSLVPN
+    NetworkManager.</p>
+  </description>
+
+  <screenshots>
+    <screenshot type="default">
+      <image width="800" height="578">https://git.gnome.org/browse/network-manager-fortisslvpn/plain/appdata/fortisslvpn.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>The advanced options dialog</caption>
+      <image width="800" height="450">https://git.gnome.org/browse/network-manager-fortisslvpn/plain/appdata/fortisslvpn-advanced.png</image>
+    </screenshot>
+  </screenshots>
+
+  <url type="homepage">https://wiki.gnome.org/Projects/NetworkManager/VPN</url>
+  <url type="bugtracker">https://bugzilla.gnome.org/enter_bug.cgi?product=NetworkManager</url>
+  <update_contact>networkmanager-maint@gnome.bugs</update_contact>
+  <translation type="gettext">NetworkManager-fortisslvpn</translation>
+  <_developer_name>The NetworkManager Developers</_developer_name>
+</component>
