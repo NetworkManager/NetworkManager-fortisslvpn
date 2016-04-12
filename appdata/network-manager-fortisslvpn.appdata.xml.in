@@ -5,15 +5,24 @@
   <metadata_license>CC0-1.0</metadata_license>
   <extends>nm-connection-editor.desktop</extends>
   <extends>gnome-control-center.desktop</extends>
-  <_name>NetworkManager Fortinet SSLVPN</_name>
-  <_summary>Fortinet SSLVPN support for NetworkManager</_summary>
+  <_name>Fortinet SSLVPN client</_name>
+  <_summary>Client for Fortinet SSLVPN virtual private networks</_summary>
 
-  <description>
-    <p>NetworkManager is a system service for managing and configuring your
-    network connections and devices.</p>
-    <p>The is package enables support for connecting to Fortinet SSLVPN
-    NetworkManager.</p>
-  </description>
+  <icon type="stock">preferences-system-network</icon>
+  <keywords>
+    <keyword>network</keyword>
+    <keyword>manager</keyword>
+    <keyword>NetworkManager</keyword>
+    <keyword>connection</keyword>
+    <keyword>VPN</keyword>
+    <keyword>Fortinet</keyword>
+    <keyword>openfortivpn</keyword>
+    <keyword>SSLVPN</keyword>
+  </keywords>
+
+  <_description>
+    <p>Support for configuring Fortinet SSLVPN virtual private network connections.</p>
+  </_description>
 
   <screenshots>
     <screenshot type="default">
