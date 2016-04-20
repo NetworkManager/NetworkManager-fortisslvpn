@@ -28,7 +28,6 @@
 #include <glib-object.h>
 
 #include <NetworkManager.h>
-#include <nm-vpn-service-plugin.h>
 
 #include "nm-fortisslvpn-service-defines.h"
 
