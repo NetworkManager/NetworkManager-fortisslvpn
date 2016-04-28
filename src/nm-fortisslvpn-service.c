@@ -55,7 +55,10 @@ static gboolean debug = FALSE;
 /* The VPN plugin service                               */
 /********************************************************/
 
-G_DEFINE_TYPE (NMFortisslvpnPlugin, nm_fortisslvpn_plugin, NM_TYPE_VPN_SERVICE_PLUGIN)
+static void nm_fortisslvpn_plugin_initable_iface_init (GInitableIface *iface);
+
+G_DEFINE_TYPE_WITH_CODE (NMFortisslvpnPlugin, nm_fortisslvpn_plugin, NM_TYPE_VPN_SERVICE_PLUGIN,
+                         G_IMPLEMENT_INTERFACE (G_TYPE_INITABLE, nm_fortisslvpn_plugin_initable_iface_init));
 
 typedef struct {
 	GPid pid;
@@ -657,6 +660,8 @@ nm_fortisslvpn_plugin_init (NMFortisslvpnPlugin *plugin)
 {
 }
 
+
+
 static void
 nm_fortisslvpn_plugin_class_init (NMFortisslvpnPluginClass *fortisslvpn_class)
 {
@@ -672,47 +677,63 @@ nm_fortisslvpn_plugin_class_init (NMFortisslvpnPluginClass *fortisslvpn_class)
 	parent_class->disconnect = real_disconnect;
 }
 
-NMFortisslvpnPlugin *
-nm_fortisslvpn_plugin_new (const char *bus_name)
+static GInitableIface *ginitable_parent_iface = NULL;
+
+static gboolean
+init_sync (GInitable *object, GCancellable *cancellable, GError **error)
 {
-	NMFortisslvpnPlugin *plugin;
-	NMFortisslvpnPluginPrivate *priv;
+	NMFortisslvpnPluginPrivate *priv = NM_FORTISSLVPN_PLUGIN_GET_PRIVATE (object);
 	GDBusConnection *connection;
-	GError *error = NULL;
 
-	plugin = (NMFortisslvpnPlugin *) g_initable_new (NM_TYPE_FORTISSLVPN_PLUGIN, NULL, &error,
-	                                                 NM_VPN_SERVICE_PLUGIN_DBUS_SERVICE_NAME, bus_name,
-	                                                 NM_VPN_SERVICE_PLUGIN_DBUS_WATCH_PEER, !debug,
-	                                                 NULL);
-	if (plugin) {
-		g_signal_connect (G_OBJECT (plugin), "state-changed", G_CALLBACK (state_changed_cb), NULL);
-	} else {
-		g_warning ("Failed to initialize a plugin instance: %s", error->message);
-		g_error_free (error);
-	}
+	if (!ginitable_parent_iface->init (object, cancellable, error))
+		return FALSE;
 
-	connection = nm_vpn_service_plugin_get_connection (NM_VPN_SERVICE_PLUGIN (plugin)),
-	priv = NM_FORTISSLVPN_PLUGIN_GET_PRIVATE (plugin);
+	g_signal_connect (G_OBJECT (object), "state-changed", G_CALLBACK (state_changed_cb), NULL);
+
+	connection = nm_vpn_service_plugin_get_connection (NM_VPN_SERVICE_PLUGIN (object)),
 	priv->dbus_skeleton = nmdbus_fortisslvpn_ppp_skeleton_new ();
 	if (!g_dbus_interface_skeleton_export (G_DBUS_INTERFACE_SKELETON (priv->dbus_skeleton),
 	                                       connection,
 	                                       NM_DBUS_PATH_FORTISSLVPN_PPP,
-	                                       &error)) {
-		g_warning ("Failed to export helper interface: %s", error->message);
-		g_error_free (error);
-		g_clear_object (&plugin);
-		goto out;
+	                                       error)) {
+		g_prefix_error (error, "Failed to export helper interface: ");
+		g_object_unref (connection);
+		return FALSE;
 	}
 
 	g_dbus_connection_register_object (connection, NM_VPN_DBUS_PLUGIN_PATH,
 	                                   nmdbus_fortisslvpn_ppp_interface_info (),
 	                                   NULL, NULL, NULL, NULL);
 
-	g_signal_connect (priv->dbus_skeleton, "handle-set-state", G_CALLBACK (handle_set_state), plugin);
-	g_signal_connect (priv->dbus_skeleton, "handle-set-ip4-config", G_CALLBACK (handle_set_ip4_config), plugin);
+	g_signal_connect (priv->dbus_skeleton, "handle-set-state", G_CALLBACK (handle_set_state), object);
+	g_signal_connect (priv->dbus_skeleton, "handle-set-ip4-config", G_CALLBACK (handle_set_ip4_config), object);
 
-out:
-	g_clear_object (&connection);
+	g_object_unref (connection);
+	return TRUE;
+}
+
+static void
+nm_fortisslvpn_plugin_initable_iface_init (GInitableIface *iface)
+{
+	ginitable_parent_iface = g_type_interface_peek_parent (iface);
+	iface->init = init_sync;
+}
+
+NMFortisslvpnPlugin *
+nm_fortisslvpn_plugin_new (const char *bus_name)
+{
+	NMFortisslvpnPlugin *plugin;
+	GError *error = NULL;
+
+	plugin = (NMFortisslvpnPlugin *) g_initable_new (NM_TYPE_FORTISSLVPN_PLUGIN, NULL, &error,
+	                                                 NM_VPN_SERVICE_PLUGIN_DBUS_SERVICE_NAME, bus_name,
+	                                                 NM_VPN_SERVICE_PLUGIN_DBUS_WATCH_PEER, !debug,
+	                                                 NULL);
+	if (!plugin) {
+		g_warning ("Failed to initialize a plugin instance: %s", error->message);
+		g_error_free (error);
+	}
+
 	return plugin;
 }
 
