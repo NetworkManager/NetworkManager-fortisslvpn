@@ -660,8 +660,6 @@ nm_fortisslvpn_plugin_init (NMFortisslvpnPlugin *plugin)
 {
 }
 
-
-
 static void
 nm_fortisslvpn_plugin_class_init (NMFortisslvpnPluginClass *fortisslvpn_class)
 {
@@ -701,7 +699,7 @@ init_sync (GInitable *object, GCancellable *cancellable, GError **error)
 		return FALSE;
 	}
 
-	g_dbus_connection_register_object (connection, NM_VPN_DBUS_PLUGIN_PATH,
+	g_dbus_connection_register_object (connection, NM_DBUS_PATH_FORTISSLVPN_PPP,
 	                                   nmdbus_fortisslvpn_ppp_interface_info (),
 	                                   NULL, NULL, NULL, NULL);
 
