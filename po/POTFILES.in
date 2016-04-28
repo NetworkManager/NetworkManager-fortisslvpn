@@ -1,6 +1,6 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
-appdata/network-manager-fortisslvpn.appdata.xml.in
+appdata/network-manager-fortisslvpn.metainfo.xml.in
 auth-dialog/main.c
 properties/nm-fortisslvpn.c
 src/nm-fortisslvpn-service.c
