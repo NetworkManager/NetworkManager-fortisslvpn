@@ -1,3 +1,14 @@
+=========================================================
+NetworkManager-fortisslvpn-1.2.2
+Overview of changes since NetworkManager-fortisslvpn-1.2
+=========================================================
+
+This is a new stable release of NetworkManager-fortisslvpn.  Notable changes include:
+
+* Use a proper name for the AppStream metadata
+* Updated Italian, Hungarian and German translations
+
+
 =======================================================
 NetworkManager-fortisslvpn-1.2
 Overview of changes since network-manager-fortisslvpn-1.0.0
