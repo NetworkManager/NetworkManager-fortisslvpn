@@ -4,15 +4,15 @@
 #
 # Jakub Friedl <jfriedl@suse.cz>, 2006.
 # Jiří Eischmann <jiri@eischmann.cz>, 2008.
-# Zdeněk Hataš <zdenek.hatas@gmail.com>, 2009 - 2015.
+# Zdeněk Hataš <zdenek.hatas@gmail.com>, 2009 - 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=NetworkManager&keywords=I18N+L10N&component=VPN: fortisslvpn\n"
-"POT-Creation-Date: 2015-10-25 18:56+0000\n"
-"PO-Revision-Date: 2015-12-01 17:09+0100\n"
+"POT-Creation-Date: 2016-04-12 19:49+0000\n"
+"PO-Revision-Date: 2016-04-21 10:53+0100\n"
 "Last-Translator: Zdeněk Hataš <zdenek.hatas@gmail.com>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -20,7 +20,25 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 1.7.5\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: ../appdata/network-manager-fortisslvpn.appdata.xml.in.h:1
+#| msgid "Fortinet SSLVPN"
+msgid "Fortinet SSLVPN client"
+msgstr "Klient Fortinet SSLVPN"
+
+#: ../appdata/network-manager-fortisslvpn.appdata.xml.in.h:2
+msgid "Client for Fortinet SSLVPN virtual private networks"
+msgstr "Klient pro Fortinet SSLVPN sítě"
+
+#: ../appdata/network-manager-fortisslvpn.appdata.xml.in.h:3
+msgid ""
+"Support for configuring Fortinet SSLVPN virtual private network connections."
+msgstr "Podpora konfigurace připojení Fortinet SSLVPN."
+
+#: ../appdata/network-manager-fortisslvpn.appdata.xml.in.h:4
+msgid "The NetworkManager Developers"
+msgstr "Vývojáři aplikace NetworkManager"
 
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
@@ -37,86 +55,6 @@ msgstr "Autentizovat VPN"
 #: ../auth-dialog/main.c:165 ../properties/nm-fortisslvpn-dialog.ui.h:12
 msgid "Password:"
 msgstr "Heslo:"
-
-#: ../properties/nm-fortisslvpn-dialog.ui.h:1
-msgid "SSLVPN Advanced Options"
-msgstr "Pokročilé volby SSLVPN"
-
-#: ../properties/nm-fortisslvpn-dialog.ui.h:2
-msgid "<b>Security</b>"
-msgstr "<b>Zabezpečení</b>"
-
-#: ../properties/nm-fortisslvpn-dialog.ui.h:3
-msgid ""
-"A SHA256 sum of the X509 certificate that will be accepted even if the certificate is not "
-"trusted by a certificate authority."
-msgstr ""
-"Součet SHA256 certifikátu X509, který bude přijat i v případě, že certifikát není pro "
-"certifikační autoritu důvěryhodný."
-
-#: ../properties/nm-fortisslvpn-dialog.ui.h:4
-msgid "Trusted certificate:"
-msgstr "Důvěryhodný certifikát:"
-
-#: ../properties/nm-fortisslvpn-dialog.ui.h:5
-msgid "<b>General</b>"
-msgstr "<b>Obecné</b>"
-
-#: ../properties/nm-fortisslvpn-dialog.ui.h:6
-msgid ""
-"SSLVPN server IP or name.\n"
-"config: the first parameter of fortisslvpn"
-msgstr ""
-"Název nebo IP serveru SSLVPN.\n"
-"config: první parametr pro fortisslvpn"
-
-#: ../properties/nm-fortisslvpn-dialog.ui.h:8
-msgid "_Gateway:"
-msgstr "_Brána:"
-
-#: ../properties/nm-fortisslvpn-dialog.ui.h:9
-msgid "<b>Authentication</b>"
-msgstr "<b>Autentizace</b>"
-
-#: ../properties/nm-fortisslvpn-dialog.ui.h:10
-msgid "Show password"
-msgstr "Zobrazit heslo"
-
-#: ../properties/nm-fortisslvpn-dialog.ui.h:11
-msgid "Password passed to SSLVPN when prompted for it."
-msgstr "Heslo poskytnuté SSLVPN, pokud o něj požádá."
-
-#: ../properties/nm-fortisslvpn-dialog.ui.h:13
-msgid ""
-"Set the name used for authenticating the local system to the peer to <name>.\n"
-"config: user <name>"
-msgstr ""
-"Nastavit jméno použité pro ověření lokálního systému vůči protějšku na <název>.\n"
-"config: user <název>"
-
-#: ../properties/nm-fortisslvpn-dialog.ui.h:15
-msgid "User name:"
-msgstr "Uživatelské jméno:"
-
-#: ../properties/nm-fortisslvpn-dialog.ui.h:16
-msgid "CA Certificate:"
-msgstr "Certifikát CA:"
-
-#: ../properties/nm-fortisslvpn-dialog.ui.h:17
-msgid "User Key:"
-msgstr "Uživatelský klíč:"
-
-#: ../properties/nm-fortisslvpn-dialog.ui.h:18
-msgid "User Certificate:"
-msgstr "Uživatelský certifikát:"
-
-#: ../properties/nm-fortisslvpn-dialog.ui.h:19
-msgid "A_dvanced..."
-msgstr "Po_kročilé…"
-
-#: ../properties/nm-fortisslvpn-dialog.ui.h:20
-msgid "Default"
-msgstr "Výchozí"
 
 #: ../properties/nm-fortisslvpn.c:64
 msgid "Fortinet SSLVPN"
@@ -173,30 +111,112 @@ msgstr "Žádná hesla VPN!"
 msgid "Could not find the openfortivpn binary."
 msgstr "Nelze nalézt program openfortivpn."
 
-#: ../src/nm-fortisslvpn-service.c:509
+#: ../src/nm-fortisslvpn-service.c:510
 msgid "Missing VPN username."
 msgstr "Chybí jméno uživatele VPN."
 
-#: ../src/nm-fortisslvpn-service.c:519
+#: ../src/nm-fortisslvpn-service.c:520
 msgid "Missing or invalid VPN password."
 msgstr "Chybějící nebo neplatné heslo VPN."
 
-#: ../src/nm-fortisslvpn-service.c:733
+#: ../src/nm-fortisslvpn-service.c:735
 msgid "Don't quit when VPN connection terminates"
 msgstr "Neukončovat při uzavření spojení VPN"
 
-#: ../src/nm-fortisslvpn-service.c:734
+#: ../src/nm-fortisslvpn-service.c:736
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr "Povolit podrobný ladicí výpis (může prozradit hesla)"
 
-#: ../src/nm-fortisslvpn-service.c:735
+#: ../src/nm-fortisslvpn-service.c:737
 msgid "D-Bus name to use for this instance"
 msgstr "Název použitý pro tuto instanci v D-Bus"
 
-#: ../src/nm-fortisslvpn-service.c:758
+#: ../src/nm-fortisslvpn-service.c:760
 msgid ""
-"nm-fortisslvpn-service provides integrated SSLVPN capability (compatible with Fortinet) "
-"to NetworkManager."
+"nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
+"with Fortinet) to NetworkManager."
 msgstr ""
-"Modul nm-fortisslvpn-service poskytuje integraci SSLVPN (kompatibilní s Fortinet) pro "
-"NetworkManager."
+"Modul nm-fortisslvpn-service poskytuje integraci SSLVPN (kompatibilní s "
+"Fortinet) pro NetworkManager."
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:1
+msgid "SSLVPN Advanced Options"
+msgstr "Pokročilé volby SSLVPN"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:2
+msgid "<b>Security</b>"
+msgstr "<b>Zabezpečení</b>"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:3
+msgid ""
+"A SHA256 sum of the X509 certificate that will be accepted even if the "
+"certificate is not trusted by a certificate authority."
+msgstr ""
+"Součet SHA256 certifikátu X509, který bude přijat i v případě, že certifikát "
+"není pro certifikační autoritu důvěryhodný."
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:4
+msgid "Trusted certificate:"
+msgstr "Důvěryhodný certifikát:"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:5
+msgid "<b>General</b>"
+msgstr "<b>Obecné</b>"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:6
+msgid ""
+"SSLVPN server IP or name.\n"
+"config: the first parameter of fortisslvpn"
+msgstr ""
+"Název nebo IP serveru SSLVPN.\n"
+"config: první parametr pro fortisslvpn"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:8
+msgid "_Gateway:"
+msgstr "_Brána:"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:9
+msgid "<b>Authentication</b>"
+msgstr "<b>Autentizace</b>"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:10
+msgid "Show password"
+msgstr "Zobrazit heslo"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:11
+msgid "Password passed to SSLVPN when prompted for it."
+msgstr "Heslo poskytnuté SSLVPN, pokud o něj požádá."
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:13
+msgid ""
+"Set the name used for authenticating the local system to the peer to "
+"<name>.\n"
+"config: user <name>"
+msgstr ""
+"Nastavit jméno použité pro ověření lokálního systému vůči protějšku na "
+"<název>.\n"
+"config: user <název>"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:15
+msgid "User name:"
+msgstr "Uživatelské jméno:"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:16
+msgid "CA Certificate:"
+msgstr "Certifikát CA:"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:17
+msgid "User Key:"
+msgstr "Uživatelský klíč:"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:18
+msgid "User Certificate:"
+msgstr "Uživatelský certifikát:"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:19
+msgid "A_dvanced..."
+msgstr "Po_kročilé…"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:20
+msgid "Default"
+msgstr "Výchozí"
