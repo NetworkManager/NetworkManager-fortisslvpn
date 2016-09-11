@@ -27,7 +27,7 @@ msgstr "Client Fortinet SSLVPN"
 
 #: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:2
 msgid "Client for Fortinet SSLVPN virtual private networks"
-msgstr "Client per a xarxers privades virtuals Fortinet SSLVPN"
+msgstr "Client per a xarxes privades virtuals Fortinet SSLVPN"
 
 #: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:3
 msgid ""
@@ -68,12 +68,12 @@ msgstr "Compatible amb servidors Fortinet SSLVPN."
 #: ../src/nm-fortisslvpn-service.c:171
 #, c-format
 msgid "invalid gateway '%s'"
-msgstr "Pasarel·la «%s» no vàlida"
+msgstr "Passarel·la «%s» no vàlida"
 
 #: ../src/nm-fortisslvpn-service.c:179
 #, c-format
 msgid "invalid certificate authority '%s'"
-msgstr "Autoritat de certificats «%s» no válida"
+msgstr "Autoritat de certificats «%s» no vàlida"
 
 #: ../src/nm-fortisslvpn-service.c:193
 #, c-format
@@ -118,7 +118,7 @@ msgstr "Falta el nom d'usuari del VPN."
 
 #: ../src/nm-fortisslvpn-service.c:523
 msgid "Missing or invalid VPN password."
-msgstr "Falta la contrasenya del VPN o no és valida."
+msgstr "Falta la contrasenya del VPN o no és vàlida."
 
 #: ../src/nm-fortisslvpn-service.c:754
 msgid "Don't quit when VPN connection terminates"
