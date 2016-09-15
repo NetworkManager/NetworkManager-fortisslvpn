@@ -34,7 +34,7 @@
 #include <string.h>
 #include <gtk/gtk.h>
 
-#ifdef NM_OPENVPN_OLD
+#ifdef NM_VPN_OLD
 
 #define NM_VPN_LIBNM_COMPAT
 #include <nm-vpn-plugin-ui-interface.h>
@@ -48,7 +48,7 @@
 
 #define nm_simple_connection_new nm_connection_new
 
-#else /* !NM_OPENVPN_OLD */
+#else /* !NM_VPN_OLD */
 
 #include <NetworkManager.h>
 #include <nma-ui-utils.h>

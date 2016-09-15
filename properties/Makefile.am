@@ -28,7 +28,7 @@ libnm_vpn_plugin_fortisslvpn_la_CFLAGS = \
 	$(common_CFLAGS)
 
 libnm_fortisslvpn_properties_la_CFLAGS = \
-	-DNM_OPENVPN_OLD \
+	-DNM_VPN_OLD \
 	$(LIBNM_GLIB_CFLAGS) \
 	$(LIBNM_GTK_CFLAGS) \
 	$(common_CFLAGS)
