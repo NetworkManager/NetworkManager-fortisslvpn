@@ -6,4 +6,6 @@ EXTRA_DIST = \
 	nm-utils/nm-shared-utils.c \
 	nm-utils/nm-shared-utils.h \
 	nm-utils/nm-vpn-plugin-macros.h \
+	nm-default.h \
+	nm-service-defines.h \
 	$(NULL)

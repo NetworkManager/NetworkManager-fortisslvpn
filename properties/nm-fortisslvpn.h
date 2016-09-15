@@ -23,8 +23,6 @@
 #ifndef _NM_FORTISSLVPN_H_
 #define _NM_FORTISSLVPN_H_
 
-#include <glib-object.h>
-
 #define FORTISSLVPN_TYPE_EDITOR_PLUGIN            (fortisslvpn_editor_plugin_get_type ())
 #define FORTISSLVPN_EDITOR_PLUGIN(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), FORTISSLVPN_TYPE_EDITOR_PLUGIN, FortisslvpnEditorPlugin))
 #define FORTISSLVPN_EDITOR_PLUGIN_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), FORTISSLVPN_TYPE_EDITOR_PLUGIN, FortisslvpnEditorPluginClass))
@@ -66,5 +64,5 @@ struct _FortisslvpnEditorClass {
 
 GType fortisslvpn_editor_get_type (void);
 
-#endif	/* _NM_FORTISSLVPN_H_ */
+#endif /* _NM_FORTISSLVPN_H_ */
 

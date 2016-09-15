@@ -6,7 +6,8 @@ install-data-hook:
 AM_CPPFLAGS = \
 	$(GLIB_CFLAGS) \
 	$(LIBNM_CFLAGS) \
-	-I$(top_srcdir) \
+	"-I$(top_srcdir)/" \
+	"-I$(top_srcdir)/shared/" \
 	-DNM_FORTISSLVPN_LOCALEDIR=\"$(datadir)/locale\" \
 	-DNM_FORTISSLVPN_STATEDIR=\"$(fortisslvpn_statedir)\" \
 	-DPLUGINDIR=\"$(PPPD_PLUGIN_DIR)\"
@@ -14,8 +15,8 @@ AM_CPPFLAGS = \
 libexec_PROGRAMS = nm-fortisslvpn-service
 
 nm_fortisslvpn_service_SOURCES = \
+	$(top_srcdir)/shared/nm-service-defines.h \
 	nm-fortisslvpn-service.c \
-	nm-fortisslvpn-service-defines.h \
 	nm-fortisslvpn-service.h
 
 # D-Bus stuff
@@ -51,7 +52,10 @@ nm_fortisslvpn_pppd_plugin_la_SOURCES = \
 
 nm_fortisslvpn_pppd_plugin_la_CPPFLAGS = \
 	$(GLIB_CFLAGS) \
-	$(LIBNM_CFLAGS)
+	$(LIBNM_CFLAGS) \
+	"-I$(top_srcdir)/" \
+	"-I$(top_srcdir)/shared/" \
+	$(NULL)
 
 nm_fortisslvpn_pppd_plugin_la_LDFLAGS = -module -avoid-version
 

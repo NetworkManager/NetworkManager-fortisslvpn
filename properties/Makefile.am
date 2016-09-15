@@ -5,49 +5,70 @@ if WITH_LIBNM_GLIB
 plugin_LTLIBRARIES += libnm-fortisslvpn-properties.la
 endif
 
-libnm_vpn_plugin_fortisslvpn_la_SOURCES = \
+shared_sources = \
+	$(top_srcdir)/shared/nm-service-defines.h \
+	$(NULL)
+
+plugin_sources = \
 	nm-fortisslvpn.c \
 	nm-fortisslvpn.h
-
-libnm_fortisslvpn_properties_la_SOURCES = \
-	$(libnm_vpn_plugin_fortisslvpn_la_SOURCES)
 
 uidir = $(datadir)/gnome-vpn-properties/fortisslvpn
 ui_DATA = nm-fortisslvpn-dialog.ui
 
 common_CFLAGS = \
 	$(GLIB_CFLAGS) \
-	$(GTK_CFLAGS) \
-	-I$(top_srcdir) \
+	"-I$(top_srcdir)/" \
+	"-I$(top_srcdir)/shared/" \
 	-DUIDIR=\""$(uidir)"\" \
 	-DLOCALEDIR=\""$(datadir)/locale"\"
 
+###############################################################################
+
+libnm_vpn_plugin_fortisslvpn_la_SOURCES = \
+	$(shared_sources) \
+	$(plugin_sources)
+
 libnm_vpn_plugin_fortisslvpn_la_CFLAGS = \
+	-DNETWORKMANAGER_COMPILATION=NM_NETWORKMANAGER_COMPILATION_LIB \
+	$(common_CFLAGS) \
+	$(GTK_CFLAGS) \
 	$(LIBNM_CFLAGS) \
 	$(LIBNMA_CFLAGS) \
-	$(common_CFLAGS)
-
-libnm_fortisslvpn_properties_la_CFLAGS = \
-	-DNM_VPN_OLD \
-	$(LIBNM_GLIB_CFLAGS) \
-	$(LIBNM_GTK_CFLAGS) \
-	$(common_CFLAGS)
+	$(NULL)
 
 libnm_vpn_plugin_fortisslvpn_la_LIBADD = \
 	$(GTK_LIBS) \
 	$(LIBNM_LIBS) \
 	$(LIBNMA_LIBS)
 
+libnm_vpn_plugin_fortisslvpn_la_LDFLAGS = \
+	-avoid-version
+
+###############################################################################
+
+libnm_fortisslvpn_properties_la_SOURCES = \
+	$(shared_sources) \
+	$(plugin_sources)
+
+libnm_fortisslvpn_properties_la_CFLAGS = \
+	-DNM_VPN_OLD \
+	-DNETWORKMANAGER_COMPILATION=NM_NETWORKMANAGER_COMPILATION_LIB \
+	$(common_CFLAGS) \
+	$(GTK_CFLAGS) \
+	$(LIBNM_GLIB_CFLAGS) \
+	$(LIBNM_GTK_CFLAGS) \
+	$(NULL)
+
 libnm_fortisslvpn_properties_la_LIBADD = \
 	$(GTK_LIBS) \
 	$(LIBNM_GLIB_LIBS) \
 	$(LIBNM_GTK_LIBS)
 
-libnm_vpn_plugin_fortisslvpn_la_LDFLAGS = \
+libnm_fortisslvpn_properties_la_LDFLAGS = \
 	-avoid-version
 
-libnm_fortisslvpn_properties_la_LDFLAGS = \
-	$(libnm_vpn_plugin_fortisslvpn_la_LDFLAGS)
+###############################################################################
 
 CLEANFILES = *.bak *~
 

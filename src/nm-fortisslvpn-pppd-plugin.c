@@ -20,22 +20,25 @@
  *
  */
 
-#include <string.h>
+#define ___CONFIG_H__
+#include <config.h>
+
 #include <pppd/pppd.h>
 #include <pppd/fsm.h>
 #include <pppd/ipcp.h>
+
+#include "nm-default.h"
+
+#include <string.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <dlfcn.h>
-#include <glib.h>
 #include <stdlib.h>
 
 #include "nm-fortisslvpn-pppd-service-dbus.h"
 #include "nm-fortisslvpn-service.h"
 #include "nm-ppp-status.h"
-
-#include <nm-utils.h>
 
 int plugin_init (void);
 
@@ -297,9 +300,7 @@ plugin_init (void)
 	GError *err = NULL;
 	const char *bus_name;
 
-#if !GLIB_CHECK_VERSION (2, 35, 0)
-	g_type_init ();
-#endif
+	nm_g_type_init ();
 
 	bus_name = getenv ("NM_DBUS_SERVICE_FORTISSLVPN");
 	if (!bus_name)

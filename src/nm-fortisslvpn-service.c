@@ -21,9 +21,9 @@
  * (C) Copyright 2015 Lubomir Rintel
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
+#include "nm-default.h"
+
+#include "nm-fortisslvpn-service.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -37,11 +37,8 @@
 #include <locale.h>
 #include <errno.h>
 
-#include <glib.h>
 #include <glib/gstdio.h>
-#include <glib/gi18n.h>
 
-#include "nm-fortisslvpn-service.h"
 #include "nm-ppp-status.h"
 #include "nm-fortisslvpn-pppd-service-dbus.h"
 
@@ -756,9 +753,7 @@ main (int argc, char *argv[])
 		{NULL}
 	};
 
-#if !GLIB_CHECK_VERSION (2, 35, 0)
-	g_type_init ();
-#endif
+	nm_g_type_init ();
 
 	/* locale will be set according to environment LC_* variables */
 	setlocale (LC_ALL, "");
