@@ -1,4 +1,4 @@
-fortisslvpn_statedir = $(sharedstatedir)/$(PACKAGE)
+fortisslvpn_statedir = $(localstatedir)/lib/$(PACKAGE)
 
 install-data-hook:
 	$(mkinstalldirs) -m 0700 $(DESTDIR)$(fortisslvpn_statedir)

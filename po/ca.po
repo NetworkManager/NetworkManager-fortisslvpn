@@ -5,15 +5,14 @@
 # Gil Forcada <gilforcada@guifi.net>, 2006, 2007.
 # David Planella <david.planella@gmail.com>, 2009.
 # Jordi Estrada <jordi.estrada@gmail.com>, 2010.
-# Walter Garcia-Fontes <walter.garcia@upf.edu>, 2015.
+# Walter Garcia-Fontes <walter.garcia@upf.edu>, 2015, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=NetworkManager&keywords=I18N+L10N&component=VPN: fortisslvpn\n"
-"POT-Creation-Date: 2015-12-04 01:50+0000\n"
-"PO-Revision-Date: 2015-12-03 22:12+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-09-07 20:56+0200\n"
+"PO-Revision-Date: 2016-09-06 17:36+0200\n"
 "Last-Translator: Jordi Estrada <jordi.estrada@gmail.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "Language: ca\n"
@@ -22,22 +21,127 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
+#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:1
+msgid "Fortinet SSLVPN client"
+msgstr "Client Fortinet SSLVPN"
+
+#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:2
+msgid "Client for Fortinet SSLVPN virtual private networks"
+msgstr "Client per a xarxes privades virtuals Fortinet SSLVPN"
+
+#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:3
+msgid ""
+"Support for configuring Fortinet SSLVPN virtual private network connections."
+msgstr ""
+"Suport per a la configuració de connexions de xarxes privades virtuals "
+"Fortinet SSLVPN."
+
+#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:4
+msgid "The NetworkManager Developers"
+msgstr "Els desenvolupadors del NewtorkManager"
+
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
 #.
-#: ../auth-dialog/main.c:154
+#: ../auth-dialog/main.c:153
 #, c-format
 msgid "You need to authenticate to access the Virtual Private Network '%s'."
 msgstr ""
 "Cal que us autentiqueu per a poder accedir a la xarxa privada virtual «%s»."
 
-#: ../auth-dialog/main.c:163 ../auth-dialog/main.c:183
+#: ../auth-dialog/main.c:162 ../auth-dialog/main.c:182
 msgid "Authenticate VPN"
 msgstr "Autentica la VPN"
 
-#: ../auth-dialog/main.c:165 ../properties/nm-fortisslvpn-dialog.ui.h:12
+#: ../auth-dialog/main.c:164 ../properties/nm-fortisslvpn-dialog.ui.h:12
 msgid "Password:"
 msgstr "Contrasenya:"
+
+#: ../properties/nm-fortisslvpn.c:64
+msgid "Fortinet SSLVPN"
+msgstr "Fortinet SSLVPN"
+
+#: ../properties/nm-fortisslvpn.c:65
+msgid "Compatible with Fortinet SSLVPN servers."
+msgstr "Compatible amb servidors Fortinet SSLVPN."
+
+#: ../src/nm-fortisslvpn-service.c:171
+#, c-format
+msgid "invalid gateway '%s'"
+msgstr "Passarel·la «%s» no vàlida"
+
+#: ../src/nm-fortisslvpn-service.c:179
+#, c-format
+msgid "invalid certificate authority '%s'"
+msgstr "Autoritat de certificats «%s» no vàlida"
+
+#: ../src/nm-fortisslvpn-service.c:193
+#, c-format
+msgid "invalid integer property '%s'"
+msgstr "Propietat d'enters «%s» no vàlida"
+
+#: ../src/nm-fortisslvpn-service.c:203
+#, c-format
+msgid "invalid boolean property '%s' (not yes or no)"
+msgstr "Propietat booleana «%s» no vàlida (no és sí o no)"
+
+#: ../src/nm-fortisslvpn-service.c:210
+#, c-format
+msgid "unhandled property '%s' type %s"
+msgstr "Propietat no gestionada «%s» de tipus %s"
+
+#: ../src/nm-fortisslvpn-service.c:221
+#, c-format
+msgid "property '%s' invalid or not supported"
+msgstr "la propietat «%s» no és vàlida o no està suportada"
+
+#: ../src/nm-fortisslvpn-service.c:238
+msgid "No VPN configuration options."
+msgstr "No hi ha opcions de configuració VPN."
+
+#: ../src/nm-fortisslvpn-service.c:258
+#, c-format
+msgid "Missing required option '%s'."
+msgstr "Falta l'opció requerida «%s»."
+
+#: ../src/nm-fortisslvpn-service.c:278
+msgid "No VPN secrets!"
+msgstr "No hi ha secrets VPN!"
+
+#: ../src/nm-fortisslvpn-service.c:394
+msgid "Could not find the openfortivpn binary."
+msgstr "No s'ha pogut trobar el binari de l'openfortivpn."
+
+#: ../src/nm-fortisslvpn-service.c:513
+msgid "Missing VPN username."
+msgstr "Falta el nom d'usuari del VPN."
+
+#: ../src/nm-fortisslvpn-service.c:523
+msgid "Missing or invalid VPN password."
+msgstr "Falta la contrasenya del VPN o no és vàlida."
+
+#: ../src/nm-fortisslvpn-service.c:754
+msgid "Don't quit when VPN connection terminates"
+msgstr "No sortiu quan la connexió del VPN es tanca"
+
+#: ../src/nm-fortisslvpn-service.c:755
+msgid "Enable verbose debug logging (may expose passwords)"
+msgstr ""
+"Habilita el registre dels missatges detallats de depuració (potser "
+"s'exposaran les contrasenyes)"
+
+#: ../src/nm-fortisslvpn-service.c:756
+msgid "D-Bus name to use for this instance"
+msgstr "Nom D-Bus a usar per a aquesta instància"
+
+#: ../src/nm-fortisslvpn-service.c:779
+msgid ""
+"nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
+"with Fortinet) to NetworkManager."
+msgstr ""
+"el nm-fotisslvpn-service proveeix la capacitat de SSLVPN integrat "
+"(compatible\n"
+"amb Fortinet) per al NetworkManager."
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:1
 msgid "SSLVPN Advanced Options"
@@ -119,89 +223,3 @@ msgstr "A_vançat..."
 #: ../properties/nm-fortisslvpn-dialog.ui.h:20
 msgid "Default"
 msgstr "Predeterminat"
-
-#: ../properties/nm-fortisslvpn.c:64
-msgid "Fortinet SSLVPN"
-msgstr "Fortinet SSLVPN"
-
-#: ../properties/nm-fortisslvpn.c:65
-msgid "Compatible with Fortinet SSLVPN servers."
-msgstr "Compatible amb servidors Fortinet SSLVPN."
-
-#: ../src/nm-fortisslvpn-service.c:168
-#, c-format
-msgid "invalid gateway '%s'"
-msgstr "Pasarel·la «%s» no vàlida"
-
-#: ../src/nm-fortisslvpn-service.c:176
-#, c-format
-msgid "invalid certificate authority '%s'"
-msgstr "Autoritat de certificats «%s» no válida"
-
-#: ../src/nm-fortisslvpn-service.c:190
-#, c-format
-msgid "invalid integer property '%s'"
-msgstr "Propietat d'enters «%s» no vàlida"
-
-#: ../src/nm-fortisslvpn-service.c:200
-#, c-format
-msgid "invalid boolean property '%s' (not yes or no)"
-msgstr "Propietat booleana «%s» no vàlida (no és sí o no)"
-
-#: ../src/nm-fortisslvpn-service.c:207
-#, c-format
-msgid "unhandled property '%s' type %s"
-msgstr "Propietat no gestionada «%s» de tipus %s"
-
-#: ../src/nm-fortisslvpn-service.c:218
-#, c-format
-msgid "property '%s' invalid or not supported"
-msgstr "la propietat «%s» no és vàlida o no està suportada"
-
-#: ../src/nm-fortisslvpn-service.c:235
-msgid "No VPN configuration options."
-msgstr "No hi ha opcions de configuració VPN."
-
-#: ../src/nm-fortisslvpn-service.c:255
-#, c-format
-msgid "Missing required option '%s'."
-msgstr "Falta l'opció requerida «%s»."
-
-#: ../src/nm-fortisslvpn-service.c:275
-msgid "No VPN secrets!"
-msgstr "No hi ha secrets VPN!"
-
-#: ../src/nm-fortisslvpn-service.c:391
-msgid "Could not find the openfortivpn binary."
-msgstr "No s'ha pogut trobar el binari de l'openfortivpn."
-
-#: ../src/nm-fortisslvpn-service.c:510
-msgid "Missing VPN username."
-msgstr "Falta el nom d'usuari del VPN."
-
-#: ../src/nm-fortisslvpn-service.c:520
-msgid "Missing or invalid VPN password."
-msgstr "Falta la contrasenya del VPN o no és valida."
-
-#: ../src/nm-fortisslvpn-service.c:734
-msgid "Don't quit when VPN connection terminates"
-msgstr "No sortiu quan la connexió del VPN es tanca"
-
-#: ../src/nm-fortisslvpn-service.c:735
-msgid "Enable verbose debug logging (may expose passwords)"
-msgstr ""
-"Habilita el registre dels missatges detallats de depuració (potser "
-"s'exposaran les contrasenyes)"
-
-#: ../src/nm-fortisslvpn-service.c:736
-msgid "D-Bus name to use for this instance"
-msgstr "Nom D-Bus a usar per a aquesta instància"
-
-#: ../src/nm-fortisslvpn-service.c:759
-msgid ""
-"nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
-"with Fortinet) to NetworkManager."
-msgstr ""
-"el nm-fotisslvpn-service proveeix la capacitat de SSLVPN integrat "
-"(compatible\n"
-"amb Fortinet) per al NetworkManager."

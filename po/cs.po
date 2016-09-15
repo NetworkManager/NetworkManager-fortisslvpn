@@ -8,7 +8,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: NetworkManager-fortisslvpn nm-1.2\n"
+"Project-Id-Version: NetworkManager-fortisslvpn\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=NetworkManager&keywords=I18N+L10N&component=VPN: fortisslvpn\n"
 "POT-Creation-Date: 2016-04-12 19:49+0000\n"
