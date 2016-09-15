@@ -156,7 +156,6 @@ validate_one_property (const char *key, const char *value, gpointer user_data)
 
 	for (i = 0; info->table[i].name; i++) {
 		ValidProperty prop = info->table[i];
-		long int tmp;
 
 		if (strcmp (prop.name, key))
 			continue;
@@ -183,7 +182,7 @@ validate_one_property (const char *key, const char *value, gpointer user_data)
 			return; /* valid */
 		case G_TYPE_UINT:
 			errno = 0;
-			tmp = strtol (value, NULL, 10);
+			(void) strtol (value, NULL, 10);
 			if (errno == 0)
 				return; /* valid */
 
