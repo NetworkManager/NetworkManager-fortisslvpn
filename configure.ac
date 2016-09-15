@@ -106,6 +106,8 @@ fi
 NM_VPN_SERVICE_DIR=`$PKG_CONFIG --define-variable prefix='\${prefix}' --variable vpnservicedir libnm`
 AC_SUBST(NM_VPN_SERVICE_DIR)
 
+NM_COMPILER_WARNINGS
+
 test x"$enable_absolute_paths" = x"yes" && NM_PLUGIN_DIR='$(libdir)/NetworkManager/'
 AC_SUBST(NM_PLUGIN_DIR)
 
