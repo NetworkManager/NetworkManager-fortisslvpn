@@ -43,8 +43,8 @@
 #include <nm-setting-ip4-config.h>
 #include <nm-ui-utils.h>
 
-#define FORTISSLVPN_EDITOR_PLUGIN_ERROR                     NM_SETTING_VPN_ERROR
-#define FORTISSLVPN_EDITOR_PLUGIN_ERROR_INVALID_PROPERTY    NM_SETTING_VPN_ERROR_INVALID_PROPERTY
+#define NMV_EDITOR_PLUGIN_ERROR                     NM_SETTING_VPN_ERROR
+#define NMV_EDITOR_PLUGIN_ERROR_INVALID_PROPERTY    NM_SETTING_VPN_ERROR_INVALID_PROPERTY
 
 #define nm_simple_connection_new nm_connection_new
 
@@ -53,8 +53,8 @@
 #include <NetworkManager.h>
 #include <nma-ui-utils.h>
 
-#define FORTISSLVPN_EDITOR_PLUGIN_ERROR                     NM_CONNECTION_ERROR
-#define FORTISSLVPN_EDITOR_PLUGIN_ERROR_INVALID_PROPERTY    NM_CONNECTION_ERROR_INVALID_PROPERTY
+#define NMV_EDITOR_PLUGIN_ERROR                     NM_CONNECTION_ERROR
+#define NMV_EDITOR_PLUGIN_ERROR_INVALID_PROPERTY    NM_CONNECTION_ERROR_INVALID_PROPERTY
 
 #endif
 
@@ -113,8 +113,8 @@ check_validity (FortisslvpnEditor *self, GError **error)
 	str = gtk_entry_get_text (GTK_ENTRY (widget));
 	if (!str || !strlen (str)) {
 		g_set_error (error,
-		             FORTISSLVPN_EDITOR_PLUGIN_ERROR,
-		             FORTISSLVPN_EDITOR_PLUGIN_ERROR_INVALID_PROPERTY,
+		             NMV_EDITOR_PLUGIN_ERROR,
+		             NMV_EDITOR_PLUGIN_ERROR_INVALID_PROPERTY,
 		             NM_FORTISSLVPN_KEY_GATEWAY);
 		return FALSE;
 	}
@@ -497,7 +497,7 @@ nm_vpn_editor_interface_new (NMConnection *connection, GError **error)
 
 	object = g_object_new (FORTISSLVPN_TYPE_EDITOR, NULL);
 	if (!object) {
-		g_set_error (error, FORTISSLVPN_EDITOR_PLUGIN_ERROR, 0, "could not create fortisslvpn object");
+		g_set_error (error, NMV_EDITOR_PLUGIN_ERROR, 0, "could not create fortisslvpn object");
 		return NULL;
 	}
 
@@ -512,7 +512,7 @@ nm_vpn_editor_interface_new (NMConnection *connection, GError **error)
 		g_warning ("Couldn't load builder file: %s",
 		           error && *error ? (*error)->message : "(unknown)");
 		g_clear_error (error);
-		g_set_error (error, FORTISSLVPN_EDITOR_PLUGIN_ERROR, 0,
+		g_set_error (error, NMV_EDITOR_PLUGIN_ERROR, 0,
 		             "could not load required resources at %s", ui_file);
 		g_free (ui_file);
 		g_object_unref (object);
@@ -522,7 +522,7 @@ nm_vpn_editor_interface_new (NMConnection *connection, GError **error)
 
 	priv->widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "fortisslvpn-vbox"));
 	if (!priv->widget) {
-		g_set_error (error, FORTISSLVPN_EDITOR_PLUGIN_ERROR, 0, "could not load UI widget");
+		g_set_error (error, NMV_EDITOR_PLUGIN_ERROR, 0, "could not load UI widget");
 		g_object_unref (object);
 		return NULL;
 	}
