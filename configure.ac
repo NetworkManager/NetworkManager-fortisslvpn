@@ -51,6 +51,8 @@ AC_PROG_GCC_TRADITIONAL
 AC_FUNC_MEMCMP
 AC_CHECK_FUNCS(select socket uname)
 
+GIT_SHA_RECORD(NM_GIT_SHA)
+
 dnl
 dnl GNOME support
 dnl
