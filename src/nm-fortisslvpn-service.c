@@ -41,6 +41,7 @@
 
 #include "nm-ppp-status.h"
 #include "nm-fortisslvpn-pppd-service-dbus.h"
+#include "nm-utils/nm-vpn-plugin-macros.h"
 
 #if !defined(DIST_VERSION)
 # define DIST_VERSION VERSION
@@ -48,6 +49,7 @@
 
 static struct {
 	gboolean debug;
+	int log_level;
 } gl/*obal*/;
 
 /********************************************************/
@@ -79,6 +81,8 @@ typedef struct {
 	gboolean required;
 } ValidProperty;
 
+/*****************************************************************************/
+
 static ValidProperty valid_properties[] = {
 	{ NM_FORTISSLVPN_KEY_GATEWAY,           G_TYPE_STRING, TRUE },
 	{ NM_FORTISSLVPN_KEY_USER,              G_TYPE_STRING, TRUE },
@@ -94,6 +98,30 @@ static ValidProperty valid_secrets[] = {
 	{ NM_FORTISSLVPN_KEY_PASSWORD,          G_TYPE_STRING, TRUE },
 	{ NULL,                                 G_TYPE_NONE,   FALSE }
 };
+
+/*****************************************************************************/
+
+#define _NMLOG(level, ...) \
+    G_STMT_START { \
+         if (gl.log_level >= (level)) { \
+              g_print ("nm-fortisslvpn[%ld] %-7s " _NM_UTILS_MACRO_FIRST (__VA_ARGS__) "\n", \
+                       (long) getpid (), \
+                       nm_utils_syslog_to_str (level) \
+                       _NM_UTILS_MACRO_REST (__VA_ARGS__)); \
+         } \
+    } G_STMT_END
+
+static gboolean
+_LOGD_enabled (void)
+{
+	return gl.log_level >= LOG_INFO;
+}
+
+#define _LOGD(...) _NMLOG(LOG_INFO,    __VA_ARGS__)
+#define _LOGI(...) _NMLOG(LOG_NOTICE,  __VA_ARGS__)
+#define _LOGW(...) _NMLOG(LOG_WARNING, __VA_ARGS__)
+
+/*****************************************************************************/
 
 static gboolean
 validate_gateway (const char *gateway)
@@ -302,7 +330,7 @@ cleanup_plugin (NMFortisslvpnPlugin *plugin)
 		else
 			kill (priv->pid, SIGKILL);
 
-		g_message ("Terminated ppp daemon with PID %d.", priv->pid);
+		_LOGI ("Terminated ppp daemon with PID %d.", priv->pid);
 		priv->pid = 0;
 	}
 
@@ -323,11 +351,11 @@ openfortivpn_watch_cb (GPid pid, gint status, gpointer user_data)
 	if (WIFEXITED (status))
 		error = WEXITSTATUS (status);
 	else if (WIFSTOPPED (status))
-		g_warning ("openfortivpn stopped unexpectedly with signal %d", WSTOPSIG (status));
+		_LOGW ("openfortivpn stopped unexpectedly with signal %d", WSTOPSIG (status));
 	else if (WIFSIGNALED (status))
-		g_warning ("openfortivpn died with signal %d", WTERMSIG (status));
+		_LOGW ("openfortivpn died with signal %d", WTERMSIG (status));
 	else
-		g_warning ("openfortivpn died from an unknown cause");
+		_LOGW ("openfortivpn died from an unknown cause");
 
 	/* Reap child if needed. */
 	waitpid (priv->pid, NULL, WNOHANG);
@@ -368,7 +396,7 @@ pppd_timed_out (gpointer user_data)
 {
 	NMFortisslvpnPlugin *plugin = NM_FORTISSLVPN_PLUGIN (user_data);
 
-	g_warning ("Looks like pppd didn't initialize our dbus module");
+	_LOGW ("Looks like pppd didn't initialize our dbus module");
 	nm_vpn_service_plugin_failure (NM_VPN_SERVICE_PLUGIN (plugin), NM_VPN_PLUGIN_FAILURE_CONNECT_FAILED);
 
 	return FALSE;
@@ -405,7 +433,7 @@ run_openfortivpn (NMFortisslvpnPlugin *plugin, NMSettingVpn *s_vpn, GError **err
 	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_GATEWAY);
 	g_ptr_array_add (argv, (gpointer) g_strdup (value));
 
-	if (gl.debug)
+	if (_LOGD_enabled ())
 		g_ptr_array_add (argv, (gpointer) g_strdup ("-vvv"));
 
 	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_CA);
@@ -444,7 +472,7 @@ run_openfortivpn (NMFortisslvpnPlugin *plugin, NMSettingVpn *s_vpn, GError **err
 	}
 	g_ptr_array_free (argv, TRUE);
 
-	g_message ("openfortivpn started with pid %d", pid);
+	_LOGI ("openfortivpn started with pid %d", pid);
 
 	priv->pid = pid;
 	g_child_watch_add (pid, openfortivpn_watch_cb, plugin);
@@ -485,7 +513,7 @@ handle_set_ip4_config (NMDBusFortisslvpnPpp *object,
                        GVariant *arg_config,
                        gpointer user_data)
 {
-	g_message ("FORTISSLVPN service (IP Config Get) reply received.");
+	_LOGI ("FORTISSLVPN service (IP Config Get) reply received.");
 
 	remove_timeout_handler (NM_FORTISSLVPN_PLUGIN (user_data));
 	nm_vpn_service_plugin_set_ip4_config (NM_VPN_SERVICE_PLUGIN (user_data), arg_config);
@@ -551,8 +579,10 @@ real_connect (NMVpnServicePlugin *plugin, NMConnection *connection, GError **err
 	g_clear_object (&priv->connection);
 	priv->connection = g_object_ref (connection);
 
-	if (gl.debug)
+	if (_LOGD_enabled ()) {
+		_LOGD ("connection:");
 		nm_connection_dump (connection);
+	}
 
 	/* Create the configuration file so that we don't expose
 	 * secrets on the command line */
@@ -726,7 +756,7 @@ nm_fortisslvpn_plugin_new (const char *bus_name)
 	                                                 NM_VPN_SERVICE_PLUGIN_DBUS_WATCH_PEER, !gl.debug,
 	                                                 NULL);
 	if (!plugin) {
-		g_warning ("Failed to initialize a plugin instance: %s", error->message);
+		_LOGW ("Failed to initialize a plugin instance: %s", error->message);
 		g_error_free (error);
 	}
 
@@ -746,13 +776,14 @@ main (int argc, char *argv[])
 	GMainLoop *main_loop;
 	gboolean persist = FALSE;
 	GOptionContext *opt_ctx = NULL;
-	gchar *bus_name = NM_DBUS_SERVICE_FORTISSLVPN;
+	gs_free char *bus_name_free = NULL;
+	const char *bus_name;
 	GError *error = NULL;
 
 	GOptionEntry options[] = {
 		{ "persist", 0, 0, G_OPTION_ARG_NONE, &persist, N_("Don't quit when VPN connection terminates"), NULL },
 		{ "debug", 0, 0, G_OPTION_ARG_NONE, &gl.debug, N_("Enable verbose debug logging (may expose passwords)"), NULL },
-		{ "bus-name", 0, 0, G_OPTION_ARG_STRING, &bus_name, N_("D-Bus name to use for this instance"), NULL },
+		{ "bus-name", 0, 0, G_OPTION_ARG_STRING, &bus_name_free, N_("D-Bus name to use for this instance"), NULL },
 		{NULL}
 	};
 
@@ -776,21 +807,24 @@ main (int argc, char *argv[])
 	    _("nm-fortisslvpn-service provides integrated SSLVPN capability (compatible with Fortinet) to NetworkManager."));
 
 	if (!g_option_context_parse (opt_ctx, &argc, &argv, &error)) {
-		g_warning ("Error parsing the command line options: %s", error->message);
+		g_printerr ("Error parsing the command line options: %s\n", error->message);
 		g_option_context_free (opt_ctx);
 		g_error_free (error);
 		return EXIT_FAILURE;
 	}
 	g_option_context_free (opt_ctx);
 
+	bus_name = bus_name_free ?: NM_DBUS_SERVICE_FORTISSLVPN;
+
 	if (getenv ("NM_PPP_DEBUG"))
 		gl.debug = TRUE;
 
-	if (gl.debug)
-		g_message ("nm-fortisslvpn-service (version " DIST_VERSION ") starting...");
+	gl.log_level = gl.debug ? LOG_INFO : LOG_NOTICE;
 
-	if (bus_name)
-		setenv ("NM_DBUS_SERVICE_FORTISSLVPN", bus_name, 0);
+	_LOGD ("nm-fortisslvpn-service (version " DIST_VERSION ") starting...");
+	_LOGD ("   uses%s --bus-name \"%s\"", bus_name_free ? "" : " default", bus_name);
+
+	setenv ("NM_DBUS_SERVICE_FORTISSLVPN", bus_name, 0);
 
 	plugin = nm_fortisslvpn_plugin_new (bus_name);
 	if (!plugin)
