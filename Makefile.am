@@ -39,23 +39,23 @@ nm-fortisslvpn-service.name: $(srcdir)/nm-fortisslvpn-service.name.in
 
 DISTCHECK_CONFIGURE_FLAGS = --enable-more-warnings=yes
 
-EXTRA_DIST =				\
-	nm-fortisslvpn-service.name.in	\
-	$(dbusservice_DATA)		\
-	$(desktopfile)			\
-	$(iconfile)			\
-	$(appdata_in_files)		\
-	$(appdata_DATA)			\
-	intltool-extract.in		\
-	intltool-merge.in		\
-	intltool-update.in		\
-	contrib/README			\
-	contrib/fortiserve.pl		\
+EXTRA_DIST = \
+	nm-fortisslvpn-service.name.in \
+	$(dbusservice_DATA) \
+	$(desktopfile) \
+	$(iconfile) \
+	$(appdata_in_files) \
+	$(appdata_DATA) \
+	intltool-extract.in \
+	intltool-merge.in \
+	intltool-update.in \
+	contrib/README \
+	contrib/fortiserve.pl \
 	contrib/sslproxy.pl
 
-CLEANFILES =				\
-	$(nmvpnservice_DATA)		\
-	$(desktop_DATA)			\
+CLEANFILES = \
+	$(nmvpnservice_DATA) \
+	$(desktop_DATA) \
 	$(appdata_DATA)
 
 DISTCLEANFILES = intltool-extract intltool-merge intltool-update
