@@ -29,7 +29,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "nm-fortisslvpn.h"
+#include "nm-fortisslvpn-editor.h"
 
 #define FORTISSLVPN_PLUGIN_NAME    _("Fortinet SSLVPN")
 #define FORTISSLVPN_PLUGIN_DESC    _("Compatible with Fortinet SSLVPN servers.")

@@ -12,8 +12,8 @@ shared_sources = \
 plugin_sources = \
 	nm-fortisslvpn-editor-plugin.c \
 	nm-fortisslvpn-editor-plugin.h \
-	nm-fortisslvpn.c \
-	nm-fortisslvpn.h
+	nm-fortisslvpn-editor.c \
+	nm-fortisslvpn-editor.h
 
 uidir = $(datadir)/gnome-vpn-properties/fortisslvpn
 ui_DATA = nm-fortisslvpn-dialog.ui

@@ -1,6 +1,4 @@
 /***************************************************************************
- * nm-fortisslvpn.h : GNOME UI dialogs for configuring fortisslvpn VPN connections
- *
  * Copyright (C) 2015 Lubomir Rintel <lkundrak@v3.sk>
  * Copyright (C) 2008 Dan Williams, <dcbw@redhat.com>
  *
@@ -17,11 +15,10 @@
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
- *
  **************************************************************************/
 
-#ifndef _NM_FORTISSLVPN_H_
-#define _NM_FORTISSLVPN_H_
+#ifndef __NM_FORTISSLVPN_EDITOR_H__
+#define __NM_FORTISSLVPN_EDITOR_H__
 
 #define FORTISSLVPN_TYPE_EDITOR            (fortisslvpn_editor_get_type ())
 #define FORTISSLVPN_EDITOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), FORTISSLVPN_TYPE_EDITOR, FortisslvpnEditor))
@@ -45,4 +42,4 @@ GType fortisslvpn_editor_get_type (void);
 
 NMVpnEditor *nm_fortisslvpn_editor_new (NMConnection *connection, GError **error);
 
-#endif /* _NM_FORTISSLVPN_H_ */
+#endif /* __NM_FORTISSLVPN_EDITOR_H__ */
