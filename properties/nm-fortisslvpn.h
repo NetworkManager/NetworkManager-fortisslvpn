@@ -23,27 +23,6 @@
 #ifndef _NM_FORTISSLVPN_H_
 #define _NM_FORTISSLVPN_H_
 
-#define FORTISSLVPN_TYPE_EDITOR_PLUGIN            (fortisslvpn_editor_plugin_get_type ())
-#define FORTISSLVPN_EDITOR_PLUGIN(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), FORTISSLVPN_TYPE_EDITOR_PLUGIN, FortisslvpnEditorPlugin))
-#define FORTISSLVPN_EDITOR_PLUGIN_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), FORTISSLVPN_TYPE_EDITOR_PLUGIN, FortisslvpnEditorPluginClass))
-#define FORTISSLVPN_IS_EDITOR_PLUGIN(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), FORTISSLVPN_TYPE_EDITOR_PLUGIN))
-#define FORTISSLVPN_IS_EDITOR_PLUGIN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), FORTISSLVPN_TYPE_EDITOR_PLUGIN))
-#define FORTISSLVPN_EDITOR_PLUGIN_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), FORTISSLVPN_TYPE_EDITOR_PLUGIN, FortisslvpnEditorPluginClass))
-
-typedef struct _FortisslvpnEditorPlugin FortisslvpnEditorPlugin;
-typedef struct _FortisslvpnEditorPluginClass FortisslvpnEditorPluginClass;
-
-struct _FortisslvpnEditorPlugin {
-	GObject parent;
-};
-
-struct _FortisslvpnEditorPluginClass {
-	GObjectClass parent;
-};
-
-GType fortisslvpn_editor_plugin_get_type (void);
-
-
 #define FORTISSLVPN_TYPE_EDITOR            (fortisslvpn_editor_get_type ())
 #define FORTISSLVPN_EDITOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), FORTISSLVPN_TYPE_EDITOR, FortisslvpnEditor))
 #define FORTISSLVPN_EDITOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), FORTISSLVPN_TYPE_EDITOR, FortisslvpnEditorClass))
@@ -64,5 +43,6 @@ struct _FortisslvpnEditorClass {
 
 GType fortisslvpn_editor_get_type (void);
 
-#endif /* _NM_FORTISSLVPN_H_ */
+NMVpnEditor *nm_fortisslvpn_editor_new (NMConnection *connection, GError **error);
 
+#endif /* _NM_FORTISSLVPN_H_ */

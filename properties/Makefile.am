@@ -10,6 +10,8 @@ shared_sources = \
 	$(NULL)
 
 plugin_sources = \
+	nm-fortisslvpn-editor-plugin.c \
+	nm-fortisslvpn-editor-plugin.h \
 	nm-fortisslvpn.c \
 	nm-fortisslvpn.h
 
