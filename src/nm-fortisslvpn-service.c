@@ -48,9 +48,19 @@
 # define DIST_VERSION VERSION
 #endif
 
+/* openfortissl has configurable log-levels via "-v" command line switch.
+ * See levels in "src/log.h" */
+#define OPENFORTISSL_LOG_MUTE           NULL
+#define OPENFORTISSL_LOG_ERROR          "-v"
+#define OPENFORTISSL_LOG_WARN           "-vv"
+#define OPENFORTISSL_LOG_INFO           "-vvv"
+#define OPENFORTISSL_LOG_DEBUG          "-vvvv"
+#define OPENFORTISSL_LOG_DEBUG_PACKETS  "-vvvvv"
+
 static struct {
 	gboolean debug;
 	int log_level;
+	const char *openfortissl_log_level;
 } gl/*obal*/;
 
 /********************************************************/
@@ -434,8 +444,8 @@ run_openfortivpn (NMFortisslvpnPlugin *plugin, NMSettingVpn *s_vpn, GError **err
 	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_GATEWAY);
 	g_ptr_array_add (argv, (gpointer) g_strdup (value));
 
-	if (_LOGD_enabled ())
-		g_ptr_array_add (argv, (gpointer) g_strdup ("-vvv"));
+	if (gl.openfortissl_log_level)
+		g_ptr_array_add (argv, (gpointer) g_strdup (gl.openfortissl_log_level));
 
 	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_CA);
 	if (value) {
@@ -821,8 +831,24 @@ main (int argc, char *argv[])
 		gl.debug = TRUE;
 
 	gl.log_level = _nm_utils_ascii_str_to_int64 (getenv ("NM_VPN_LOG_LEVEL"),
-	                                             10, 0, LOG_DEBUG,
-	                                             gl.debug ? LOG_INFO : LOG_NOTICE);
+	                                             10, 0, LOG_DEBUG, -1);
+	if (gl.log_level < 0)
+		gl.openfortissl_log_level = gl.debug ? OPENFORTISSL_LOG_INFO : OPENFORTISSL_LOG_MUTE;
+	else if (gl.log_level <= 0)
+		gl.openfortissl_log_level = OPENFORTISSL_LOG_MUTE;
+	else if (gl.log_level <= LOG_ERR)
+		gl.openfortissl_log_level = OPENFORTISSL_LOG_ERROR;
+	else if (gl.log_level <= LOG_WARNING)
+		gl.openfortissl_log_level = OPENFORTISSL_LOG_WARN;
+	else if (gl.log_level <= LOG_NOTICE)
+		gl.openfortissl_log_level = OPENFORTISSL_LOG_INFO;
+	else if (gl.log_level <= LOG_INFO)
+		gl.openfortissl_log_level = OPENFORTISSL_LOG_DEBUG;
+	else
+		gl.openfortissl_log_level = OPENFORTISSL_LOG_DEBUG_PACKETS;
+
+	if (gl.log_level < 0)
+		gl.log_level = gl.debug ? LOG_DEBUG : LOG_NOTICE;
 
 	_LOGD ("nm-fortisslvpn-service (version " DIST_VERSION ") starting...");
 	_LOGD ("   uses%s --bus-name \"%s\"", bus_name_free ? "" : " default", bus_name);
