@@ -46,7 +46,9 @@
 # define DIST_VERSION VERSION
 #endif
 
-static gboolean debug = FALSE;
+static struct {
+	gboolean debug;
+} gl/*obal*/;
 
 /********************************************************/
 /* The VPN plugin service                               */
@@ -403,7 +405,7 @@ run_openfortivpn (NMFortisslvpnPlugin *plugin, NMSettingVpn *s_vpn, GError **err
 	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_GATEWAY);
 	g_ptr_array_add (argv, (gpointer) g_strdup (value));
 
-	if (debug)
+	if (gl.debug)
 		g_ptr_array_add (argv, (gpointer) g_strdup ("-vvv"));
 
 	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_CA);
@@ -456,7 +458,7 @@ static void
 remove_timeout_handler (NMFortisslvpnPlugin *plugin)
 {
 	NMFortisslvpnPluginPrivate *priv = NM_FORTISSLVPN_PLUGIN_GET_PRIVATE (plugin);
-	
+
 	if (priv->ppp_timeout_handler) {
 		g_source_remove (priv->ppp_timeout_handler);
 		priv->ppp_timeout_handler = 0;
@@ -549,7 +551,7 @@ real_connect (NMVpnServicePlugin *plugin, NMConnection *connection, GError **err
 	g_clear_object (&priv->connection);
 	priv->connection = g_object_ref (connection);
 
-	if (debug)
+	if (gl.debug)
 		nm_connection_dump (connection);
 
 	/* Create the configuration file so that we don't expose
@@ -721,7 +723,7 @@ nm_fortisslvpn_plugin_new (const char *bus_name)
 
 	plugin = (NMFortisslvpnPlugin *) g_initable_new (NM_TYPE_FORTISSLVPN_PLUGIN, NULL, &error,
 	                                                 NM_VPN_SERVICE_PLUGIN_DBUS_SERVICE_NAME, bus_name,
-	                                                 NM_VPN_SERVICE_PLUGIN_DBUS_WATCH_PEER, !debug,
+	                                                 NM_VPN_SERVICE_PLUGIN_DBUS_WATCH_PEER, !gl.debug,
 	                                                 NULL);
 	if (!plugin) {
 		g_warning ("Failed to initialize a plugin instance: %s", error->message);
@@ -749,7 +751,7 @@ main (int argc, char *argv[])
 
 	GOptionEntry options[] = {
 		{ "persist", 0, 0, G_OPTION_ARG_NONE, &persist, N_("Don't quit when VPN connection terminates"), NULL },
-		{ "debug", 0, 0, G_OPTION_ARG_NONE, &debug, N_("Enable verbose debug logging (may expose passwords)"), NULL },
+		{ "debug", 0, 0, G_OPTION_ARG_NONE, &gl.debug, N_("Enable verbose debug logging (may expose passwords)"), NULL },
 		{ "bus-name", 0, 0, G_OPTION_ARG_STRING, &bus_name, N_("D-Bus name to use for this instance"), NULL },
 		{NULL}
 	};
@@ -782,9 +784,9 @@ main (int argc, char *argv[])
 	g_option_context_free (opt_ctx);
 
 	if (getenv ("NM_PPP_DEBUG"))
-		debug = TRUE;
+		gl.debug = TRUE;
 
-	if (debug)
+	if (gl.debug)
 		g_message ("nm-fortisslvpn-service (version " DIST_VERSION ") starting...");
 
 	if (bus_name)
