@@ -29,7 +29,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+#ifdef NM_VPN_OLD
 #include "nm-fortisslvpn-editor.h"
+#else
+#include "nm-utils/nm-vpn-plugin-utils.h"
+#endif
 
 #define FORTISSLVPN_PLUGIN_NAME    _("Fortinet SSLVPN")
 #define FORTISSLVPN_PLUGIN_DESC    _("Compatible with Fortinet SSLVPN servers.")
@@ -58,10 +62,40 @@ get_capabilities (NMVpnEditorPlugin *iface)
 	return NM_VPN_EDITOR_PLUGIN_CAPABILITY_NONE;
 }
 
+#ifndef NM_VPN_OLD
+static NMVpnEditor *
+_call_editor_factory (gpointer factory,
+                      NMVpnEditorPlugin *editor_plugin,
+                      NMConnection *connection,
+                      gpointer user_data,
+                      GError **error)
+{
+	return ((NMVpnEditorFactory) factory) (editor_plugin,
+	                                       connection,
+	                                       error);
+}
+#endif
+
 static NMVpnEditor *
 get_editor (NMVpnEditorPlugin *iface, NMConnection *connection, GError **error)
 {
-	return nm_fortisslvpn_editor_new (connection, error);
+	g_return_val_if_fail (FORTISSLVPN_IS_EDITOR_PLUGIN (iface), NULL);
+	g_return_val_if_fail (NM_IS_CONNECTION (connection), NULL);
+	g_return_val_if_fail (!error || !*error, NULL);
+
+	{
+#ifdef NM_VPN_OLD
+		return nm_fortisslvpn_editor_new (connection, error);
+#else
+		return nm_vpn_plugin_utils_load_editor (NM_PLUGIN_DIR"/libnm-vpn-plugin-fortisslvpn-editor.so",
+		                                        "nm_vpn_editor_factory_fortisslvpn",
+		                                        _call_editor_factory,
+		                                        iface,
+		                                        connection,
+		                                        NULL,
+		                                        error);
+#endif
+	}
 }
 
 static void

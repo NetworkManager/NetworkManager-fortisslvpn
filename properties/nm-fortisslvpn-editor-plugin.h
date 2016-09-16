@@ -40,4 +40,13 @@ struct _FortisslvpnEditorPluginClass {
 
 GType fortisslvpn_editor_plugin_get_type (void);
 
+typedef NMVpnEditor *(*NMVpnEditorFactory) (NMVpnEditorPlugin *editor_plugin,
+                                            NMConnection *connection,
+                                            GError **error);
+
+NMVpnEditor *
+nm_vpn_editor_factory_fortisslvpn (NMVpnEditorPlugin *editor_plugin,
+                                   NMConnection *connection,
+                                   GError **error);
+
 #endif /* __NM_FORTISSLVPN_EDITOR_PLUGIN_H__ */
