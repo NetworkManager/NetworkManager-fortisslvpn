@@ -4,6 +4,12 @@ libexec_PROGRAMS = nm-fortisslvpn-service
 
 noinst_LTLIBRARIES = libnm-fortisslvpn-pppd-service-dbus.la
 
+shared_sources = \
+	$(top_srcdir)/shared/nm-service-defines.h \
+	$(top_srcdir)/shared/nm-utils/nm-shared-utils.c \
+	$(top_srcdir)/shared/nm-utils/nm-shared-utils.h \
+	$(NULL)
+
 AM_CPPFLAGS = \
 	$(GLIB_CFLAGS) \
 	$(LIBNM_CFLAGS) \
@@ -34,7 +40,7 @@ nm-fortisslvpn-pppd-service-dbus.c:
 ###############################################################################
 
 nm_fortisslvpn_service_SOURCES = \
-	$(top_srcdir)/shared/nm-service-defines.h \
+	$(shared_sources) \
 	nm-fortisslvpn-service.c \
 	nm-fortisslvpn-service.h
 

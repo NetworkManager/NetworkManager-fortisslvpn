@@ -41,6 +41,7 @@
 
 #include "nm-ppp-status.h"
 #include "nm-fortisslvpn-pppd-service-dbus.h"
+#include "nm-utils/nm-shared-utils.h"
 #include "nm-utils/nm-vpn-plugin-macros.h"
 
 #if !defined(DIST_VERSION)
@@ -819,7 +820,9 @@ main (int argc, char *argv[])
 	if (getenv ("NM_PPP_DEBUG"))
 		gl.debug = TRUE;
 
-	gl.log_level = gl.debug ? LOG_INFO : LOG_NOTICE;
+	gl.log_level = _nm_utils_ascii_str_to_int64 (getenv ("NM_VPN_LOG_LEVEL"),
+	                                             10, 0, LOG_DEBUG,
+	                                             gl.debug ? LOG_INFO : LOG_NOTICE);
 
 	_LOGD ("nm-fortisslvpn-service (version " DIST_VERSION ") starting...");
 	_LOGD ("   uses%s --bus-name \"%s\"", bus_name_free ? "" : " default", bus_name);
