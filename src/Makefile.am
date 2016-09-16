@@ -25,6 +25,9 @@ nodist_libnm_fortisslvpn_pppd_service_dbus_la_SOURCES = \
 	nm-fortisslvpn-pppd-service-dbus.c \
 	nm-fortisslvpn-pppd-service-dbus.h
 
+libnm_fortisslvpn_pppd_service_dbus_la_SOURCES = \
+	$(shared_sources)
+
 libnm_fortisslvpn_pppd_service_dbus_la_CPPFLAGS = $(filter-out -DGLIB_VERSION_MAX_ALLOWED%,$(AM_CPPFLAGS))
 
 nm-fortisslvpn-pppd-service-dbus.h: $(top_srcdir)/src/nm-fortisslvpn-pppd-service.xml

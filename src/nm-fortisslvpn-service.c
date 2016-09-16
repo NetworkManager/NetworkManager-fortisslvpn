@@ -793,6 +793,7 @@ main (int argc, char *argv[])
 	gs_free char *bus_name_free = NULL;
 	const char *bus_name;
 	GError *error = NULL;
+	char sbuf[30];
 
 	GOptionEntry options[] = {
 		{ "persist", 0, 0, G_OPTION_ARG_NONE, &persist, N_("Don't quit when VPN connection terminates"), NULL },
@@ -856,6 +857,8 @@ main (int argc, char *argv[])
 	_LOGD ("nm-fortisslvpn-service (version " DIST_VERSION ") starting...");
 	_LOGD ("   uses%s --bus-name \"%s\"", bus_name_free ? "" : " default", bus_name);
 
+	setenv ("NM_VPN_LOG_LEVEL", nm_sprintf_buf (sbuf, "%d", gl.log_level), TRUE);
+	setenv ("NM_VPN_LOG_PREFIX_TOKEN", nm_sprintf_buf (sbuf, "%ld", (long) getpid ()), TRUE);
 	setenv ("NM_DBUS_SERVICE_FORTISSLVPN", bus_name, 0);
 
 	plugin = nm_fortisslvpn_plugin_new (bus_name);
