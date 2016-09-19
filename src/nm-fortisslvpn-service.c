@@ -421,6 +421,7 @@ run_openfortivpn (NMFortisslvpnPlugin *plugin, NMSettingVpn *s_vpn, GError **err
 	const char *openfortivpn;
 	GPtrArray *argv;
 	const char *value;
+	gs_free char *str_tmp = NULL;
 
 	openfortivpn = nm_find_openfortivpn ();
 	if (!openfortivpn) {
@@ -475,6 +476,8 @@ run_openfortivpn (NMFortisslvpnPlugin *plugin, NMSettingVpn *s_vpn, GError **err
 	g_ptr_array_add (argv, (gpointer) g_strdup (NM_FORTISSLVPN_PPPD_PLUGIN));
 
 	g_ptr_array_add (argv, NULL);
+
+	_LOGD ("start %s", (str_tmp = g_strjoinv (" ", (char **) argv->pdata)));
 
 	if (!g_spawn_async (NULL, (char **) argv->pdata, NULL,
 	                    G_SPAWN_DO_NOT_REAP_CHILD, NULL, NULL, &pid, error)) {
