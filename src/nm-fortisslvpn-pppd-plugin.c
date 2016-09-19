@@ -59,11 +59,12 @@ static struct {
 #define _NMLOG(level, ...) \
     G_STMT_START { \
          if (gl.log_level >= (level)) { \
-             g_print ("nm-fortisslvpn[%s] %-7s [helper-%ld] " _NM_UTILS_MACRO_FIRST (__VA_ARGS__) "\n", \
-                      gl.log_prefix_token, \
-                      nm_utils_syslog_to_str (level), \
-                      (long) getpid () \
-                      _NM_UTILS_MACRO_REST (__VA_ARGS__)); \
+             syslog (nm_utils_syslog_coerce_from_nm (level), \
+                     "nm-fortisslvpn[%s] %-7s [helper-%ld] " _NM_UTILS_MACRO_FIRST (__VA_ARGS__) "\n", \
+                     gl.log_prefix_token, \
+                     nm_utils_syslog_to_str (level), \
+                     (long) getpid () \
+                     _NM_UTILS_MACRO_REST (__VA_ARGS__)); \
          } \
     } G_STMT_END
 
