@@ -2,6 +2,9 @@
 # Please keep this file sorted alphabetically.
 appdata/network-manager-fortisslvpn.metainfo.xml.in
 auth-dialog/main.c
-properties/nm-fortisslvpn.c
+properties/nm-fortisslvpn-editor-plugin.c
+properties/nm-fortisslvpn-editor.c
+shared/nm-utils/nm-shared-utils.c
+shared/nm-utils/nm-vpn-plugin-utils.c
 src/nm-fortisslvpn-service.c
 [type: gettext/glade]properties/nm-fortisslvpn-dialog.ui

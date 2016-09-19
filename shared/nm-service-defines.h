@@ -21,8 +21,8 @@
  * (C) Copyright 2015 Lubomir Rintel
  */
 
-#ifndef NM_FORTISSLVPN_SERVICE_DEFINES_H
-#define NM_FORTISSLVPN_SERVICE_DEFINES_H
+#ifndef __NM_SERVICE_DEFINES_H__
+#define __NM_SERVICE_DEFINES_H__
 
 /* For the NM <-> VPN plugin service */
 #define NM_DBUS_SERVICE_FORTISSLVPN    "org.freedesktop.NetworkManager.fortisslvpn"
@@ -37,4 +37,4 @@
 #define NM_FORTISSLVPN_KEY_KEY               "key"
 #define NM_FORTISSLVPN_KEY_TRUSTED_CERT      "trusted-cert"
 
-#endif /* NM_FORTISSLVPN_PLUGIN_H */
+#endif /* __NM_SERVICE_DEFINES_H__ */

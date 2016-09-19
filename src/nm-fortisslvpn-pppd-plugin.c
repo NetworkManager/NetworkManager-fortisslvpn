@@ -20,28 +20,63 @@
  *
  */
 
-#include <string.h>
+#define ___CONFIG_H__
+#include <config.h>
+
 #include <pppd/pppd.h>
 #include <pppd/fsm.h>
 #include <pppd/ipcp.h>
+
+#include "nm-default.h"
+
+#include <string.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <dlfcn.h>
-#include <glib.h>
 #include <stdlib.h>
 
 #include "nm-fortisslvpn-pppd-service-dbus.h"
 #include "nm-fortisslvpn-service.h"
 #include "nm-ppp-status.h"
 
-#include <nm-utils.h>
+#include "nm-utils/nm-shared-utils.h"
+#include "nm-utils/nm-vpn-plugin-macros.h"
+
+/*****************************************************************************/
+
+static struct {
+	int log_level;
+	const char *log_prefix_token;
+	NMDBusFortisslvpnPpp *proxy;
+} gl/*obal*/;
+
+/*****************************************************************************/
+
+/* Note that in the current from, the messages from pppd-plugin are
+ * swallowed by pppd. One way to see them is using strace. */
+
+#define _NMLOG(level, ...) \
+    G_STMT_START { \
+         if (gl.log_level >= (level)) { \
+             syslog (nm_utils_syslog_coerce_from_nm (level), \
+                     "nm-fortisslvpn[%s] %-7s [helper-%ld] " _NM_UTILS_MACRO_FIRST (__VA_ARGS__) "\n", \
+                     gl.log_prefix_token, \
+                     nm_utils_syslog_to_str (level), \
+                     (long) getpid () \
+                     _NM_UTILS_MACRO_REST (__VA_ARGS__)); \
+         } \
+    } G_STMT_END
+
+#define _LOGI(...) _NMLOG(LOG_NOTICE,  __VA_ARGS__)
+#define _LOGW(...) _NMLOG(LOG_WARNING, __VA_ARGS__)
+#define _LOGE(...) _NMLOG(LOG_ERR, __VA_ARGS__)
+
+/*****************************************************************************/
 
 int plugin_init (void);
 
 char pppd_version[] = VERSION;
-
-static NMDBusFortisslvpnPpp *proxy = NULL;
 
 static void
 nm_phasechange (void *data, int arg)
@@ -49,7 +84,7 @@ nm_phasechange (void *data, int arg)
 	NMPPPStatus ppp_status = NM_PPP_STATUS_UNKNOWN;
 	char *ppp_phase;
 
-	g_return_if_fail (NMDBUS_IS_FORTISSLVPN_PPP_PROXY (proxy));
+	g_return_if_fail (NMDBUS_IS_FORTISSLVPN_PPP_PROXY (gl.proxy));
 
 	switch (arg) {
 	case PHASE_DEAD:
@@ -110,13 +145,11 @@ nm_phasechange (void *data, int arg)
 		break;
 	}
 
-	g_message ("nm-fortisslvpn-ppp-plugin: (%s): status %d / phase '%s'",
-	           __func__,
-	           ppp_status,
-	           ppp_phase);
+	_LOGI ("phasechange: status %d / phase '%s'",
+	       ppp_status, ppp_phase);
 
 	if (ppp_status != NM_PPP_STATUS_UNKNOWN) {
-		nmdbus_fortisslvpn_ppp_call_set_state (proxy,
+		nmdbus_fortisslvpn_ppp_call_set_state (gl.proxy,
 		                                       ppp_status,
 		                                       NULL,
 		                                       NULL, NULL);
@@ -196,12 +229,12 @@ nm_ip_up (void *data, int arg)
 	const gchar *str;
 	GVariant *val;
 
-	g_return_if_fail (NMDBUS_IS_FORTISSLVPN_PPP_PROXY (proxy));
+	g_return_if_fail (NMDBUS_IS_FORTISSLVPN_PPP_PROXY (gl.proxy));
 
-	g_message ("nm-fortisslvpn-ppp-plugin: (%s): ip-up event", __func__);
+	_LOGI ("ip-up: event");
 
 	if (!opts.ouraddr) {
-		g_warning ("nm-fortisslvpn-ppp-plugin: (%s): didn't receive an internal IP from pppd!", __func__);
+		_LOGW ("ip-up: didn't receive an internal IP from pppd!");
 		nm_phasechange (NULL, PHASE_DEAD);
 		return;
 	}
@@ -217,9 +250,8 @@ nm_ip_up (void *data, int arg)
 		g_variant_builder_add (&builder, "{sv}",
 		                       NM_VPN_PLUGIN_IP4_CONFIG_EXT_GATEWAY,
 		                       g_variant_new_uint32 (inet_addr (str)));
-	} else {
-		g_warning ("nm-fortisslvpn-ppp-plugin: (%s): no external gateway!", __func__);
-	}
+	} else
+		_LOGW ("ip-up: no external gateway!");
 
 	val = get_ip4_routes (opts.ouraddr);
 	if (val)
@@ -272,9 +304,9 @@ nm_ip_up (void *data, int arg)
 	                       NM_VPN_PLUGIN_IP4_CONFIG_MTU,
 	                       g_variant_new_uint32 (1400));
 
-	g_message ("nm-fortisslvpn-ppp-plugin: (%s): sending Ip4Config to NetworkManager-fortisslvpn...", __func__);
+	_LOGI ("ip-up: sending Ip4Config to NetworkManager-fortisslvpn");
 
-	nmdbus_fortisslvpn_ppp_call_set_ip4_config (proxy,
+	nmdbus_fortisslvpn_ppp_call_set_ip4_config (gl.proxy,
 	                                            g_variant_builder_end (&builder),
 	                                            NULL,
 	                                            NULL, NULL);
@@ -283,47 +315,47 @@ nm_ip_up (void *data, int arg)
 static void
 nm_exit_notify (void *data, int arg)
 {
-	g_return_if_fail (G_IS_DBUS_PROXY (proxy));
+	g_return_if_fail (G_IS_DBUS_PROXY (gl.proxy));
 
-	g_message ("nm-fortisslvpn-ppp-plugin: (%s): cleaning up", __func__);
-
-	g_object_unref (proxy);
-	proxy = NULL;
+	_LOGI ("exit: cleaning up");
+	g_clear_object (&gl.proxy);
 }
 
 int
 plugin_init (void)
 {
-	GError *err = NULL;
+	GError *error = NULL;
 	const char *bus_name;
 
-#if !GLIB_CHECK_VERSION (2, 35, 0)
-	g_type_init ();
-#endif
+	nm_g_type_init ();
+
+	g_return_val_if_fail (!gl.proxy, -1);
 
 	bus_name = getenv ("NM_DBUS_SERVICE_FORTISSLVPN");
 	if (!bus_name)
 		bus_name = NM_DBUS_SERVICE_FORTISSLVPN;
 
-	g_message ("nm-fortisslvpn-ppp-plugin: (%s): initializing", __func__);
+	gl.log_level = _nm_utils_ascii_str_to_int64 (getenv ("NM_VPN_LOG_LEVEL"),
+	                                             10, 0, LOG_DEBUG,
+	                                             LOG_NOTICE);
+	gl.log_prefix_token = getenv ("NM_VPN_LOG_PREFIX_TOKEN") ?: "???";
 
-        proxy = nmdbus_fortisslvpn_ppp_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
-                                                               G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
-                                                               bus_name,
-                                                               NM_DBUS_PATH_FORTISSLVPN_PPP,
-                                                               NULL, &err);
-	if (!proxy) {
-		g_warning ("nm-fortisslvpn-pppd-plugin: (%s): couldn't create D-Bus proxy: (%d) %s",
-		           __func__,
-		           err ? err->code : -1,
-		           err && err->message ? err->message : "(unknown)");
-		g_error_free (err);
+	_LOGI ("initializing");
+
+	gl.proxy = nmdbus_fortisslvpn_ppp_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
+	                                                          G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
+	                                                          bus_name,
+	                                                          NM_DBUS_PATH_FORTISSLVPN_PPP,
+	                                                          NULL, &error);
+
+	if (!gl.proxy) {
+		_LOGE ("couldn't create D-Bus proxy: %s", error->message);
+		g_error_free (error);
 		return -1;
 	}
 
 	add_notifier (&phasechange, nm_phasechange, NULL);
 	add_notifier (&ip_up_notifier, nm_ip_up, NULL);
-	add_notifier (&exitnotify, nm_exit_notify, proxy);
-
+	add_notifier (&exitnotify, nm_exit_notify, NULL);
 	return 0;
 }

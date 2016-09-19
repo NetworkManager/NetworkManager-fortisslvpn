@@ -1,6 +1,4 @@
 /***************************************************************************
- * nm-fortisslvpn.c : GNOME UI dialogs for configuring SSLVPN connections
- *
  * Copyright (C) 2015 Lubomir Rintel <lkundrak@v3.sk>
  * Copyright (C) 2008 Dan Williams, <dcbw@redhat.com>
  * Copyright (C) 2008 - 2011 Red Hat, Inc.
@@ -19,78 +17,20 @@
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
- *
  **************************************************************************/
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
+#include "nm-default.h"
+
+#include "nm-fortisslvpn-editor.h"
 
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <errno.h>
 #include <stdlib.h>
-#include <glib/gi18n-lib.h>
 #include <string.h>
 #include <gtk/gtk.h>
 
-#ifdef NM_OPENVPN_OLD
-
-#define NM_VPN_LIBNM_COMPAT
-#include <nm-vpn-plugin-ui-interface.h>
-#include <nm-setting-vpn.h>
-#include <nm-setting-connection.h>
-#include <nm-setting-ip4-config.h>
-#include <nm-ui-utils.h>
-
-#define FORTISSLVPN_EDITOR_PLUGIN_ERROR                     NM_SETTING_VPN_ERROR
-#define FORTISSLVPN_EDITOR_PLUGIN_ERROR_INVALID_PROPERTY    NM_SETTING_VPN_ERROR_INVALID_PROPERTY
-
-#define nm_simple_connection_new nm_connection_new
-
-#else /* !NM_OPENVPN_OLD */
-
-#include <NetworkManager.h>
-#include <nma-ui-utils.h>
-
-#define FORTISSLVPN_EDITOR_PLUGIN_ERROR                     NM_CONNECTION_ERROR
-#define FORTISSLVPN_EDITOR_PLUGIN_ERROR_INVALID_PROPERTY    NM_CONNECTION_ERROR_INVALID_PROPERTY
-
-#endif
-
-#include "src/nm-fortisslvpn-service-defines.h"
-#include "nm-fortisslvpn.h"
-
-#define FORTISSLVPN_PLUGIN_NAME    _("Fortinet SSLVPN")
-#define FORTISSLVPN_PLUGIN_DESC    _("Compatible with Fortinet SSLVPN servers.")
-#define FORTISSLVPN_PLUGIN_SERVICE NM_DBUS_SERVICE_FORTISSLVPN
-
-typedef void (*ChangedCallback) (GtkWidget *widget, gpointer user_data);
-
-/************** plugin class **************/
-
-enum {
-	PROP_0,
-	PROP_NAME,
-	PROP_DESC,
-	PROP_SERVICE
-};
-
-static void fortisslvpn_editor_plugin_interface_init (NMVpnEditorPluginInterface *iface_class);
-
-G_DEFINE_TYPE_EXTENDED (FortisslvpnEditorPlugin, fortisslvpn_editor_plugin, G_TYPE_OBJECT, 0,
-                        G_IMPLEMENT_INTERFACE (NM_TYPE_VPN_EDITOR_PLUGIN,
-                                               fortisslvpn_editor_plugin_interface_init))
-
-/************** UI widget class **************/
-
-static void fortisslvpn_editor_interface_init (NMVpnEditorInterface *iface_class);
-
-G_DEFINE_TYPE_EXTENDED (FortisslvpnEditor, fortisslvpn_editor, G_TYPE_OBJECT, 0,
-                        G_IMPLEMENT_INTERFACE (NM_TYPE_VPN_EDITOR,
-                                               fortisslvpn_editor_interface_init))
-
-#define FORTISSLVPN_EDITOR_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), FORTISSLVPN_TYPE_EDITOR, FortisslvpnEditorPrivate))
+/*****************************************************************************/
 
 typedef struct {
 	GtkBuilder *builder;
@@ -101,6 +41,16 @@ typedef struct {
 	gboolean new_connection;
 	gchar *trusted_cert;
 } FortisslvpnEditorPrivate;
+
+static void fortisslvpn_editor_interface_init (NMVpnEditorInterface *iface_class);
+
+G_DEFINE_TYPE_EXTENDED (FortisslvpnEditor, fortisslvpn_editor, G_TYPE_OBJECT, 0,
+                        G_IMPLEMENT_INTERFACE (NM_TYPE_VPN_EDITOR,
+                                               fortisslvpn_editor_interface_init))
+
+#define FORTISSLVPN_EDITOR_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), FORTISSLVPN_TYPE_EDITOR, FortisslvpnEditorPrivate))
+
+/*****************************************************************************/
 
 static gboolean
 check_validity (FortisslvpnEditor *self, GError **error)
@@ -113,8 +63,8 @@ check_validity (FortisslvpnEditor *self, GError **error)
 	str = gtk_entry_get_text (GTK_ENTRY (widget));
 	if (!str || !strlen (str)) {
 		g_set_error (error,
-		             FORTISSLVPN_EDITOR_PLUGIN_ERROR,
-		             FORTISSLVPN_EDITOR_PLUGIN_ERROR_INVALID_PROPERTY,
+		             NMV_EDITOR_PLUGIN_ERROR,
+		             NMV_EDITOR_PLUGIN_ERROR_INVALID_PROPERTY,
 		             NM_FORTISSLVPN_KEY_GATEWAY);
 		return FALSE;
 	}
@@ -483,8 +433,8 @@ is_new_func (const char *key, const char *value, gpointer user_data)
 	*is_new = FALSE;
 }
 
-static NMVpnEditor *
-nm_vpn_editor_interface_new (NMConnection *connection, GError **error)
+NMVpnEditor *
+nm_fortisslvpn_editor_new (NMConnection *connection, GError **error)
 {
 	NMVpnEditor *object;
 	FortisslvpnEditorPrivate *priv;
@@ -497,7 +447,7 @@ nm_vpn_editor_interface_new (NMConnection *connection, GError **error)
 
 	object = g_object_new (FORTISSLVPN_TYPE_EDITOR, NULL);
 	if (!object) {
-		g_set_error (error, FORTISSLVPN_EDITOR_PLUGIN_ERROR, 0, "could not create fortisslvpn object");
+		g_set_error (error, NMV_EDITOR_PLUGIN_ERROR, 0, "could not create fortisslvpn object");
 		return NULL;
 	}
 
@@ -512,7 +462,7 @@ nm_vpn_editor_interface_new (NMConnection *connection, GError **error)
 		g_warning ("Couldn't load builder file: %s",
 		           error && *error ? (*error)->message : "(unknown)");
 		g_clear_error (error);
-		g_set_error (error, FORTISSLVPN_EDITOR_PLUGIN_ERROR, 0,
+		g_set_error (error, NMV_EDITOR_PLUGIN_ERROR, 0,
 		             "could not load required resources at %s", ui_file);
 		g_free (ui_file);
 		g_object_unref (object);
@@ -522,7 +472,7 @@ nm_vpn_editor_interface_new (NMConnection *connection, GError **error)
 
 	priv->widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "fortisslvpn-vbox"));
 	if (!priv->widget) {
-		g_set_error (error, FORTISSLVPN_EDITOR_PLUGIN_ERROR, 0, "could not load UI widget");
+		g_set_error (error, NMV_EDITOR_PLUGIN_ERROR, 0, "could not load UI widget");
 		g_object_unref (object);
 		return NULL;
 	}
@@ -571,6 +521,11 @@ dispose (GObject *object)
 }
 
 static void
+fortisslvpn_editor_init (FortisslvpnEditor *plugin)
+{
+}
+
+static void
 fortisslvpn_editor_class_init (FortisslvpnEditorClass *req_class)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (req_class);
@@ -581,11 +536,6 @@ fortisslvpn_editor_class_init (FortisslvpnEditorClass *req_class)
 }
 
 static void
-fortisslvpn_editor_init (FortisslvpnEditor *plugin)
-{
-}
-
-static void
 fortisslvpn_editor_interface_init (NMVpnEditorInterface *iface_class)
 {
 	/* interface implementation */
@@ -593,84 +543,19 @@ fortisslvpn_editor_interface_init (NMVpnEditorInterface *iface_class)
 	iface_class->update_connection = update_connection;
 }
 
-static guint32
-get_capabilities (NMVpnEditorPlugin *iface)
+/*****************************************************************************/
+
+#ifndef NM_VPN_OLD
+
+#include "nm-fortisslvpn-editor-plugin.h"
+
+G_MODULE_EXPORT NMVpnEditor *
+nm_vpn_editor_factory_fortisslvpn (NMVpnEditorPlugin *editor_plugin,
+                                   NMConnection *connection,
+                                   GError **error)
 {
-	return NM_VPN_EDITOR_PLUGIN_CAPABILITY_NONE;
+	g_return_val_if_fail (!error || !*error, NULL);
+
+	return nm_fortisslvpn_editor_new (connection, error);
 }
-
-static NMVpnEditor *
-get_editor (NMVpnEditorPlugin *iface, NMConnection *connection, GError **error)
-{
-	return nm_vpn_editor_interface_new (connection, error);
-}
-
-static void
-get_property (GObject *object, guint prop_id,
-			  GValue *value, GParamSpec *pspec)
-{
-	switch (prop_id) {
-	case PROP_NAME:
-		g_value_set_string (value, FORTISSLVPN_PLUGIN_NAME);
-		break;
-	case PROP_DESC:
-		g_value_set_string (value, FORTISSLVPN_PLUGIN_DESC);
-		break;
-	case PROP_SERVICE:
-		g_value_set_string (value, FORTISSLVPN_PLUGIN_SERVICE);
-		break;
-	default:
-		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-		break;
-	}
-}
-
-static void
-fortisslvpn_editor_plugin_class_init (FortisslvpnEditorPluginClass *req_class)
-{
-	GObjectClass *object_class = G_OBJECT_CLASS (req_class);
-
-	object_class->get_property = get_property;
-
-	g_object_class_override_property (object_class,
-	                                  PROP_NAME,
-	                                  NM_VPN_EDITOR_PLUGIN_NAME);
-
-	g_object_class_override_property (object_class,
-	                                  PROP_DESC,
-	                                  NM_VPN_EDITOR_PLUGIN_DESCRIPTION);
-
-	g_object_class_override_property (object_class,
-	                                  PROP_SERVICE,
-	                                  NM_VPN_EDITOR_PLUGIN_SERVICE);
-}
-
-static void
-fortisslvpn_editor_plugin_init (FortisslvpnEditorPlugin *plugin)
-{
-}
-
-static void
-fortisslvpn_editor_plugin_interface_init (NMVpnEditorPluginInterface *iface_class)
-{
-	/* interface implementation */
-	iface_class->get_editor = get_editor;
-	iface_class->get_capabilities = get_capabilities;
-	iface_class->import_from_file = NULL;
-	iface_class->export_to_file = NULL;
-	iface_class->get_suggested_filename = NULL;
-}
-
-
-G_MODULE_EXPORT NMVpnEditorPlugin *
-nm_vpn_editor_plugin_factory (GError **error)
-{
-	if (error)
-		g_return_val_if_fail (*error == NULL, NULL);
-
-	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
-	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-
-	return g_object_new (FORTISSLVPN_TYPE_EDITOR_PLUGIN, NULL);
-}
-
+#endif

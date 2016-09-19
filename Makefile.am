@@ -1,9 +1,9 @@
 AUTOMAKE_OPTIONS = foreign
 
-SUBDIRS = src
+SUBDIRS = shared src properties po
 
 if WITH_GNOME
-SUBDIRS += auth-dialog properties po
+SUBDIRS += auth-dialog
 endif
 
 dbusservicedir = $(sysconfdir)/dbus-1/system.d
@@ -19,7 +19,7 @@ install-data-hook:
 	mkdir -p $(DESTDIR)$(sysconfdir)/NetworkManager/VPN
 	sed -e "1s|^|# This file is obsoleted by a file in $(NM_VPN_SERVICE_DIR)\n\n|" \
 	    -e 's|[@]LIBEXECDIR[@]|$(libexecdir)|g' \
-	    -e 's|[@]PLUGINDIR[@]|$(libdir)/NetworkManager|g' \
+	    -e 's|[@]PLUGINDIR[@]|@NM_PLUGIN_DIR@|g' \
 	    <$(srcdir)/nm-fortisslvpn-service.name.in \
 	    >$(DESTDIR)$(sysconfdir)/NetworkManager/VPN/nm-fortisslvpn-service.name
 
@@ -28,35 +28,38 @@ uninstall-hook:
 endif
 
 appdatadir = $(datadir)/appdata
-appdata_DATA = $(appdata_in_files:.xml.in=.xml)
+appdata_files = $(appdata_in_files:.xml.in=.xml)
+if WITH_GNOME
+appdata_DATA = $(appdata_files)
+endif
 appdata_in_files = appdata/network-manager-fortisslvpn.metainfo.xml.in
 @INTLTOOL_XML_RULE@
 
 nm-fortisslvpn-service.name: $(srcdir)/nm-fortisslvpn-service.name.in
 	sed -e 's|[@]LIBEXECDIR[@]|$(libexecdir)|g' \
-	    -e 's|[@]PLUGINDIR[@]/|@NM_PLUGIN_DIR@|g' \
-	    $< >$@
+	    -e 's|[@]PLUGINDIR[@]/|@NM_PLUGIN_DIR_NAME_FILE@|g' \
+	    $^ >$@
 
 DISTCHECK_CONFIGURE_FLAGS = --enable-more-warnings=yes
 
-EXTRA_DIST =				\
-	nm-fortisslvpn-service.name.in	\
-	$(dbusservice_DATA)		\
-	$(desktopfile)			\
-	$(iconfile)			\
-	$(appdata_in_files)		\
-	$(appdata_DATA)			\
-	intltool-extract.in		\
-	intltool-merge.in		\
-	intltool-update.in		\
-	contrib/README			\
-	contrib/fortiserve.pl		\
+EXTRA_DIST = \
+	nm-fortisslvpn-service.name.in \
+	$(dbusservice_DATA) \
+	$(desktopfile) \
+	$(iconfile) \
+	$(appdata_in_files) \
+	$(appdata_files) \
+	intltool-extract.in \
+	intltool-merge.in \
+	intltool-update.in \
+	contrib/README \
+	contrib/fortiserve.pl \
 	contrib/sslproxy.pl
 
-CLEANFILES =				\
-	$(nmvpnservice_DATA)		\
-	$(desktop_DATA)			\
-	$(appdata_DATA)
+CLEANFILES = \
+	$(nmvpnservice_DATA) \
+	$(desktop_DATA) \
+	$(appdata_files)
 
 DISTCLEANFILES = intltool-extract intltool-merge intltool-update
 
