@@ -9,131 +9,189 @@ msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=NetworkManager&keywords=I18N+L10N&component=VPN: fortisslvpn\n"
-"POT-Creation-Date: 2016-04-14 15:29+0000\n"
-"PO-Revision-Date: 2016-04-21 10:42+0200\n"
-"Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
+"POT-Creation-Date: 2016-09-19 13:42+0000\n"
+"PO-Revision-Date: 2016-09-20 00:30+0200\n"
+"Last-Translator: Meskó Balázs <meskobalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at gmail dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Poedit 1.8.9\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../appdata/network-manager-fortisslvpn.appdata.xml.in.h:1
-#| msgid "Fortinet SSLVPN"
+#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:1
 msgid "Fortinet SSLVPN client"
 msgstr "Fortinet SSLVPN kliens"
 
-#: ../appdata/network-manager-fortisslvpn.appdata.xml.in.h:2
+#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:2
 msgid "Client for Fortinet SSLVPN virtual private networks"
 msgstr "Kliens a Fortinet SSLVPN virtuális magánhálózatokhoz"
 
-#: ../appdata/network-manager-fortisslvpn.appdata.xml.in.h:3
+#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:3
 msgid ""
 "Support for configuring Fortinet SSLVPN virtual private network connections."
 msgstr ""
 "A Fortinet SSLVPN virtuális magánhálózati kapcsolatok beállításának "
 "támogatása."
 
-#: ../appdata/network-manager-fortisslvpn.appdata.xml.in.h:4
+#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:4
 msgid "The NetworkManager Developers"
 msgstr "A Hálózatkezelő fejlesztői"
 
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
 #.
-#: ../auth-dialog/main.c:154
+#: ../auth-dialog/main.c:144
 #, c-format
 msgid "You need to authenticate to access the Virtual Private Network '%s'."
 msgstr "Azonosítania kell magát a(z) „%s” virtuális magánhálózat eléréséhez."
 
-#: ../auth-dialog/main.c:163 ../auth-dialog/main.c:183
+#: ../auth-dialog/main.c:153 ../auth-dialog/main.c:173
 msgid "Authenticate VPN"
 msgstr "VPN-hitelesítés"
 
-#: ../auth-dialog/main.c:165 ../properties/nm-fortisslvpn-dialog.ui.h:12
+#: ../auth-dialog/main.c:155 ../properties/nm-fortisslvpn-dialog.ui.h:12
 msgid "Password:"
 msgstr "Jelszó:"
 
-#: ../properties/nm-fortisslvpn.c:64
+#: ../properties/nm-fortisslvpn-editor-plugin.c:38
 msgid "Fortinet SSLVPN"
 msgstr "Fortinet SSLVPN"
 
-#: ../properties/nm-fortisslvpn.c:65
+#: ../properties/nm-fortisslvpn-editor-plugin.c:39
 msgid "Compatible with Fortinet SSLVPN servers."
 msgstr "Kompatibilis a Fortinet SSLVPN kiszolgálókkal."
 
-#: ../src/nm-fortisslvpn-service.c:168
+#: ../shared/nm-utils/nm-shared-utils.c:185
+#, c-format
+msgid "object class '%s' has no property named '%s'"
+msgstr "a(z) „%s” objektumosztálynak nincs „%s” nevű tulajdonsága"
+
+#: ../shared/nm-utils/nm-shared-utils.c:192
+#, c-format
+msgid "property '%s' of object class '%s' is not writable"
+msgstr "a(z) „%s” objektumosztály „%s” tulajdonsága nem írható"
+
+#: ../shared/nm-utils/nm-shared-utils.c:199
+#, c-format
+msgid ""
+"construct property \"%s\" for object '%s' can't be set after construction"
+msgstr ""
+"a(z) %2$s objektum „%1$s” konstrukciós tulajdonsága nem állítható be a "
+"létrehozása után"
+
+#: ../shared/nm-utils/nm-shared-utils.c:207
+#, c-format
+msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
+msgstr ""
+"a(z) „%s::%s” nem egy érvényes tulajdonságnév; „%s” nem egy GObject altípus"
+
+#: ../shared/nm-utils/nm-shared-utils.c:216
+#, c-format
+msgid "unable to set property '%s' of type '%s' from value of type '%s'"
+msgstr ""
+"a(z) „%s” „%s” típusú tulajdonság értéke nem állítható be „%s” típusú "
+"értékből"
+
+#: ../shared/nm-utils/nm-shared-utils.c:227
+#, c-format
+msgid ""
+"value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
+"type '%s'"
+msgstr ""
+"a(z) „%s” „%s” típusú érték érvénytelen, vagy kívül esik a tartományon a(z) "
+"„%s” „%s” típusú tulajdonságnál"
+
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:80
+#, c-format
+msgid "missing plugin file \"%s\""
+msgstr "hiányzó bővítményfájl: „%s”"
+
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:86
+#, c-format
+msgid "cannot load editor plugin: %s"
+msgstr "a szerkesztő bővítmény nem tölthető be: %s"
+
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:95
+#, c-format
+msgid "cannot load factory %s from plugin: %s"
+msgstr "a(z) %s gyár nem tölthető be a bővítményből: %s"
+
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:121
+msgid "unknown error creating editor instance"
+msgstr "ismeretlen hiba a szerkesztő példány létrehozásakor"
+
+#: ../src/nm-fortisslvpn-service.c:208
 #, c-format
 msgid "invalid gateway '%s'"
 msgstr "Érvénytelen átjáró: „%s”"
 
-#: ../src/nm-fortisslvpn-service.c:176
+#: ../src/nm-fortisslvpn-service.c:216
 #, c-format
 msgid "invalid certificate authority '%s'"
 msgstr "érvénytelen hitelesítésszolgáltató: „%s”"
 
-#: ../src/nm-fortisslvpn-service.c:190
+#: ../src/nm-fortisslvpn-service.c:230
 #, c-format
 msgid "invalid integer property '%s'"
 msgstr "érvénytelen egész érték: „%s”"
 
-#: ../src/nm-fortisslvpn-service.c:200
+#: ../src/nm-fortisslvpn-service.c:240
 #, c-format
 msgid "invalid boolean property '%s' (not yes or no)"
 msgstr "érvénytelen logikai érték: „%s” (érvényes értékek: yes, no)"
 
-#: ../src/nm-fortisslvpn-service.c:207
+#: ../src/nm-fortisslvpn-service.c:247
 #, c-format
 msgid "unhandled property '%s' type %s"
 msgstr "kezeletlen %2$s típusú érték: „%1$s”"
 
-#: ../src/nm-fortisslvpn-service.c:218
+#: ../src/nm-fortisslvpn-service.c:258
 #, c-format
 msgid "property '%s' invalid or not supported"
 msgstr "érvénytelen vagy nem támogatott érték: „%s”"
 
-#: ../src/nm-fortisslvpn-service.c:235
+#: ../src/nm-fortisslvpn-service.c:275
 msgid "No VPN configuration options."
 msgstr "Nincsenek VPN-beállítások."
 
-#: ../src/nm-fortisslvpn-service.c:255
+#: ../src/nm-fortisslvpn-service.c:295
 #, c-format
 msgid "Missing required option '%s'."
 msgstr "Hiányzó kötelező argumentum: „%s”."
 
-#: ../src/nm-fortisslvpn-service.c:275
+#: ../src/nm-fortisslvpn-service.c:315
 msgid "No VPN secrets!"
 msgstr "Nincs VPN-titok!"
 
-#: ../src/nm-fortisslvpn-service.c:391
+#: ../src/nm-fortisslvpn-service.c:432
 msgid "Could not find the openfortivpn binary."
 msgstr "Nem található az openfortivpn program."
 
-#: ../src/nm-fortisslvpn-service.c:510
+#: ../src/nm-fortisslvpn-service.c:553
 msgid "Missing VPN username."
 msgstr "Hiányzó VPN-felhasználónév."
 
-#: ../src/nm-fortisslvpn-service.c:520
+#: ../src/nm-fortisslvpn-service.c:563
 msgid "Missing or invalid VPN password."
 msgstr "Hiányzó vagy érvénytelen VPN-jelszó."
 
-#: ../src/nm-fortisslvpn-service.c:735
+#: ../src/nm-fortisslvpn-service.c:799
 msgid "Don't quit when VPN connection terminates"
 msgstr "Ne lépjen ki, ha a VPN-kapcsolat megszakad"
 
-#: ../src/nm-fortisslvpn-service.c:736
+#: ../src/nm-fortisslvpn-service.c:800
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr ""
 "Részletes hibakeresési naplózás engedélyezése (jelszavak is a naplóba "
 "kerülhetnek)"
 
-#: ../src/nm-fortisslvpn-service.c:737
+#: ../src/nm-fortisslvpn-service.c:801
 msgid "D-Bus name to use for this instance"
 msgstr "A példányhoz használandó D-Bus név"
 
-#: ../src/nm-fortisslvpn-service.c:760
+#: ../src/nm-fortisslvpn-service.c:822
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
