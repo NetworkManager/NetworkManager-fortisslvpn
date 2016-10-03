@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: network-manager-fortisslvpn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-19 16:30+0200\n"
-"PO-Revision-Date: 2016-09-19 16:32+0200\n"
+"POT-Creation-Date: 2016-10-03 21:38+0200\n"
+"PO-Revision-Date: 2016-10-03 21:39+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -43,7 +43,7 @@ msgstr "Programiści projektu NetworkManager"
 #.
 #: ../auth-dialog/main.c:144
 #, c-format
-msgid "You need to authenticate to access the Virtual Private Network '%s'."
+msgid "You need to authenticate to access the Virtual Private Network “%s”."
 msgstr ""
 "Aby uzyskać dostęp do wirtualnej sieci prywatnej „%s”, należy się "
 "uwierzytelnić."
@@ -124,33 +124,33 @@ msgstr "nieznany błąd podczas tworzenia wystąpienia edytora"
 
 #: ../src/nm-fortisslvpn-service.c:208
 #, c-format
-msgid "invalid gateway '%s'"
+msgid "invalid gateway “%s”"
 msgstr "nieprawidłowa brama „%s”"
 
 #: ../src/nm-fortisslvpn-service.c:216
 #, c-format
-msgid "invalid certificate authority '%s'"
+msgid "invalid certificate authority “%s”"
 msgstr "nieprawidłowe CA „%s”"
 
 #: ../src/nm-fortisslvpn-service.c:230
 #, c-format
-msgid "invalid integer property '%s'"
+msgid "invalid integer property “%s”"
 msgstr "nieprawidłowa własność liczby całkowitej „%s”"
 
 #: ../src/nm-fortisslvpn-service.c:240
 #, c-format
-msgid "invalid boolean property '%s' (not yes or no)"
+msgid "invalid boolean property “%s” (not yes or no)"
 msgstr ""
 "nieprawidłowa własność zmiennej logicznej „%s” (nie wynosi „yes” lub „no”)"
 
 #: ../src/nm-fortisslvpn-service.c:247
 #, c-format
-msgid "unhandled property '%s' type %s"
+msgid "unhandled property “%s” type %s"
 msgstr "nieobsługiwana własność „%s” typu „%s”"
 
 #: ../src/nm-fortisslvpn-service.c:258
 #, c-format
-msgid "property '%s' invalid or not supported"
+msgid "property “%s” invalid or not supported"
 msgstr "własność „%s” jest nieprawidłowa lub nieobsługiwana"
 
 #: ../src/nm-fortisslvpn-service.c:275
@@ -159,7 +159,7 @@ msgstr "Brak opcji konfiguracji VPN."
 
 #: ../src/nm-fortisslvpn-service.c:295
 #, c-format
-msgid "Missing required option '%s'."
+msgid "Missing required option “%s”."
 msgstr "Brak wymaganej opcji „%s”."
 
 #: ../src/nm-fortisslvpn-service.c:315
@@ -179,7 +179,7 @@ msgid "Missing or invalid VPN password."
 msgstr "Brak hasła VPN lub jest nieprawidłowe."
 
 #: ../src/nm-fortisslvpn-service.c:799
-msgid "Don't quit when VPN connection terminates"
+msgid "Don’t quit when VPN connection terminates"
 msgstr "Nie kończy działania, kiedy połączenie VPN jest kończone"
 
 #: ../src/nm-fortisslvpn-service.c:800
@@ -203,8 +203,8 @@ msgid "SSLVPN Advanced Options"
 msgstr "Zaawansowane opcje SSLVPN"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:2
-msgid "<b>Security</b>"
-msgstr "<b>Zabezpieczenia</b>"
+msgid "Security"
+msgstr "Zabezpieczenia"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:3
 msgid ""
@@ -219,8 +219,8 @@ msgid "Trusted certificate:"
 msgstr "Zaufany certyfikat:"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:5
-msgid "<b>General</b>"
-msgstr "<b>Ogólne</b>"
+msgid "General"
+msgstr "Ogólne"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:6
 msgid ""
@@ -235,8 +235,8 @@ msgid "_Gateway:"
 msgstr "_Brama:"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:9
-msgid "<b>Authentication</b>"
-msgstr "<b>Uwierzytelnianie</b>"
+msgid "Authentication"
+msgstr "Uwierzytelnianie"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:10
 msgid "Show password"
@@ -273,7 +273,7 @@ msgid "User Certificate:"
 msgstr "Certyfikat użytkownika:"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:19
-msgid "A_dvanced..."
+msgid "A_dvanced…"
 msgstr "Zaa_wansowane…"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:20
