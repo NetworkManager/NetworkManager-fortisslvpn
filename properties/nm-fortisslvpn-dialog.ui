@@ -437,7 +437,7 @@ config: user &lt;name&gt;</property>
                   <object class="GtkLabel" id="label6">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">A_dvanced...</property>
+                    <property name="label" translatable="yes">A_dvanced…</property>
                     <property name="use_underline">True</property>
                   </object>
                   <packing>

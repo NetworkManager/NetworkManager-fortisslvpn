@@ -141,7 +141,7 @@ get_secrets (const char *vpn_uuid,
 	/* Otherwise, we have no saved password, or the password flags indicated
 	 * that the password should never be saved.
 	 */
-	prompt = g_strdup_printf (_("You need to authenticate to access the Virtual Private Network '%s'."), vpn_name);
+	prompt = g_strdup_printf (_("You need to authenticate to access the Virtual Private Network “%s”."), vpn_name);
 
 	if (external_ui_mode) {
 		GKeyFile *keyfile;
