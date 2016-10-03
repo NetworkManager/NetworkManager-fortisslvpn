@@ -5,8 +5,16 @@ Overview of changes since NetworkManager-fortisslvpn-1.2.2
 
 This is a new stable release of NetworkManager-fortisslvpn.  Notable changes include:
 
-* Updated Catalan, Czech, Indonesian, Lithuanian, Polish,
-  Spanish translations
+* Prefer building against stable libsecret API
+* Split libnm-vpn-plugin-pptp.so into a GTK-free core plugin
+  usable by nmcli and a UI plugin for nm-applet and gnome components
+* Support NM_VPN_LOG_LEVEL environment variable to control debug
+  logging from NetworkManager
+* Log via syslog() from ppp plugin
+* Add appdata for gnome-software
+* Updated Catalan, Czech, German, Hungarian, Indonesian, Lithuanian,
+  Polish, Spanish translations
+* Various cleanups
 
 
 =========================================================
