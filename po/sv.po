@@ -10,9 +10,9 @@ msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=NetworkManager&keywords=I18N+L10N&component=VPN: fortisslvpn\n"
-"POT-Creation-Date: 2016-04-12 19:49+0000\n"
-"PO-Revision-Date: 2016-04-17 15:07+0200\n"
-"Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
+"POT-Creation-Date: 2016-10-24 11:30+0000\n"
+"PO-Revision-Date: 2016-11-11 20:01+0100\n"
+"Last-Translator: Josef Andersson <josef.andersson@fripost.org>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -21,119 +21,177 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: ../appdata/network-manager-fortisslvpn.appdata.xml.in.h:1
+#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:1
 msgid "Fortinet SSLVPN client"
 msgstr "Fortinet SSLVPN-klient"
 
-#: ../appdata/network-manager-fortisslvpn.appdata.xml.in.h:2
+#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:2
 msgid "Client for Fortinet SSLVPN virtual private networks"
 msgstr "Klient för Fortinet SSLVPN virtuella privata nätverk"
 
-#: ../appdata/network-manager-fortisslvpn.appdata.xml.in.h:3
+#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:3
 msgid ""
 "Support for configuring Fortinet SSLVPN virtual private network connections."
 msgstr ""
 "Stöd för att konfigurera Fortinet SSLVPN virtuella privata "
 "nätverksanslutningar."
 
-#: ../appdata/network-manager-fortisslvpn.appdata.xml.in.h:4
+#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:4
 msgid "The NetworkManager Developers"
 msgstr "Utvecklarna av Nätverkshanteraren"
 
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
 #.
-#: ../auth-dialog/main.c:154
+#: ../auth-dialog/main.c:144
 #, c-format
-msgid "You need to authenticate to access the Virtual Private Network '%s'."
+msgid "You need to authenticate to access the Virtual Private Network “%s”."
 msgstr ""
 "Du måste autentisera dig för att komma åt det virtuella privata nätverket "
 "”%s”."
 
-#: ../auth-dialog/main.c:163 ../auth-dialog/main.c:183
+#: ../auth-dialog/main.c:153 ../auth-dialog/main.c:173
 msgid "Authenticate VPN"
 msgstr "Autentisera VPN"
 
-#: ../auth-dialog/main.c:165 ../properties/nm-fortisslvpn-dialog.ui.h:12
+#: ../auth-dialog/main.c:155 ../properties/nm-fortisslvpn-dialog.ui.h:12
 msgid "Password:"
 msgstr "Lösenord:"
 
-#: ../properties/nm-fortisslvpn.c:64
+#: ../properties/nm-fortisslvpn-editor-plugin.c:38
 msgid "Fortinet SSLVPN"
 msgstr "Fortinet SSLVPN"
 
-#: ../properties/nm-fortisslvpn.c:65
+#: ../properties/nm-fortisslvpn-editor-plugin.c:39
 msgid "Compatible with Fortinet SSLVPN servers."
 msgstr "Kompatibel med Fortinet SSLVPN-servrar."
 
-#: ../src/nm-fortisslvpn-service.c:168
+#: ../shared/nm-utils/nm-shared-utils.c:185
 #, c-format
-msgid "invalid gateway '%s'"
+msgid "object class '%s' has no property named '%s'"
+msgstr "objektklassen ”%s” har ingen egenskap med namn ”%s”"
+
+#: ../shared/nm-utils/nm-shared-utils.c:192
+#, c-format
+msgid "property '%s' of object class '%s' is not writable"
+msgstr "egenskapen ”%s” för objektklassen ”%s” är skrivskyddad"
+
+#: ../shared/nm-utils/nm-shared-utils.c:199
+#, c-format
+msgid ""
+"construct property \"%s\" for object '%s' can't be set after construction"
+msgstr ""
+"konstruktoregenskapen ”%s” för objektet ”%s” kan inte anges efter "
+"konstruktion"
+
+#: ../shared/nm-utils/nm-shared-utils.c:207
+#, c-format
+msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
+msgstr ""
+"”%s::%s'” är inte ett giltigt egenskapsnamn; ”%s” är inte en GObject-undertyp"
+
+#: ../shared/nm-utils/nm-shared-utils.c:216
+#, c-format
+msgid "unable to set property '%s' of type '%s' from value of type '%s'"
+msgstr ""
+"kunde inte ange egenskapen ”%s” för typen ”%s” från värdet av typen ”%s”"
+
+#: ../shared/nm-utils/nm-shared-utils.c:227
+#, c-format
+msgid ""
+"value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
+"type '%s'"
+msgstr ""
+"värdet ”%s” av typen ”%s” är ogiltigt eller utanför intervallet för "
+"egenskapen ”%s” av typen ”%s”"
+
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:80
+#, c-format
+msgid "missing plugin file \"%s\""
+msgstr "saknar insticksmodulfilen ”%s”"
+
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:86
+#, c-format
+msgid "cannot load editor plugin: %s"
+msgstr "kan inte öppna redigerarinsticket: %s"
+
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:95
+#, c-format
+msgid "cannot load factory %s from plugin: %s"
+msgstr "kan inte öppna fabriken %s från insticksmodulen: %s"
+
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:121
+msgid "unknown error creating editor instance"
+msgstr "okänt fel vid skapande av redigeringsinstans."
+
+#: ../src/nm-fortisslvpn-service.c:208
+#, c-format
+msgid "invalid gateway “%s”"
 msgstr "ogiltig gateway ”%s”"
 
-#: ../src/nm-fortisslvpn-service.c:176
+#: ../src/nm-fortisslvpn-service.c:216
 #, c-format
-msgid "invalid certificate authority '%s'"
+msgid "invalid certificate authority “%s”"
 msgstr "ogiltig certifikatutfärdare ”%s”"
 
-#: ../src/nm-fortisslvpn-service.c:190
+#: ../src/nm-fortisslvpn-service.c:230
 #, c-format
-msgid "invalid integer property '%s'"
+msgid "invalid integer property “%s”"
 msgstr "ogiltig heltalsegenskap ”%s”"
 
-#: ../src/nm-fortisslvpn-service.c:200
+#: ../src/nm-fortisslvpn-service.c:240
 #, c-format
-msgid "invalid boolean property '%s' (not yes or no)"
+msgid "invalid boolean property “%s” (not yes or no)"
 msgstr "ogiltig boolesk egenskap ”%s” (inte yes eller no)"
 
-#: ../src/nm-fortisslvpn-service.c:207
+#: ../src/nm-fortisslvpn-service.c:247
 #, c-format
-msgid "unhandled property '%s' type %s"
+msgid "unhandled property “%s” type %s"
 msgstr "ohanterad egenskap ”%s” typ %s"
 
-#: ../src/nm-fortisslvpn-service.c:218
+#: ../src/nm-fortisslvpn-service.c:258
 #, c-format
-msgid "property '%s' invalid or not supported"
+msgid "property “%s” invalid or not supported"
 msgstr "egenskapen ”%s” är ogiltig eller stöds inte"
 
-#: ../src/nm-fortisslvpn-service.c:235
+#: ../src/nm-fortisslvpn-service.c:275
 msgid "No VPN configuration options."
 msgstr "Inga VPN-konfigurationsalternativ."
 
-#: ../src/nm-fortisslvpn-service.c:255
+#: ../src/nm-fortisslvpn-service.c:295
 #, c-format
-msgid "Missing required option '%s'."
+msgid "Missing required option “%s”."
 msgstr "Saknar nödvändiga flaggan ”%s”."
 
-#: ../src/nm-fortisslvpn-service.c:275
+#: ../src/nm-fortisslvpn-service.c:315
 msgid "No VPN secrets!"
 msgstr "Inga VPN-hemligheter!"
 
-#: ../src/nm-fortisslvpn-service.c:391
+#: ../src/nm-fortisslvpn-service.c:432
 msgid "Could not find the openfortivpn binary."
 msgstr "Kunde inte hitta openfortivpn-binären."
 
-#: ../src/nm-fortisslvpn-service.c:510
+#: ../src/nm-fortisslvpn-service.c:553
 msgid "Missing VPN username."
 msgstr "Saknar VPN-användarnamn."
 
-#: ../src/nm-fortisslvpn-service.c:520
+#: ../src/nm-fortisslvpn-service.c:563
 msgid "Missing or invalid VPN password."
 msgstr "Saknat eller ogiltigt VPN-lösenord."
 
-#: ../src/nm-fortisslvpn-service.c:735
-msgid "Don't quit when VPN connection terminates"
+#: ../src/nm-fortisslvpn-service.c:799
+msgid "Don’t quit when VPN connection terminates"
 msgstr "Avsluta inte när VPN-anslutningen termineras"
 
-#: ../src/nm-fortisslvpn-service.c:736
+#: ../src/nm-fortisslvpn-service.c:800
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr "Aktivera informativ felsökningsloggning (kan exponera lösenord)"
 
-#: ../src/nm-fortisslvpn-service.c:737
+#: ../src/nm-fortisslvpn-service.c:801
 msgid "D-Bus name to use for this instance"
 msgstr "D-Bus-namn att använda för denna instans"
 
-#: ../src/nm-fortisslvpn-service.c:760
+#: ../src/nm-fortisslvpn-service.c:822
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
@@ -146,8 +204,8 @@ msgid "SSLVPN Advanced Options"
 msgstr "Avancerade SSLVPN-alternativ"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:2
-msgid "<b>Security</b>"
-msgstr "<b>Säkerhet</b>"
+msgid "Security"
+msgstr "Säkerhet"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:3
 msgid ""
@@ -162,8 +220,8 @@ msgid "Trusted certificate:"
 msgstr "Betrott certifikat:"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:5
-msgid "<b>General</b>"
-msgstr "<b>Allmänt</b>"
+msgid "General"
+msgstr "Allmänt"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:6
 msgid ""
@@ -178,8 +236,8 @@ msgid "_Gateway:"
 msgstr "_Gateway:"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:9
-msgid "<b>Authentication</b>"
-msgstr "<b>Autentisering</b>"
+msgid "Authentication"
+msgstr "Autentisering"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:10
 msgid "Show password"
@@ -216,7 +274,7 @@ msgid "User Certificate:"
 msgstr "Användarcertifikat:"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:19
-msgid "A_dvanced..."
+msgid "A_dvanced…"
 msgstr "A_vancerat…"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:20
