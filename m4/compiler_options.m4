@@ -37,7 +37,7 @@ AC_DEFUN([NM_COMPILER_WARNING], [
 AC_DEFUN([NM_COMPILER_WARNINGS],
 [AC_ARG_ENABLE(more-warnings,
 	AS_HELP_STRING([--enable-more-warnings], [Possible values: no/yes/error]),
-	set_more_warnings="$enableval",set_more_warnings=yes)
+	set_more_warnings="$enableval",set_more_warnings=$1)
 AC_MSG_CHECKING(for more warnings)
 if test "$GCC" = "yes" -a "$set_more_warnings" != "no"; then
 	AC_MSG_RESULT(yes)
@@ -55,7 +55,7 @@ if test "$GCC" = "yes" -a "$set_more_warnings" != "no"; then
 	dnl attach it to the CFLAGS.
 	NM_COMPILER_WARNING([unknown-warning-option], [])
 
-	CFLAGS_MORE_WARNINGS="-Wall -std=gnu89"
+	CFLAGS_MORE_WARNINGS="-Wall -std=gnu99"
 
 	if test "x$set_more_warnings" = xerror; then
 		CFLAGS_MORE_WARNINGS="$CFLAGS_MORE_WARNINGS -Werror"
