@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=NetworkManager&keywords=I18N+L10N&component=VPN: fortisslvpn\n"
 "POT-Creation-Date: 2017-02-26 08:34+0000\n"
-"PO-Revision-Date: 2017-03-14 10:07+0100\n"
+"PO-Revision-Date: 2017-03-14 13:34+0100\n"
 "Last-Translator: Milo Casagrande <milo@milo.name>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "Language: it\n"
@@ -47,7 +47,7 @@ msgstr "Gli sviluppatori di NetworkManager"
 #, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
 msgstr ""
-"È necessario autenticarsi per accedere alla Rete Privata Virtuale (VPN) «%s»."
+"È necessario autenticarsi per accedere alla VPN (rete privata virtuale) «%s»."
 
 #: ../auth-dialog/main.c:153 ../auth-dialog/main.c:173
 msgid "Authenticate VPN"
