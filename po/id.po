@@ -5,10 +5,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: network-manager-fortisslvpn nm-1-2\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=NetworkManager&keywords=I18N+L10N&component=VPN: fortisslvpn\n"
-"POT-Creation-Date: 2016-04-14 15:29+0000\n"
-"PO-Revision-Date: 2016-06-13 14:59+0700\n"
+"POT-Creation-Date: 2017-02-26 08:34+0000\n"
+"PO-Revision-Date: 2017-04-14 11:00+0700\n"
 "Last-Translator: Andika Triwidada <atriwidada@gnome.org>\n"
 "Language-Team: Indonesian Translator <gnome@i15n.org>\n"
 "Language: id\n"
@@ -18,116 +18,174 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 1.6.10\n"
 
-#: ../appdata/network-manager-fortisslvpn.appdata.xml.in.h:1
+#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:1
 msgid "Fortinet SSLVPN client"
 msgstr "Klien SSLVPN Fortinet"
 
-#: ../appdata/network-manager-fortisslvpn.appdata.xml.in.h:2
+#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:2
 msgid "Client for Fortinet SSLVPN virtual private networks"
 msgstr "Klien untuk virtual private network SSLVPN Fortinet"
 
-#: ../appdata/network-manager-fortisslvpn.appdata.xml.in.h:3
+#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:3
 msgid ""
 "Support for configuring Fortinet SSLVPN virtual private network connections."
 msgstr ""
 "Dukungan bagi penataan koneksi virtual private network SSLVPN Fortinet."
 
-#: ../appdata/network-manager-fortisslvpn.appdata.xml.in.h:4
+#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:4
 msgid "The NetworkManager Developers"
 msgstr "Para Pengembang NetworkManager"
 
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
 #.
-#: ../auth-dialog/main.c:154
+#: ../auth-dialog/main.c:144
 #, c-format
-msgid "You need to authenticate to access the Virtual Private Network '%s'."
-msgstr "Anda perlu berotentikasi untuk mengakses Virtual Private Network '%s'."
+msgid "You need to authenticate to access the Virtual Private Network “%s”."
+msgstr ""
+"Anda perlu berotentikasi untuk mengakses Virtual Private Network \"%s\"."
 
-#: ../auth-dialog/main.c:163 ../auth-dialog/main.c:183
+#: ../auth-dialog/main.c:153 ../auth-dialog/main.c:173
 msgid "Authenticate VPN"
 msgstr "Otentikasikan VPN"
 
-#: ../auth-dialog/main.c:165 ../properties/nm-fortisslvpn-dialog.ui.h:12
+#: ../auth-dialog/main.c:155 ../properties/nm-fortisslvpn-dialog.ui.h:12
 msgid "Password:"
 msgstr "Kata sandi:"
 
-#: ../properties/nm-fortisslvpn.c:64
+#: ../properties/nm-fortisslvpn-editor-plugin.c:38
 msgid "Fortinet SSLVPN"
 msgstr "Fortinet SSLVPN"
 
-#: ../properties/nm-fortisslvpn.c:65
+#: ../properties/nm-fortisslvpn-editor-plugin.c:39
 msgid "Compatible with Fortinet SSLVPN servers."
 msgstr "Kompatibel dengan server SSLVPN Fortinet."
 
-#: ../src/nm-fortisslvpn-service.c:168
+#: ../shared/nm-utils/nm-shared-utils.c:264
 #, c-format
-msgid "invalid gateway '%s'"
-msgstr "gateway '%s' tak valid"
+msgid "object class '%s' has no property named '%s'"
+msgstr "kelas objek '%s' tidak punya properti bernama '%s'"
 
-#: ../src/nm-fortisslvpn-service.c:176
+#: ../shared/nm-utils/nm-shared-utils.c:271
 #, c-format
-msgid "invalid certificate authority '%s'"
-msgstr "certificate authority '%s' tak valid"
+msgid "property '%s' of object class '%s' is not writable"
+msgstr "properti '%s' dari kelas objek '%s' tidak dapat ditulisi"
 
-#: ../src/nm-fortisslvpn-service.c:190
+#: ../shared/nm-utils/nm-shared-utils.c:278
 #, c-format
-msgid "invalid integer property '%s'"
-msgstr "properti integer '%s' tak valid"
+msgid ""
+"construct property \"%s\" for object '%s' can't be set after construction"
+msgstr ""
+"properti construct \"%s\" bagi objek '%s' tak dapat ditata setelah konstruksi"
 
-#: ../src/nm-fortisslvpn-service.c:200
+#: ../shared/nm-utils/nm-shared-utils.c:286
 #, c-format
-msgid "invalid boolean property '%s' (not yes or no)"
-msgstr "properti bool '%s' tak valid (bukan yes atau no)"
+msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
+msgstr ""
+"'%s::%s' bukat suatu nama properti yang valid; '%s' bukat suatu sub tipe "
+"GObject"
 
-#: ../src/nm-fortisslvpn-service.c:207
+#: ../shared/nm-utils/nm-shared-utils.c:295
 #, c-format
-msgid "unhandled property '%s' type %s"
-msgstr "properti '%s' jenis %s tak ditangani"
+msgid "unable to set property '%s' of type '%s' from value of type '%s'"
+msgstr "tidak bisa menata properti '%s' bertipe '%s' dari nilai bertipe '%s'"
 
-#: ../src/nm-fortisslvpn-service.c:218
+#: ../shared/nm-utils/nm-shared-utils.c:306
 #, c-format
-msgid "property '%s' invalid or not supported"
-msgstr "properti '%s' tak valid atau tak didukung"
+msgid ""
+"value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
+"type '%s'"
+msgstr ""
+"nilai \"%s\" dengan tipe '%s' tidak valid atau di luar jangkauan bagi "
+"properti '%s' bertipe '%s'"
 
-#: ../src/nm-fortisslvpn-service.c:235
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:80
+#, c-format
+msgid "missing plugin file \"%s\""
+msgstr "kurang berkas pengaya \"%s\""
+
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:86
+#, c-format
+msgid "cannot load editor plugin: %s"
+msgstr "tidak bisa memuat pengaya penyunting: %s"
+
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:95
+#, c-format
+msgid "cannot load factory %s from plugin: %s"
+msgstr "tidak bisa memuat pabrik %s dari pengaya: %s"
+
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:121
+msgid "unknown error creating editor instance"
+msgstr "galat tidak dikenal saat membuat instansi penyunting"
+
+#: ../src/nm-fortisslvpn-service.c:208
+#, c-format
+msgid "invalid gateway “%s”"
+msgstr "gateway \"%s\" tidak valid"
+
+#: ../src/nm-fortisslvpn-service.c:216
+#, c-format
+msgid "invalid certificate authority “%s”"
+msgstr "certificate authority \"%s\" tidak valid"
+
+#: ../src/nm-fortisslvpn-service.c:230
+#, c-format
+msgid "invalid integer property “%s”"
+msgstr "properti integer \"%s\" tidak valid"
+
+#: ../src/nm-fortisslvpn-service.c:240
+#, c-format
+msgid "invalid boolean property “%s” (not yes or no)"
+msgstr "properti bool \"%s\" tidak valid (bukan yes atau no)"
+
+#: ../src/nm-fortisslvpn-service.c:247
+#, c-format
+msgid "unhandled property “%s” type %s"
+msgstr "properti \"%s\" tipe %s tidak ditangani"
+
+#: ../src/nm-fortisslvpn-service.c:258
+#, c-format
+msgid "property “%s” invalid or not supported"
+msgstr "properti \"%s\" tidak valid atau tidak didukung"
+
+#: ../src/nm-fortisslvpn-service.c:275
 msgid "No VPN configuration options."
 msgstr "Tak ada opsi konfigurasi VPN."
 
-#: ../src/nm-fortisslvpn-service.c:255
+#: ../src/nm-fortisslvpn-service.c:295
 #, c-format
-msgid "Missing required option '%s'."
-msgstr "Kehilangan opsi '%s' yang diperlukan."
+msgid "Missing required option “%s”."
+msgstr "Kurang opsi \"%s\" yang diperlukan."
 
-#: ../src/nm-fortisslvpn-service.c:275
+#: ../src/nm-fortisslvpn-service.c:315
 msgid "No VPN secrets!"
 msgstr "Tak ada rahasia VPN!"
 
-#: ../src/nm-fortisslvpn-service.c:391
+#: ../src/nm-fortisslvpn-service.c:432
 msgid "Could not find the openfortivpn binary."
 msgstr "Tak bisa temukan biner openfortivpn."
 
-#: ../src/nm-fortisslvpn-service.c:510
+#: ../src/nm-fortisslvpn-service.c:553
 msgid "Missing VPN username."
 msgstr "Nama pengguna VPN hilang."
 
-#: ../src/nm-fortisslvpn-service.c:520
+#: ../src/nm-fortisslvpn-service.c:563
 msgid "Missing or invalid VPN password."
 msgstr "Sandi VPN hilang atau tak valid."
 
-#: ../src/nm-fortisslvpn-service.c:735
-msgid "Don't quit when VPN connection terminates"
-msgstr "Jangan keluar ketika koneksi VPN diputus"
+#: ../src/nm-fortisslvpn-service.c:799
+msgid "Don’t quit when VPN connection terminates"
+msgstr "Jangan keluar ketika koneksi VPN berakhir"
 
-#: ../src/nm-fortisslvpn-service.c:736
+#: ../src/nm-fortisslvpn-service.c:800
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr "Aktifkan log pengawakutuan verbose (mungkin mengungkap sandi)"
 
-#: ../src/nm-fortisslvpn-service.c:737
+#: ../src/nm-fortisslvpn-service.c:801
 msgid "D-Bus name to use for this instance"
 msgstr "Nama D-Bus untuk dipakai bagi instansi ini"
 
-#: ../src/nm-fortisslvpn-service.c:760
+#: ../src/nm-fortisslvpn-service.c:822
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
@@ -140,8 +198,8 @@ msgid "SSLVPN Advanced Options"
 msgstr "Opsi Tingkat Lanjut SSLVPN"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:2
-msgid "<b>Security</b>"
-msgstr "<b>Keamanan</b>"
+msgid "Security"
+msgstr "Keamanan"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:3
 msgid ""
@@ -156,8 +214,8 @@ msgid "Trusted certificate:"
 msgstr "Sertifikat terpercaya:"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:5
-msgid "<b>General</b>"
-msgstr "<b>Umum</b>"
+msgid "General"
+msgstr "Umum"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:6
 msgid ""
@@ -172,8 +230,8 @@ msgid "_Gateway:"
 msgstr "_Gateway:"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:9
-msgid "<b>Authentication</b>"
-msgstr "<b>Otentikasi</b>"
+msgid "Authentication"
+msgstr "Otentikasi"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:10
 msgid "Show password"
@@ -210,7 +268,7 @@ msgid "User Certificate:"
 msgstr "Sertifikat Pengguna:"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:19
-msgid "A_dvanced..."
+msgid "A_dvanced…"
 msgstr "Tingkat _Lanjut..."
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:20
