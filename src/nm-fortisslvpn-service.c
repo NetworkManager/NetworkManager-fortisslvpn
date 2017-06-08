@@ -144,7 +144,7 @@ validate_gateway (const char *gateway)
 }
 
 /* This is a bit half-assed. We should check that the user doesn't
- * abuse this to access files he ordinarily shouldn't, but we an't do
+ * abuse this to access files he ordinarily shouldn't, but we can't do
  * any better than this for we don't have any information about the
  * identity of the user that activates the connection.
  * We should probably get the certificate inline or something. */
