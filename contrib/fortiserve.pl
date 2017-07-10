@@ -249,9 +249,14 @@ sub serve_request
 
 	my $response;
 
+
 	if ($request->uri eq '/remote/logincheck') {
-		$response = new HTTP::Response (200 => 'OK', [], 'something');
-		$response->header ('Set-Cookie' => 'SVPNCOOKIE=something;');
+		if ($request->content =~ /code=/) {
+			$response = new HTTP::Response (200 => 'OK', [], '');
+			$response->header ('Set-Cookie' => 'SVPNCOOKIE=something;');
+		} else {
+			$response = new HTTP::Response (200 => 'OK', [], 'tokeninfo=helloworld');
+		}
 	} elsif ($request->uri eq '/remote/index') {
 		$response = new HTTP::Response (200 => 'OK', [], 'something');
 	} elsif ($request->uri eq '/remote/fortisslvpn') {
