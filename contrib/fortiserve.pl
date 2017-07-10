@@ -286,9 +286,9 @@ sub serve_request
 		);
 	} elsif ($request->uri eq '/remote/sslvpn-tunnel') {
 		do_ppp ($client);
-		$response = new HTTP::Response (200 => 'OK', 'something');
+		$response = new HTTP::Response (200 => 'OK', [], 'something');
 	} elsif ($request->uri eq '/remote/logout') {
-		$response = new HTTP::Response (200 => 'OK', 'something');
+		$response = new HTTP::Response (200 => 'OK', [], 'something');
 	} else {
 		$response = new HTTP::Response (404 => 'Not funny', [Connection => 'close']);
 	}
