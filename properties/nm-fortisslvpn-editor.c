@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015 Lubomir Rintel <lkundrak@v3.sk>
+ * Copyright (C) 2015,2017 Lubomir Rintel <lkundrak@v3.sk>
  * Copyright (C) 2008 Dan Williams, <dcbw@redhat.com>
  * Copyright (C) 2008 - 2011 Red Hat, Inc.
  * Based on work by David Zeuthen, <davidz@redhat.com>
@@ -40,6 +40,7 @@ typedef struct {
 	gboolean window_added;
 	gboolean new_connection;
 	gchar *trusted_cert;
+	NMSettingSecretFlags otp_flags;
 } FortisslvpnEditorPrivate;
 
 static void fortisslvpn_editor_interface_init (NMVpnEditorInterface *iface_class);
@@ -172,14 +173,22 @@ advanced_dialog_response_cb (GtkWidget *dialog, gint response, gpointer user_dat
 	FortisslvpnEditor *self = FORTISSLVPN_EDITOR (user_data);
 	FortisslvpnEditorPrivate *priv = FORTISSLVPN_EDITOR_GET_PRIVATE (self);
 	GtkEntry *entry = GTK_ENTRY (gtk_builder_get_object (priv->builder, "trusted_cert_entry"));
+	GtkToggleButton *use_otp = GTK_TOGGLE_BUTTON (gtk_builder_get_object (priv->builder, "use_otp"));
 
 	g_assert (entry);
 	if (response == GTK_RESPONSE_OK) {
 		g_free (priv->trusted_cert);
 		priv->trusted_cert = g_strdup (gtk_entry_get_text (entry));
 		stuff_changed_cb (NULL, self);
+
+		if (gtk_toggle_button_get_active (use_otp))
+			priv->otp_flags |= NM_SETTING_SECRET_FLAG_NOT_SAVED;
+		else
+			priv->otp_flags &= ~NM_SETTING_SECRET_FLAG_NOT_SAVED;
 	} else {
 		gtk_entry_set_text (entry, priv->trusted_cert);
+		gtk_toggle_button_set_active (use_otp,
+		                              priv->otp_flags & NM_SETTING_SECRET_FLAG_NOT_SAVED);
 	}
 
 	gtk_widget_hide (dialog);
@@ -250,6 +259,17 @@ init_editor_plugin (FortisslvpnEditor *self, NMConnection *connection, GError **
 		if (!priv->trusted_cert)
 			priv->trusted_cert = g_strdup ("");
 		gtk_entry_set_text (GTK_ENTRY (widget), priv->trusted_cert);
+	}
+
+	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "use_otp"));
+	if (!widget)
+		return FALSE;
+	if (s_vpn) {
+		nm_setting_get_secret_flags (NM_SETTING (s_vpn),
+		                             NM_FORTISSLVPN_KEY_OTP, &priv->otp_flags,
+		                             NULL);
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget),
+		                              priv->otp_flags & NM_SETTING_SECRET_FLAG_NOT_SAVED);
 	}
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "show_passwords_checkbutton"));
@@ -417,6 +437,9 @@ update_connection (NMVpnEditor *iface,
 		nm_setting_vpn_add_data_item (s_vpn,
 		                              NM_FORTISSLVPN_KEY_TRUSTED_CERT,
 		                              priv->trusted_cert);
+
+	/* Use OTP */
+	nm_setting_set_secret_flags (NM_SETTING (s_vpn), NM_FORTISSLVPN_KEY_OTP, priv->otp_flags, NULL);
 
 	nm_connection_add_setting (connection, NM_SETTING (s_vpn));
 	valid = TRUE;
