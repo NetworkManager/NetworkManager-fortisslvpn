@@ -18,7 +18,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  * (C) Copyright 2008 - 2014 Red Hat, Inc.
- * (C) Copyright 2015 Lubomir Rintel
+ * (C) Copyright 2015,2017 Lubomir Rintel
  */
 
 #include "nm-default.h"
@@ -102,11 +102,13 @@ static const ValidProperty valid_properties[] = {
 	{ NM_FORTISSLVPN_KEY_CERT,              G_TYPE_STRING, FALSE },
 	{ NM_FORTISSLVPN_KEY_KEY,               G_TYPE_STRING, FALSE },
 	{ NM_FORTISSLVPN_KEY_PASSWORD"-flags",  G_TYPE_UINT,   FALSE },
+	{ NM_FORTISSLVPN_KEY_OTP"-flags",       G_TYPE_UINT,   FALSE },
 	{ NULL }
 };
 
 static const ValidProperty valid_secrets[] = {
 	{ NM_FORTISSLVPN_KEY_PASSWORD,          G_TYPE_STRING, TRUE },
+	{ NM_FORTISSLVPN_KEY_OTP,               G_TYPE_STRING, TRUE },
 	{ NULL }
 };
 
@@ -540,6 +542,7 @@ static gboolean
 get_credentials (NMSettingVpn *s_vpn,
                  const char **username,
                  const char **password,
+                 const char **otp,
                  GError **error)
 {
 	/* Username; try SSLVPN specific username first, then generic username */
@@ -564,6 +567,8 @@ get_credentials (NMSettingVpn *s_vpn,
 		return FALSE;
 	}
 
+	*otp = nm_setting_vpn_get_secret (s_vpn, NM_FORTISSLVPN_KEY_OTP);
+
 	return TRUE;
 }
 
@@ -574,7 +579,7 @@ real_connect (NMVpnServicePlugin *plugin, NMConnection *connection, GError **err
 	NMSettingVpn *s_vpn;
 	mode_t old_umask;
 	gchar *config;
-	const char *username, *password;
+	const char *username, *password, *otp;
 
 	g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
@@ -587,7 +592,7 @@ real_connect (NMVpnServicePlugin *plugin, NMConnection *connection, GError **err
 	if (!validate_secrets (s_vpn, error))
 		return FALSE;
 
-	if (!get_credentials (s_vpn, &username, &password, error))
+	if (!get_credentials (s_vpn, &username, &password, &otp, error))
 		return FALSE;
 
 	g_clear_object (&priv->connection);
@@ -602,8 +607,9 @@ real_connect (NMVpnServicePlugin *plugin, NMConnection *connection, GError **err
 	 * secrets on the command line */
 	priv->config_file = g_strdup_printf (NM_FORTISSLVPN_STATEDIR "/%s.config",
 	                                     nm_connection_get_uuid (connection));
-	config = g_strdup_printf ("username = %s\npassword = %s\n",
-	                          username, password);
+	config = g_strdup_printf ("username = %s\npassword = %s%s%s\n",
+	                          username, password,
+	                          otp ? "\notp = " : "", otp ? otp : "");
 	old_umask = umask (0077);
 	if (!g_file_set_contents (priv->config_file, config, -1, error)) {
 		g_clear_pointer (&priv->config_file, g_free);
@@ -632,19 +638,23 @@ real_need_secrets (NMVpnServicePlugin *plugin,
 
 	s_vpn = nm_connection_get_setting (connection, NM_TYPE_SETTING_VPN);
 
-	nm_setting_get_secret_flags (NM_SETTING (s_vpn), NM_FORTISSLVPN_KEY_PASSWORD, &flags, NULL);
-
-	/* Don't need the password if it's not required */
-	if (flags & NM_SETTING_SECRET_FLAG_NOT_REQUIRED)
-		return FALSE;
-
-	/* Don't need the password if we already have one */
-	if (nm_setting_vpn_get_secret (NM_SETTING_VPN (s_vpn), NM_FORTISSLVPN_KEY_PASSWORD))
-		return FALSE;
-
-	/* Otherwise we need a password */
 	*setting_name = NM_SETTING_VPN_SETTING_NAME;
-	return TRUE;
+
+	/* Do we require the password and don't have it? */
+	nm_setting_get_secret_flags (NM_SETTING (s_vpn), NM_FORTISSLVPN_KEY_PASSWORD, &flags, NULL);
+	if (   !(flags & NM_SETTING_SECRET_FLAG_NOT_REQUIRED)
+	    && !nm_setting_vpn_get_secret (NM_SETTING_VPN (s_vpn), NM_FORTISSLVPN_KEY_PASSWORD))
+		return TRUE;
+
+	/* Do we require the one-time-password and don't have it? */
+	nm_setting_get_secret_flags (NM_SETTING (s_vpn), NM_FORTISSLVPN_KEY_OTP, &flags, NULL);
+	if (   (flags & NM_SETTING_SECRET_FLAG_NOT_SAVED)
+	    && !nm_setting_vpn_get_secret (NM_SETTING_VPN (s_vpn), NM_FORTISSLVPN_KEY_OTP))
+		return TRUE;
+
+	/* Otherwise we're fine */
+	*setting_name = NULL;
+	return FALSE;
 }
 
 static gboolean
