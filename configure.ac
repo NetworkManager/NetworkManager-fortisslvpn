@@ -6,6 +6,7 @@ AC_INIT(NetworkManager-fortisslvpn,
         NetworkManager-fortisslvpn)
 AM_INIT_AUTOMAKE([1.9 foreign no-dist-gzip dist-xz])
 AM_MAINTAINER_MODE
+AM_SILENT_RULES([yes])
 
 AC_CONFIG_MACRO_DIR([m4])
 
@@ -146,11 +147,7 @@ fi
 
 AC_CONFIG_FILES([
 Makefile
-src/Makefile
-auth-dialog/Makefile
-properties/Makefile
 po/Makefile.in
-shared/Makefile
 ])
 AC_OUTPUT
 
