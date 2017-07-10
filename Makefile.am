@@ -94,19 +94,33 @@ src_nm_fortisslvpn_service_LDADD = \
 
 ###############################################################################
 
+properties/resources.h: properties/gresource.xml
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) $< --target=$@ --sourcedir=$(srcdir)/properties --generate-header --internal
+
+properties/resources.c: properties/gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir)/properties --generate-dependencies $(srcdir)/properties/gresource.xml)
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) $< --target=$@ --sourcedir=$(srcdir)/properties --generate-source --internal
+
 plugin_sources = \
 	properties/nm-fortisslvpn-editor-plugin.c \
 	properties/nm-fortisslvpn-editor-plugin.h
 
 editor_sources = \
+	properties/resources.c \
+	properties/resources.h \
 	properties/nm-fortisslvpn-editor.c \
 	properties/nm-fortisslvpn-editor.h
 
 properties_cppflags = \
-	-DUIDIR=\""$(uidir)"\" \
 	-DLOCALEDIR=\"$(datadir)/locale\" \
 	-I$(srcdir)/shared \
 	$(GLIB_CFLAGS)
+
+CLEANFILES += \
+	properties/resources.c \
+	properties/resources.h
+
+EXTRA_DIST += \
+	properties/gresource.xml
 
 ###############################################################################
 

@@ -36,6 +36,7 @@ network-manager-fortisslvpn.metainfo.xml
 auth-dialog/nm-fortisslvpn-auth-dialog
 nm-fortisslvpn-service.name
 nm-fortisslvpn.desktop
+properties/resources.[ch]
 src/nm-fortisslvpn-pppd-service-dbus.c
 src/nm-fortisslvpn-pppd-service-dbus.h
 src/nm-fortisslvpn-service
