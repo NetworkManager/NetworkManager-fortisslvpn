@@ -17,6 +17,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  * (C) Copyright 2008 - 2011 Red Hat, Inc.
+ * (C) Copyright 2015,2017 Lubomir Rintel
  */
 
 #include "nm-default.h"
@@ -266,7 +267,7 @@ main (int argc, char *argv[])
 		return 1;
 	}
 
-	nm_vpn_service_plugin_get_secret_flags (secrets, NM_FORTISSLVPN_KEY_PASSWORD, &pw_flags);
+	nm_vpn_service_plugin_get_secret_flags (data, NM_FORTISSLVPN_KEY_PASSWORD, &pw_flags);
 
 	if (!get_secrets (vpn_uuid, vpn_name, retry, allow_interaction, external_ui_mode,
 	                  g_hash_table_lookup (secrets, NM_FORTISSLVPN_KEY_PASSWORD),
