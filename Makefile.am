@@ -11,8 +11,6 @@ EXTRA_DIST =
 
 CLEANFILES =
 
-check_programs =
-
 noinst_PROGRAMS =
 
 SUBDIRS = \
@@ -27,9 +25,6 @@ dbusservice_DATA = nm-fortisslvpn-service.conf
 
 nmvpnservicedir = $(NM_VPN_SERVICE_DIR)
 nmvpnservice_DATA = nm-fortisslvpn-service.name
-
-uidir = $(datadir)/gnome-vpn-properties/fortisslvpn
-ui_DATA =
 
 BUILT_SOURCES =
 
@@ -305,11 +300,6 @@ nm-fortisslvpn-service.name: $(srcdir)/nm-fortisslvpn-service.name.in
 	$(AM_V_GEN) sed -e 's|[@]LIBEXECDIR[@]|$(libexecdir)|g' \
 	    -e 's|[@]PLUGINDIR[@]/|@NM_PLUGIN_DIR_NAME_FILE@|g' \
 	    $^ >$@
-
-# we always build the tests during regular build.
-noinst_PROGRAMS += $(check_programs)
-
-TESTS = $(check_programs)
 
 EXTRA_DIST += \
 	nm-fortisslvpn-service.name.in \
