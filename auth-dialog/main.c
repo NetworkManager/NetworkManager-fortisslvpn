@@ -112,8 +112,10 @@ get_secrets (const char *vpn_uuid,
              gboolean allow_interaction,
              gboolean external_ui_mode,
              const char *in_pw,
-             char **out_pw,
-             NMSettingSecretFlags pw_flags)
+             char **out_password,
+             char **out_otp,
+             NMSettingSecretFlags password_flags,
+             NMSettingSecretFlags otp_flags)
 {
 	NMAVpnPasswordDialog *dialog;
 	char *prompt, *pw = NULL;
@@ -121,20 +123,23 @@ get_secrets (const char *vpn_uuid,
 
 	g_return_val_if_fail (vpn_uuid != NULL, FALSE);
 	g_return_val_if_fail (vpn_name != NULL, FALSE);
-	g_return_val_if_fail (out_pw != NULL, FALSE);
-	g_return_val_if_fail (*out_pw == NULL, FALSE);
+	g_return_val_if_fail (out_password != NULL, FALSE);
+	g_return_val_if_fail (*out_password == NULL, FALSE);
+	g_return_val_if_fail (out_otp != NULL, FALSE);
+	g_return_val_if_fail (*out_otp == NULL, FALSE);
 
-	/* Get the existing secret, if any */
-	if (   !(pw_flags & NM_SETTING_SECRET_FLAG_NOT_SAVED)
-	    && !(pw_flags & NM_SETTING_SECRET_FLAG_NOT_REQUIRED)) {
+	/* Get the existing password, if any */
+	if (   !(password_flags & NM_SETTING_SECRET_FLAG_NOT_SAVED)
+	    && !(password_flags & NM_SETTING_SECRET_FLAG_NOT_REQUIRED)) {
 		if (in_pw)
 			pw = g_strdup (in_pw);
 		else
 			pw = keyring_lookup_secret (vpn_uuid, NM_FORTISSLVPN_KEY_PASSWORD);
 	}
 
-	/* Don't ask if the passwords is unused */
-	if (pw_flags & NM_SETTING_SECRET_FLAG_NOT_REQUIRED) {
+	/* Don't ask if the no secrets are needed is unused */
+	if (   password_flags & NM_SETTING_SECRET_FLAG_NOT_REQUIRED
+	    && !(otp_flags & NM_SETTING_SECRET_FLAG_NOT_SAVED)) {
 		g_free (pw);
 		return TRUE;
 	}
@@ -153,19 +158,22 @@ get_secrets (const char *vpn_uuid,
 		g_key_file_set_string (keyfile, UI_KEYFILE_GROUP, "Description", prompt);
 		g_key_file_set_string (keyfile, UI_KEYFILE_GROUP, "Title", _("Authenticate VPN"));
 
-		keyfile_add_entry_info (keyfile, NM_FORTISSLVPN_KEY_PASSWORD, pw ? pw : "", _("Password:"), TRUE, allow_interaction);
+		if (!(password_flags & NM_SETTING_SECRET_FLAG_NOT_REQUIRED))
+			keyfile_add_entry_info (keyfile, NM_FORTISSLVPN_KEY_PASSWORD, pw ? pw : "", _("Password:"), TRUE, allow_interaction);
+		if (otp_flags & NM_SETTING_SECRET_FLAG_NOT_SAVED)
+			keyfile_add_entry_info (keyfile, NM_FORTISSLVPN_KEY_OTP, "", _("Token:"), TRUE, allow_interaction);
 
 		keyfile_print_stdout (keyfile);
 		g_key_file_unref (keyfile);
 		goto out;
 	} else if (   allow_interaction == FALSE
-	           || (!retry && pw && !(pw_flags & NM_SETTING_SECRET_FLAG_NOT_SAVED))) {
+	           || (!retry && pw && !(password_flags & NM_SETTING_SECRET_FLAG_NOT_SAVED))) {
 		/* If interaction isn't allowed, just return existing secrets.
 		 * Also, don't ask the user if we don't need a new password (ie, !retry),
 		 * we have an existing PW, and the password is saved.
 		 */
 
-		*out_pw = pw;
+		*out_password = pw;
 		g_free (prompt);
 		return TRUE;
 	}
@@ -173,19 +181,27 @@ get_secrets (const char *vpn_uuid,
 
 	dialog = (NMAVpnPasswordDialog *) nma_vpn_password_dialog_new (_("Authenticate VPN"), prompt, NULL);
 
-	nma_vpn_password_dialog_set_show_password_secondary (dialog, FALSE);
+	/* The one-time-password. */
+	if (otp_flags & NM_SETTING_SECRET_FLAG_NOT_SAVED) {
+		nma_vpn_password_dialog_set_password_secondary_label (dialog, _("_Token:"));
+		nma_vpn_password_dialog_set_show_password_secondary (dialog, TRUE);
+	} else {
+		nma_vpn_password_dialog_set_show_password_secondary (dialog, FALSE);
+	}
 
 	/* pre-fill dialog with the password */
-	if (pw && !(pw_flags & NM_SETTING_SECRET_FLAG_NOT_SAVED))
+	if (pw && !(password_flags & NM_SETTING_SECRET_FLAG_NOT_SAVED))
 		nma_vpn_password_dialog_set_password (dialog, pw);
 
 	gtk_widget_show (GTK_WIDGET (dialog));
 
 	if (nma_vpn_password_dialog_run_and_block (dialog)) {
-
 		new_password = nma_vpn_password_dialog_get_password (dialog);
 		if (new_password)
-			*out_pw = g_strdup (new_password);
+			*out_password = g_strdup (new_password);
+		new_password = nma_vpn_password_dialog_get_password_secondary (dialog);
+		if (new_password)
+			*out_otp = g_strdup (new_password);
 	}
 
 	gtk_widget_hide (GTK_WIDGET (dialog));
@@ -226,9 +242,14 @@ int
 main (int argc, char *argv[])
 {
 	gboolean retry = FALSE, allow_interaction = FALSE, external_ui_mode = FALSE;
-	char *vpn_name = NULL, *vpn_uuid = NULL, *vpn_service = NULL, *password = NULL;
+	char *vpn_name = NULL;
+	char *vpn_uuid = NULL;
+	char *vpn_service = NULL;
+	char *password = NULL;
+	char *otp = NULL;
 	GHashTable *data = NULL, *secrets = NULL;
-	NMSettingSecretFlags pw_flags = NM_SETTING_SECRET_FLAG_NONE;
+	NMSettingSecretFlags password_flags = NM_SETTING_SECRET_FLAG_NONE;
+	NMSettingSecretFlags otp_flags = NM_SETTING_SECRET_FLAG_NONE;
 	GOptionContext *context;
 	GOptionEntry entries[] = {
 			{ "reprompt", 'r', 0, G_OPTION_ARG_NONE, &retry, "Reprompt for passwords", NULL},
@@ -267,21 +288,27 @@ main (int argc, char *argv[])
 		return 1;
 	}
 
-	nm_vpn_service_plugin_get_secret_flags (data, NM_FORTISSLVPN_KEY_PASSWORD, &pw_flags);
+	nm_vpn_service_plugin_get_secret_flags (data, NM_FORTISSLVPN_KEY_PASSWORD, &password_flags);
+	nm_vpn_service_plugin_get_secret_flags (data, NM_FORTISSLVPN_KEY_OTP, &otp_flags);
 
 	if (!get_secrets (vpn_uuid, vpn_name, retry, allow_interaction, external_ui_mode,
 	                  g_hash_table_lookup (secrets, NM_FORTISSLVPN_KEY_PASSWORD),
 	                  &password,
-	                  pw_flags))
+	                  &otp,
+	                  password_flags,
+	                  otp_flags))
 		return 1;
 
 	if (!external_ui_mode) {
 		/* dump the passwords to stdout */
 		if (password)
 			printf ("%s\n%s\n", NM_FORTISSLVPN_KEY_PASSWORD, password);
+		if (otp)
+			printf ("%s\n%s\n", NM_FORTISSLVPN_KEY_OTP, otp);
 		printf ("\n\n");
 
 		g_free (password);
+		g_free (otp);
 
 		/* for good measure, flush stdout since Kansas is going Bye-Bye */
 		fflush (stdout);
