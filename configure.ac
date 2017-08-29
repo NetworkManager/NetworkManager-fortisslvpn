@@ -1,7 +1,7 @@
 AC_PREREQ(2.59)
 
 AC_INIT(NetworkManager-fortisslvpn,
-        1.2.6,
+        1.2.7,
         https://bugzilla.gnome.org/enter_bug.cgi?product=NetworkManager,
         NetworkManager-fortisslvpn)
 AM_INIT_AUTOMAKE([1.9 foreign no-dist-gzip dist-xz])
