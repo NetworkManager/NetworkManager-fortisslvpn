@@ -1,4 +1,16 @@
 ==========================================================
+NetworkManager-fortisslvpn-1.2.6
+Overview of changes since NetworkManager-fortisslvpn-1.2.4
+==========================================================
+
+This is a new stable release of NetworkManager-fortisslvpn.  Notable changes include:
+
+* Added one time password (OTP) support (requires openfortivpn version 1.5.0)
+* Updated Brazilian, Czeach, Danish, Friulian, Indonesian, Italian, Lithuanian,
+  Polish, Serbian, Spanish and Swedish translations.
+* Various cleanups
+
+==========================================================
 NetworkManager-fortisslvpn-1.2.4
 Overview of changes since NetworkManager-fortisslvpn-1.2.2
 ==========================================================
