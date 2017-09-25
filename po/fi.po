@@ -8,9 +8,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-16 10:26+0200\n"
-"PO-Revision-Date: 2013-09-22 19:48+0300\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
+"product=NetworkManager&keywords=I18N+L10N&component=VPN: fortisslvpn\n"
+"POT-Creation-Date: 2017-07-26 16:09+0000\n"
+"PO-Revision-Date: 2017-09-25 20:14+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <gnome-fi-laatu@lists.sourceforge.net>\n"
 "Language: fi\n"
@@ -18,156 +19,264 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:1
+msgid "Fortinet SSLVPN client"
+msgstr "Fortinet SSLVPN -asiakasohjelmisto"
+
+#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:2
+msgid "Client for Fortinet SSLVPN virtual private networks"
+msgstr "Asiakasohjelmisto Fortinet SSLVPN -erillisverkkoihin"
+
+#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:3
+msgid ""
+"Support for configuring Fortinet SSLVPN virtual private network connections."
+msgstr "Tuki Fortinet SSLVPN -erillisverkkoyhteyksien määrittämiseen."
+
+#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:4
+msgid "The NetworkManager Developers"
+msgstr "NetworkManagerin kehittäjät"
 
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
 #.
-#: ../auth-dialog/main.c:154
+#: ../auth-dialog/main.c:150
 #, c-format
-msgid "You need to authenticate to access the Virtual Private Network '%s'."
-msgstr "Yhteydenotto VPN-verkkoon \"%s\" vaatii todentamista."
+msgid "You need to authenticate to access the Virtual Private Network “%s”."
+msgstr "Yhteydenotto VPN-verkkoon “%s” vaatii tunnistautumisen."
 
-#: ../auth-dialog/main.c:163 ../auth-dialog/main.c:183
+#: ../auth-dialog/main.c:159 ../auth-dialog/main.c:182
 msgid "Authenticate VPN"
 msgstr "Todenna VPN-yhteys"
 
-#: ../auth-dialog/main.c:165 ../properties/nm-fortisslvpn-dialog.ui.h:8
+#: ../auth-dialog/main.c:162 ../properties/nm-fortisslvpn-dialog.ui.h:14
 msgid "Password:"
 msgstr "Salasana:"
 
+#: ../auth-dialog/main.c:164
+msgid "Token:"
+msgstr ""
+
+#: ../auth-dialog/main.c:186
+msgid "_Token:"
+msgstr ""
+
+#: ../properties/nm-fortisslvpn-editor-plugin.c:38
+msgid "Fortinet SSLVPN"
+msgstr "Fortinet SSLVPN"
+
+#: ../properties/nm-fortisslvpn-editor-plugin.c:39
+msgid "Compatible with Fortinet SSLVPN servers."
+msgstr "Yhteensopiva Fortinet SSLVPN -palvelimien kanssa."
+
+#: ../shared/nm-utils/nm-shared-utils.c:264
+#, c-format
+msgid "object class '%s' has no property named '%s'"
+msgstr ""
+
+#: ../shared/nm-utils/nm-shared-utils.c:271
+#, c-format
+msgid "property '%s' of object class '%s' is not writable"
+msgstr ""
+
+#: ../shared/nm-utils/nm-shared-utils.c:278
+#, c-format
+msgid ""
+"construct property \"%s\" for object '%s' can't be set after construction"
+msgstr ""
+
+#: ../shared/nm-utils/nm-shared-utils.c:286
+#, c-format
+msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
+msgstr ""
+
+#: ../shared/nm-utils/nm-shared-utils.c:295
+#, c-format
+msgid "unable to set property '%s' of type '%s' from value of type '%s'"
+msgstr ""
+
+#: ../shared/nm-utils/nm-shared-utils.c:306
+#, c-format
+msgid ""
+"value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
+"type '%s'"
+msgstr ""
+
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:80
+#, c-format
+msgid "missing plugin file \"%s\""
+msgstr ""
+
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:86
+#, c-format
+msgid "cannot load editor plugin: %s"
+msgstr ""
+
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:95
+#, c-format
+msgid "cannot load factory %s from plugin: %s"
+msgstr ""
+
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:121
+msgid "unknown error creating editor instance"
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:210
+#, c-format
+msgid "invalid gateway “%s”"
+msgstr "virheellinen yhdyskäytävä “%s”"
+
+#: ../src/nm-fortisslvpn-service.c:218
+#, c-format
+msgid "invalid certificate authority “%s”"
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:232
+#, c-format
+msgid "invalid integer property “%s”"
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:242
+#, c-format
+msgid "invalid boolean property “%s” (not yes or no)"
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:249
+#, c-format
+msgid "unhandled property “%s” type %s"
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:260
+#, c-format
+msgid "property “%s” invalid or not supported"
+msgstr "ominaisuus “%s” on virheellinen tai se ei ole tuettu"
+
+#: ../src/nm-fortisslvpn-service.c:277
+msgid "No VPN configuration options."
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:297
+#, c-format
+msgid "Missing required option “%s”."
+msgstr "Vaadittu valinta “%s” puuttuu."
+
+#: ../src/nm-fortisslvpn-service.c:317
+msgid "No VPN secrets!"
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:434
+msgid "Could not find the openfortivpn binary."
+msgstr "openfortivpn-binääritiedostoa ei löytynyt."
+
+#: ../src/nm-fortisslvpn-service.c:556
+msgid "Missing VPN username."
+msgstr "Puuttuva VPN-käyttäjätunnus."
+
+#: ../src/nm-fortisslvpn-service.c:566
+msgid "Missing or invalid VPN password."
+msgstr "Virheellinen tai puuttuva VPN-salasana."
+
+#: ../src/nm-fortisslvpn-service.c:809
+msgid "Don’t quit when VPN connection terminates"
+msgstr "Älä lopeta VPN-yhteyden päättyessä"
+
+#: ../src/nm-fortisslvpn-service.c:810
+msgid "Enable verbose debug logging (may expose passwords)"
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:811
+msgid "D-Bus name to use for this instance"
+msgstr ""
+
+#: ../src/nm-fortisslvpn-service.c:832
+msgid ""
+"nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
+"with Fortinet) to NetworkManager."
+msgstr ""
+
 #: ../properties/nm-fortisslvpn-dialog.ui.h:1
-msgid "<b>General</b>"
-msgstr "<b>Yleisasetukset</b>"
+msgid "SSLVPN Advanced Options"
+msgstr "SSLVPN-lisävalinnat"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:2
+msgid "Authentication"
+msgstr "Tunnistautuminen"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:3
+msgid "Use a _one-time password"
+msgstr "Käytä _kertakäyttöistä salasanaa"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:4
+msgid "Ask for an one-time password (OTP) for two factor authentication (2FA)."
+msgstr ""
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:5
+msgid "Security"
+msgstr "Tietoturva"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:6
+msgid ""
+"A SHA256 sum of the X509 certificate that will be accepted even if the "
+"certificate is not trusted by a certificate authority."
+msgstr ""
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:7
+msgid "Trusted certificate:"
+msgstr "Luotettu varmenne:"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:8
+msgid "General"
+msgstr "Yleiset"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:9
 msgid ""
 "SSLVPN server IP or name.\n"
 "config: the first parameter of fortisslvpn"
 msgstr ""
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:4
+#: ../properties/nm-fortisslvpn-dialog.ui.h:11
 msgid "_Gateway:"
 msgstr "_Yhdyskäytävä:"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:5
-msgid "<b>Authentication</b>"
-msgstr "<b>Todentaminen</b>"
-
-#: ../properties/nm-fortisslvpn-dialog.ui.h:6
+#: ../properties/nm-fortisslvpn-dialog.ui.h:12
 msgid "Show password"
 msgstr "Näytä salasana"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:7
+#: ../properties/nm-fortisslvpn-dialog.ui.h:13
 msgid "Password passed to SSLVPN when prompted for it."
 msgstr ""
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:9
+#: ../properties/nm-fortisslvpn-dialog.ui.h:15
 msgid ""
 "Set the name used for authenticating the local system to the peer to "
 "<name>.\n"
 "config: user <name>"
 msgstr ""
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:11
+#: ../properties/nm-fortisslvpn-dialog.ui.h:17
 msgid "User name:"
 msgstr "Käyttäjätunnus:"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:12
-#, fuzzy
-msgid "<b>Security</b>"
-msgstr "<b>Yleisasetukset</b>"
+#: ../properties/nm-fortisslvpn-dialog.ui.h:18
+msgid "CA Certificate:"
+msgstr "CA-varmenne:"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:13
-msgid "Trusted certificate:"
-msgstr ""
+#: ../properties/nm-fortisslvpn-dialog.ui.h:19
+msgid "User Key:"
+msgstr "Käyttäjäavain:"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:14
-msgid ""
-"<i>A SHA256 sum of the X509 certificate that will be accepted even if the "
-"certificate is not trusted by a certificate authority</i>"
-msgstr ""
+#: ../properties/nm-fortisslvpn-dialog.ui.h:20
+msgid "User Certificate:"
+msgstr "Käyttäjävarmenne:"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:15
+#: ../properties/nm-fortisslvpn-dialog.ui.h:21
+msgid "A_dvanced…"
+msgstr "_Lisäasetukset…"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:22
 msgid "Default"
 msgstr "Oletus"
 
-#: ../properties/nm-fortisslvpn.c:48
-msgid "Fortinet SSLVPN"
-msgstr ""
-
-#: ../properties/nm-fortisslvpn.c:49
-msgid "Compatible with Fortinet SSLVPN servers."
-msgstr ""
-
-#: ../src/nm-fortisslvpn-service.c:132
-msgid "Could not find secrets (connection invalid, no vpn setting)."
-msgstr ""
-
-#: ../src/nm-fortisslvpn-service.c:144
-msgid "Invalid VPN username."
-msgstr "Virheellinen VPN-käyttäjätunnus."
-
-#: ../src/nm-fortisslvpn-service.c:153
-msgid "Missing VPN username."
-msgstr "Puuttuva VPN-käyttäjätunnus."
-
-#: ../src/nm-fortisslvpn-service.c:163
-msgid "Missing or invalid VPN password."
-msgstr "Virheellinen tai puuttuva VPN-salasana."
-
-#: ../src/nm-fortisslvpn-service.c:387
-#, c-format
-msgid "invalid gateway '%s'"
-msgstr "virheellinen yhdyskäytävä \"%s\""
-
-#: ../src/nm-fortisslvpn-service.c:401
-#, c-format
-msgid "invalid integer property '%s'"
-msgstr ""
-
-#: ../src/nm-fortisslvpn-service.c:411
-#, c-format
-msgid "invalid boolean property '%s' (not yes or no)"
-msgstr ""
-
-#: ../src/nm-fortisslvpn-service.c:418
-#, c-format
-msgid "unhandled property '%s' type %s"
-msgstr ""
-
-#: ../src/nm-fortisslvpn-service.c:429
-#, c-format
-msgid "property '%s' invalid or not supported"
-msgstr "ominaisuus \"%s\" on virheellinen tai se ei ole tuettu"
-
-#: ../src/nm-fortisslvpn-service.c:446
-msgid "No VPN configuration options."
-msgstr ""
-
-#: ../src/nm-fortisslvpn-service.c:466
-#, c-format
-msgid "Missing required option '%s'."
-msgstr ""
-
-#: ../src/nm-fortisslvpn-service.c:486
-msgid "No VPN secrets!"
-msgstr ""
-
-#: ../src/nm-fortisslvpn-service.c:589
-msgid "Could not find the openfortivpn binary."
-msgstr ""
-
-#: ../src/nm-fortisslvpn-service.c:897
-msgid "Don't quit when VPN connection terminates"
-msgstr "Älä lopeta VPN-yhteyden päättyessä"
-
-#: ../src/nm-fortisslvpn-service.c:898
-msgid "Enable verbose debug logging (may expose passwords)"
-msgstr ""
-
-#: ../src/nm-fortisslvpn-service.c:921
-msgid ""
-"nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
-"with Fortinet) to NetworkManager."
-msgstr ""
+#~ msgid "Invalid VPN username."
+#~ msgstr "Virheellinen VPN-käyttäjätunnus."
