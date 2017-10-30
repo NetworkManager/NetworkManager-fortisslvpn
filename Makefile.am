@@ -35,8 +35,8 @@ BUILT_SOURCES =
 src_cppflags = \
         $(GLIB_CFLAGS) \
         $(LIBNM_CFLAGS) \
-	-I$(srcdir)/shared \
-	-I$(builddir)/src \
+        -I$(srcdir)/shared \
+        -I$(builddir)/src \
         -DNM_FORTISSLVPN_LOCALEDIR=\"$(datadir)/locale\" \
         -DNM_FORTISSLVPN_STATEDIR=\"$(fortisslvpn_statedir)\" \
         -DPLUGINDIR=\"$(PPPD_PLUGIN_DIR)\"
