@@ -13,10 +13,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=NetworkManager&keywords=I18N+L10N&component=VPN: fortisslvpn\n"
-"POT-Creation-Date: 2016-10-03 19:40+0000\n"
-"PO-Revision-Date: 2017-02-16 15:19+0100\n"
+"POT-Creation-Date: 2017-07-26 16:09+0000\n"
+"PO-Revision-Date: 2017-10-23 19:40+0200\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -48,19 +48,27 @@ msgstr "Udviklerne af Netværkshåndtering"
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
 #.
-#: ../auth-dialog/main.c:144
+#: ../auth-dialog/main.c:150
 #, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
 msgstr ""
 "Du skal opnå godkendelse for at tilgå det virtuelle private netværk \"%s\"."
 
-#: ../auth-dialog/main.c:153 ../auth-dialog/main.c:173
+#: ../auth-dialog/main.c:159 ../auth-dialog/main.c:182
 msgid "Authenticate VPN"
 msgstr "Godkend VPN"
 
-#: ../auth-dialog/main.c:155 ../properties/nm-fortisslvpn-dialog.ui.h:12
+#: ../auth-dialog/main.c:162 ../properties/nm-fortisslvpn-dialog.ui.h:14
 msgid "Password:"
 msgstr "Adgangskode:"
+
+#: ../auth-dialog/main.c:164
+msgid "Token:"
+msgstr "Token:"
+
+#: ../auth-dialog/main.c:186
+msgid "_Token:"
+msgstr "_Token:"
 
 #: ../properties/nm-fortisslvpn-editor-plugin.c:38
 msgid "Fortinet SSLVPN"
@@ -71,19 +79,19 @@ msgid "Compatible with Fortinet SSLVPN servers."
 msgstr "Kompatibel med Fortinet SSLVPN-servere."
 
 # streng også i modulet applet
-#: ../shared/nm-utils/nm-shared-utils.c:185
+#: ../shared/nm-utils/nm-shared-utils.c:264
 #, c-format
 msgid "object class '%s' has no property named '%s'"
 msgstr "objektklassen \"%s\" har ingen egenskab ved navn \"%s\""
 
 # streng også i modulet applet
-#: ../shared/nm-utils/nm-shared-utils.c:192
+#: ../shared/nm-utils/nm-shared-utils.c:271
 #, c-format
 msgid "property '%s' of object class '%s' is not writable"
 msgstr "egenskaben \"%s\" for objektklassen \"%s\" er skrivebeskyttet"
 
 # streng også i modulet applet
-#: ../shared/nm-utils/nm-shared-utils.c:199
+#: ../shared/nm-utils/nm-shared-utils.c:278
 #, c-format
 msgid ""
 "construct property \"%s\" for object '%s' can't be set after construction"
@@ -92,7 +100,7 @@ msgstr ""
 "konstruktion"
 
 # streng også i modulet applet
-#: ../shared/nm-utils/nm-shared-utils.c:207
+#: ../shared/nm-utils/nm-shared-utils.c:286
 #, c-format
 msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
 msgstr ""
@@ -100,7 +108,7 @@ msgstr ""
 "GObjekt"
 
 # streng også i modulet applet
-#: ../shared/nm-utils/nm-shared-utils.c:216
+#: ../shared/nm-utils/nm-shared-utils.c:295
 #, c-format
 msgid "unable to set property '%s' of type '%s' from value of type '%s'"
 msgstr ""
@@ -108,7 +116,7 @@ msgstr ""
 "\""
 
 # streng også i modulet applet
-#: ../shared/nm-utils/nm-shared-utils.c:227
+#: ../shared/nm-utils/nm-shared-utils.c:306
 #, c-format
 msgid ""
 "value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
@@ -141,83 +149,83 @@ msgid "unknown error creating editor instance"
 msgstr "ukendt fejl i forsøget på at danne redigeringsinstans"
 
 # streng også i modulet pptp
-#: ../src/nm-fortisslvpn-service.c:208
+#: ../src/nm-fortisslvpn-service.c:210
 #, c-format
 msgid "invalid gateway “%s”"
 msgstr "ugyldig gateway \"%s\""
 
-#: ../src/nm-fortisslvpn-service.c:216
+#: ../src/nm-fortisslvpn-service.c:218
 #, c-format
 msgid "invalid certificate authority “%s”"
 msgstr "ugyldig certifikatautoritet \"%s\""
 
 # streng også i modulet pptp
-#: ../src/nm-fortisslvpn-service.c:230
+#: ../src/nm-fortisslvpn-service.c:232
 #, c-format
 msgid "invalid integer property “%s”"
 msgstr "ugyldig heltalsegenskab \"%s\""
 
 # streng også i modulet pptp
-#: ../src/nm-fortisslvpn-service.c:240
+#: ../src/nm-fortisslvpn-service.c:242
 #, c-format
 msgid "invalid boolean property “%s” (not yes or no)"
 msgstr "ugyldig boolesk egenskab \"%s\" (ikke ja eller nej)"
 
 # streng også i modulet pptp
-#: ../src/nm-fortisslvpn-service.c:247
+#: ../src/nm-fortisslvpn-service.c:249
 #, c-format
 msgid "unhandled property “%s” type %s"
 msgstr "egenskab \"%s\" type %s er ikke håndteret"
 
 # streng også i modulet pptp
-#: ../src/nm-fortisslvpn-service.c:258
+#: ../src/nm-fortisslvpn-service.c:260
 #, c-format
 msgid "property “%s” invalid or not supported"
 msgstr "egenskab \"%s\" er ugyldig eller ikke understøttet"
 
 # streng også i modulet pptp
-#: ../src/nm-fortisslvpn-service.c:275
+#: ../src/nm-fortisslvpn-service.c:277
 msgid "No VPN configuration options."
 msgstr "Ingen indstillinger for VPN-konfiguration."
 
 # streng også i modulet pptp
-#: ../src/nm-fortisslvpn-service.c:295
+#: ../src/nm-fortisslvpn-service.c:297
 #, c-format
 msgid "Missing required option “%s”."
 msgstr "Mangler krævet indstilling \"%s\"."
 
 # streng også i modulet pptp
-#: ../src/nm-fortisslvpn-service.c:315
+#: ../src/nm-fortisslvpn-service.c:317
 msgid "No VPN secrets!"
 msgstr "Ingen VPN-hemmeligheder!"
 
-#: ../src/nm-fortisslvpn-service.c:432
+#: ../src/nm-fortisslvpn-service.c:434
 msgid "Could not find the openfortivpn binary."
 msgstr "Kunne ikke finde binærfil for openfortivpn."
 
-#: ../src/nm-fortisslvpn-service.c:553
+#: ../src/nm-fortisslvpn-service.c:556
 msgid "Missing VPN username."
 msgstr "Manglende VPN-brugernavn."
 
-#: ../src/nm-fortisslvpn-service.c:563
+#: ../src/nm-fortisslvpn-service.c:566
 msgid "Missing or invalid VPN password."
 msgstr "Manglende eller ugyldig VPN-adgangskode."
 
-#: ../src/nm-fortisslvpn-service.c:799
+#: ../src/nm-fortisslvpn-service.c:809
 msgid "Don’t quit when VPN connection terminates"
 msgstr "Afslut ikke, når VPN-forbindelsen afsluttes"
 
 # streng også i modulet pptp
-#: ../src/nm-fortisslvpn-service.c:800
+#: ../src/nm-fortisslvpn-service.c:810
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr "Aktivér uddybende fejlsøgningslog (kan afsløre adgangskoder)"
 
 # streng også i modulet pptp
-#: ../src/nm-fortisslvpn-service.c:801
+#: ../src/nm-fortisslvpn-service.c:811
 msgid "D-Bus name to use for this instance"
 msgstr "Navn på D-Bus der skal bruges i dette tilfælde"
 
-#: ../src/nm-fortisslvpn-service.c:822
+#: ../src/nm-fortisslvpn-service.c:832
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
@@ -230,10 +238,22 @@ msgid "SSLVPN Advanced Options"
 msgstr "Avancerede indstillinger til SSLVPN"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:2
+msgid "Authentication"
+msgstr "Godkendelse"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:3
+msgid "Use a _one-time password"
+msgstr "Brug en _engangsadgangskode"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:4
+msgid "Ask for an one-time password (OTP) for two factor authentication (2FA)."
+msgstr "Bed om en engangsadgangskode (OTP) til to-faktorgodkendelse (2FA)."
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:5
 msgid "Security"
 msgstr "Sikkerhed"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:3
+#: ../properties/nm-fortisslvpn-dialog.ui.h:6
 msgid ""
 "A SHA256 sum of the X509 certificate that will be accepted even if the "
 "certificate is not trusted by a certificate authority."
@@ -241,15 +261,15 @@ msgstr ""
 "X509-certifikatets SHA256-sum som vil blive accepteret, selv hvis en "
 "certifikatautoritet ikke har tillid til certifikatet."
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:4
+#: ../properties/nm-fortisslvpn-dialog.ui.h:7
 msgid "Trusted certificate:"
 msgstr "Pålideligt certifikat:"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:5
+#: ../properties/nm-fortisslvpn-dialog.ui.h:8
 msgid "General"
 msgstr "Generelt"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:6
+#: ../properties/nm-fortisslvpn-dialog.ui.h:9
 msgid ""
 "SSLVPN server IP or name.\n"
 "config: the first parameter of fortisslvpn"
@@ -257,23 +277,19 @@ msgstr ""
 "SSLVPN-servers IP eller navn.\n"
 "Konfiguration: den første parameter i fortisslvpn"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:8
+#: ../properties/nm-fortisslvpn-dialog.ui.h:11
 msgid "_Gateway:"
 msgstr "_Gateway:"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:9
-msgid "Authentication"
-msgstr "Godkendelse"
-
-#: ../properties/nm-fortisslvpn-dialog.ui.h:10
+#: ../properties/nm-fortisslvpn-dialog.ui.h:12
 msgid "Show password"
 msgstr "Vis adgangskode"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:11
+#: ../properties/nm-fortisslvpn-dialog.ui.h:13
 msgid "Password passed to SSLVPN when prompted for it."
 msgstr "Adgangskode sendt til SSLVPN, når der spørges efter den."
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:13
+#: ../properties/nm-fortisslvpn-dialog.ui.h:15
 msgid ""
 "Set the name used for authenticating the local system to the peer to "
 "<name>.\n"
@@ -282,27 +298,27 @@ msgstr ""
 "Angiv navnet for godkendelse af det lokale system for peer til <navn>.\n"
 "Konfiguration: user <navn>"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:15
+#: ../properties/nm-fortisslvpn-dialog.ui.h:17
 msgid "User name:"
 msgstr "Brugernavn:"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:16
+#: ../properties/nm-fortisslvpn-dialog.ui.h:18
 msgid "CA Certificate:"
 msgstr "CA-certifikat:"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:17
+#: ../properties/nm-fortisslvpn-dialog.ui.h:19
 msgid "User Key:"
 msgstr "Brugernøgle:"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:18
+#: ../properties/nm-fortisslvpn-dialog.ui.h:20
 msgid "User Certificate:"
 msgstr "Brugercertifikat:"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:19
+#: ../properties/nm-fortisslvpn-dialog.ui.h:21
 msgid "A_dvanced…"
 msgstr "A_vanceret …"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:20
+#: ../properties/nm-fortisslvpn-dialog.ui.h:22
 msgid "Default"
 msgstr "Standard"
 
