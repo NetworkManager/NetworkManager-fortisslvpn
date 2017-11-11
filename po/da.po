@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=NetworkManager&keywords=I18N+L10N&component=VPN: fortisslvpn\n"
-"POT-Creation-Date: 2017-07-26 16:09+0000\n"
+"POT-Creation-Date: 2017-11-02 12:04+0000\n"
 "PO-Revision-Date: 2017-10-23 19:40+0200\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -52,7 +52,7 @@ msgstr "Udviklerne af Netværkshåndtering"
 #, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
 msgstr ""
-"Du skal opnå godkendelse for at tilgå det virtuelle private netværk \"%s\"."
+"Du skal opnå godkendelse for at tilgå det virtuelle private netværk “%s”."
 
 #: ../auth-dialog/main.c:159 ../auth-dialog/main.c:182
 msgid "Authenticate VPN"
@@ -82,13 +82,13 @@ msgstr "Kompatibel med Fortinet SSLVPN-servere."
 #: ../shared/nm-utils/nm-shared-utils.c:264
 #, c-format
 msgid "object class '%s' has no property named '%s'"
-msgstr "objektklassen \"%s\" har ingen egenskab ved navn \"%s\""
+msgstr "objektklassen “%s” har ingen egenskab ved navn “%s”"
 
 # streng også i modulet applet
 #: ../shared/nm-utils/nm-shared-utils.c:271
 #, c-format
 msgid "property '%s' of object class '%s' is not writable"
-msgstr "egenskaben \"%s\" for objektklassen \"%s\" er skrivebeskyttet"
+msgstr "egenskaben “%s” for objektklassen “%s” er skrivebeskyttet"
 
 # streng også i modulet applet
 #: ../shared/nm-utils/nm-shared-utils.c:278
@@ -96,7 +96,7 @@ msgstr "egenskaben \"%s\" for objektklassen \"%s\" er skrivebeskyttet"
 msgid ""
 "construct property \"%s\" for object '%s' can't be set after construction"
 msgstr ""
-"construct-egenskaben \"%s\" for objektet \"%s\" kan ikke angives efter "
+"construct-egenskaben “%s” for objektet “%s” kan ikke angives efter "
 "konstruktion"
 
 # streng også i modulet applet
@@ -104,7 +104,7 @@ msgstr ""
 #, c-format
 msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
 msgstr ""
-"\"%s::%s\" er ikke et gyldigt egenskabsnavn; \"%s\" er ikke en undertype af "
+"“%s::%s” er ikke et gyldigt egenskabsnavn; “%s” er ikke en undertype af "
 "GObjekt"
 
 # streng også i modulet applet
@@ -112,8 +112,7 @@ msgstr ""
 #, c-format
 msgid "unable to set property '%s' of type '%s' from value of type '%s'"
 msgstr ""
-"kan ikke angive egenskaben \"%s\" af type \"%s\" ud fra værdien af typen \"%s"
-"\""
+"kan ikke angive egenskaben “%s” af type “%s” ud fra værdien af typen “%s”"
 
 # streng også i modulet applet
 #: ../shared/nm-utils/nm-shared-utils.c:306
@@ -122,14 +121,14 @@ msgid ""
 "value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
 "type '%s'"
 msgstr ""
-"værdien \"%s\" af typen \"%s\" er ugyldig eller uden for intervallet for "
-"egenskaben \"%s\" af typen \"%s\""
+"værdien “%s” af typen “%s” er ugyldig eller uden for intervallet for "
+"egenskaben “%s” af typen “%s”"
 
 # streng også i modulerne pptp og vpnc
 #: ../shared/nm-utils/nm-vpn-plugin-utils.c:80
 #, c-format
 msgid "missing plugin file \"%s\""
-msgstr "manglende udvidelsesmodulfil \"%s\""
+msgstr "manglende udvidelsesmodulfil “%s”"
 
 # streng også i modulerne pptp og vpnc
 #: ../shared/nm-utils/nm-vpn-plugin-utils.c:86
@@ -152,36 +151,36 @@ msgstr "ukendt fejl i forsøget på at danne redigeringsinstans"
 #: ../src/nm-fortisslvpn-service.c:210
 #, c-format
 msgid "invalid gateway “%s”"
-msgstr "ugyldig gateway \"%s\""
+msgstr "ugyldig gateway “%s”"
 
 #: ../src/nm-fortisslvpn-service.c:218
 #, c-format
 msgid "invalid certificate authority “%s”"
-msgstr "ugyldig certifikatautoritet \"%s\""
+msgstr "ugyldig certifikatautoritet “%s”"
 
 # streng også i modulet pptp
 #: ../src/nm-fortisslvpn-service.c:232
 #, c-format
 msgid "invalid integer property “%s”"
-msgstr "ugyldig heltalsegenskab \"%s\""
+msgstr "ugyldig heltalsegenskab “%s”"
 
 # streng også i modulet pptp
 #: ../src/nm-fortisslvpn-service.c:242
 #, c-format
 msgid "invalid boolean property “%s” (not yes or no)"
-msgstr "ugyldig boolesk egenskab \"%s\" (ikke ja eller nej)"
+msgstr "ugyldig boolesk egenskab “%s” (ikke ja eller nej)"
 
 # streng også i modulet pptp
 #: ../src/nm-fortisslvpn-service.c:249
 #, c-format
 msgid "unhandled property “%s” type %s"
-msgstr "egenskab \"%s\" type %s er ikke håndteret"
+msgstr "egenskab “%s” type %s er ikke håndteret"
 
 # streng også i modulet pptp
 #: ../src/nm-fortisslvpn-service.c:260
 #, c-format
 msgid "property “%s” invalid or not supported"
-msgstr "egenskab \"%s\" er ugyldig eller ikke understøttet"
+msgstr "egenskab “%s” er ugyldig eller ikke understøttet"
 
 # streng også i modulet pptp
 #: ../src/nm-fortisslvpn-service.c:277
@@ -192,7 +191,7 @@ msgstr "Ingen indstillinger for VPN-konfiguration."
 #: ../src/nm-fortisslvpn-service.c:297
 #, c-format
 msgid "Missing required option “%s”."
-msgstr "Mangler krævet indstilling \"%s\"."
+msgstr "Mangler krævet indstilling “%s”."
 
 # streng også i modulet pptp
 #: ../src/nm-fortisslvpn-service.c:317
