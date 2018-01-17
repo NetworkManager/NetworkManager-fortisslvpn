@@ -1,4 +1,16 @@
 ==========================================================
+NetworkManager-fortisslvpn-1.2.8
+Overview of changes since NetworkManager-fortisslvpn-1.2.6
+==========================================================
+
+This is a new stable release of NetworkManager-fortisslvpn.  Notable changes include:
+
+* fix using correct state directory
+* fix crash due to missing symbols in pppd plugin
+* Updated Danish, Spanish, Finnish, Hungarian, Indonesian, Italian,
+  Lithuanian, Brazilian Portuguese translations.
+
+==========================================================
 NetworkManager-fortisslvpn-1.2.6
 Overview of changes since NetworkManager-fortisslvpn-1.2.4
 ==========================================================
