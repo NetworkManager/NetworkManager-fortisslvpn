@@ -1,0 +1,67 @@
+# Quick syntax check:
+# python -c 'import sys, yaml; yaml.dump (yaml.load (sys.stdin), sys.stdout)' <.gitlab-ci.yml
+
+# If things don't seem to work, this can help:
+# https://gitlab.gnome.org/GNOME/NetworkManager-fortisslvpn/-/ci/lint
+
+.fedora_deps: &fedora_deps
+  before_script:
+    - dnf -y install
+      file
+      findutils
+      gcc
+      gettext-devel
+      glib2-devel
+      gtk3-devel
+      intltool
+      libtool
+      libsecret-devel
+      libnma-devel
+      NetworkManager-libnm-devel
+      pkgconfig
+      ppp-devel
+
+# Disable fetching Git, run after the tarball is rolled
+.dist: &dist
+  stage: test
+  dependencies:
+    - fedora28_dist
+  variables:
+    GIT_STRATEGY: none
+
+.fedora_from_dist: &fedora_from_dist
+  <<: *fedora_deps
+  <<: *dist
+  script:
+    - dnf -y install make
+    - tar xJf NetworkManager-fortisslvpn-*.tar.xz
+    - cd NetworkManager-fortisslvpn-*/
+    - ./configure
+      --disable-silent-rules
+      --without-libnm-glib
+    - make -j
+    - make -j check
+    - make -j install
+    - make -j uninstall
+
+# Roll the distribution tarball
+fedora28_dist:
+  <<: *fedora_deps
+  image: fedora:28
+  stage: build
+  script:
+    - dnf -y install
+      /usr/bin/autopoint
+      autoconf automake make
+      NetworkManager-devel
+      NetworkManager-glib-devel
+      libnm-gtk-devel
+    - sh autogen.sh
+    - make -j distcheck
+  artifacts:
+    paths:
+      - "*.xz"
+
+fedora_from_dist:
+  <<: *fedora_from_dist
+  image: fedora:latest
