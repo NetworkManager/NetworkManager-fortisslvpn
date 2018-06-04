@@ -39,8 +39,8 @@
   </maintainer>
   <maintainer>
     <foaf:Person>
-      <foaf:name>Francesco Guidici</foaf:name>
-      <foaf:mbox rdf:resource="mailto:fguidici@redhat.com" />
+      <foaf:name>Francesco Giudici</foaf:name>
+      <foaf:mbox rdf:resource="mailto:fgiudici@redhat.com" />
       <gnome:userid>fgiudici</gnome:userid>
     </foaf:Person>
   </maintainer>
