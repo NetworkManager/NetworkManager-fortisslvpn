@@ -5,7 +5,7 @@
          xmlns:gnome="http://api.gnome.org/doap-extensions#"
          xmlns="http://usefulinc.com/ns/doap#">
 
-  <name xml:lang="en">network-manager-fortisslvpn</name>
+  <name xml:lang="en">NetworkManager-fortisslvpn</name>
   <shortdesc xml:lang="en">Fortinet compatible SSLVPN support for NetworkManager</shortdesc>
   <description xml:lang="en">SSLVPN support for NetworkManager. Compatible with FortiOS servers.</description>
 
