@@ -23,6 +23,27 @@
       <gnome:userid>lkundrak</gnome:userid>
     </foaf:Person>
   </maintainer>
+  <maintainer>
+    <foaf:Person>
+      <foaf:name>Thomas Haller</foaf:name>
+      <foaf:mbox rdf:resource="mailto:thaller@redhat.com" />
+      <gnome:userid>thaller</gnome:userid>
+    </foaf:Person>
+  </maintainer>
+  <maintainer>
+    <foaf:Person>
+      <foaf:name>Beniamino Galvani</foaf:name>
+      <foaf:mbox rdf:resource="mailto:bgalvani@redhat.com" />
+      <gnome:userid>bgalvani</gnome:userid>
+    </foaf:Person>
+  </maintainer>
+  <maintainer>
+    <foaf:Person>
+      <foaf:name>Francesco Guidici</foaf:name>
+      <foaf:mbox rdf:resource="mailto:fguidici@redhat.com" />
+      <gnome:userid>fgiudici</gnome:userid>
+    </foaf:Person>
+  </maintainer>
 
 </Project>
 
