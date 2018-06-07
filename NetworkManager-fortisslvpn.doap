@@ -12,7 +12,7 @@
   <homepage rdf:resource="https://wiki.gnome.org/Projects/NetworkManager" />
   <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/networkmanager-list" />
   <download-page rdf:resource="http://download.gnome.org/sources/NetworkManager-fortisslvpn/" />
-  <bug-database rdf:resource="https://bugzilla.gnome.org/browse.cgi?product=NetworkManager&amp;component=VPN:%20fortisslvpn" />
+  <bug-database rdf:resource="https://gitlab.gnome.org/GNOME/NetworkManager-fortisslvpn/issues" />
   <category rdf:resource="http://api.gnome.org/doap-extensions#apps" />
   <programming-language>C</programming-language>
 
