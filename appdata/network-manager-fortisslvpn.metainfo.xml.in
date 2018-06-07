@@ -26,11 +26,11 @@
 
   <screenshots>
     <screenshot type="default">
-      <image width="800" height="578">https://git.gnome.org/browse/network-manager-fortisslvpn/plain/appdata/fortisslvpn.png</image>
+      <image width="800" height="578">https://gitlab.gnome.org/GNOME/NetworkManager-fortisslvpn/raw/master/appdata/fortisslvpn.png</image>
     </screenshot>
     <screenshot>
       <caption>The advanced options dialog</caption>
-      <image width="800" height="450">https://git.gnome.org/browse/network-manager-fortisslvpn/plain/appdata/fortisslvpn-advanced.png</image>
+      <image width="800" height="450">https://gitlab.gnome.org/GNOME/NetworkManager-fortisslvpn/raw/master/appdata/fortisslvpn-advanced.png</image>
     </screenshot>
   </screenshots>
 
