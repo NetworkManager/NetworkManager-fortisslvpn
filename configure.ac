@@ -4,7 +4,7 @@ AC_INIT(NetworkManager-fortisslvpn,
         1.2.9,
         https://bugzilla.gnome.org/enter_bug.cgi?product=NetworkManager,
         NetworkManager-fortisslvpn)
-AM_INIT_AUTOMAKE([1.9 foreign no-dist-gzip dist-xz])
+AM_INIT_AUTOMAKE([1.9 no-dist-gzip dist-xz -Wno-portability])
 AM_MAINTAINER_MODE
 AM_SILENT_RULES([yes])
 
@@ -20,6 +20,16 @@ AM_PROG_CC_C_O
 AC_PROG_INSTALL
 AC_PROG_LIBTOOL
 AC_PATH_PROG(GLIB_COMPILE_RESOURCES, glib-compile-resources)
+
+AC_CHECK_PROG([has_file], file, yes, no)
+if test x$has_file = xno ; then
+    AC_MSG_ERROR(["file" utility not found.])
+fi
+
+AC_CHECK_PROG([has_find], find, yes, no)
+if test x$has_find = xno ; then
+    AC_MSG_ERROR(["find" utility not found.])
+fi
 
 dnl
 dnl Required headers
