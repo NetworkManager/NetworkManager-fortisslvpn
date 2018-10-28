@@ -1,16 +1,16 @@
-# Polish translation for network-manager-fortisslvpn.
-# Copyright © 2008-2017 the network-manager-fortisslvpn authors.
-# This file is distributed under the same license as the network-manager-fortisslvpn package.
+# Polish translation for NetworkManager-fortisslvpn.
+# Copyright © 2008-2018 the NetworkManager-fortisslvpn authors.
+# This file is distributed under the same license as the NetworkManager-fortisslvpn package.
 # Tomasz Dominikowski <dominikowski@gmail.com>, 2008-2009.
-# Piotr Drąg <piotrdrag@gmail.com>, 2010-2017.
-# Aviary.pl <community-poland@mozilla.org>, 2008-2017.
+# Piotr Drąg <piotrdrag@gmail.com>, 2010-2018.
+# Aviary.pl <community-poland@mozilla.org>, 2008-2018.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: network-manager-fortisslvpn\n"
+"Project-Id-Version: NetworkManager-fortisslvpn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-30 15:47+0200\n"
-"PO-Revision-Date: 2017-07-30 15:48+0200\n"
+"POT-Creation-Date: 2018-10-28 17:49+0100\n"
+"PO-Revision-Date: 2018-10-28 17:50+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -111,22 +111,27 @@ msgstr ""
 "wartość „%s” typu „%s” jest nieprawidłowa lub spoza zakresu dla właściwości "
 "„%s” typu „%s”"
 
-#: ../shared/nm-utils/nm-vpn-plugin-utils.c:80
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:69
+#, c-format
+msgid "unable to get editor plugin name: %s"
+msgstr "nie można uzyskać nazwy wtyczki edytora: %s"
+
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:103
 #, c-format
 msgid "missing plugin file \"%s\""
 msgstr "brak pliku wtyczki „%s”"
 
-#: ../shared/nm-utils/nm-vpn-plugin-utils.c:86
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:109
 #, c-format
 msgid "cannot load editor plugin: %s"
 msgstr "nie można wczytać wtyczki edytora: %s"
 
-#: ../shared/nm-utils/nm-vpn-plugin-utils.c:95
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:118
 #, c-format
 msgid "cannot load factory %s from plugin: %s"
 msgstr "nie można wczytać generatora %s z wtyczki: %s"
 
-#: ../shared/nm-utils/nm-vpn-plugin-utils.c:121
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:144
 msgid "unknown error creating editor instance"
 msgstr "nieznany błąd podczas tworzenia wystąpienia edytora"
 
