@@ -1,19 +1,19 @@
-# Hungarian translation of NetworkManager-fortisslvpn
-# Copyright (C) 2006, 2007, 2008, 2010, 2017 Free Software Foundation, Inc.
+# Hungarian translation for NetworkManager-fortisslvpn.
+# Copyright (C) 2006, 2007, 2008, 2010, 2011, 2015, 2016, 2017, 2019 Free Software Foundation, Inc.
 # This file is distributed under the same license as the NetworkManager-fortisslvpn package.
 #
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2006, 2007, 2008, 2010, 2012, 2015, 2016.
 # Mate Ory <orymate at ubuntu dot com>, 2011.
-# Balázs Úr <urbalazs at gmail dot com>, 2017.
+# Balázs Úr <urbalazs at gmail dot com>, 2017, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=NetworkManager&keywords=I18N+L10N&component=VPN: fortisslvpn\n"
-"POT-Creation-Date: 2017-07-26 16:09+0000\n"
-"PO-Revision-Date: 2017-09-05 17:41+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
+"fortisslvpn/issues\n"
+"POT-Creation-Date: 2018-10-24 13:22+0000\n"
+"PO-Revision-Date: 2019-01-27 00:56+0100\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
-"Language-Team: Hungarian <openscope at gmail dot com>\n"
+"Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -112,22 +112,27 @@ msgstr ""
 "a(z) „%s” „%s” típusú érték érvénytelen, vagy kívül esik a tartományon a(z) "
 "„%s” „%s” típusú tulajdonságnál"
 
-#: ../shared/nm-utils/nm-vpn-plugin-utils.c:80
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:69
+#, c-format
+msgid "unable to get editor plugin name: %s"
+msgstr "nem lehet lekérni a szerkesztőbővítmény nevét: %s"
+
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:103
 #, c-format
 msgid "missing plugin file \"%s\""
 msgstr "hiányzó bővítményfájl: „%s”"
 
-#: ../shared/nm-utils/nm-vpn-plugin-utils.c:86
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:109
 #, c-format
 msgid "cannot load editor plugin: %s"
 msgstr "a szerkesztő bővítmény nem tölthető be: %s"
 
-#: ../shared/nm-utils/nm-vpn-plugin-utils.c:95
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:118
 #, c-format
 msgid "cannot load factory %s from plugin: %s"
 msgstr "a(z) %s gyár nem tölthető be a bővítményből: %s"
 
-#: ../shared/nm-utils/nm-vpn-plugin-utils.c:121
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:144
 msgid "unknown error creating editor instance"
 msgstr "ismeretlen hiba a szerkesztő példány létrehozásakor"
 
