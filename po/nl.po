@@ -4,22 +4,22 @@
 # package.
 #
 # Tino Meinen <a.t.meinen@chello.nl>, 2008.
-# Nathan Follens <nthn@unseen.is>, 2018.
+# Nathan Follens <nthn@unseen.is>, 2018-2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager PPTP\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=NetworkManager&keywords=I18N+L10N&component=VPN: fortisslvpn\n"
-"POT-Creation-Date: 2017-07-26 16:09+0000\n"
-"PO-Revision-Date: 2018-03-14 23:05+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
+"fortisslvpn/issues\n"
+"POT-Creation-Date: 2019-01-08 12:00+0000\n"
+"PO-Revision-Date: 2019-01-18 09:07+0100\n"
 "Last-Translator: Nathan Follens <nthn@unseen.is>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2\n"
 
 #: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:1
 msgid "Fortinet SSLVPN client"
@@ -112,22 +112,27 @@ msgstr ""
 "waarde ‘%s’ van type ‘%s’ is ongeldig of buiten bereik voor eigenschap ‘%s’ "
 "van type ‘%s’"
 
-#: ../shared/nm-utils/nm-vpn-plugin-utils.c:80
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:69
+#, c-format
+msgid "unable to get editor plugin name: %s"
+msgstr "laden van naam van verwerkersplug-in mislukt: %s"
+
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:103
 #, c-format
 msgid "missing plugin file \"%s\""
 msgstr "plug-inbestand ‘%s’ ontbreekt"
 
-#: ../shared/nm-utils/nm-vpn-plugin-utils.c:86
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:109
 #, c-format
 msgid "cannot load editor plugin: %s"
 msgstr "laden van verwerkersplug-in mislukt: %s"
 
-#: ../shared/nm-utils/nm-vpn-plugin-utils.c:95
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:118
 #, c-format
 msgid "cannot load factory %s from plugin: %s"
 msgstr "laden van factory %s uit plug-in %s mislukt"
 
-#: ../shared/nm-utils/nm-vpn-plugin-utils.c:121
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:144
 msgid "unknown error creating editor instance"
 msgstr "onbekende fout bij aanmaken van verwerkersinstantie"
 
