@@ -238,38 +238,8 @@ run_openfortivpn (NMFortisslvpnPlugin *plugin, NMSettingVpn *s_vpn, GError **err
 	if (gl.openfortissl_log_level)
 		g_ptr_array_add (argv, (gpointer) g_strdup (gl.openfortissl_log_level));
 
-	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_CA);
-	if (value) {
-		g_ptr_array_add (argv, (gpointer) g_strdup ("--ca-file"));
-		g_ptr_array_add (argv, (gpointer) g_strdup (value));
-	}
-
-	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_CERT);
-	if (value) {
-		g_ptr_array_add (argv, (gpointer) g_strdup ("--user-cert"));
-		g_ptr_array_add (argv, (gpointer) g_strdup (value));
-	}
-
-	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_KEY);
-	if (value) {
-		g_ptr_array_add (argv, (gpointer) g_strdup ("--user-key"));
-		g_ptr_array_add (argv, (gpointer) g_strdup (value));
-	}
-
-	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_TRUSTED_CERT);
-	if (value) {
-		g_ptr_array_add (argv, (gpointer) g_strdup ("--trusted-cert"));
-		g_ptr_array_add (argv, (gpointer) g_strdup (value));
-	}
-
 	g_ptr_array_add (argv, (gpointer) g_strdup ("--pppd-plugin"));
 	g_ptr_array_add (argv, (gpointer) g_strdup (NM_FORTISSLVPN_PPPD_PLUGIN));
-
-	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_REALM);
-	if (value) {
-		g_ptr_array_add (argv, (gpointer) g_strdup ("--realm"));
-		g_ptr_array_add (argv, (gpointer) g_strdup (value));
-	}
 
 	g_ptr_array_add (argv, NULL);
 
@@ -333,92 +303,44 @@ handle_set_ip4_config (NMDBusFortisslvpnPpp *object,
 }
 
 static gboolean
-get_credentials (NMSettingVpn *s_vpn,
-                 const char **username,
-                 const char **password,
-                 const char **otp,
-                 GError **error)
-{
-	/* Username; try SSLVPN specific username first, then generic username */
-	*username = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_USER);
-	if (!*username || !strlen (*username)) {
-		*username = nm_setting_vpn_get_user_name (s_vpn);
-		if (!*username || !strlen (*username)) {
-			g_set_error_literal (error,
-			                     NM_VPN_PLUGIN_ERROR,
-			                     NM_VPN_PLUGIN_ERROR_INVALID_CONNECTION,
-			                     _("Missing VPN username."));
-			return FALSE;
-		}
-	}
-
-	*password = nm_setting_vpn_get_secret (s_vpn, NM_FORTISSLVPN_KEY_PASSWORD);
-	if (!*password || !strlen (*password)) {
-		g_set_error_literal (error,
-		                     NM_VPN_PLUGIN_ERROR,
-		                     NM_VPN_PLUGIN_ERROR_INVALID_CONNECTION,
-		                     _("Missing or invalid VPN password."));
-		return FALSE;
-	}
-
-	*otp = nm_setting_vpn_get_secret (s_vpn, NM_FORTISSLVPN_KEY_OTP);
-
-	return TRUE;
-}
-
-static gboolean
 real_connect (NMVpnServicePlugin *plugin, NMConnection *connection, GError **error)
 {
 	NMFortisslvpnPluginPrivate *priv = NM_FORTISSLVPN_PLUGIN_GET_PRIVATE (plugin);
+	gs_unref_object GFile *config_file = NULL;
+	gs_unref_object GFileOutputStream *stream = NULL;
 	NMSettingVpn *s_vpn;
-	mode_t old_umask;
-	gchar *config;
-	const char *username, *password, *realm, *otp;
 
 	g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-	s_vpn = NM_SETTING_VPN (nm_connection_get_setting (connection, NM_TYPE_SETTING_VPN));
-	g_assert (s_vpn);
+	/* Create the configuration file so that we don't expose
+	 * secrets on the command line */
+	priv->config_file = g_strdup_printf (NM_FORTISSLVPN_STATEDIR "/%s.config",
+	                                     nm_connection_get_uuid (connection));
 
-	if (!nm_fortisslvpn_properties_validate (s_vpn, error))
-		return FALSE;
-
-	if (!nm_fortisslvpn_properties_validate_secrets (s_vpn, error))
-		return FALSE;
-
-	if (!get_credentials (s_vpn, &username, &password, &otp, error))
-		return FALSE;
-
-	realm = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_REALM);
-
-	g_clear_object (&priv->connection);
-	priv->connection = g_object_ref (connection);
+	config_file = g_file_new_for_path (priv->config_file);
+	stream = g_file_replace (config_file, NULL, FALSE,
+	                           G_FILE_CREATE_PRIVATE
+	                         | G_FILE_CREATE_REPLACE_DESTINATION,
+	                         NULL, error);
 
 	if (_LOGD_enabled ()) {
 		_LOGD ("connection:");
 		nm_connection_dump (connection);
 	}
 
-	/* Create the configuration file so that we don't expose
-	 * secrets on the command line */
-	priv->config_file = g_strdup_printf (NM_FORTISSLVPN_STATEDIR "/%s.config",
-	                                     nm_connection_get_uuid (connection));
-	config = g_strdup_printf ("username = %s\n"
-	                          "password = %s"
-	                          "%s%s"
-	                          "%s%s\n",
-	                          username, password,
-	                          realm ? "\nrealm = " : "", realm ? realm : "",
-	                          otp ? "\notp = " : "", otp ? otp : "");
-	old_umask = umask (0077);
-	if (!g_file_set_contents (priv->config_file, config, -1, error)) {
-		g_clear_pointer (&priv->config_file, g_free);
-		umask (old_umask);
-		g_free (config);
+	s_vpn = NM_SETTING_VPN (nm_connection_get_setting (connection, NM_TYPE_SETTING_VPN));
+	g_assert (s_vpn);
+
+	if (!nm_fortisslvpn_properties_validate_secrets (s_vpn, error))
+		return FALSE;
+
+	if (!nm_fortisslvpn_write_config (G_OUTPUT_STREAM (stream), s_vpn, error)) {
+		g_file_delete (config_file, NULL, NULL);
 		return FALSE;
 	}
-	umask (old_umask);
-	g_free (config);
+
+	g_clear_object (&priv->connection);
+	priv->connection = g_object_ref (connection);
 
 	/* Run the acutal openfortivpn process */
 	return run_openfortivpn (NM_FORTISSLVPN_PLUGIN (plugin), s_vpn, error);
