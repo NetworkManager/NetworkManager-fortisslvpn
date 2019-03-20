@@ -116,6 +116,10 @@ properties/resources.h: properties/gresource.xml
 properties/resources.c: properties/gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir)/properties --generate-dependencies $(srcdir)/properties/gresource.xml)
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) $< --target=$@ --sourcedir=$(srcdir)/properties --generate-source --internal
 
+shared_sources = \
+	shared/nm-fortissl-properties.c \
+	shared/nm-fortissl-properties.h
+
 plugin_sources = \
 	properties/nm-fortisslvpn-editor-plugin.c \
 	properties/nm-fortisslvpn-editor-plugin.h
@@ -124,9 +128,7 @@ editor_sources = \
 	properties/resources.c \
 	properties/resources.h \
 	properties/nm-fortisslvpn-editor.c \
-	properties/nm-fortisslvpn-editor.h \
-	shared/nm-fortissl-properties.c \
-	shared/nm-fortissl-properties.h
+	properties/nm-fortisslvpn-editor.h
 
 properties_cppflags = \
 	-DLOCALEDIR=\"$(datadir)/locale\" \

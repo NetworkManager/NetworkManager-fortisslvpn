@@ -59,7 +59,7 @@ G_DEFINE_TYPE_EXTENDED (FortisslvpnEditorPlugin, fortisslvpn_editor_plugin, G_TY
 static guint32
 get_capabilities (NMVpnEditorPlugin *iface)
 {
-	return NM_VPN_EDITOR_PLUGIN_CAPABILITY_NONE;
+	return NM_VPN_EDITOR_PLUGIN_CAPABILITY_EXPORT;
 }
 
 #ifndef NM_VPN_OLD
@@ -98,6 +98,31 @@ get_editor (NMVpnEditorPlugin *iface, NMConnection *connection, GError **error)
 	}
 }
 
+static gboolean
+export_to_file (NMVpnEditorPlugin *iface, const char *filename,
+                NMConnection *connection, GError **error)
+{
+	gs_unref_object GFile *file = NULL;
+	gs_unref_object GFileOutputStream *stream = NULL;
+	NMSettingVpn *s_vpn;
+
+	s_vpn = NM_SETTING_VPN (nm_connection_get_setting (connection, NM_TYPE_SETTING_VPN));
+
+	file = g_file_new_for_path (filename);
+	stream = g_file_replace (file, NULL, FALSE, G_FILE_CREATE_REPLACE_DESTINATION, NULL, error);
+	if (!stream) {
+		g_prefix_error (error, _("Can not open output file: "));
+		return FALSE;
+	}
+
+	if (!nm_fortisslvpn_write_config (G_OUTPUT_STREAM (stream), s_vpn, error)) {
+		g_prefix_error (error, _("Can not write output file: "));
+		return FALSE;
+	}
+
+	return TRUE;
+}
+
 static void
 get_property (GObject *object, guint prop_id,
               GValue *value, GParamSpec *pspec)
@@ -130,7 +155,7 @@ fortisslvpn_editor_plugin_interface_init (NMVpnEditorPluginInterface *iface_clas
 	iface_class->get_editor = get_editor;
 	iface_class->get_capabilities = get_capabilities;
 	iface_class->import_from_file = NULL;
-	iface_class->export_to_file = NULL;
+	iface_class->export_to_file = export_to_file;
 	iface_class->get_suggested_filename = NULL;
 }
 
