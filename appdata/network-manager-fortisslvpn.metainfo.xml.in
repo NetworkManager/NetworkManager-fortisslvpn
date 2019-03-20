@@ -6,8 +6,8 @@
   <metadata_license>CC0-1.0</metadata_license>
   <extends>nm-connection-editor.desktop</extends>
   <extends>gnome-control-center.desktop</extends>
-  <_name>Fortinet SSLVPN client</_name>
-  <_summary>Client for Fortinet SSLVPN virtual private networks</_summary>
+  <name>Fortinet SSLVPN client</name>
+  <summary>Client for Fortinet SSLVPN virtual private networks</summary>
 
   <keywords>
     <keyword>network</keyword>
@@ -21,7 +21,7 @@
   </keywords>
 
   <description>
-    <_p>Support for configuring Fortinet SSLVPN virtual private network connections.</_p>
+    <p>Support for configuring Fortinet SSLVPN virtual private network connections.</p>
   </description>
 
   <screenshots>
@@ -36,7 +36,7 @@
 
   <url type="homepage">https://wiki.gnome.org/Projects/NetworkManager/VPN</url>
   <url type="bugtracker">https://gitlab.gnome.org/GNOME/NetworkManager-fortisslvpn/issues</url>
-  <update_contact>networkmanager-maint@gnome.bugs</update_contact>
+  <update_contact>networkmanager-list@gnome.org</update_contact>
   <translation type="gettext">NetworkManager-fortisslvpn</translation>
-  <_developer_name>The NetworkManager Developers</_developer_name>
+  <developer_name>The NetworkManager Developers</developer_name>
 </component>

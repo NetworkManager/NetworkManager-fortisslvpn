@@ -98,8 +98,8 @@ GETTEXT_PACKAGE=NetworkManager-fortisslvpn
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [Gettext package])
 
-IT_PROG_INTLTOOL([0.35])
-AM_GLIB_GNU_GETTEXT
+AM_GNU_GETTEXT([external])
+AM_GNU_GETTEXT_VERSION([0.19])
 
 # gio-unix will require glib and gio
 PKG_CHECK_MODULES(GLIB, gio-unix-2.0 >= 2.32)

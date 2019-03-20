@@ -14,9 +14,9 @@ PKG_NAME=NetworkManager-fortisslvpn
 }
 
 (cd $srcdir;
-    autoreconf --install --symlink &&
-    intltoolize --force &&
-    autoreconf &&
-    ./configure --enable-maintainer-mode $@
+    autoreconf --force --install --symlink
 )
 
+if test -z "$NOCONFIGURE"; then
+    "$srcdir/configure" --enable-maintainer-mode --enable-more-warnings=error "$@"
+fi
