@@ -82,7 +82,9 @@ src_nm_fortisslvpn_service_SOURCES = \
 	shared/nm-utils/nm-shared-utils.c \
 	src/nm-ppp-status.h \
 	src/nm-fortisslvpn-service.h \
-	src/nm-fortisslvpn-service.c
+	src/nm-fortisslvpn-service.c \
+	shared/nm-fortissl-properties.c \
+	shared/nm-fortissl-properties.h
 src_nm_fortisslvpn_service_CPPFLAGS = $(src_cppflags)
 src_nm_fortisslvpn_service_LDADD = \
 	src/libnm-fortisslvpn-pppd-service-dbus.la \
