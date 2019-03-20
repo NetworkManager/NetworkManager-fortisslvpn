@@ -216,8 +216,8 @@ init_editor_plugin (FortisslvpnEditor *self, NMConnection *connection, GError **
 	priv->group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "gateway_entry"));
-	if (!widget)
-		return FALSE;
+	g_return_val_if_fail (widget, FALSE);
+
 	gtk_size_group_add_widget (priv->group, widget);
 	if (s_vpn) {
 		value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_GATEWAY);
@@ -227,8 +227,8 @@ init_editor_plugin (FortisslvpnEditor *self, NMConnection *connection, GError **
 	g_signal_connect (G_OBJECT (widget), "changed", G_CALLBACK (stuff_changed_cb), self);
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "user_entry"));
-	if (!widget)
-		return FALSE;
+	g_return_val_if_fail (widget, FALSE);
+
 	gtk_size_group_add_widget (priv->group, widget);
 	if (s_vpn) {
 		value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_USER);
@@ -238,8 +238,8 @@ init_editor_plugin (FortisslvpnEditor *self, NMConnection *connection, GError **
 	g_signal_connect (G_OBJECT (widget), "changed", G_CALLBACK (stuff_changed_cb), self);
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "trusted_cert_entry"));
-	if (!widget)
-		return FALSE;
+	g_return_val_if_fail (widget, FALSE);
+
 	if (s_vpn) {
 		priv->trusted_cert = g_strdup (nm_setting_vpn_get_data_item (s_vpn,
 		                                                             NM_FORTISSLVPN_KEY_TRUSTED_CERT));
@@ -255,14 +255,14 @@ init_editor_plugin (FortisslvpnEditor *self, NMConnection *connection, GError **
 	}
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "use_otp"));
-	if (!widget)
-		return FALSE;
+	g_return_val_if_fail (widget, FALSE);
+
 	if (s_vpn) {
 		nm_setting_get_secret_flags (NM_SETTING (s_vpn),
 		                             NM_FORTISSLVPN_KEY_OTP, &priv->otp_flags,
 		                             NULL);
-		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget),
-		                              priv->otp_flags & NM_SETTING_SECRET_FLAG_NOT_SAVED);
+		gtk_switch_set_active (GTK_SWITCH (widget),
+		                       priv->otp_flags & NM_SETTING_SECRET_FLAG_NOT_SAVED);
 	}
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "show_passwords_checkbutton"));
@@ -286,8 +286,8 @@ init_editor_plugin (FortisslvpnEditor *self, NMConnection *connection, GError **
 	                    "user_password_entry");
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "ca_chooser"));
-	if (!widget)
-		return FALSE;
+	g_return_val_if_fail (widget, FALSE);
+
 	gtk_size_group_add_widget (priv->group, widget);
 	if (s_vpn) {
 		value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_CA);
@@ -297,8 +297,8 @@ init_editor_plugin (FortisslvpnEditor *self, NMConnection *connection, GError **
 	g_signal_connect (G_OBJECT (widget), "update-preview", G_CALLBACK (stuff_changed_cb), self);
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "cert_chooser"));
-	if (!widget)
-		return FALSE;
+	g_return_val_if_fail (widget, FALSE);
+
 	gtk_size_group_add_widget (priv->group, widget);
 	if (s_vpn) {
 		value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_CERT);
@@ -308,8 +308,8 @@ init_editor_plugin (FortisslvpnEditor *self, NMConnection *connection, GError **
 	g_signal_connect (G_OBJECT (widget), "update-preview", G_CALLBACK (stuff_changed_cb), self);
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "key_chooser"));
-	if (!widget)
-		return FALSE;
+	g_return_val_if_fail (widget, FALSE);
+
 	gtk_size_group_add_widget (priv->group, widget);
 	if (s_vpn) {
 		value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_KEY);
@@ -319,14 +319,14 @@ init_editor_plugin (FortisslvpnEditor *self, NMConnection *connection, GError **
 	g_signal_connect (G_OBJECT (widget), "update-preview", G_CALLBACK (stuff_changed_cb), self);
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "advanced_dialog"));
-	if (!widget)
-		return FALSE;
+	g_return_val_if_fail (widget, FALSE);
+
 	g_signal_connect (G_OBJECT (widget), "response", G_CALLBACK (advanced_dialog_response_cb), self);
 	g_signal_connect (G_OBJECT (widget), "delete-event", G_CALLBACK (advanced_dialog_delete_cb), NULL);
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "advanced_button"));
-	if (!widget)
-		return FALSE;
+	g_return_val_if_fail (widget, FALSE);
+
 	g_signal_connect (G_OBJECT (widget), "clicked", G_CALLBACK (advanced_button_clicked_cb), self);
 
 	return TRUE;
