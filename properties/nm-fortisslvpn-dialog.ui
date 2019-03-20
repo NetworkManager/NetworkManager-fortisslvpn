@@ -88,6 +88,7 @@
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">_Realm</property>
                 <property name="use_underline">True</property>
+                <property name="mnemonic_widget">realm_entry</property>
                 <property name="xalign">1</property>
               </object>
               <packing>
@@ -129,7 +130,9 @@ config: the first parameter of fortisslvpn</property>
               <object class="GtkLabel" id="label4">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Trusted certificate</property>
+                <property name="label" translatable="yes">Trusted _certificate</property>
+                <property name="use_underline">True</property>
+                <property name="mnemonic_widget">trusted_cert_entry</property>
                 <property name="xalign">1</property>
               </object>
               <packing>
@@ -158,6 +161,7 @@ config: the first parameter of fortisslvpn</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">_One time password</property>
                 <property name="use_underline">True</property>
+                <property name="mnemonic_widget">use_otp</property>
                 <property name="xalign">1</property>
               </object>
               <packing>
@@ -230,7 +234,9 @@ config: the first parameter of fortisslvpn</property>
       <object class="GtkLabel" id="label7">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="label" translatable="yes">User Key</property>
+        <property name="label" translatable="yes">User _Key</property>
+        <property name="use_underline">True</property>
+        <property name="mnemonic_widget">key_chooser</property>
         <property name="xalign">1</property>
       </object>
       <packing>
@@ -242,7 +248,9 @@ config: the first parameter of fortisslvpn</property>
       <object class="GtkLabel" id="label">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="label" translatable="yes">User Certificate</property>
+        <property name="label" translatable="yes">_User Certificate</property>
+        <property name="use_underline">True</property>
+        <property name="mnemonic_widget">cert_chooser</property>
         <property name="xalign">1</property>
       </object>
       <packing>
@@ -254,7 +262,9 @@ config: the first parameter of fortisslvpn</property>
       <object class="GtkLabel" id="label5">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="label" translatable="yes">CA Certificate</property>
+        <property name="label" translatable="yes">_CA Certificate</property>
+        <property name="use_underline">True</property>
+        <property name="mnemonic_widget">ca_chooser</property>
         <property name="xalign">1</property>
       </object>
       <packing>
@@ -306,7 +316,9 @@ config: user &lt;name&gt;</property>
       <object class="GtkLabel" id="label2">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="label" translatable="yes">Password</property>
+        <property name="label" translatable="yes">_Password</property>
+        <property name="use_underline">True</property>
+        <property name="mnemonic_widget">user_password_entry</property>
         <property name="xalign">1</property>
       </object>
       <packing>
@@ -318,7 +330,9 @@ config: user &lt;name&gt;</property>
       <object class="GtkLabel" id="label26">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="label" translatable="yes">User name</property>
+        <property name="label" translatable="yes">User _name</property>
+        <property name="use_underline">True</property>
+        <property name="mnemonic_widget">user_entry</property>
         <property name="xalign">1</property>
       </object>
       <packing>
@@ -332,6 +346,7 @@ config: user &lt;name&gt;</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">_Gateway</property>
         <property name="use_underline">True</property>
+        <property name="mnemonic_widget">gateway_entry</property>
         <property name="xalign">1</property>
       </object>
       <packing>
