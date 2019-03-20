@@ -6,93 +6,106 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: network-manager-fortisslvpn master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=NetworkManager&keywords=I18N+L10N&component=VPN: fortisslvpn\n"
-"POT-Creation-Date: 2017-03-14 12:50+0000\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
+"fortisslvpn/\n"
+"POT-Creation-Date: 2019-03-20 17:06+0100\n"
 "PO-Revision-Date: 2017-04-09 22:35+0200\n"
+"Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
 "X-Generator: Poedit 1.8.12\n"
 
-#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:1
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
 msgid "Fortinet SSLVPN client"
 msgstr "Client SSLVPN Fortinet"
 
-#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:2
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:10
 msgid "Client for Fortinet SSLVPN virtual private networks"
 msgstr "Client par rêts privadis virtuâls SSLVPN Fortinet"
 
-#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:3
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:24
 msgid ""
 "Support for configuring Fortinet SSLVPN virtual private network connections."
 msgstr ""
 "Supuart par configurâ lis conessions di rêts privadis virtuâls SSLVPN "
 "Fortinet"
 
-#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:4
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:32
+#, fuzzy
+msgid "The advanced options dialog"
+msgstr "Opzions avanzadis SSLVPN"
+
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:41
 msgid "The NetworkManager Developers"
 msgstr "I svilupadôrs di NetworkManager"
 
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
 #.
-#: ../auth-dialog/main.c:144
+#: auth-dialog/main.c:150
 #, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
 msgstr "Al covente autenticâsi par acedi ae rêt privade virtuâl “%s”."
 
-#: ../auth-dialog/main.c:153 ../auth-dialog/main.c:173
+#: auth-dialog/main.c:159 auth-dialog/main.c:183
 msgid "Authenticate VPN"
 msgstr "Autentiche VPN"
 
-#: ../auth-dialog/main.c:155 ../properties/nm-fortisslvpn-dialog.ui.h:12
-msgid "Password"
+#: auth-dialog/main.c:162
+#, fuzzy
+msgid "Password:"
 msgstr "Password"
 
-#: ../properties/nm-fortisslvpn-editor-plugin.c:38
+#: auth-dialog/main.c:164
+msgid "Token:"
+msgstr ""
+
+#: auth-dialog/main.c:187
+msgid "_Token:"
+msgstr ""
+
+#: properties/nm-fortisslvpn-editor-plugin.c:38
 msgid "Fortinet SSLVPN"
 msgstr "SSLVPN Fortinet"
 
-#: ../properties/nm-fortisslvpn-editor-plugin.c:39
+#: properties/nm-fortisslvpn-editor-plugin.c:39
 msgid "Compatible with Fortinet SSLVPN servers."
 msgstr "Compatibil cui servidôrs SSLVPN Fortinet."
 
-#: ../shared/nm-utils/nm-shared-utils.c:264
+#: shared/nm-utils/nm-shared-utils.c:264
 #, c-format
 msgid "object class '%s' has no property named '%s'"
 msgstr "la classe dal ogjet '%s' no à proprietâts clamadis '%s'"
 
-#: ../shared/nm-utils/nm-shared-utils.c:271
+#: shared/nm-utils/nm-shared-utils.c:271
 #, c-format
 msgid "property '%s' of object class '%s' is not writable"
 msgstr "proprietât '%s' de classe dal ogjet '%s' no je scrivibile"
 
-#: ../shared/nm-utils/nm-shared-utils.c:278
+#: shared/nm-utils/nm-shared-utils.c:278
 #, c-format
 msgid ""
 "construct property \"%s\" for object '%s' can't be set after construction"
 msgstr ""
-"impussibil stabilî la proprietât \"%s\" dal costrutôr pal ogjet '%s' dopo "
-"de costruzion"
+"impussibil stabilî la proprietât \"%s\" dal costrutôr pal ogjet '%s' dopo de "
+"costruzion"
 
-#: ../shared/nm-utils/nm-shared-utils.c:286
+#: shared/nm-utils/nm-shared-utils.c:286
 #, c-format
 msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
 msgstr ""
 "'%s::%s' nol è un non di proprietât valit; '%s' nol è un sot-gjenar GObject"
 
-#: ../shared/nm-utils/nm-shared-utils.c:295
+#: shared/nm-utils/nm-shared-utils.c:295
 #, c-format
 msgid "unable to set property '%s' of type '%s' from value of type '%s'"
 msgstr ""
-"impussibil stabilî la proprietât '%s' di gjenar '%s' dal valôr di gjenar "
-"'%s'"
+"impussibil stabilî la proprietât '%s' di gjenar '%s' dal valôr di gjenar '%s'"
 
-#: ../shared/nm-utils/nm-shared-utils.c:306
+#: shared/nm-utils/nm-shared-utils.c:306
 #, c-format
 msgid ""
 "value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
@@ -101,93 +114,55 @@ msgstr ""
 "il valôr \"%s\" di gjenar '%s' nol è valit o fûr dal interval pe proprietât "
 "'%s' di gjenar '%s'"
 
-#: ../shared/nm-utils/nm-vpn-plugin-utils.c:80
+#: shared/nm-utils/nm-vpn-plugin-utils.c:69
+#, fuzzy, c-format
+msgid "unable to get editor plugin name: %s"
+msgstr "impussibil cjariâ il plugin editôr: %s"
+
+#: shared/nm-utils/nm-vpn-plugin-utils.c:103
 #, c-format
 msgid "missing plugin file \"%s\""
 msgstr "al mancje il file plugin \"%s\""
 
-#: ../shared/nm-utils/nm-vpn-plugin-utils.c:86
+#: shared/nm-utils/nm-vpn-plugin-utils.c:109
 #, c-format
 msgid "cannot load editor plugin: %s"
 msgstr "impussibil cjariâ il plugin editôr: %s"
 
-#: ../shared/nm-utils/nm-vpn-plugin-utils.c:95
+#: shared/nm-utils/nm-vpn-plugin-utils.c:118
 #, c-format
 msgid "cannot load factory %s from plugin: %s"
 msgstr "impussibil cjariâ la fabriche %s dal plugin: %s"
 
-#: ../shared/nm-utils/nm-vpn-plugin-utils.c:121
+#: shared/nm-utils/nm-vpn-plugin-utils.c:144
 msgid "unknown error creating editor instance"
 msgstr "erôr no cognossût tal creâ la istance dal editôr"
 
-#: ../src/nm-fortisslvpn-service.c:208
-#, c-format
-msgid "invalid gateway “%s”"
-msgstr "gateway “%s” no valit"
-
-#: ../src/nm-fortisslvpn-service.c:216
-#, c-format
-msgid "invalid certificate authority “%s”"
-msgstr "autoritât certificât “%s” no valide"
-
-#: ../src/nm-fortisslvpn-service.c:230
-#, c-format
-msgid "invalid integer property “%s”"
-msgstr "proprietât interie “%s” no valide"
-
-#: ../src/nm-fortisslvpn-service.c:240
-#, c-format
-msgid "invalid boolean property “%s” (not yes or no)"
-msgstr "proprietât booleane “%s” no valide  (no je sì o no)"
-
-#: ../src/nm-fortisslvpn-service.c:247
-#, c-format
-msgid "unhandled property “%s” type %s"
-msgstr "proprietât “%s” gjenar %s no tratade"
-
-#: ../src/nm-fortisslvpn-service.c:258
-#, c-format
-msgid "property “%s” invalid or not supported"
-msgstr "proprietât “%s” no valide o no supuartade"
-
-#: ../src/nm-fortisslvpn-service.c:275
-msgid "No VPN configuration options."
-msgstr "Nissune opzion di configurazion VPN."
-
-#: ../src/nm-fortisslvpn-service.c:295
-#, c-format
-msgid "Missing required option “%s”."
-msgstr "E mancje la opzion necessarie “%s”."
-
-#: ../src/nm-fortisslvpn-service.c:315
-msgid "No VPN secrets!"
-msgstr "Nissun segret VPN!"
-
-#: ../src/nm-fortisslvpn-service.c:432
+#: src/nm-fortisslvpn-service.c:222
 msgid "Could not find the openfortivpn binary."
 msgstr "Impussibil cjatâ il binari di openfortivpn."
 
-#: ../src/nm-fortisslvpn-service.c:553
+#: src/nm-fortisslvpn-service.c:350
 msgid "Missing VPN username."
 msgstr "Al mancje il non utent VPN."
 
-#: ../src/nm-fortisslvpn-service.c:563
+#: src/nm-fortisslvpn-service.c:360
 msgid "Missing or invalid VPN password."
 msgstr "E mancje o no je valide la password VPN."
 
-#: ../src/nm-fortisslvpn-service.c:799
+#: src/nm-fortisslvpn-service.c:603
 msgid "Don’t quit when VPN connection terminates"
 msgstr "No stâ jessî cuant che e termine la conession VPN"
 
-#: ../src/nm-fortisslvpn-service.c:800
+#: src/nm-fortisslvpn-service.c:604
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr "Abilite regjistris di debug prolìs (al podarès esponi lis password)"
 
-#: ../src/nm-fortisslvpn-service.c:801
+#: src/nm-fortisslvpn-service.c:605
 msgid "D-Bus name to use for this instance"
 msgstr "Non D-Bus di doprâ par cheste istance"
 
-#: ../src/nm-fortisslvpn-service.c:822
+#: src/nm-fortisslvpn-service.c:626
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
@@ -195,31 +170,21 @@ msgstr ""
 "nm-fortisslvpn-service al furnìs a NetworkManager funzionalitâts SSLVPN "
 "integradis (compatibilis cun Fortinet)."
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:1
+#: properties/nm-fortisslvpn-dialog.ui:8
 msgid "SSLVPN Advanced Options"
 msgstr "Opzions avanzadis SSLVPN"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:2
-msgid "Security"
-msgstr "Sigurece"
+#: properties/nm-fortisslvpn-dialog.ui:73
+#: properties/nm-fortisslvpn-dialog.ui:375
+msgid "Authentication"
+msgstr "Autenticazion"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:3
-msgid ""
-"A SHA256 sum of the X509 certificate that will be accepted even if the "
-"certificate is not trusted by a certificate authority."
+#: properties/nm-fortisslvpn-dialog.ui:89
+msgid "_Realm"
 msgstr ""
-"La some SHA256 dal certificât X509 di acetâ ancje se il certificât nol è "
-"afidabil secont une autoritât di certificazion."
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:4
-msgid "Trusted certificate"
-msgstr "Certificât fidât"
-
-#: ../properties/nm-fortisslvpn-dialog.ui.h:5
-msgid "General"
-msgstr "Gjenerâl"
-
-#: ../properties/nm-fortisslvpn-dialog.ui.h:6
+#: properties/nm-fortisslvpn-dialog.ui:103
+#: properties/nm-fortisslvpn-dialog.ui:361
 msgid ""
 "SSLVPN server IP or name.\n"
 "config: the first parameter of fortisslvpn"
@@ -227,23 +192,51 @@ msgstr ""
 "Direzion IP o non dal servidôr SSLVPN.\n"
 "config: il prin parametri di fortisslvpn"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:8
-msgid "_Gateway"
-msgstr "_Gateway"
+#: properties/nm-fortisslvpn-dialog.ui:117
+msgid "Security"
+msgstr "Sigurece"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:9
-msgid "Authentication"
-msgstr "Autenticazion"
+#: properties/nm-fortisslvpn-dialog.ui:133
+#, fuzzy
+msgid "Trusted _certificate"
+msgstr "Certificât fidât"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:10
+#: properties/nm-fortisslvpn-dialog.ui:147
+msgid ""
+"A SHA256 sum of the X509 certificate that will be accepted even if the "
+"certificate is not trusted by a certificate authority."
+msgstr ""
+"La some SHA256 dal certificât X509 di acetâ ancje se il certificât nol è "
+"afidabil secont une autoritât di certificazion."
+
+#: properties/nm-fortisslvpn-dialog.ui:162
+msgid "_One time password"
+msgstr ""
+
+#: properties/nm-fortisslvpn-dialog.ui:237
+#, fuzzy
+msgid "User _Key"
+msgstr "Clâf utent"
+
+#: properties/nm-fortisslvpn-dialog.ui:251
+#, fuzzy
+msgid "_User Certificate"
+msgstr "Certificât utent"
+
+#: properties/nm-fortisslvpn-dialog.ui:265
+#, fuzzy
+msgid "_CA Certificate"
+msgstr "Certificât CA"
+
+#: properties/nm-fortisslvpn-dialog.ui:277
 msgid "Show password"
 msgstr "Mostre password"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:11
+#: properties/nm-fortisslvpn-dialog.ui:293
 msgid "Password passed to SSLVPN when prompted for it."
 msgstr "Password passade a SSLVPN cuant che e ven domandade."
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:13
+#: properties/nm-fortisslvpn-dialog.ui:306
 msgid ""
 "Set the name used for authenticating the local system to the peer to "
 "<name>.\n"
@@ -252,26 +245,55 @@ msgstr ""
 "Stabilìs il non doprât par autenticâ il sisteme locâl al grop a <non>.\n"
 "config: user <non>"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:15
-msgid "User name"
+#: properties/nm-fortisslvpn-dialog.ui:319
+#, fuzzy
+msgid "_Password"
+msgstr "Password"
+
+#: properties/nm-fortisslvpn-dialog.ui:333
+#, fuzzy
+msgid "User _name"
 msgstr "Non utent"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:16
-msgid "CA Certificate"
-msgstr "Certificât CA"
+#: properties/nm-fortisslvpn-dialog.ui:347
+msgid "_Gateway"
+msgstr "_Gateway"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:17
-msgid "User Key"
-msgstr "Clâf utent"
+#: properties/nm-fortisslvpn-dialog.ui:391
+msgid "General"
+msgstr "Gjenerâl"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:18
-msgid "User Certificate"
-msgstr "Certificât utent"
-
-#: ../properties/nm-fortisslvpn-dialog.ui.h:19
+#: properties/nm-fortisslvpn-dialog.ui:434
 msgid "A_dvanced…"
 msgstr "A_vanzadis…"
 
-#: ../properties/nm-fortisslvpn-dialog.ui.h:20
+#: properties/nm-fortisslvpn-dialog.ui:463
 msgid "Default"
 msgstr "Predefinît"
+
+#~ msgid "invalid gateway “%s”"
+#~ msgstr "gateway “%s” no valit"
+
+#~ msgid "invalid certificate authority “%s”"
+#~ msgstr "autoritât certificât “%s” no valide"
+
+#~ msgid "invalid integer property “%s”"
+#~ msgstr "proprietât interie “%s” no valide"
+
+#~ msgid "invalid boolean property “%s” (not yes or no)"
+#~ msgstr "proprietât booleane “%s” no valide  (no je sì o no)"
+
+#~ msgid "unhandled property “%s” type %s"
+#~ msgstr "proprietât “%s” gjenar %s no tratade"
+
+#~ msgid "property “%s” invalid or not supported"
+#~ msgstr "proprietât “%s” no valide o no supuartade"
+
+#~ msgid "No VPN configuration options."
+#~ msgstr "Nissune opzion di configurazion VPN."
+
+#~ msgid "Missing required option “%s”."
+#~ msgstr "E mancje la opzion necessarie “%s”."
+
+#~ msgid "No VPN secrets!"
+#~ msgstr "Nissun segret VPN!"
