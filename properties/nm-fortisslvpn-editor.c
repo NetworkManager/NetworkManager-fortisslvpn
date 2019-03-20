@@ -239,14 +239,17 @@ init_editor_plugin (FortisslvpnEditor *self, NMConnection *connection, GError **
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "trusted_cert_entry"));
 	g_return_val_if_fail (widget, FALSE);
-
 	if (s_vpn) {
 		priv->trusted_cert = g_strdup (nm_setting_vpn_get_data_item (s_vpn,
 		                                                             NM_FORTISSLVPN_KEY_TRUSTED_CERT));
 		if (!priv->trusted_cert)
 			priv->trusted_cert = g_strdup ("");
 		gtk_entry_set_text (GTK_ENTRY (widget), priv->trusted_cert);
+	}
 
+	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "realm_entry"));
+	g_return_val_if_fail (widget, FALSE);
+	if (s_vpn) {
 		priv->realm = g_strdup (nm_setting_vpn_get_data_item (s_vpn,
 		                                                      NM_FORTISSLVPN_KEY_REALM));
 		if (!priv->realm)
