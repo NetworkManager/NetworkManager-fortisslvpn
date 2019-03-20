@@ -124,7 +124,9 @@ editor_sources = \
 	properties/resources.c \
 	properties/resources.h \
 	properties/nm-fortisslvpn-editor.c \
-	properties/nm-fortisslvpn-editor.h
+	properties/nm-fortisslvpn-editor.h \
+	shared/nm-fortissl-properties.c \
+	shared/nm-fortissl-properties.h
 
 properties_cppflags = \
 	-DLOCALEDIR=\"$(datadir)/locale\" \

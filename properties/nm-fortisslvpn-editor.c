@@ -22,6 +22,7 @@
 #include "nm-default.h"
 
 #include "nm-fortisslvpn-editor.h"
+#include "nm-fortissl-properties.h"
 
 #include <netinet/in.h>
 #include <arpa/inet.h>
@@ -52,26 +53,6 @@ G_DEFINE_TYPE_EXTENDED (FortisslvpnEditor, fortisslvpn_editor, G_TYPE_OBJECT, 0,
 #define FORTISSLVPN_EDITOR_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), FORTISSLVPN_TYPE_EDITOR, FortisslvpnEditorPrivate))
 
 /*****************************************************************************/
-
-static gboolean
-check_validity (FortisslvpnEditor *self, GError **error)
-{
-	FortisslvpnEditorPrivate *priv = FORTISSLVPN_EDITOR_GET_PRIVATE (self);
-	GtkWidget *widget;
-	const char *str;
-
-	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "gateway_entry"));
-	str = gtk_entry_get_text (GTK_ENTRY (widget));
-	if (!str || !strlen (str)) {
-		g_set_error (error,
-		             NMV_EDITOR_PLUGIN_ERROR,
-		             NMV_EDITOR_PLUGIN_ERROR_INVALID_PROPERTY,
-		             NM_FORTISSLVPN_KEY_GATEWAY);
-		return FALSE;
-	}
-
-	return TRUE;
-}
 
 static void
 stuff_changed_cb (GtkWidget *widget, gpointer user_data)
@@ -388,10 +369,6 @@ update_connection (NMVpnEditor *iface,
 	NMSettingVpn *s_vpn;
 	GtkWidget *widget;
 	const char *str;
-	gboolean valid = FALSE;
-
-	if (!check_validity (self, error))
-		return FALSE;
 
 	s_vpn = NM_SETTING_VPN (nm_setting_vpn_new ());
 	g_object_set (s_vpn, NM_SETTING_VPN_SERVICE_TYPE, NM_DBUS_SERVICE_FORTISSLVPN, NULL);
@@ -441,10 +418,12 @@ update_connection (NMVpnEditor *iface,
 	/* Use OTP */
 	nm_setting_set_secret_flags (NM_SETTING (s_vpn), NM_FORTISSLVPN_KEY_OTP, priv->otp_flags, NULL);
 
-	nm_connection_add_setting (connection, NM_SETTING (s_vpn));
-	valid = TRUE;
+	if (!nm_fortisslvpn_properties_validate (s_vpn, error))
+		return FALSE;
 
-	return valid;
+	nm_connection_add_setting (connection, NM_SETTING (s_vpn));
+
+	return TRUE;
 }
 
 static void
