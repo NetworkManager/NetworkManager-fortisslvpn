@@ -25,8 +25,14 @@
 
 #include "nm-default.h"
 
-gboolean nm_fortisslvpn_properties_validate (NMSettingVpn *s_vpn, GError **error);
+gboolean nm_fortisslvpn_properties_validate (NMSettingVpn *s_vpn,
+                                             GError **error);
 
-gboolean nm_fortisslvpn_properties_validate_secrets (NMSettingVpn *s_vpn, GError **error);
+gboolean nm_fortisslvpn_properties_validate_secrets (NMSettingVpn *s_vpn,
+                                                     GError **error);
+
+gboolean nm_fortisslvpn_write_config (GOutputStream *stream,
+                                      NMSettingVpn *s_vpn,
+                                      GError **error);
 
 #endif /* __NM_FORTISSLVPN_PROPERTIES_H__ */

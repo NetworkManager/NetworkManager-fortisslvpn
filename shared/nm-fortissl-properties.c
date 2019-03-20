@@ -235,3 +235,78 @@ nm_fortisslvpn_properties_validate_secrets (NMSettingVpn *s_vpn, GError **error)
 
 	return *error ? FALSE : TRUE;
 }
+
+gboolean
+nm_fortisslvpn_write_config (GOutputStream *stream,
+                             NMSettingVpn *s_vpn,
+                             GError **error)
+{
+	const char *value;
+	gs_strfreev char **words = NULL;
+
+	if (!nm_fortisslvpn_properties_validate (s_vpn, error))
+		return FALSE;
+
+	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_GATEWAY);
+	g_return_val_if_fail (value, FALSE);
+	words = g_strsplit (value, ":", 2);
+	if (!g_output_stream_printf (stream, NULL, NULL, error, "host = %s\n", words[0]))
+		return FALSE;
+	if (words[1]) {
+		if (!g_output_stream_printf (stream, NULL, NULL, error, "port = %s\n", words[1]))
+			return FALSE;
+	}
+
+	/* Username; try SSLVPN specific username first, then generic username */
+	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_USER);
+	if (!value || !*value)
+		value = nm_setting_vpn_get_user_name (s_vpn);
+	if (value) {
+		if (!g_output_stream_printf (stream, NULL, NULL, error, "username = %s\n", value))
+			return FALSE;
+	}
+
+	value = nm_setting_vpn_get_secret (s_vpn, NM_FORTISSLVPN_KEY_PASSWORD);
+	if (value) {
+		if (!g_output_stream_printf (stream, NULL, NULL, error, "password = %s\n", value))
+			return FALSE;
+	}
+
+	value = nm_setting_vpn_get_secret (s_vpn, NM_FORTISSLVPN_KEY_OTP);
+	if (value) {
+		if (!g_output_stream_printf (stream, NULL, NULL, error, "otp = %s\n", value))
+			return FALSE;
+	}
+
+	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_CA);
+	if (value) {
+		if (!g_output_stream_printf (stream, NULL, NULL, error, "ca-file = %s\n", value))
+			return FALSE;
+	}
+
+	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_CERT);
+	if (value) {
+		if (!g_output_stream_printf (stream, NULL, NULL, error, "user-cert = %s\n", value))
+			return FALSE;
+	}
+
+	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_KEY);
+	if (value) {
+		if (!g_output_stream_printf (stream, NULL, NULL, error, "user-key = %s\n", value))
+			return FALSE;
+	}
+
+	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_TRUSTED_CERT);
+	if (value) {
+		if (!g_output_stream_printf (stream, NULL, NULL, error, "trusted-cert = %s\n", value))
+			return FALSE;
+	}
+
+	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_REALM);
+	if (value) {
+		if (!g_output_stream_printf (stream, NULL, NULL, error, "realm = %s\n", value))
+			return FALSE;
+	}
+
+	return TRUE;
+}
