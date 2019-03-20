@@ -373,7 +373,7 @@ real_connect (NMVpnServicePlugin *plugin, NMConnection *connection, GError **err
 	NMSettingVpn *s_vpn;
 	mode_t old_umask;
 	gchar *config;
-	const char *username, *password, *otp;
+	const char *username, *password, *realm, *otp;
 
 	g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
@@ -389,6 +389,8 @@ real_connect (NMVpnServicePlugin *plugin, NMConnection *connection, GError **err
 	if (!get_credentials (s_vpn, &username, &password, &otp, error))
 		return FALSE;
 
+	realm = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_REALM);
+
 	g_clear_object (&priv->connection);
 	priv->connection = g_object_ref (connection);
 
@@ -401,8 +403,12 @@ real_connect (NMVpnServicePlugin *plugin, NMConnection *connection, GError **err
 	 * secrets on the command line */
 	priv->config_file = g_strdup_printf (NM_FORTISSLVPN_STATEDIR "/%s.config",
 	                                     nm_connection_get_uuid (connection));
-	config = g_strdup_printf ("username = %s\npassword = %s%s%s\n",
+	config = g_strdup_printf ("username = %s\n"
+	                          "password = %s"
+	                          "%s%s"
+	                          "%s%s\n",
 	                          username, password,
+	                          realm ? "\nrealm = " : "", realm ? realm : "",
 	                          otp ? "\notp = " : "", otp ? otp : "");
 	old_umask = umask (0077);
 	if (!g_file_set_contents (priv->config_file, config, -1, error)) {
