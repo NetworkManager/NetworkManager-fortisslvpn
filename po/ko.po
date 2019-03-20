@@ -30,8 +30,8 @@ msgid "Authenticate VPN"
 msgstr "VPN 인증"
 
 #: ../auth-dialog/main.c:165 ../properties/nm-fortisslvpn-dialog.ui.h:8
-msgid "Password:"
-msgstr "암호:"
+msgid "Password"
+msgstr "암호"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:1
 msgid "<b>General</b>"
@@ -44,8 +44,8 @@ msgid ""
 msgstr ""
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:4
-msgid "_Gateway:"
-msgstr "게이트웨이(_G):"
+msgid "_Gateway"
+msgstr "게이트웨이(_G)"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:5
 msgid "<b>Authentication</b>"
@@ -67,8 +67,8 @@ msgid ""
 msgstr ""
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:11
-msgid "User name:"
-msgstr "사용자 이름:"
+msgid "User name"
+msgstr "사용자 이름"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:12
 #, fuzzy
@@ -76,7 +76,7 @@ msgid "<b>Security</b>"
 msgstr "<b>일반</b>"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:13
-msgid "Trusted certificate:"
+msgid "Trusted certificate"
 msgstr ""
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:14

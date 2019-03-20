@@ -33,8 +33,8 @@ msgid "Authenticate VPN"
 msgstr "VPN దృవీకరించుము"
 
 #: ../auth-dialog/main.c:165 ../properties/nm-fortisslvpn-dialog.ui.h:8
-msgid "Password:"
-msgstr "సంకేతపదము:"
+msgid "Password"
+msgstr "సంకేతపదము"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:1
 msgid "<b>General</b>"
@@ -47,8 +47,8 @@ msgid ""
 msgstr ""
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:4
-msgid "_Gateway:"
-msgstr "గేట్‌వే (_G):"
+msgid "_Gateway"
+msgstr "గేట్‌వే (_G)"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:5
 msgid "<b>Authentication</b>"
@@ -70,8 +70,8 @@ msgid ""
 msgstr ""
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:11
-msgid "User name:"
-msgstr "వినియోగదారి నామము:"
+msgid "User name"
+msgstr "వినియోగదారి నామము"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:12
 #, fuzzy
@@ -79,7 +79,7 @@ msgid "<b>Security</b>"
 msgstr "<b>సాదారణ</b>"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:13
-msgid "Trusted certificate:"
+msgid "Trusted certificate"
 msgstr ""
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:14

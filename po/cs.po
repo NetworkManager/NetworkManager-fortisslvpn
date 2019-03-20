@@ -52,16 +52,16 @@ msgid "Authenticate VPN"
 msgstr "Autentizovat VPN"
 
 #: ../auth-dialog/main.c:162 ../properties/nm-fortisslvpn-dialog.ui.h:14
-msgid "Password:"
-msgstr "Heslo:"
+msgid "Password"
+msgstr "Heslo"
 
 #: ../auth-dialog/main.c:164
-msgid "Token:"
-msgstr "Tiket:"
+msgid "Token"
+msgstr "Tiket"
 
 #: ../auth-dialog/main.c:186
-msgid "_Token:"
-msgstr "_Tiket:"
+msgid "_Token"
+msgstr "_Tiket"
 
 #: ../properties/nm-fortisslvpn-editor-plugin.c:38
 msgid "Fortinet SSLVPN"
@@ -233,8 +233,8 @@ msgstr ""
 "není pro certifikační autoritu důvěryhodný."
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:7
-msgid "Trusted certificate:"
-msgstr "Důvěryhodný certifikát:"
+msgid "Trusted certificate"
+msgstr "Důvěryhodný certifikát"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:8
 msgid "General"
@@ -249,8 +249,8 @@ msgstr ""
 "config: první parametr pro fortisslvpn"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:11
-msgid "_Gateway:"
-msgstr "_Brána:"
+msgid "_Gateway"
+msgstr "_Brána"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:12
 msgid "Show password"
@@ -271,20 +271,20 @@ msgstr ""
 "config: user <název>"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:17
-msgid "User name:"
-msgstr "Uživatelské jméno:"
+msgid "User name"
+msgstr "Uživatelské jméno"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:18
-msgid "CA Certificate:"
-msgstr "Certifikát CA:"
+msgid "CA Certificate"
+msgstr "Certifikát CA"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:19
-msgid "User Key:"
-msgstr "Uživatelský klíč:"
+msgid "User Key"
+msgstr "Uživatelský klíč"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:20
-msgid "User Certificate:"
-msgstr "Uživatelský certifikát:"
+msgid "User Certificate"
+msgstr "Uživatelský certifikát"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:21
 msgid "A_dvanced…"

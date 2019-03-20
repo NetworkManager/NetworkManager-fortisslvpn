@@ -34,8 +34,8 @@ msgid "Authenticate VPN"
 msgstr "Overi VPN"
 
 #: ../auth-dialog/main.c:165 ../properties/nm-fortisslvpn-dialog.ui.h:8
-msgid "Password:"
-msgstr "Geslo:"
+msgid "Password"
+msgstr "Geslo"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:1
 msgid "<b>General</b>"
@@ -48,8 +48,8 @@ msgid ""
 msgstr ""
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:4
-msgid "_Gateway:"
-msgstr "_Prehod:"
+msgid "_Gateway"
+msgstr "_Prehod"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:5
 msgid "<b>Authentication</b>"
@@ -73,8 +73,8 @@ msgstr ""
 "Nastavitev: uporabnik <ime>"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:11
-msgid "User name:"
-msgstr "Uporabniško ime:"
+msgid "User name"
+msgstr "Uporabniško ime"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:12
 #, fuzzy
@@ -82,7 +82,7 @@ msgid "<b>Security</b>"
 msgstr "<b>Splošno</b>"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:13
-msgid "Trusted certificate:"
+msgid "Trusted certificate"
 msgstr ""
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:14

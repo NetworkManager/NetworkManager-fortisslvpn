@@ -156,7 +156,7 @@ advanced_dialog_response_cb (GtkWidget *dialog, gint response, gpointer user_dat
 	FortisslvpnEditorPrivate *priv = FORTISSLVPN_EDITOR_GET_PRIVATE (self);
 	GtkEntry *trusted_cert_entry = GTK_ENTRY (gtk_builder_get_object (priv->builder, "trusted_cert_entry"));
 	GtkEntry *realm_entry = GTK_ENTRY (gtk_builder_get_object (priv->builder, "realm_entry"));
-	GtkToggleButton *use_otp = GTK_TOGGLE_BUTTON (gtk_builder_get_object (priv->builder, "use_otp"));
+	GtkSwitch *use_otp = GTK_SWITCH (gtk_builder_get_object (priv->builder, "use_otp"));
 
 	g_return_if_fail (trusted_cert_entry);
 	g_return_if_fail (realm_entry);
@@ -167,15 +167,15 @@ advanced_dialog_response_cb (GtkWidget *dialog, gint response, gpointer user_dat
 		priv->realm = g_strdup (gtk_entry_get_text (realm_entry));
 		stuff_changed_cb (NULL, self);
 
-		if (gtk_toggle_button_get_active (use_otp))
+		if (gtk_switch_get_active (use_otp))
 			priv->otp_flags |= NM_SETTING_SECRET_FLAG_NOT_SAVED;
 		else
 			priv->otp_flags &= ~NM_SETTING_SECRET_FLAG_NOT_SAVED;
 	} else {
 		gtk_entry_set_text (trusted_cert_entry, priv->trusted_cert);
 		gtk_entry_set_text (realm_entry, priv->realm);
-		gtk_toggle_button_set_active (use_otp,
-		                              priv->otp_flags & NM_SETTING_SECRET_FLAG_NOT_SAVED);
+		gtk_switch_set_active (use_otp,
+		                       priv->otp_flags & NM_SETTING_SECRET_FLAG_NOT_SAVED);
 	}
 
 	gtk_widget_hide (dialog);
@@ -481,7 +481,7 @@ nm_fortisslvpn_editor_new (NMConnection *connection, GError **error)
 		g_return_val_if_reached (NULL);
 	}
 
-	priv->widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "fortisslvpn-vbox"));
+	priv->widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "fortisslvpn_grid"));
 	if (!priv->widget) {
 		g_set_error (error, NMV_EDITOR_PLUGIN_ERROR, 0, "could not load UI widget");
 		g_object_unref (object);

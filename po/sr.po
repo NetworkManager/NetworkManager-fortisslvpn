@@ -51,16 +51,16 @@ msgid "Authenticate VPN"
 msgstr "Потврди ВПН"
 
 #: ../auth-dialog/main.c:162 ../properties/nm-fortisslvpn-dialog.ui.h:14
-msgid "Password:"
-msgstr "Лозинка:"
+msgid "Password"
+msgstr "Лозинка"
 
 #: ../auth-dialog/main.c:164
-msgid "Token:"
-msgstr "Прстен:"
+msgid "Token"
+msgstr "Прстен"
 
 #: ../auth-dialog/main.c:186
-msgid "_Token:"
-msgstr "_Прстен:"
+msgid "_Token"
+msgstr "_Прстен"
 
 #: ../properties/nm-fortisslvpn-editor-plugin.c:38
 msgid "Fortinet SSLVPN"
@@ -230,8 +230,8 @@ msgstr ""
 "верује ни издавач уверења."
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:7
-msgid "Trusted certificate:"
-msgstr "Поверљиво уверење:"
+msgid "Trusted certificate"
+msgstr "Поверљиво уверење"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:8
 msgid "General"
@@ -246,8 +246,8 @@ msgstr ""
 "подешавање: први параметар фортисслвпн-а"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:11
-msgid "_Gateway:"
-msgstr "_Мрежни пролаз:"
+msgid "_Gateway"
+msgstr "_Мрежни пролаз"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:12
 msgid "Show password"
@@ -267,20 +267,20 @@ msgstr ""
 "подешавање: корисник <name>"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:17
-msgid "User name:"
-msgstr "Корисничко име:"
+msgid "User name"
+msgstr "Корисничко име"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:18
-msgid "CA Certificate:"
-msgstr "Уверење издавача уверења:"
+msgid "CA Certificate"
+msgstr "Уверење издавача уверења"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:19
-msgid "User Key:"
-msgstr "Кориснички кључ:"
+msgid "User Key"
+msgstr "Кориснички кључ"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:20
-msgid "User Certificate:"
-msgstr "Корисничко уверење:"
+msgid "User Certificate"
+msgstr "Корисничко уверење"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:21
 msgid "A_dvanced…"

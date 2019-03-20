@@ -32,8 +32,8 @@ msgid "Authenticate VPN"
 msgstr "认证 VPN"
 
 #: ../auth-dialog/main.c:165 ../properties/nm-fortisslvpn-dialog.ui.h:8
-msgid "Password:"
-msgstr "密码:"
+msgid "Password"
+msgstr "密码"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:1
 msgid "<b>General</b>"
@@ -46,7 +46,7 @@ msgid ""
 msgstr ""
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:4
-msgid "_Gateway:"
+msgid "_Gateway"
 msgstr "网关(_G)："
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:5
@@ -69,7 +69,7 @@ msgid ""
 msgstr ""
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:11
-msgid "User name:"
+msgid "User name"
 msgstr "用户名(_U)："
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:12
@@ -78,7 +78,7 @@ msgid "<b>Security</b>"
 msgstr "<b>一般</b>"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:13
-msgid "Trusted certificate:"
+msgid "Trusted certificate"
 msgstr ""
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:14

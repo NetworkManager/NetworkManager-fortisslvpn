@@ -30,8 +30,8 @@ msgid "Authenticate VPN"
 msgstr "VPN প্ৰমাণিত কৰক"
 
 #: ../auth-dialog/main.c:165 ../properties/nm-fortisslvpn-dialog.ui.h:8
-msgid "Password:"
-msgstr "গুপ্তশব্দ:"
+msgid "Password"
+msgstr "গুপ্তশব্দ"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:1
 msgid "<b>General</b>"
@@ -44,8 +44,8 @@ msgid ""
 msgstr ""
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:4
-msgid "_Gateway:"
-msgstr "গেটৱে (_G):"
+msgid "_Gateway"
+msgstr "গেটৱে (_G)"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:5
 msgid "<b>Authentication</b>"
@@ -67,8 +67,8 @@ msgid ""
 msgstr ""
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:11
-msgid "User name:"
-msgstr "ব্যৱহাৰকৰ্তাৰ নাম:"
+msgid "User name"
+msgstr "ব্যৱহাৰকৰ্তাৰ নাম"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:12
 #, fuzzy
@@ -76,7 +76,7 @@ msgid "<b>Security</b>"
 msgstr "<b>সাধাৰণ</b>"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:13
-msgid "Trusted certificate:"
+msgid "Trusted certificate"
 msgstr ""
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:14

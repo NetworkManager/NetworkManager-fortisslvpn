@@ -55,16 +55,16 @@ msgid "Authenticate VPN"
 msgstr "Autentisera VPN"
 
 #: ../auth-dialog/main.c:162 ../properties/nm-fortisslvpn-dialog.ui.h:14
-msgid "Password:"
-msgstr "Lösenord:"
+msgid "Password"
+msgstr "Lösenord"
 
 #: ../auth-dialog/main.c:164
-msgid "Token:"
-msgstr "Token:"
+msgid "Token"
+msgstr "Token"
 
 #: ../auth-dialog/main.c:186
-msgid "_Token:"
-msgstr "_Token:"
+msgid "_Token"
+msgstr "_Token"
 
 #: ../properties/nm-fortisslvpn-editor-plugin.c:38
 msgid "Fortinet SSLVPN"
@@ -237,8 +237,8 @@ msgstr ""
 "certifikatet inte är betrott av en certifikatutfärdare."
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:7
-msgid "Trusted certificate:"
-msgstr "Betrott certifikat:"
+msgid "Trusted certificate"
+msgstr "Betrott certifikat"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:8
 msgid "General"
@@ -253,8 +253,8 @@ msgstr ""
 "konfiguration: första parametern för fortisslvpn"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:11
-msgid "_Gateway:"
-msgstr "_Gateway:"
+msgid "_Gateway"
+msgstr "_Gateway"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:12
 msgid "Show password"
@@ -275,20 +275,20 @@ msgstr ""
 "config: user <namn>"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:17
-msgid "User name:"
-msgstr "Användarnamn:"
+msgid "User name"
+msgstr "Användarnamn"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:18
-msgid "CA Certificate:"
-msgstr "CA-certifikat:"
+msgid "CA Certificate"
+msgstr "CA-certifikat"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:19
-msgid "User Key:"
-msgstr "Användarnyckel:"
+msgid "User Key"
+msgstr "Användarnyckel"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:20
-msgid "User Certificate:"
-msgstr "Användarcertifikat:"
+msgid "User Certificate"
+msgstr "Användarcertifikat"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:21
 msgid "A_dvanced…"

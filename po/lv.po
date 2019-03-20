@@ -51,16 +51,16 @@ msgid "Authenticate VPN"
 msgstr "Autentificēt VPN"
 
 #: ../auth-dialog/main.c:162 ../properties/nm-fortisslvpn-dialog.ui.h:14
-msgid "Password:"
-msgstr "Parole:"
+msgid "Password"
+msgstr "Parole"
 
 #: ../auth-dialog/main.c:164
-msgid "Token:"
-msgstr "Marķieris:"
+msgid "Token"
+msgstr "Marķieris"
 
 #: ../auth-dialog/main.c:186
-msgid "_Token:"
-msgstr "_Marķieris:"
+msgid "_Token"
+msgstr "_Marķieris"
 
 #: ../properties/nm-fortisslvpn-editor-plugin.c:38
 msgid "Fortinet SSLVPN"
@@ -237,8 +237,8 @@ msgstr ""
 " neuzticas sertifikātu institūcija."
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:7
-msgid "Trusted certificate:"
-msgstr "Uzticamie sertifikāti:"
+msgid "Trusted certificate"
+msgstr "Uzticamie sertifikāti"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:8
 #| msgid "<b>General</b>"
@@ -254,8 +254,8 @@ msgstr ""
 "config: pirmais fortisslvpn parametrs"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:11
-msgid "_Gateway:"
-msgstr "_Vārteja:"
+msgid "_Gateway"
+msgstr "_Vārteja"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:12
 msgid "Show password"
@@ -276,21 +276,21 @@ msgstr ""
 "config: user <nosaukums>"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:17
-msgid "User name:"
-msgstr "Lietotājvārds:"
+msgid "User name"
+msgstr "Lietotājvārds"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:18
-msgid "CA Certificate:"
-msgstr "CA sertifikāts:"
+msgid "CA Certificate"
+msgstr "CA sertifikāts"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:19
-#| msgid "User name:"
-msgid "User Key:"
-msgstr "Lietotāja atslēga:"
+#| msgid "User name"
+msgid "User Key"
+msgstr "Lietotāja atslēga"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:20
-msgid "User Certificate:"
-msgstr "Lietotāja sertifikāts:"
+msgid "User Certificate"
+msgstr "Lietotāja sertifikāts"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:21
 msgid "A_dvanced…"

@@ -54,16 +54,16 @@ msgid "Authenticate VPN"
 msgstr "Autenticar VPN"
 
 #: ../auth-dialog/main.c:162 ../properties/nm-fortisslvpn-dialog.ui.h:14
-msgid "Password:"
-msgstr "Contraseña:"
+msgid "Password"
+msgstr "Contraseña"
 
 #: ../auth-dialog/main.c:164
-msgid "Token:"
-msgstr "Testigo:"
+msgid "Token"
+msgstr "Testigo"
 
 #: ../auth-dialog/main.c:186
-msgid "_Token:"
-msgstr "_Testigo:"
+msgid "_Token"
+msgstr "_Testigo"
 
 #: ../properties/nm-fortisslvpn-editor-plugin.c:38
 msgid "Fortinet SSLVPN"
@@ -244,8 +244,8 @@ msgstr ""
 "cuando el certificado no sea de confianza para una entidad de certificación."
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:7
-msgid "Trusted certificate:"
-msgstr "Certificado de confianza:"
+msgid "Trusted certificate"
+msgstr "Certificado de confianza"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:8
 msgid "General"
@@ -260,8 +260,8 @@ msgstr ""
 "opción de configuración: el primer parámetro de fortisslvpn"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:11
-msgid "_Gateway:"
-msgstr "_Pasarela:"
+msgid "_Gateway"
+msgstr "_Pasarela"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:12
 msgid "Show password"
@@ -282,20 +282,20 @@ msgstr ""
 "opción: user <nombre>"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:17
-msgid "User name:"
-msgstr "Usuario:"
+msgid "User name"
+msgstr "Usuario"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:18
-msgid "CA Certificate:"
-msgstr "Certificado CA:"
+msgid "CA Certificate"
+msgstr "Certificado CA"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:19
-msgid "User Key:"
-msgstr "Clave de usuario:"
+msgid "User Key"
+msgstr "Clave de usuario"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:20
-msgid "User Certificate:"
-msgstr "Certificado de usuario:"
+msgid "User Certificate"
+msgstr "Certificado de usuario"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:21
 msgid "A_dvanced…"

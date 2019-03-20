@@ -51,15 +51,15 @@ msgid "Authenticate VPN"
 msgstr "Todenna VPN-yhteys"
 
 #: ../auth-dialog/main.c:162 ../properties/nm-fortisslvpn-dialog.ui.h:14
-msgid "Password:"
-msgstr "Salasana:"
+msgid "Password"
+msgstr "Salasana"
 
 #: ../auth-dialog/main.c:164
-msgid "Token:"
+msgid "Token"
 msgstr ""
 
 #: ../auth-dialog/main.c:186
-msgid "_Token:"
+msgid "_Token"
 msgstr ""
 
 #: ../properties/nm-fortisslvpn-editor-plugin.c:38
@@ -222,8 +222,8 @@ msgid ""
 msgstr ""
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:7
-msgid "Trusted certificate:"
-msgstr "Luotettu varmenne:"
+msgid "Trusted certificate"
+msgstr "Luotettu varmenne"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:8
 msgid "General"
@@ -236,8 +236,8 @@ msgid ""
 msgstr ""
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:11
-msgid "_Gateway:"
-msgstr "_Yhdyskäytävä:"
+msgid "_Gateway"
+msgstr "_Yhdyskäytävä"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:12
 msgid "Show password"
@@ -255,20 +255,20 @@ msgid ""
 msgstr ""
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:17
-msgid "User name:"
-msgstr "Käyttäjätunnus:"
+msgid "User name"
+msgstr "Käyttäjätunnus"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:18
-msgid "CA Certificate:"
-msgstr "CA-varmenne:"
+msgid "CA Certificate"
+msgstr "CA-varmenne"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:19
-msgid "User Key:"
-msgstr "Käyttäjäavain:"
+msgid "User Key"
+msgstr "Käyttäjäavain"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:20
-msgid "User Certificate:"
-msgstr "Käyttäjävarmenne:"
+msgid "User Certificate"
+msgstr "Käyttäjävarmenne"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:21
 msgid "A_dvanced…"

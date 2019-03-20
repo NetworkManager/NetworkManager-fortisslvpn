@@ -53,16 +53,16 @@ msgid "Authenticate VPN"
 msgstr "VPN-hitelesítés"
 
 #: ../auth-dialog/main.c:162 ../properties/nm-fortisslvpn-dialog.ui.h:14
-msgid "Password:"
-msgstr "Jelszó:"
+msgid "Password"
+msgstr "Jelszó"
 
 #: ../auth-dialog/main.c:164
-msgid "Token:"
-msgstr "Jelsor:"
+msgid "Token"
+msgstr "Jelsor"
 
 #: ../auth-dialog/main.c:186
-msgid "_Token:"
-msgstr "_Jelsor:"
+msgid "_Token"
+msgstr "_Jelsor"
 
 #: ../properties/nm-fortisslvpn-editor-plugin.c:38
 msgid "Fortinet SSLVPN"
@@ -244,8 +244,8 @@ msgstr ""
 "ha a tanúsítványt nem fogadta el egy hitelesítésszolgáltató."
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:7
-msgid "Trusted certificate:"
-msgstr "Megbízható tanúsítvány:"
+msgid "Trusted certificate"
+msgstr "Megbízható tanúsítvány"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:8
 msgid "General"
@@ -260,8 +260,8 @@ msgstr ""
 "config: a fortisslvpn első paramétere"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:11
-msgid "_Gateway:"
-msgstr "Á_tjáró:"
+msgid "_Gateway"
+msgstr "Á_tjáró"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:12
 msgid "Show password"
@@ -281,20 +281,20 @@ msgstr ""
 "config: user <név>"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:17
-msgid "User name:"
-msgstr "Felhasználónév:"
+msgid "User name"
+msgstr "Felhasználónév"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:18
-msgid "CA Certificate:"
-msgstr "CA tanúsítvány:"
+msgid "CA Certificate"
+msgstr "CA tanúsítvány"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:19
-msgid "User Key:"
-msgstr "Felhasználói kulcs:"
+msgid "User Key"
+msgstr "Felhasználói kulcs"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:20
-msgid "User Certificate:"
-msgstr "Felhasználói tanúsítvány:"
+msgid "User Certificate"
+msgstr "Felhasználói tanúsítvány"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:21
 msgid "A_dvanced…"

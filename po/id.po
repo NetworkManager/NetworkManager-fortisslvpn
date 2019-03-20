@@ -50,16 +50,16 @@ msgid "Authenticate VPN"
 msgstr "Otentikasikan VPN"
 
 #: ../auth-dialog/main.c:162 ../properties/nm-fortisslvpn-dialog.ui.h:14
-msgid "Password:"
-msgstr "Kata sandi:"
+msgid "Password"
+msgstr "Kata sandi"
 
 #: ../auth-dialog/main.c:164
-msgid "Token:"
-msgstr "Token:"
+msgid "Token"
+msgstr "Token"
 
 #: ../auth-dialog/main.c:186
-msgid "_Token:"
-msgstr "_Token:"
+msgid "_Token"
+msgstr "_Token"
 
 #: ../properties/nm-fortisslvpn-editor-plugin.c:38
 msgid "Fortinet SSLVPN"
@@ -232,8 +232,8 @@ msgstr ""
 "tidak dipercaya oleh sebuah certificate authority."
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:7
-msgid "Trusted certificate:"
-msgstr "Sertifikat terpercaya:"
+msgid "Trusted certificate"
+msgstr "Sertifikat terpercaya"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:8
 msgid "General"
@@ -248,8 +248,8 @@ msgstr ""
 "config: parameter pertama dari fortisslvpn"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:11
-msgid "_Gateway:"
-msgstr "_Gateway:"
+msgid "_Gateway"
+msgstr "_Gateway"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:12
 msgid "Show password"
@@ -270,20 +270,20 @@ msgstr ""
 "config: user <name>"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:17
-msgid "User name:"
-msgstr "Nama pengguna:"
+msgid "User name"
+msgstr "Nama pengguna"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:18
-msgid "CA Certificate:"
-msgstr "Sertifikat CA:"
+msgid "CA Certificate"
+msgstr "Sertifikat CA"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:19
-msgid "User Key:"
-msgstr "Kunci Pengguna:"
+msgid "User Key"
+msgstr "Kunci Pengguna"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:20
-msgid "User Certificate:"
-msgstr "Sertifikat Pengguna:"
+msgid "User Certificate"
+msgstr "Sertifikat Pengguna"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:21
 msgid "A_dvanced…"

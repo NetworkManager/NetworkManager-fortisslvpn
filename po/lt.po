@@ -54,16 +54,16 @@ msgid "Authenticate VPN"
 msgstr "Nustatyti tapatybę VPN"
 
 #: ../auth-dialog/main.c:162 ../properties/nm-fortisslvpn-dialog.ui.h:14
-msgid "Password:"
-msgstr "Slaptažodis:"
+msgid "Password"
+msgstr "Slaptažodis"
 
 #: ../auth-dialog/main.c:164
-msgid "Token:"
-msgstr "Prieigos kodas:"
+msgid "Token"
+msgstr "Prieigos kodas"
 
 #: ../auth-dialog/main.c:186
-msgid "_Token:"
-msgstr "_Prieigos kodas:"
+msgid "_Token"
+msgstr "_Prieigos kodas"
 
 #: ../properties/nm-fortisslvpn-editor-plugin.c:38
 msgid "Fortinet SSLVPN"
@@ -243,8 +243,8 @@ msgstr ""
 "liudijimų įstaiga."
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:7
-msgid "Trusted certificate:"
-msgstr "Patikimas liudijimas:"
+msgid "Trusted certificate"
+msgstr "Patikimas liudijimas"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:8
 msgid "General"
@@ -259,8 +259,8 @@ msgstr ""
 "konfig.: pirmas fortisslvpn parametras"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:11
-msgid "_Gateway:"
-msgstr "Tinklų _sietuvas:"
+msgid "_Gateway"
+msgstr "Tinklų _sietuvas"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:12
 msgid "Show password"
@@ -280,20 +280,20 @@ msgstr ""
 "konfig.: user <vardas>"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:17
-msgid "User name:"
-msgstr "Naudotojo vardas:"
+msgid "User name"
+msgstr "Naudotojo vardas"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:18
-msgid "CA Certificate:"
-msgstr "LĮ liudijimas:"
+msgid "CA Certificate"
+msgstr "LĮ liudijimas"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:19
-msgid "User Key:"
-msgstr "Naudotojo raktas:"
+msgid "User Key"
+msgstr "Naudotojo raktas"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:20
-msgid "User Certificate:"
-msgstr "Naudotojo liudijimas:"
+msgid "User Certificate"
+msgstr "Naudotojo liudijimas"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:21
 msgid "A_dvanced…"

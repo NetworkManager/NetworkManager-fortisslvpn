@@ -35,8 +35,8 @@ msgid "Authenticate VPN"
 msgstr "Πιστοποίηση VPN"
 
 #: ../auth-dialog/main.c:165 ../properties/nm-fortisslvpn-dialog.ui.h:12
-msgid "Password:"
-msgstr "Κωδικός πρόσβασης:"
+msgid "Password"
+msgstr "Κωδικός πρόσβασης"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:1
 msgid "SSLVPN Advanced Options"
@@ -55,8 +55,8 @@ msgstr ""
 "πιστοποιητικό δεν είναι έμπιστο από μια αρχή πιστοποίησης."
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:4
-msgid "Trusted certificate:"
-msgstr "Αξιόπιστο πιστοποιητικό:"
+msgid "Trusted certificate"
+msgstr "Αξιόπιστο πιστοποιητικό"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:5
 msgid "<b>General</b>"
@@ -71,8 +71,8 @@ msgstr ""
 "ρύθμιση: η πρώτη παράμετρος του fortisslvpn"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:8
-msgid "_Gateway:"
-msgstr "Πύλ_η δικτύου:"
+msgid "_Gateway"
+msgstr "Πύλ_η δικτύου"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:9
 msgid "<b>Authentication</b>"
@@ -97,20 +97,20 @@ msgstr ""
 "ρύθμιση: χρήστης <name>"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:15
-msgid "User name:"
-msgstr "Όνομα χρήστη:"
+msgid "User name"
+msgstr "Όνομα χρήστη"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:16
-msgid "CA Certificate:"
-msgstr "Πιστοποιητικό CA :"
+msgid "CA Certificate"
+msgstr "Πιστοποιητικό CA "
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:17
-msgid "User Key:"
-msgstr "Κλειδί χρήστη:"
+msgid "User Key"
+msgstr "Κλειδί χρήστη"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:18
-msgid "User Certificate:"
-msgstr "Πιστοποιητικό χρήστη:"
+msgid "User Certificate"
+msgstr "Πιστοποιητικό χρήστη"
 
 #: ../properties/nm-fortisslvpn-dialog.ui.h:19
 msgid "A_dvanced..."
