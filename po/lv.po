@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "fortisslvpn/\n"
-"POT-Creation-Date: 2019-03-20 17:06+0100\n"
+"POT-Creation-Date: 2019-03-21 17:04+0100\n"
 "PO-Revision-Date: 2018-03-25 21:32+0200\n"
 "Last-Translator: Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>\n"
 "Language-Team: Latvian <lata-l10n@googlegroups.com>\n"
@@ -150,19 +150,19 @@ msgstr "Trūkts VPN lietotājvārda."
 msgid "Missing or invalid VPN password."
 msgstr "Trūkst vai nav derīga VPN parole."
 
-#: src/nm-fortisslvpn-service.c:603
+#: src/nm-fortisslvpn-service.c:609
 msgid "Don’t quit when VPN connection terminates"
 msgstr "Neiziet, kad tiek pārtraukts VPN savienojums"
 
-#: src/nm-fortisslvpn-service.c:604
+#: src/nm-fortisslvpn-service.c:610
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr "Aktivēt detalizētu atkļūdošanas reģistrēšanu (var atklāt paroles)"
 
-#: src/nm-fortisslvpn-service.c:605
+#: src/nm-fortisslvpn-service.c:611
 msgid "D-Bus name to use for this instance"
 msgstr "D-Bus nosaukums, ko izmantot šai instancei"
 
-#: src/nm-fortisslvpn-service.c:626
+#: src/nm-fortisslvpn-service.c:632
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."

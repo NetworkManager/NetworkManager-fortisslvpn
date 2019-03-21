@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "fortisslvpn/\n"
-"POT-Creation-Date: 2019-03-20 17:06+0100\n"
+"POT-Creation-Date: 2019-03-21 17:04+0100\n"
 "PO-Revision-Date: 2019-03-05 17:45+0100\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -173,21 +173,21 @@ msgstr "Manglende VPN-brugernavn."
 msgid "Missing or invalid VPN password."
 msgstr "Manglende eller ugyldig VPN-adgangskode."
 
-#: src/nm-fortisslvpn-service.c:603
+#: src/nm-fortisslvpn-service.c:609
 msgid "Don’t quit when VPN connection terminates"
 msgstr "Afslut ikke, når VPN-forbindelsen afsluttes"
 
 # streng også i modulet pptp
-#: src/nm-fortisslvpn-service.c:604
+#: src/nm-fortisslvpn-service.c:610
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr "Aktivér uddybende fejlsøgningslog (kan afsløre adgangskoder)"
 
 # streng også i modulet pptp
-#: src/nm-fortisslvpn-service.c:605
+#: src/nm-fortisslvpn-service.c:611
 msgid "D-Bus name to use for this instance"
 msgstr "Navn på D-Bus der skal bruges i dette tilfælde"
 
-#: src/nm-fortisslvpn-service.c:626
+#: src/nm-fortisslvpn-service.c:632
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."

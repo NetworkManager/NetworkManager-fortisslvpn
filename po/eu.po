@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn nm-1-0\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "fortisslvpn/\n"
-"POT-Creation-Date: 2019-03-20 17:06+0100\n"
+"POT-Creation-Date: 2019-03-21 17:04+0100\n"
 "PO-Revision-Date: 2014-11-19 16:39+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
 "Language-Team: Basque <librezale@librezale.org>\n"
@@ -143,20 +143,20 @@ msgstr "VPN-aren erabiltzaile-izena falta da."
 msgid "Missing or invalid VPN password."
 msgstr "VPN-aren pasahitza falta da, edo baliogabea da."
 
-#: src/nm-fortisslvpn-service.c:603
+#: src/nm-fortisslvpn-service.c:609
 #, fuzzy
 msgid "Don’t quit when VPN connection terminates"
 msgstr "Ez irten VPNaren konexioa amaitzean"
 
-#: src/nm-fortisslvpn-service.c:604
+#: src/nm-fortisslvpn-service.c:610
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr "Gaitu arazketaren erregistro xehea (pasahitzak erakuts ditzake)"
 
-#: src/nm-fortisslvpn-service.c:605
+#: src/nm-fortisslvpn-service.c:611
 msgid "D-Bus name to use for this instance"
 msgstr ""
 
-#: src/nm-fortisslvpn-service.c:626
+#: src/nm-fortisslvpn-service.c:632
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."

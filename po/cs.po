@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "fortisslvpn/\n"
-"POT-Creation-Date: 2019-03-20 17:06+0100\n"
+"POT-Creation-Date: 2019-03-21 17:04+0100\n"
 "PO-Revision-Date: 2017-08-01 13:16+0200\n"
 "Last-Translator: Zdeněk Hataš <zdenek.hatas@gmail.com>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
@@ -149,19 +149,19 @@ msgstr "Chybí jméno uživatele VPN."
 msgid "Missing or invalid VPN password."
 msgstr "Chybějící nebo neplatné heslo VPN."
 
-#: src/nm-fortisslvpn-service.c:603
+#: src/nm-fortisslvpn-service.c:609
 msgid "Don’t quit when VPN connection terminates"
 msgstr "Neukončovat během ukončování spojení VPN"
 
-#: src/nm-fortisslvpn-service.c:604
+#: src/nm-fortisslvpn-service.c:610
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr "Povolit podrobný ladicí výpis (může prozradit hesla)"
 
-#: src/nm-fortisslvpn-service.c:605
+#: src/nm-fortisslvpn-service.c:611
 msgid "D-Bus name to use for this instance"
 msgstr "Název použitý pro tuto instanci v D-Bus"
 
-#: src/nm-fortisslvpn-service.c:626
+#: src/nm-fortisslvpn-service.c:632
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."

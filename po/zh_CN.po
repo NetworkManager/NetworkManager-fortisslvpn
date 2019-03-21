@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "fortisslvpn/\n"
-"POT-Creation-Date: 2019-03-20 17:06+0100\n"
+"POT-Creation-Date: 2019-03-21 17:04+0100\n"
 "PO-Revision-Date: 2011-11-27 18:26+0800\n"
 "Last-Translator: YunQiang Su <wzssyqa@gmail.com>\n"
 "Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
@@ -143,20 +143,20 @@ msgstr "缺少 VPN 用户名。"
 msgid "Missing or invalid VPN password."
 msgstr "VPN 密码缺失或无效。"
 
-#: src/nm-fortisslvpn-service.c:603
+#: src/nm-fortisslvpn-service.c:609
 #, fuzzy
 msgid "Don’t quit when VPN connection terminates"
 msgstr "在 VPN 连接终止时不退出"
 
-#: src/nm-fortisslvpn-service.c:604
+#: src/nm-fortisslvpn-service.c:610
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr "启用详细的调试记录(可能暴露密码)"
 
-#: src/nm-fortisslvpn-service.c:605
+#: src/nm-fortisslvpn-service.c:611
 msgid "D-Bus name to use for this instance"
 msgstr ""
 
-#: src/nm-fortisslvpn-service.c:626
+#: src/nm-fortisslvpn-service.c:632
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."

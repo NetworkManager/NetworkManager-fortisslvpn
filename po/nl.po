@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: NetworkManager PPTP\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "fortisslvpn/\n"
-"POT-Creation-Date: 2019-03-20 17:06+0100\n"
+"POT-Creation-Date: 2019-03-21 17:04+0100\n"
 "PO-Revision-Date: 2019-01-18 09:07+0100\n"
 "Last-Translator: Nathan Follens <nthn@unseen.is>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -156,19 +156,19 @@ msgstr "VPN-gebruikersnaam ontbreekt."
 msgid "Missing or invalid VPN password."
 msgstr "VPN-wachtwoord ontbreekt of is ongeldig."
 
-#: src/nm-fortisslvpn-service.c:603
+#: src/nm-fortisslvpn-service.c:609
 msgid "Don’t quit when VPN connection terminates"
 msgstr "Niet afsluiten wanneer VPN-verbinding beëindigt"
 
-#: src/nm-fortisslvpn-service.c:604
+#: src/nm-fortisslvpn-service.c:610
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr "Uitgebreide debug-logging inschakelen (kan wachtwoorden blootstellen)"
 
-#: src/nm-fortisslvpn-service.c:605
+#: src/nm-fortisslvpn-service.c:611
 msgid "D-Bus name to use for this instance"
 msgstr "D-Bus-naam voor deze instantie"
 
-#: src/nm-fortisslvpn-service.c:626
+#: src/nm-fortisslvpn-service.c:632
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
