@@ -1,9 +1,9 @@
-
 ==========================================================
-NetworkManager-fortisslvpn-1.2.10 (not released yet)
+NetworkManager-fortisslvpn-1.2.10
 Overview of changes since NetworkManager-fortisslvpn-1.2.8
 ==========================================================
 
+* Add support for specifying the realm.
 * libnm-glib compatibility (NetworkManager < 1.0) is disabled by default.
   It can be enabled by passing --with-libnm-glib to configure script.
   Nobody should need it by now. Users that still use this are encouraged
