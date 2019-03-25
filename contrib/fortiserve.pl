@@ -198,6 +198,7 @@ sub do_ppp
 	exec ($pppd, $pty->ttyname, qw/38400 noipdefault noaccomp noauth
 		ms-dns 6.6.6.7 ms-dns 8.8.8.8 noccp
 		default-asyncmap nopcomp nodefaultroute :1.1.1.2 nodetach
+		noaccomp nobsdcomp nopcomp novj novjccomp
 		lcp-max-configure 40 usepeerdns mru 1024/) or die $! unless $ppp;
 
 	$poll->mask ($_ => IO::Poll::POLLIN | IO::Poll::POLLERR)
