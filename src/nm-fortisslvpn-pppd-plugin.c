@@ -29,6 +29,7 @@
 
 #include "nm-default.h"
 
+#include <sys/types.h>
 #include <string.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -37,6 +38,8 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <pwd.h>
+#include <grp.h>
 #include <glib/gstdio.h>
 
 #include "nm-fortisslvpn-pppd-service-dbus.h"
@@ -51,6 +54,8 @@
 static struct {
 	int log_level;
 	const char *log_prefix_token;
+	uid_t uid;
+	gid_t gid;
 	NMDBusFortisslvpnPpp *proxy;
 } gl/*obal*/;
 
@@ -132,6 +137,20 @@ cleanup:
 }
 
 static void
+drop_privs (void)
+{
+	if (gl.uid == 0)
+		return;
+	if (setgroups(0, NULL))
+		_LOGW ("setgroups() failed.");
+	if (setgid(gl.gid) != 0)
+		_LOGW ("setgid(%d) failed.", gl.gid);
+	if (setuid(gl.uid) != 0)
+		_LOGW ("setuid(%d) failed.", gl.uid);
+	gl.uid = 0;
+}
+
+static void
 nm_phasechange (void *data, int arg)
 {
 	NMPPPStatus ppp_status = NM_PPP_STATUS_UNKNOWN;
@@ -202,6 +221,9 @@ nm_phasechange (void *data, int arg)
 
 	if (ppp_status > NM_PPP_STATUS_SERIALCONN)
 		chroot_sandbox ();
+
+	if (ppp_status > NM_PPP_STATUS_NETWORK)
+		drop_privs ();
 
 	if (ppp_status != NM_PPP_STATUS_UNKNOWN) {
 		nmdbus_fortisslvpn_ppp_call_set_state (gl.proxy,
@@ -381,6 +403,7 @@ plugin_init (void)
 {
 	GError *error = NULL;
 	const char *bus_name;
+	struct passwd *pw;
 
 	nm_g_type_init ();
 
@@ -396,6 +419,19 @@ plugin_init (void)
 	gl.log_prefix_token = getenv ("NM_VPN_LOG_PREFIX_TOKEN") ?: "???";
 
 	_LOGI ("initializing");
+
+	pw = getpwnam("nm-fortisslvpn");
+	if (!pw) {
+		_LOGW ("No 'nm-fortisslvpn' user, falling back to nobody.");
+		pw = getpwnam("nobody");
+	}
+	if (pw) {
+		gl.uid = pw->pw_gid;
+		gl.gid = pw->pw_uid;
+	} else {
+		_LOGW ("No 'nobody' user, will not drop privileges.");
+		gl.uid = 0;
+	}
 
 	gl.proxy = nmdbus_fortisslvpn_ppp_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
 	                                                          G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
