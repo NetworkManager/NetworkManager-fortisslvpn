@@ -50,6 +50,7 @@ my $local = '0.0.0.0:10443';
 my $cert = 'server.crt';
 my $key = 'server.key';
 my $pppd = 'pppd';
+my $otp = undef;
 
 # Gereate a RFC 1662 (appendix C.1) FCS-16 table
 sub fcs16
@@ -252,7 +253,7 @@ sub serve_request
 
 
 	if ($request->uri eq '/remote/logincheck') {
-		if ($request->content =~ /code=/) {
+		if (not $otp or $request->content =~ /code=/) {
 			$response = new HTTP::Response (200 => 'OK', [], '');
 			$response->header ('Set-Cookie' => 'SVPNCOOKIE=something;');
 		} else {
@@ -353,6 +354,10 @@ F<antipppd.pl> to simulate actual Fortigate traffic.
 
 Defaults to F<pppd>.
 
+=item B<--otp>
+
+Ask for a One-Time-Password.
+
 =back
 
 =cut
@@ -362,6 +367,7 @@ new Getopt::Long::Parser (config => ['no_ignore_case'])->getoptions (
 	'cert=s' => \$cert,
 	'key=s' => \$key,
 	'pppd=s' => \$pppd,
+	'otp' => \$otp,
 	'h|help' => sub { pod2usage (-exitval => 0, -verbose => 1) },
 	'H|man' => sub { pod2usage (-exitval => 0, -verbose => 2) },
 ) or pod2usage (2);
