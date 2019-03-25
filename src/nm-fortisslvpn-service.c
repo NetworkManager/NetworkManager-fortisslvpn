@@ -90,10 +90,10 @@ typedef struct {
 #define _NMLOG(level, ...) \
     G_STMT_START { \
          if (gl.log_level >= (level)) { \
-              g_print ("nm-fortisslvpn[%ld] %-7s " _NM_UTILS_MACRO_FIRST (__VA_ARGS__) "\n", \
-                       (long) getpid (), \
-                       nm_utils_syslog_to_str (level) \
-                       _NM_UTILS_MACRO_REST (__VA_ARGS__)); \
+              g_printerr ("nm-fortisslvpn[%ld] %-7s " _NM_UTILS_MACRO_FIRST (__VA_ARGS__) "\n", \
+                         (long) getpid (), \
+                          nm_utils_syslog_to_str (level) \
+                          _NM_UTILS_MACRO_REST (__VA_ARGS__)); \
          } \
     } G_STMT_END
 
