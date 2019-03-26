@@ -34,7 +34,10 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <dlfcn.h>
+#include <fcntl.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <glib/gstdio.h>
 
 #include "nm-fortisslvpn-pppd-service-dbus.h"
 #include "nm-fortisslvpn-service.h"
@@ -76,6 +79,57 @@ static struct {
 int plugin_init (void);
 
 char pppd_version[] = VERSION;
+
+static void
+chroot_sandbox (void)
+{
+	static int chrooted = 0;
+	GError *error = NULL;
+	int parentfd = -1;
+	gchar *tmpdir;
+	gchar *tmp;
+
+	if (chrooted)
+		return;
+	chrooted = 1;
+
+	tmpdir = g_dir_make_tmp (NULL, &error);
+	if (tmpdir == NULL) {
+		_LOGW ("Can't create a temporary directory name: %s", error->message);
+		g_error_free (error);
+		return;
+	}
+
+	tmp = g_path_get_dirname (tmpdir);
+	g_printerr ("{%s} {%s}\n", tmpdir, tmp);
+	parentfd = open (tmp, 0);
+	if (parentfd == -1) {
+		_LOGW ("Can't open '%s': %s", tmp, strerror (errno));
+		goto cleanup;
+	}
+	g_clear_pointer (&tmp, g_free);
+
+	if (chroot (tmpdir) == -1) {
+		_LOGW ("Chroot to '%s' failed: %s", tmpdir, strerror (errno));
+		goto cleanup;
+	}
+
+	tmp = g_path_get_basename (tmpdir);
+	g_printerr ("{%s} {%s}\n", tmpdir, tmp);
+	if (unlinkat (parentfd, tmp, AT_REMOVEDIR) == -1) {
+		_LOGW ("Unlink of '%s' failed: %s", tmpdir, strerror (errno));
+	}
+	g_clear_pointer (&tmpdir, g_free);
+
+cleanup:
+	g_clear_pointer (&tmp, g_free);
+	if (parentfd != -1)
+		close (parentfd);
+	if (tmpdir) {
+		g_remove (tmpdir);
+		g_free (tmpdir);
+	}
+}
 
 static void
 nm_phasechange (void *data, int arg)
@@ -144,8 +198,10 @@ nm_phasechange (void *data, int arg)
 		break;
 	}
 
-	_LOGI ("phasechange: status %d / phase '%s'",
-	       ppp_status, ppp_phase);
+	_LOGI ("phasechange: status %d / phase '%s'", ppp_status, ppp_phase);
+
+	if (ppp_status > NM_PPP_STATUS_SERIALCONN)
+		chroot_sandbox ();
 
 	if (ppp_status != NM_PPP_STATUS_UNKNOWN) {
 		nmdbus_fortisslvpn_ppp_call_set_state (gl.proxy,
