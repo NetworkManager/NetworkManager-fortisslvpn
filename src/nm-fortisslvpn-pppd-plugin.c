@@ -61,9 +61,6 @@ static struct {
 
 /*****************************************************************************/
 
-/* Note that in the current from, the messages from pppd-plugin are
- * swallowed by pppd. One way to see them is using strace. */
-
 #define _NMLOG(level, ...) \
     G_STMT_START { \
          if (gl.log_level >= (level)) { \
