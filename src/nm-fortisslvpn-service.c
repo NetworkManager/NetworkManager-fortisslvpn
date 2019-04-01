@@ -83,9 +83,7 @@ typedef struct {
 
 #define NM_FORTISSLVPN_PLUGIN_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), NM_TYPE_FORTISSLVPN_PLUGIN, NMFortisslvpnPluginPrivate))
 
-#define NM_FORTISSLVPN_PPPD_PLUGIN PLUGINDIR "/nm-fortisslvpn-pppd-plugin.so"
 #define NM_FORTISSLVPN_WAIT_PPPD 10000 /* 10 seconds */
-#define FORTISSLVPN_SERVICE_SECRET_TRIES "fortisslvpn-service-secret-tries"
 
 #define _NMLOG(level, ...) \
     G_STMT_START { \
@@ -263,7 +261,7 @@ run_openfortivpn (NMFortisslvpnPlugin *plugin, NMSettingVpn *s_vpn, GError **err
 	}
 
 	g_ptr_array_add (argv, (gpointer) g_strdup ("--pppd-plugin"));
-	g_ptr_array_add (argv, (gpointer) g_strdup (NM_FORTISSLVPN_PPPD_PLUGIN));
+	g_ptr_array_add (argv, (gpointer) g_strdup (PLUGINDIR "/nm-fortisslvpn-pppd-plugin.so"));
 
 	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_REALM);
 	if (value) {
