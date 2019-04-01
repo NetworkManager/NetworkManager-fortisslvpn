@@ -79,6 +79,7 @@ libexec_PROGRAMS += src/nm-fortisslvpn-service
 
 src_nm_fortisslvpn_service_SOURCES = \
 	shared/nm-utils/nm-shared-utils.c \
+	shared/nm-utils/nm-shared-utils.h \
 	src/nm-ppp-status.h \
 	src/nm-fortisslvpn-service.h \
 	src/nm-fortisslvpn-service.c \
@@ -101,8 +102,11 @@ pppd_plugin_LTLIBRARIES = src/nm-fortisslvpn-pppd-plugin.la
 
 src_nm_fortisslvpn_pppd_plugin_la_SOURCES = \
 	shared/nm-utils/nm-shared-utils.c \
+	shared/nm-utils/nm-shared-utils.h \
 	src/nm-fortisslvpn-pppd-plugin.c \
 	src/nm-ppp-status.h
+nodist_src_nm_fortisslvpn_pppd_plugin_la_SOURCES = \
+	src/nm-fortisslvpn-pppd-service-dbus.h
 src_nm_fortisslvpn_pppd_plugin_la_CPPFLAGS = $(src_cppflags)
 src_nm_fortisslvpn_pppd_plugin_la_LDFLAGS = \
 	-module -avoid-version
@@ -329,8 +333,6 @@ EXTRA_DIST += \
 	shared/nm-utils/gsystem-local-alloc.h \
 	shared/nm-utils/nm-glib.h \
 	shared/nm-utils/nm-macros-internal.h \
-	shared/nm-utils/nm-shared-utils.c \
-	shared/nm-utils/nm-shared-utils.h \
 	shared/nm-default.h \
 	shared/nm-service-defines.h \
 	$(NULL)
