@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn.HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "fortisslvpn/\n"
-"POT-Creation-Date: 2019-03-21 17:04+0100\n"
+"POT-Creation-Date: 2019-04-11 14:16+0200\n"
 "PO-Revision-Date: 2012-08-19 16:03+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
@@ -42,25 +42,25 @@ msgstr ""
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
 #.
-#: auth-dialog/main.c:150
+#: auth-dialog/main.c:165
 #, fuzzy, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
 msgstr "ਤੁਹਾਨੂੰ ਵੁਰਚੁਅਲ ਪ੍ਰਾਈਵੇਟ ਨੈੱਟਵਰਕ (VPN) '%s' ਦੀ ਵਰਤੋਂ ਵਾਸਤੇ ਪਰਮਾਣਿਤ ਹੋਣ ਦੀ ਲੋੜ ਹੈ।"
 
-#: auth-dialog/main.c:159 auth-dialog/main.c:183
+#: auth-dialog/main.c:174 auth-dialog/main.c:198
 msgid "Authenticate VPN"
 msgstr "ਪਰਮਾਣਿਤ VPN"
 
-#: auth-dialog/main.c:162
+#: auth-dialog/main.c:177
 #, fuzzy
 msgid "Password:"
 msgstr "ਪਾਸਵਰਡ"
 
-#: auth-dialog/main.c:164
+#: auth-dialog/main.c:179
 msgid "Token:"
 msgstr ""
 
-#: auth-dialog/main.c:187
+#: auth-dialog/main.c:202
 msgid "_Token:"
 msgstr ""
 
@@ -71,6 +71,49 @@ msgstr ""
 #: properties/nm-fortisslvpn-editor-plugin.c:39
 msgid "Compatible with Fortinet SSLVPN servers."
 msgstr ""
+
+#: shared/nm-fortissl-properties.c:125
+#, fuzzy, c-format
+msgid "invalid gateway “%s”"
+msgstr "ਗਲਤ ਗੇਟਵੇ '%s'"
+
+#: shared/nm-fortissl-properties.c:133
+#, c-format
+msgid "invalid certificate authority “%s”"
+msgstr ""
+
+#: shared/nm-fortissl-properties.c:147
+#, c-format
+msgid "invalid integer property “%s”"
+msgstr ""
+
+#: shared/nm-fortissl-properties.c:157
+#, fuzzy, c-format
+msgid "invalid boolean property “%s” (not yes or no)"
+msgstr "ਗਲਤ ਬੁਲੀਅਨ ਵਿਸ਼ੇਸ਼ਤਾ '%s' (ਹਾਂ ਜਾਂ ਨਹੀਂ ਨਹੀਂ)"
+
+#: shared/nm-fortissl-properties.c:164
+#, fuzzy, c-format
+msgid "unhandled property “%s” type %s"
+msgstr "ਨਾ-ਹੈਂਡਲ ਵਿਸ਼ੇਸ਼ਤਾ '%s' ਕਿਸਮ %s"
+
+#: shared/nm-fortissl-properties.c:175
+#, fuzzy, c-format
+msgid "property “%s” invalid or not supported"
+msgstr "ਵਿਸ਼ੇਸ਼ਤਾ '%s' ਗਲਤ ਹੈ ਜਾਂ ਸਹਾਇਕ ਨਹੀਂ ਹੈ"
+
+#: shared/nm-fortissl-properties.c:192
+msgid "No VPN configuration options."
+msgstr "ਕੋਈ VPN ਸੰਰਚਨਾ ਚੋਣਾਂ ਨਹੀਂ।"
+
+#: shared/nm-fortissl-properties.c:212
+#, fuzzy, c-format
+msgid "Missing required option “%s”."
+msgstr "ਲੋੜੀਦੀ ਚੋਣ '%s' ਗੁੰਮ ਹੈ।"
+
+#: shared/nm-fortissl-properties.c:232
+msgid "No VPN secrets!"
+msgstr "ਕੋਈ VPN ਭੇਦ ਨਹੀਂ!"
 
 #: shared/nm-utils/nm-shared-utils.c:264
 #, c-format
@@ -129,32 +172,36 @@ msgstr ""
 msgid "unknown error creating editor instance"
 msgstr ""
 
-#: src/nm-fortisslvpn-service.c:222
+#: src/nm-fortisslvpn-service.c:220
 msgid "Could not find the openfortivpn binary."
 msgstr ""
 
-#: src/nm-fortisslvpn-service.c:350
+#: src/nm-fortisslvpn-service.c:396
 msgid "Missing VPN username."
 msgstr "ਨਾ-ਮੌਜੂਦ VPN ਯੂਜ਼ਰ ਨਾਂ।"
 
-#: src/nm-fortisslvpn-service.c:360
+#: src/nm-fortisslvpn-service.c:406
 msgid "Missing or invalid VPN password."
 msgstr "ਗੁੰਮ ਜਾਂ ਗਲਤ VPN ਪਾਸਵਰਡ।"
 
-#: src/nm-fortisslvpn-service.c:609
+#: src/nm-fortisslvpn-service.c:530
+msgid "Got new secrets, but nobody asked for them."
+msgstr ""
+
+#: src/nm-fortisslvpn-service.c:714
 #, fuzzy
 msgid "Don’t quit when VPN connection terminates"
 msgstr "ਜਦੋਂ VPN ਕੁਨੈਕਸ਼ਨ ਖਤਮ ਹੋਵੇ ਤਾਂ ਬੰਦ ਨਾ ਕਰੋ"
 
-#: src/nm-fortisslvpn-service.c:610
+#: src/nm-fortisslvpn-service.c:715
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr ""
 
-#: src/nm-fortisslvpn-service.c:611
+#: src/nm-fortisslvpn-service.c:716
 msgid "D-Bus name to use for this instance"
 msgstr ""
 
-#: src/nm-fortisslvpn-service.c:632
+#: src/nm-fortisslvpn-service.c:737
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
@@ -257,24 +304,3 @@ msgstr "ਡਿਫਾਲਟ"
 
 #~ msgid "Invalid VPN username."
 #~ msgstr "ਗਲਤ VPN ਯੂਜ਼ਰ-ਨਾਂ।"
-
-#~ msgid "invalid gateway '%s'"
-#~ msgstr "ਗਲਤ ਗੇਟਵੇ '%s'"
-
-#~ msgid "invalid boolean property '%s' (not yes or no)"
-#~ msgstr "ਗਲਤ ਬੁਲੀਅਨ ਵਿਸ਼ੇਸ਼ਤਾ '%s' (ਹਾਂ ਜਾਂ ਨਹੀਂ ਨਹੀਂ)"
-
-#~ msgid "unhandled property '%s' type %s"
-#~ msgstr "ਨਾ-ਹੈਂਡਲ ਵਿਸ਼ੇਸ਼ਤਾ '%s' ਕਿਸਮ %s"
-
-#~ msgid "property '%s' invalid or not supported"
-#~ msgstr "ਵਿਸ਼ੇਸ਼ਤਾ '%s' ਗਲਤ ਹੈ ਜਾਂ ਸਹਾਇਕ ਨਹੀਂ ਹੈ"
-
-#~ msgid "No VPN configuration options."
-#~ msgstr "ਕੋਈ VPN ਸੰਰਚਨਾ ਚੋਣਾਂ ਨਹੀਂ।"
-
-#~ msgid "Missing required option '%s'."
-#~ msgstr "ਲੋੜੀਦੀ ਚੋਣ '%s' ਗੁੰਮ ਹੈ।"
-
-#~ msgid "No VPN secrets!"
-#~ msgstr "ਕੋਈ VPN ਭੇਦ ਨਹੀਂ!"

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "fortisslvpn/\n"
-"POT-Creation-Date: 2019-03-21 17:04+0100\n"
+"POT-Creation-Date: 2019-04-11 14:16+0200\n"
 "PO-Revision-Date: 2012-01-01 19:56+0900\n"
 "Last-Translator: Jiro Matsuzawa <jmatsuzawa@src.gnome.org>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
@@ -43,25 +43,25 @@ msgstr ""
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
 #.
-#: auth-dialog/main.c:150
+#: auth-dialog/main.c:165
 #, fuzzy, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
 msgstr "仮想プライベートネットワーク %s にアクセスするには認証が必要です。"
 
-#: auth-dialog/main.c:159 auth-dialog/main.c:183
+#: auth-dialog/main.c:174 auth-dialog/main.c:198
 msgid "Authenticate VPN"
 msgstr "認証 VPN"
 
-#: auth-dialog/main.c:162
+#: auth-dialog/main.c:177
 #, fuzzy
 msgid "Password:"
 msgstr "パスワード"
 
-#: auth-dialog/main.c:164
+#: auth-dialog/main.c:179
 msgid "Token:"
 msgstr ""
 
-#: auth-dialog/main.c:187
+#: auth-dialog/main.c:202
 msgid "_Token:"
 msgstr ""
 
@@ -72,6 +72,50 @@ msgstr ""
 #: properties/nm-fortisslvpn-editor-plugin.c:39
 msgid "Compatible with Fortinet SSLVPN servers."
 msgstr ""
+
+#: shared/nm-fortissl-properties.c:125
+#, fuzzy, c-format
+msgid "invalid gateway “%s”"
+msgstr "無効なゲートウェイ %s"
+
+#: shared/nm-fortissl-properties.c:133
+#, c-format
+msgid "invalid certificate authority “%s”"
+msgstr ""
+
+#: shared/nm-fortissl-properties.c:147
+#, fuzzy, c-format
+msgid "invalid integer property “%s”"
+msgstr "数値型パラメーター %s が無効な数値です。"
+
+#: shared/nm-fortissl-properties.c:157
+#, fuzzy, c-format
+msgid "invalid boolean property “%s” (not yes or no)"
+msgstr ""
+"ブーリアン型パラメーター %s が無効な値です。(値はyes、noではありません)"
+
+#: shared/nm-fortissl-properties.c:164
+#, fuzzy, c-format
+msgid "unhandled property “%s” type %s"
+msgstr "対処できない %s 型パラメーターの %s"
+
+#: shared/nm-fortissl-properties.c:175
+#, fuzzy, c-format
+msgid "property “%s” invalid or not supported"
+msgstr "パラメーター %s は無効かサポートされていません。"
+
+#: shared/nm-fortissl-properties.c:192
+msgid "No VPN configuration options."
+msgstr "VPN 構成オプションがありません。"
+
+#: shared/nm-fortissl-properties.c:212
+#, fuzzy, c-format
+msgid "Missing required option “%s”."
+msgstr "必須オプション %s が不足しています。"
+
+#: shared/nm-fortissl-properties.c:232
+msgid "No VPN secrets!"
+msgstr "VPN シークレットがありません。"
 
 #: shared/nm-utils/nm-shared-utils.c:264
 #, c-format
@@ -130,32 +174,36 @@ msgstr ""
 msgid "unknown error creating editor instance"
 msgstr ""
 
-#: src/nm-fortisslvpn-service.c:222
+#: src/nm-fortisslvpn-service.c:220
 msgid "Could not find the openfortivpn binary."
 msgstr ""
 
-#: src/nm-fortisslvpn-service.c:350
+#: src/nm-fortisslvpn-service.c:396
 msgid "Missing VPN username."
 msgstr "VPN ユーザー名がありません。"
 
-#: src/nm-fortisslvpn-service.c:360
+#: src/nm-fortisslvpn-service.c:406
 msgid "Missing or invalid VPN password."
 msgstr "VPN パスワードが不足しているか、無効です。"
 
-#: src/nm-fortisslvpn-service.c:609
+#: src/nm-fortisslvpn-service.c:530
+msgid "Got new secrets, but nobody asked for them."
+msgstr ""
+
+#: src/nm-fortisslvpn-service.c:714
 #, fuzzy
 msgid "Don’t quit when VPN connection terminates"
 msgstr "VPN 接続が切断された時に終了しないでください。"
 
-#: src/nm-fortisslvpn-service.c:610
+#: src/nm-fortisslvpn-service.c:715
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr "詳細なデバッグ情報の保存を有効にする。(パスワードも含まれます。)"
 
-#: src/nm-fortisslvpn-service.c:611
+#: src/nm-fortisslvpn-service.c:716
 msgid "D-Bus name to use for this instance"
 msgstr ""
 
-#: src/nm-fortisslvpn-service.c:632
+#: src/nm-fortisslvpn-service.c:737
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
@@ -262,28 +310,3 @@ msgstr "デフォルト"
 
 #~ msgid "Invalid VPN username."
 #~ msgstr "無効な VPN ユーザー名です。"
-
-#~ msgid "invalid gateway '%s'"
-#~ msgstr "無効なゲートウェイ %s"
-
-#~ msgid "invalid integer property '%s'"
-#~ msgstr "数値型パラメーター %s が無効な数値です。"
-
-#~ msgid "invalid boolean property '%s' (not yes or no)"
-#~ msgstr ""
-#~ "ブーリアン型パラメーター %s が無効な値です。(値はyes、noではありません)"
-
-#~ msgid "unhandled property '%s' type %s"
-#~ msgstr "対処できない %s 型パラメーターの %s"
-
-#~ msgid "property '%s' invalid or not supported"
-#~ msgstr "パラメーター %s は無効かサポートされていません。"
-
-#~ msgid "No VPN configuration options."
-#~ msgstr "VPN 構成オプションがありません。"
-
-#~ msgid "Missing required option '%s'."
-#~ msgstr "必須オプション %s が不足しています。"
-
-#~ msgid "No VPN secrets!"
-#~ msgstr "VPN シークレットがありません。"

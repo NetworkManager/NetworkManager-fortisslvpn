@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "fortisslvpn/\n"
-"POT-Creation-Date: 2019-03-21 17:04+0100\n"
+"POT-Creation-Date: 2019-04-11 14:16+0200\n"
 "PO-Revision-Date: 2018-03-25 21:32+0200\n"
 "Last-Translator: Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>\n"
 "Language-Team: Latvian <lata-l10n@googlegroups.com>\n"
@@ -44,27 +44,27 @@ msgstr "NetworkManager izstrādātāji"
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
 #.
-#: auth-dialog/main.c:150
+#: auth-dialog/main.c:165
 #, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
 msgstr ""
 "Jums vajag autentificēties, lai piekļūtu virtuālajam privātajam tīklam “%s”."
 
-#: auth-dialog/main.c:159 auth-dialog/main.c:183
+#: auth-dialog/main.c:174 auth-dialog/main.c:198
 msgid "Authenticate VPN"
 msgstr "Autentificēt VPN"
 
-#: auth-dialog/main.c:162
+#: auth-dialog/main.c:177
 #, fuzzy
 msgid "Password:"
 msgstr "Parole"
 
-#: auth-dialog/main.c:164
+#: auth-dialog/main.c:179
 #, fuzzy
 msgid "Token:"
 msgstr "Marķieris"
 
-#: auth-dialog/main.c:187
+#: auth-dialog/main.c:202
 #, fuzzy
 msgid "_Token:"
 msgstr "_Marķieris"
@@ -76,6 +76,49 @@ msgstr "Fortinet SSLVPN"
 #: properties/nm-fortisslvpn-editor-plugin.c:39
 msgid "Compatible with Fortinet SSLVPN servers."
 msgstr "Savietojams ar Fortinet SSLVPN serveriem."
+
+#: shared/nm-fortissl-properties.c:125
+#, c-format
+msgid "invalid gateway “%s”"
+msgstr "nederīga vārteja “%s”"
+
+#: shared/nm-fortissl-properties.c:133
+#, c-format
+msgid "invalid certificate authority “%s”"
+msgstr "nederīga sertifikātu institūcija “%s”"
+
+#: shared/nm-fortissl-properties.c:147
+#, c-format
+msgid "invalid integer property “%s”"
+msgstr "nederīga veselā skaitļa īpašība “%s”"
+
+#: shared/nm-fortissl-properties.c:157
+#, c-format
+msgid "invalid boolean property “%s” (not yes or no)"
+msgstr "nederīga būla īpašība “%s” (nav jā vai nē)"
+
+#: shared/nm-fortissl-properties.c:164
+#, c-format
+msgid "unhandled property “%s” type %s"
+msgstr "neapstrādāts īpašības “%s” tips %s"
+
+#: shared/nm-fortissl-properties.c:175
+#, c-format
+msgid "property “%s” invalid or not supported"
+msgstr "īpašība “%s” nederīga vai nav atbalstīta"
+
+#: shared/nm-fortissl-properties.c:192
+msgid "No VPN configuration options."
+msgstr "Nav VPN konfigurācijas opciju."
+
+#: shared/nm-fortissl-properties.c:212
+#, c-format
+msgid "Missing required option “%s”."
+msgstr "Trūkst vajadzīgās opcijas “%s”."
+
+#: shared/nm-fortissl-properties.c:232
+msgid "No VPN secrets!"
+msgstr "Nav VPN noslēpumu!"
 
 #: shared/nm-utils/nm-shared-utils.c:264
 #, c-format
@@ -138,31 +181,35 @@ msgstr "nevar ielādēt ražotni %s no spraudņa: %s"
 msgid "unknown error creating editor instance"
 msgstr "nezināma kļūda, veidojot redaktora instanci"
 
-#: src/nm-fortisslvpn-service.c:222
+#: src/nm-fortisslvpn-service.c:220
 msgid "Could not find the openfortivpn binary."
 msgstr "Nevarēja atrast openfortivpn bināro datni."
 
-#: src/nm-fortisslvpn-service.c:350
+#: src/nm-fortisslvpn-service.c:396
 msgid "Missing VPN username."
 msgstr "Trūkts VPN lietotājvārda."
 
-#: src/nm-fortisslvpn-service.c:360
+#: src/nm-fortisslvpn-service.c:406
 msgid "Missing or invalid VPN password."
 msgstr "Trūkst vai nav derīga VPN parole."
 
-#: src/nm-fortisslvpn-service.c:609
+#: src/nm-fortisslvpn-service.c:530
+msgid "Got new secrets, but nobody asked for them."
+msgstr ""
+
+#: src/nm-fortisslvpn-service.c:714
 msgid "Don’t quit when VPN connection terminates"
 msgstr "Neiziet, kad tiek pārtraukts VPN savienojums"
 
-#: src/nm-fortisslvpn-service.c:610
+#: src/nm-fortisslvpn-service.c:715
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr "Aktivēt detalizētu atkļūdošanas reģistrēšanu (var atklāt paroles)"
 
-#: src/nm-fortisslvpn-service.c:611
+#: src/nm-fortisslvpn-service.c:716
 msgid "D-Bus name to use for this instance"
 msgstr "D-Bus nosaukums, ko izmantot šai instancei"
 
-#: src/nm-fortisslvpn-service.c:632
+#: src/nm-fortisslvpn-service.c:737
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
@@ -272,39 +319,6 @@ msgstr "_Paplašināti…"
 #: properties/nm-fortisslvpn-dialog.ui:463
 msgid "Default"
 msgstr "Noklusējuma"
-
-#~| msgid "invalid gateway '%s'"
-#~ msgid "invalid gateway “%s”"
-#~ msgstr "nederīga vārteja “%s”"
-
-#~ msgid "invalid certificate authority “%s”"
-#~ msgstr "nederīga sertifikātu institūcija “%s”"
-
-#~| msgid "invalid integer property '%s'"
-#~ msgid "invalid integer property “%s”"
-#~ msgstr "nederīga veselā skaitļa īpašība “%s”"
-
-#~| msgid "invalid boolean property '%s' (not yes or no)"
-#~ msgid "invalid boolean property “%s” (not yes or no)"
-#~ msgstr "nederīga būla īpašība “%s” (nav jā vai nē)"
-
-#~| msgid "unhandled property '%s' type %s"
-#~ msgid "unhandled property “%s” type %s"
-#~ msgstr "neapstrādāts īpašības “%s” tips %s"
-
-#~| msgid "property '%s' invalid or not supported"
-#~ msgid "property “%s” invalid or not supported"
-#~ msgstr "īpašība “%s” nederīga vai nav atbalstīta"
-
-#~ msgid "No VPN configuration options."
-#~ msgstr "Nav VPN konfigurācijas opciju."
-
-#~| msgid "Missing required option '%s'."
-#~ msgid "Missing required option “%s”."
-#~ msgstr "Trūkst vajadzīgās opcijas “%s”."
-
-#~ msgid "No VPN secrets!"
-#~ msgstr "Nav VPN noslēpumu!"
 
 #~ msgid ""
 #~ "Ask for an one-time password (OTP) for two factor authentication (2FA)."

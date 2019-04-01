@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn nm-0-9-10\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "fortisslvpn/\n"
-"POT-Creation-Date: 2019-03-21 17:04+0100\n"
+"POT-Creation-Date: 2019-04-11 14:16+0200\n"
 "PO-Revision-Date: 2014-11-07 18:12+0000\n"
 "Last-Translator: Necdet <necdetyucel@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
@@ -43,26 +43,26 @@ msgstr ""
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
 #.
-#: auth-dialog/main.c:150
+#: auth-dialog/main.c:165
 #, fuzzy, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
 msgstr ""
 "'%s' Sanal Özel Ağına erişmek için kimlik doğrulaması yapmanız gerekiyor."
 
-#: auth-dialog/main.c:159 auth-dialog/main.c:183
+#: auth-dialog/main.c:174 auth-dialog/main.c:198
 msgid "Authenticate VPN"
 msgstr "VPN Kimlik Doğrulaması"
 
-#: auth-dialog/main.c:162
+#: auth-dialog/main.c:177
 #, fuzzy
 msgid "Password:"
 msgstr "Parola"
 
-#: auth-dialog/main.c:164
+#: auth-dialog/main.c:179
 msgid "Token:"
 msgstr ""
 
-#: auth-dialog/main.c:187
+#: auth-dialog/main.c:202
 msgid "_Token:"
 msgstr ""
 
@@ -73,6 +73,49 @@ msgstr ""
 #: properties/nm-fortisslvpn-editor-plugin.c:39
 msgid "Compatible with Fortinet SSLVPN servers."
 msgstr ""
+
+#: shared/nm-fortissl-properties.c:125
+#, fuzzy, c-format
+msgid "invalid gateway “%s”"
+msgstr "geçersiz ağ geçidi '%s'"
+
+#: shared/nm-fortissl-properties.c:133
+#, c-format
+msgid "invalid certificate authority “%s”"
+msgstr ""
+
+#: shared/nm-fortissl-properties.c:147
+#, fuzzy, c-format
+msgid "invalid integer property “%s”"
+msgstr "geçersiz tamsayı özelliği '%s'"
+
+#: shared/nm-fortissl-properties.c:157
+#, fuzzy, c-format
+msgid "invalid boolean property “%s” (not yes or no)"
+msgstr "'%s' geçersiz bir mantıksal özellik (evet veya hayır değil)"
+
+#: shared/nm-fortissl-properties.c:164
+#, fuzzy, c-format
+msgid "unhandled property “%s” type %s"
+msgstr "tanınmayan özellik '%s' tür %s"
+
+#: shared/nm-fortissl-properties.c:175
+#, fuzzy, c-format
+msgid "property “%s” invalid or not supported"
+msgstr "'%s' özelliği geçersiz veya desteklenmiyor"
+
+#: shared/nm-fortissl-properties.c:192
+msgid "No VPN configuration options."
+msgstr "VPN yapılandırma seçeneği bulunamadı."
+
+#: shared/nm-fortissl-properties.c:212
+#, fuzzy, c-format
+msgid "Missing required option “%s”."
+msgstr "Gerekli '%s' seçeneği eksik."
+
+#: shared/nm-fortissl-properties.c:232
+msgid "No VPN secrets!"
+msgstr "VPN sırrı yok!"
 
 #: shared/nm-utils/nm-shared-utils.c:264
 #, c-format
@@ -131,34 +174,38 @@ msgstr ""
 msgid "unknown error creating editor instance"
 msgstr ""
 
-#: src/nm-fortisslvpn-service.c:222
+#: src/nm-fortisslvpn-service.c:220
 msgid "Could not find the openfortivpn binary."
 msgstr ""
 
-#: src/nm-fortisslvpn-service.c:350
+#: src/nm-fortisslvpn-service.c:396
 msgid "Missing VPN username."
 msgstr "Eksik VPN kullanıcı adı."
 
-#: src/nm-fortisslvpn-service.c:360
+#: src/nm-fortisslvpn-service.c:406
 msgid "Missing or invalid VPN password."
 msgstr "Eksik veya geçersiz VPN kullanıcı adı."
 
-#: src/nm-fortisslvpn-service.c:609
+#: src/nm-fortisslvpn-service.c:530
+msgid "Got new secrets, but nobody asked for them."
+msgstr ""
+
+#: src/nm-fortisslvpn-service.c:714
 #, fuzzy
 msgid "Don’t quit when VPN connection terminates"
 msgstr "VPN bağlantısı sonlandığında çıkma"
 
-#: src/nm-fortisslvpn-service.c:610
+#: src/nm-fortisslvpn-service.c:715
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr ""
 "Ayrıntılı hata ayıklama günlüklemesini etkinleştir (parolaları görünür "
 "yapabilir)"
 
-#: src/nm-fortisslvpn-service.c:611
+#: src/nm-fortisslvpn-service.c:716
 msgid "D-Bus name to use for this instance"
 msgstr ""
 
-#: src/nm-fortisslvpn-service.c:632
+#: src/nm-fortisslvpn-service.c:737
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
@@ -267,27 +314,3 @@ msgstr "Varsayılan"
 
 #~ msgid "Invalid VPN username."
 #~ msgstr "Geçersiz VPN kullanıcı adı."
-
-#~ msgid "invalid gateway '%s'"
-#~ msgstr "geçersiz ağ geçidi '%s'"
-
-#~ msgid "invalid integer property '%s'"
-#~ msgstr "geçersiz tamsayı özelliği '%s'"
-
-#~ msgid "invalid boolean property '%s' (not yes or no)"
-#~ msgstr "'%s' geçersiz bir mantıksal özellik (evet veya hayır değil)"
-
-#~ msgid "unhandled property '%s' type %s"
-#~ msgstr "tanınmayan özellik '%s' tür %s"
-
-#~ msgid "property '%s' invalid or not supported"
-#~ msgstr "'%s' özelliği geçersiz veya desteklenmiyor"
-
-#~ msgid "No VPN configuration options."
-#~ msgstr "VPN yapılandırma seçeneği bulunamadı."
-
-#~ msgid "Missing required option '%s'."
-#~ msgstr "Gerekli '%s' seçeneği eksik."
-
-#~ msgid "No VPN secrets!"
-#~ msgstr "VPN sırrı yok!"

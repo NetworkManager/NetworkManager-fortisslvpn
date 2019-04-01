@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "fortisslvpn/\n"
-"POT-Creation-Date: 2019-03-21 17:04+0100\n"
+"POT-Creation-Date: 2019-04-11 14:16+0200\n"
 "PO-Revision-Date: 2017-08-18 21:39+0200\n"
 "Last-Translator: Josef Andersson <josef.andersson@fripost.org>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -48,28 +48,28 @@ msgstr "Utvecklarna av Nätverkshanteraren"
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
 #.
-#: auth-dialog/main.c:150
+#: auth-dialog/main.c:165
 #, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
 msgstr ""
 "Du måste autentisera dig för att komma åt det virtuella privata nätverket "
 "”%s”."
 
-#: auth-dialog/main.c:159 auth-dialog/main.c:183
+#: auth-dialog/main.c:174 auth-dialog/main.c:198
 msgid "Authenticate VPN"
 msgstr "Autentisera VPN"
 
-#: auth-dialog/main.c:162
+#: auth-dialog/main.c:177
 #, fuzzy
 msgid "Password:"
 msgstr "Lösenord"
 
-#: auth-dialog/main.c:164
+#: auth-dialog/main.c:179
 #, fuzzy
 msgid "Token:"
 msgstr "Token"
 
-#: auth-dialog/main.c:187
+#: auth-dialog/main.c:202
 #, fuzzy
 msgid "_Token:"
 msgstr "_Token"
@@ -81,6 +81,49 @@ msgstr "Fortinet SSLVPN"
 #: properties/nm-fortisslvpn-editor-plugin.c:39
 msgid "Compatible with Fortinet SSLVPN servers."
 msgstr "Kompatibel med Fortinet SSLVPN-servrar."
+
+#: shared/nm-fortissl-properties.c:125
+#, c-format
+msgid "invalid gateway “%s”"
+msgstr "ogiltig gateway ”%s”"
+
+#: shared/nm-fortissl-properties.c:133
+#, c-format
+msgid "invalid certificate authority “%s”"
+msgstr "ogiltig certifikatutfärdare ”%s”"
+
+#: shared/nm-fortissl-properties.c:147
+#, c-format
+msgid "invalid integer property “%s”"
+msgstr "ogiltig heltalsegenskap ”%s”"
+
+#: shared/nm-fortissl-properties.c:157
+#, c-format
+msgid "invalid boolean property “%s” (not yes or no)"
+msgstr "ogiltig boolesk egenskap ”%s” (inte yes eller no)"
+
+#: shared/nm-fortissl-properties.c:164
+#, c-format
+msgid "unhandled property “%s” type %s"
+msgstr "ohanterad egenskap ”%s” typ %s"
+
+#: shared/nm-fortissl-properties.c:175
+#, c-format
+msgid "property “%s” invalid or not supported"
+msgstr "egenskapen ”%s” är ogiltig eller stöds inte"
+
+#: shared/nm-fortissl-properties.c:192
+msgid "No VPN configuration options."
+msgstr "Inga VPN-konfigurationsalternativ."
+
+#: shared/nm-fortissl-properties.c:212
+#, c-format
+msgid "Missing required option “%s”."
+msgstr "Saknar nödvändiga flaggan ”%s”."
+
+#: shared/nm-fortissl-properties.c:232
+msgid "No VPN secrets!"
+msgstr "Inga VPN-hemligheter!"
 
 #: shared/nm-utils/nm-shared-utils.c:264
 #, c-format
@@ -145,31 +188,35 @@ msgstr "kan inte öppna fabriken %s från insticksmodulen: %s"
 msgid "unknown error creating editor instance"
 msgstr "okänt fel vid skapande av redigeringsinstans."
 
-#: src/nm-fortisslvpn-service.c:222
+#: src/nm-fortisslvpn-service.c:220
 msgid "Could not find the openfortivpn binary."
 msgstr "Kunde inte hitta openfortivpn-binären."
 
-#: src/nm-fortisslvpn-service.c:350
+#: src/nm-fortisslvpn-service.c:396
 msgid "Missing VPN username."
 msgstr "Saknar VPN-användarnamn."
 
-#: src/nm-fortisslvpn-service.c:360
+#: src/nm-fortisslvpn-service.c:406
 msgid "Missing or invalid VPN password."
 msgstr "Saknat eller ogiltigt VPN-lösenord."
 
-#: src/nm-fortisslvpn-service.c:609
+#: src/nm-fortisslvpn-service.c:530
+msgid "Got new secrets, but nobody asked for them."
+msgstr ""
+
+#: src/nm-fortisslvpn-service.c:714
 msgid "Don’t quit when VPN connection terminates"
 msgstr "Avsluta inte när VPN-anslutningen termineras"
 
-#: src/nm-fortisslvpn-service.c:610
+#: src/nm-fortisslvpn-service.c:715
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr "Aktivera informativ felsökningsloggning (kan exponera lösenord)"
 
-#: src/nm-fortisslvpn-service.c:611
+#: src/nm-fortisslvpn-service.c:716
 msgid "D-Bus name to use for this instance"
 msgstr "D-Bus-namn att använda för denna instans"
 
-#: src/nm-fortisslvpn-service.c:632
+#: src/nm-fortisslvpn-service.c:737
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
@@ -279,33 +326,6 @@ msgstr "A_vancerat…"
 #: properties/nm-fortisslvpn-dialog.ui:463
 msgid "Default"
 msgstr "Standard"
-
-#~ msgid "invalid gateway “%s”"
-#~ msgstr "ogiltig gateway ”%s”"
-
-#~ msgid "invalid certificate authority “%s”"
-#~ msgstr "ogiltig certifikatutfärdare ”%s”"
-
-#~ msgid "invalid integer property “%s”"
-#~ msgstr "ogiltig heltalsegenskap ”%s”"
-
-#~ msgid "invalid boolean property “%s” (not yes or no)"
-#~ msgstr "ogiltig boolesk egenskap ”%s” (inte yes eller no)"
-
-#~ msgid "unhandled property “%s” type %s"
-#~ msgstr "ohanterad egenskap ”%s” typ %s"
-
-#~ msgid "property “%s” invalid or not supported"
-#~ msgstr "egenskapen ”%s” är ogiltig eller stöds inte"
-
-#~ msgid "No VPN configuration options."
-#~ msgstr "Inga VPN-konfigurationsalternativ."
-
-#~ msgid "Missing required option “%s”."
-#~ msgstr "Saknar nödvändiga flaggan ”%s”."
-
-#~ msgid "No VPN secrets!"
-#~ msgstr "Inga VPN-hemligheter!"
 
 #~ msgid ""
 #~ "Ask for an one-time password (OTP) for two factor authentication (2FA)."

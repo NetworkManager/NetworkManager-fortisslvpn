@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "fortisslvpn/\n"
-"POT-Creation-Date: 2019-03-21 17:04+0100\n"
+"POT-Creation-Date: 2019-04-11 14:16+0200\n"
 "PO-Revision-Date: 2015-07-27 23:19+0300\n"
 "Last-Translator: Stas Solovey <whats_up@tut.by>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
@@ -47,25 +47,25 @@ msgstr ""
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
 #.
-#: auth-dialog/main.c:150
+#: auth-dialog/main.c:165
 #, fuzzy, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
 msgstr "Необходима аутентификация для доступа к виртуальной частной сети «%s»."
 
-#: auth-dialog/main.c:159 auth-dialog/main.c:183
+#: auth-dialog/main.c:174 auth-dialog/main.c:198
 msgid "Authenticate VPN"
 msgstr "Аутентификация VPN"
 
-#: auth-dialog/main.c:162
+#: auth-dialog/main.c:177
 #, fuzzy
 msgid "Password:"
 msgstr "Пароль"
 
-#: auth-dialog/main.c:164
+#: auth-dialog/main.c:179
 msgid "Token:"
 msgstr ""
 
-#: auth-dialog/main.c:187
+#: auth-dialog/main.c:202
 msgid "_Token:"
 msgstr ""
 
@@ -76,6 +76,49 @@ msgstr ""
 #: properties/nm-fortisslvpn-editor-plugin.c:39
 msgid "Compatible with Fortinet SSLVPN servers."
 msgstr ""
+
+#: shared/nm-fortissl-properties.c:125
+#, fuzzy, c-format
+msgid "invalid gateway “%s”"
+msgstr "неверный шлюз «%s»"
+
+#: shared/nm-fortissl-properties.c:133
+#, c-format
+msgid "invalid certificate authority “%s”"
+msgstr ""
+
+#: shared/nm-fortissl-properties.c:147
+#, fuzzy, c-format
+msgid "invalid integer property “%s”"
+msgstr "«%s» неверно для целочисленного свойства"
+
+#: shared/nm-fortissl-properties.c:157
+#, fuzzy, c-format
+msgid "invalid boolean property “%s” (not yes or no)"
+msgstr "«%s» неверно для логического свойства (не «да» или «нет»)"
+
+#: shared/nm-fortissl-properties.c:164
+#, fuzzy, c-format
+msgid "unhandled property “%s” type %s"
+msgstr "свойство «%s» имеет необрабатываемый тип %s"
+
+#: shared/nm-fortissl-properties.c:175
+#, fuzzy, c-format
+msgid "property “%s” invalid or not supported"
+msgstr "свойство «%s» неверно или не поддерживается"
+
+#: shared/nm-fortissl-properties.c:192
+msgid "No VPN configuration options."
+msgstr "Нет параметров настройки VPN."
+
+#: shared/nm-fortissl-properties.c:212
+#, fuzzy, c-format
+msgid "Missing required option “%s”."
+msgstr "Отсутствует требуемый параметр «%s»."
+
+#: shared/nm-fortissl-properties.c:232
+msgid "No VPN secrets!"
+msgstr "Нет VPN-ключей!"
 
 #: shared/nm-utils/nm-shared-utils.c:264
 #, c-format
@@ -134,32 +177,36 @@ msgstr ""
 msgid "unknown error creating editor instance"
 msgstr ""
 
-#: src/nm-fortisslvpn-service.c:222
+#: src/nm-fortisslvpn-service.c:220
 msgid "Could not find the openfortivpn binary."
 msgstr ""
 
-#: src/nm-fortisslvpn-service.c:350
+#: src/nm-fortisslvpn-service.c:396
 msgid "Missing VPN username."
 msgstr "Отсутствует имя пользователя VPN."
 
-#: src/nm-fortisslvpn-service.c:360
+#: src/nm-fortisslvpn-service.c:406
 msgid "Missing or invalid VPN password."
 msgstr "Пароль VPN отсутствует или неверный."
 
-#: src/nm-fortisslvpn-service.c:609
+#: src/nm-fortisslvpn-service.c:530
+msgid "Got new secrets, but nobody asked for them."
+msgstr ""
+
+#: src/nm-fortisslvpn-service.c:714
 #, fuzzy
 msgid "Don’t quit when VPN connection terminates"
 msgstr "Не завершать работу при отключении VPN"
 
-#: src/nm-fortisslvpn-service.c:610
+#: src/nm-fortisslvpn-service.c:715
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr "Включить подробный режим отладки (могут отображаться пароли)"
 
-#: src/nm-fortisslvpn-service.c:611
+#: src/nm-fortisslvpn-service.c:716
 msgid "D-Bus name to use for this instance"
 msgstr ""
 
-#: src/nm-fortisslvpn-service.c:632
+#: src/nm-fortisslvpn-service.c:737
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
@@ -270,27 +317,3 @@ msgstr "По умолчанию"
 
 #~ msgid "Invalid VPN username."
 #~ msgstr "Неверное имя пользователя VPN."
-
-#~ msgid "invalid gateway '%s'"
-#~ msgstr "неверный шлюз «%s»"
-
-#~ msgid "invalid integer property '%s'"
-#~ msgstr "«%s» неверно для целочисленного свойства"
-
-#~ msgid "invalid boolean property '%s' (not yes or no)"
-#~ msgstr "«%s» неверно для логического свойства (не «да» или «нет»)"
-
-#~ msgid "unhandled property '%s' type %s"
-#~ msgstr "свойство «%s» имеет необрабатываемый тип %s"
-
-#~ msgid "property '%s' invalid or not supported"
-#~ msgstr "свойство «%s» неверно или не поддерживается"
-
-#~ msgid "No VPN configuration options."
-#~ msgstr "Нет параметров настройки VPN."
-
-#~ msgid "Missing required option '%s'."
-#~ msgstr "Отсутствует требуемый параметр «%s»."
-
-#~ msgid "No VPN secrets!"
-#~ msgstr "Нет VPN-ключей!"

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "fortisslvpn/\n"
-"POT-Creation-Date: 2019-03-21 17:04+0100\n"
+"POT-Creation-Date: 2019-04-11 14:16+0200\n"
 "PO-Revision-Date: 2017-08-13 10:26+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: српски <gnome-sr@googlegroups.org>\n"
@@ -44,28 +44,28 @@ msgstr "Програмери Управника мреже"
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
 #.
-#: auth-dialog/main.c:150
+#: auth-dialog/main.c:165
 #, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
 msgstr ""
 "Морате да потврдите идентитет да бисте могли да приступите Виртуелној "
 "приватној мрежи „%s“."
 
-#: auth-dialog/main.c:159 auth-dialog/main.c:183
+#: auth-dialog/main.c:174 auth-dialog/main.c:198
 msgid "Authenticate VPN"
 msgstr "Потврди ВПН"
 
-#: auth-dialog/main.c:162
+#: auth-dialog/main.c:177
 #, fuzzy
 msgid "Password:"
 msgstr "Лозинка"
 
-#: auth-dialog/main.c:164
+#: auth-dialog/main.c:179
 #, fuzzy
 msgid "Token:"
 msgstr "Прстен"
 
-#: auth-dialog/main.c:187
+#: auth-dialog/main.c:202
 #, fuzzy
 msgid "_Token:"
 msgstr "_Прстен"
@@ -77,6 +77,49 @@ msgstr "Фортинет ССЛВПН"
 #: properties/nm-fortisslvpn-editor-plugin.c:39
 msgid "Compatible with Fortinet SSLVPN servers."
 msgstr "Сагласно са Фортинет ССЛВПН серверима."
+
+#: shared/nm-fortissl-properties.c:125
+#, c-format
+msgid "invalid gateway “%s”"
+msgstr "неисправан мрежни пролаз „%s“"
+
+#: shared/nm-fortissl-properties.c:133
+#, c-format
+msgid "invalid certificate authority “%s”"
+msgstr "неисправан издавач уверења „%s“"
+
+#: shared/nm-fortissl-properties.c:147
+#, c-format
+msgid "invalid integer property “%s”"
+msgstr "неисправно својство целог броја „%s“"
+
+#: shared/nm-fortissl-properties.c:157
+#, c-format
+msgid "invalid boolean property “%s” (not yes or no)"
+msgstr "неисправно логичко својство „%s“ (није „да“ или „не“)"
+
+#: shared/nm-fortissl-properties.c:164
+#, c-format
+msgid "unhandled property “%s” type %s"
+msgstr "неруковано својство „%s“ врсте %s"
+
+#: shared/nm-fortissl-properties.c:175
+#, c-format
+msgid "property “%s” invalid or not supported"
+msgstr "својство „%s“ је неисправно или није подржано"
+
+#: shared/nm-fortissl-properties.c:192
+msgid "No VPN configuration options."
+msgstr "Нема опција за ВПН подешавање."
+
+#: shared/nm-fortissl-properties.c:212
+#, c-format
+msgid "Missing required option “%s”."
+msgstr "Недостаје затражена опција „%s“."
+
+#: shared/nm-fortissl-properties.c:232
+msgid "No VPN secrets!"
+msgstr "Нема ВПН тајни!"
 
 #: shared/nm-utils/nm-shared-utils.c:264
 #, c-format
@@ -137,32 +180,36 @@ msgstr "не могу да учитам фабрику „%s“ из прикљ�
 msgid "unknown error creating editor instance"
 msgstr "непозната грешка стварања примерка уређивача"
 
-#: src/nm-fortisslvpn-service.c:222
+#: src/nm-fortisslvpn-service.c:220
 msgid "Could not find the openfortivpn binary."
 msgstr "Не могу да нађем извршну „openfortivpn“-а."
 
-#: src/nm-fortisslvpn-service.c:350
+#: src/nm-fortisslvpn-service.c:396
 msgid "Missing VPN username."
 msgstr "Недостаје ВПН корисничко име."
 
-#: src/nm-fortisslvpn-service.c:360
+#: src/nm-fortisslvpn-service.c:406
 msgid "Missing or invalid VPN password."
 msgstr "Недостаје или је неисправна ВПН лозинка."
 
-#: src/nm-fortisslvpn-service.c:609
+#: src/nm-fortisslvpn-service.c:530
+msgid "Got new secrets, but nobody asked for them."
+msgstr ""
+
+#: src/nm-fortisslvpn-service.c:714
 msgid "Don’t quit when VPN connection terminates"
 msgstr "Не прекида када се завршава ВПН веза"
 
-#: src/nm-fortisslvpn-service.c:610
+#: src/nm-fortisslvpn-service.c:715
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr ""
 "Укључује опширно записивање зарад исправљања грешака (може да изложи лозинке)"
 
-#: src/nm-fortisslvpn-service.c:611
+#: src/nm-fortisslvpn-service.c:716
 msgid "D-Bus name to use for this instance"
 msgstr "Назив Д-сабирнице који ће се користити за овај примерак"
 
-#: src/nm-fortisslvpn-service.c:632
+#: src/nm-fortisslvpn-service.c:737
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
@@ -271,33 +318,6 @@ msgstr "_Напредно…"
 #: properties/nm-fortisslvpn-dialog.ui:463
 msgid "Default"
 msgstr "Основно"
-
-#~ msgid "invalid gateway “%s”"
-#~ msgstr "неисправан мрежни пролаз „%s“"
-
-#~ msgid "invalid certificate authority “%s”"
-#~ msgstr "неисправан издавач уверења „%s“"
-
-#~ msgid "invalid integer property “%s”"
-#~ msgstr "неисправно својство целог броја „%s“"
-
-#~ msgid "invalid boolean property “%s” (not yes or no)"
-#~ msgstr "неисправно логичко својство „%s“ (није „да“ или „не“)"
-
-#~ msgid "unhandled property “%s” type %s"
-#~ msgstr "неруковано својство „%s“ врсте %s"
-
-#~ msgid "property “%s” invalid or not supported"
-#~ msgstr "својство „%s“ је неисправно или није подржано"
-
-#~ msgid "No VPN configuration options."
-#~ msgstr "Нема опција за ВПН подешавање."
-
-#~ msgid "Missing required option “%s”."
-#~ msgstr "Недостаје затражена опција „%s“."
-
-#~ msgid "No VPN secrets!"
-#~ msgstr "Нема ВПН тајни!"
 
 #~ msgid ""
 #~ "Ask for an one-time password (OTP) for two factor authentication (2FA)."

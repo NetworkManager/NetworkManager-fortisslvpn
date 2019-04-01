@@ -11,3 +11,4 @@ plugin=@PLUGINDIR@/libnm-vpn-plugin-fortisslvpn.so
 auth-dialog=@LIBEXECDIR@/nm-fortisslvpn-auth-dialog
 properties=@PLUGINDIR@/libnm-fortisslvpn-properties
 supports-external-ui-mode=true
+supports-hints=true
