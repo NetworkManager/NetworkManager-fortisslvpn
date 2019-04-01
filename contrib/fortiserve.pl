@@ -46,7 +46,7 @@ use Pod::Usage;
 use strict;
 use warnings;
 
-my $local = '0.0.0.0:10443';
+my $listen = '0.0.0.0:10443';
 my $cert = 'server.crt';
 my $key = 'server.key';
 my $pppd = 'pppd';
@@ -363,7 +363,7 @@ Ask for a One-Time-Password.
 =cut
 
 new Getopt::Long::Parser (config => ['no_ignore_case'])->getoptions (
-	'local=s' => \$local,
+	'listen=s' => \$listen,
 	'cert=s' => \$cert,
 	'key=s' => \$key,
 	'pppd=s' => \$pppd,
@@ -373,7 +373,7 @@ new Getopt::Long::Parser (config => ['no_ignore_case'])->getoptions (
 ) or pod2usage (2);
 
 my $server = new HTTP::Daemon::SSL (
-	LocalAddr => $local,
+	LocalAddr => $listen,
 	SSL_cert_file => $cert,
 	SSL_key_file => $key,
 	ReuseAddr => 1,
