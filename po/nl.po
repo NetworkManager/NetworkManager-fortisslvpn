@@ -10,16 +10,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager PPTP\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
-"fortisslvpn/\n"
-"POT-Creation-Date: 2019-03-21 17:04+0100\n"
-"PO-Revision-Date: 2019-01-18 09:07+0100\n"
+"fortisslvpn/issues\n"
+"POT-Creation-Date: 2019-03-23 18:39+0000\n"
+"PO-Revision-Date: 2019-04-01 14:01+0200\n"
 "Last-Translator: Nathan Follens <nthn@unseen.is>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
 msgid "Fortinet SSLVPN client"
@@ -37,9 +37,8 @@ msgstr ""
 "virtueleprivénetwerkverbindingen."
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:32
-#, fuzzy
 msgid "The advanced options dialog"
-msgstr "Geavanceerde opties voor SSLVPN"
+msgstr "Het dialoogvenster voor geavanceerde opties"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:41
 msgid "The NetworkManager Developers"
@@ -60,19 +59,16 @@ msgid "Authenticate VPN"
 msgstr "Aanmeldingscontrole voor VPN"
 
 #: auth-dialog/main.c:162
-#, fuzzy
 msgid "Password:"
-msgstr "Wachtwoord"
+msgstr "Wachtwoord:"
 
 #: auth-dialog/main.c:164
-#, fuzzy
 msgid "Token:"
-msgstr "Token"
+msgstr "Token:"
 
 #: auth-dialog/main.c:187
-#, fuzzy
 msgid "_Token:"
-msgstr "_Token"
+msgstr "_Token:"
 
 #: properties/nm-fortisslvpn-editor-plugin.c:38
 msgid "Fortinet SSLVPN"
@@ -81,6 +77,49 @@ msgstr "Fortinet SSLVPN"
 #: properties/nm-fortisslvpn-editor-plugin.c:39
 msgid "Compatible with Fortinet SSLVPN servers."
 msgstr "Compatibel met Fortinet SSLVPN-servers."
+
+#: shared/nm-fortissl-properties.c:125
+#, c-format
+msgid "invalid gateway “%s”"
+msgstr "ongeldige gateway ‘%s’"
+
+#: shared/nm-fortissl-properties.c:133
+#, c-format
+msgid "invalid certificate authority “%s”"
+msgstr "ongeldige certificaatautoriteit ‘%s’"
+
+#: shared/nm-fortissl-properties.c:147
+#, c-format
+msgid "invalid integer property “%s”"
+msgstr "ongeldig geheel getal voor eigenschap ‘%s’"
+
+#: shared/nm-fortissl-properties.c:157
+#, c-format
+msgid "invalid boolean property “%s” (not yes or no)"
+msgstr "ongeldige booleaanse waarde voor eigenschap ‘%s’ (geen ja of nee)"
+
+#: shared/nm-fortissl-properties.c:164
+#, c-format
+msgid "unhandled property “%s” type %s"
+msgstr "onbehandelde eigenschap ‘%s’ type %s"
+
+#: shared/nm-fortissl-properties.c:175
+#, c-format
+msgid "property “%s” invalid or not supported"
+msgstr "eigenschap ‘%s’ is ongeldig of wordt niet ondersteund"
+
+#: shared/nm-fortissl-properties.c:192
+msgid "No VPN configuration options."
+msgstr "Geen VPN-configuratieopties."
+
+#: shared/nm-fortissl-properties.c:212
+#, c-format
+msgid "Missing required option “%s”."
+msgstr "Vereiste optie ‘%s’ ontbreekt."
+
+#: shared/nm-fortissl-properties.c:232
+msgid "No VPN secrets!"
+msgstr "Geen VPN-geheimen!"
 
 #: shared/nm-utils/nm-shared-utils.c:264
 #, c-format
@@ -187,7 +226,7 @@ msgstr "Aanmeldingscontrole"
 
 #: properties/nm-fortisslvpn-dialog.ui:89
 msgid "_Realm"
-msgstr ""
+msgstr "_Realm"
 
 #: properties/nm-fortisslvpn-dialog.ui:103
 #: properties/nm-fortisslvpn-dialog.ui:361
@@ -203,9 +242,8 @@ msgid "Security"
 msgstr "Beveiliging"
 
 #: properties/nm-fortisslvpn-dialog.ui:133
-#, fuzzy
 msgid "Trusted _certificate"
-msgstr "Vertrouwd certificaat"
+msgstr "Vertrouwd _certificaat"
 
 #: properties/nm-fortisslvpn-dialog.ui:147
 msgid ""
@@ -216,24 +254,20 @@ msgstr ""
 "indien het certificaat niet door een certificaatautoriteit vertrouwd wordt."
 
 #: properties/nm-fortisslvpn-dialog.ui:162
-#, fuzzy
 msgid "_One time password"
-msgstr "Een éénmalig wachtw_oord gebruiken"
+msgstr "Eénmalig wachtw_oord"
 
 #: properties/nm-fortisslvpn-dialog.ui:237
-#, fuzzy
 msgid "User _Key"
-msgstr "Gebruikerssleutel"
+msgstr "Gebrui_kerssleutel"
 
 #: properties/nm-fortisslvpn-dialog.ui:251
-#, fuzzy
 msgid "_User Certificate"
-msgstr "Gebruikerscertificaat"
+msgstr "Gebr_uikerscertificaat"
 
 #: properties/nm-fortisslvpn-dialog.ui:265
-#, fuzzy
 msgid "_CA Certificate"
-msgstr "CA-certificaat"
+msgstr "_CA-certificaat"
 
 #: properties/nm-fortisslvpn-dialog.ui:277
 msgid "Show password"
@@ -254,14 +288,12 @@ msgstr ""
 "configuratie: user <naam>"
 
 #: properties/nm-fortisslvpn-dialog.ui:319
-#, fuzzy
 msgid "_Password"
-msgstr "Wachtwoord"
+msgstr "_Wachtwoord"
 
 #: properties/nm-fortisslvpn-dialog.ui:333
-#, fuzzy
 msgid "User _name"
-msgstr "Gebruikersnaam"
+msgstr "Gebruikers_naam"
 
 #: properties/nm-fortisslvpn-dialog.ui:347
 msgid "_Gateway"
@@ -278,33 +310,6 @@ msgstr "Geavanceer_d…"
 #: properties/nm-fortisslvpn-dialog.ui:463
 msgid "Default"
 msgstr "Standaard"
-
-#~ msgid "invalid gateway “%s”"
-#~ msgstr "ongeldige gateway ‘%s’"
-
-#~ msgid "invalid certificate authority “%s”"
-#~ msgstr "ongeldige certificaatautoriteit ‘%s’"
-
-#~ msgid "invalid integer property “%s”"
-#~ msgstr "ongeldig geheel getal voor eigenschap ‘%s’"
-
-#~ msgid "invalid boolean property “%s” (not yes or no)"
-#~ msgstr "ongeldige booleaanse waarde voor eigenschap ‘%s’ (geen ja of nee)"
-
-#~ msgid "unhandled property “%s” type %s"
-#~ msgstr "onbehandelde eigenschap ‘%s’ type %s"
-
-#~ msgid "property “%s” invalid or not supported"
-#~ msgstr "eigenschap ‘%s’ is ongeldig of wordt niet ondersteund"
-
-#~ msgid "No VPN configuration options."
-#~ msgstr "Geen VPN-configuratieopties."
-
-#~ msgid "Missing required option “%s”."
-#~ msgstr "Vereiste optie ‘%s’ ontbreekt."
-
-#~ msgid "No VPN secrets!"
-#~ msgstr "Geen VPN-geheimen!"
 
 #~ msgid ""
 #~ "Ask for an one-time password (OTP) for two factor authentication (2FA)."
