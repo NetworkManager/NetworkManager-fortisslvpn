@@ -19,6 +19,7 @@ mkinstalldirs
 POTFILES
 stamp-*
 .deps
+.dirstamp
 .libs
 autom4te.cache
 intltool-*
