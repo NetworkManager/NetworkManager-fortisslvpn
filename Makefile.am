@@ -88,6 +88,7 @@ src_nm_fortisslvpn_service_SOURCES = \
 
 src_nm_fortisslvpn_service_CPPFLAGS = \
 	$(src_cppflags) \
+        -DLIBEXECDIR=\"$(libexecdir)\" \
         -DPLUGINDIR=\"$(PPPD_PLUGIN_DIR)\"
 
 src_nm_fortisslvpn_service_LDADD = \
@@ -111,6 +112,25 @@ src_nm_fortisslvpn_pppd_plugin_la_CPPFLAGS = $(src_cppflags)
 src_nm_fortisslvpn_pppd_plugin_la_LDFLAGS = \
 	-module -avoid-version
 src_nm_fortisslvpn_pppd_plugin_la_LIBADD = \
+	src/libnm-fortisslvpn-pppd-service-dbus.la \
+	$(GLIB_LIBS) \
+	$(LIBNM_LIBS)
+
+###############################################################################
+
+libexec_PROGRAMS += src/nm-fortisslvpn-pinentry
+
+src_nm_fortisslvpn_pinentry_SOURCES = \
+	shared/nm-utils/nm-shared-utils.c \
+	shared/nm-utils/nm-shared-utils.h \
+	src/nm-fortisslvpn-pinentry.c
+
+nodist_src_nm_fortisslvpn_pinentry_SOURCES = \
+	src/nm-fortisslvpn-pppd-service-dbus.h
+
+src_nm_fortisslvpn_pinentry_CPPFLAGS = $(src_cppflags)
+
+src_nm_fortisslvpn_pinentry_LDADD = \
 	src/libnm-fortisslvpn-pppd-service-dbus.la \
 	$(GLIB_LIBS) \
 	$(LIBNM_LIBS)

@@ -11,5 +11,15 @@
       <annotation name="org.freedesktop.DBus.GLib.CSymbol" value="impl_fortisslvpn_service_set_state"/>
       <arg name="state" type="u" direction="in"/>
     </method>
+
+    <method name="GetPin">
+      <annotation name="org.freedesktop.DBus.GLib.CSymbol" value="impl_fortisslvpn_service_get_pin"/>
+      <arg name="title" type="s" direction="in"/>
+      <arg name="desc" type="s" direction="in"/>
+      <arg name="prompt" type="s" direction="in"/>
+      <arg name="hint" type="s" direction="in"/> <!-- g_variant_get_child()'s real_new_secrets()
+                                                      relies on this being third. -->
+      <arg name="pin" type="s" direction="out"/>
+    </method>
   </interface>
 </node>

@@ -75,7 +75,8 @@ G_DEFINE_TYPE_WITH_CODE (NMFortisslvpnPlugin, nm_fortisslvpn_plugin, NM_TYPE_VPN
 
 typedef struct {
 	GPid pid;
-	guint32 ppp_timeout_handler;
+	gboolean interactive;
+	GDBusMethodInvocation *get_pin_invocation;
 	NMConnection *connection;
 	char *config_file;
 	NMDBusFortisslvpnPpp *dbus_skeleton;
@@ -122,6 +123,16 @@ static void
 cleanup_plugin (NMFortisslvpnPlugin *plugin)
 {
 	NMFortisslvpnPluginPrivate *priv = NM_FORTISSLVPN_PLUGIN_GET_PRIVATE (plugin);
+
+	priv->interactive = FALSE;
+
+	if (priv->get_pin_invocation) {
+		g_dbus_method_invocation_return_error_literal (priv->get_pin_invocation,
+		                                               NMV_EDITOR_PLUGIN_ERROR,
+		                                               NMV_EDITOR_PLUGIN_ERROR_FAILED,
+		                                               "Disconnected");
+		priv->get_pin_invocation = NULL;
+	}
 
 	if (priv->pid) {
 		if (kill (priv->pid, SIGTERM) == 0)
@@ -191,17 +202,6 @@ nm_find_openfortivpn (void)
 }
 
 static gboolean
-pppd_timed_out (gpointer user_data)
-{
-	NMFortisslvpnPlugin *plugin = NM_FORTISSLVPN_PLUGIN (user_data);
-
-	_LOGW ("Looks like pppd didn't initialize our dbus module");
-	nm_vpn_service_plugin_failure (NM_VPN_SERVICE_PLUGIN (plugin), NM_VPN_PLUGIN_FAILURE_CONNECT_FAILED);
-
-	return FALSE;
-}
-
-static gboolean
 run_openfortivpn (NMFortisslvpnPlugin *plugin, NMSettingVpn *s_vpn, GError **error)
 {
 	NMFortisslvpnPluginPrivate *priv = NM_FORTISSLVPN_PLUGIN_GET_PRIVATE (plugin);
@@ -260,6 +260,9 @@ run_openfortivpn (NMFortisslvpnPlugin *plugin, NMSettingVpn *s_vpn, GError **err
 		g_ptr_array_add (argv, (gpointer) g_strdup (value));
 	}
 
+	g_ptr_array_add (argv, (gpointer) g_strdup ("--pinentry"));
+	g_ptr_array_add (argv, (gpointer) g_strdup (LIBEXECDIR "/nm-fortisslvpn-pinentry"));
+
 	g_ptr_array_add (argv, (gpointer) g_strdup ("--pppd-plugin"));
 	g_ptr_array_add (argv, (gpointer) g_strdup (PLUGINDIR "/nm-fortisslvpn-pppd-plugin.so"));
 
@@ -285,20 +288,7 @@ run_openfortivpn (NMFortisslvpnPlugin *plugin, NMSettingVpn *s_vpn, GError **err
 	priv->pid = pid;
 	g_child_watch_add (pid, openfortivpn_watch_cb, plugin);
 
-	priv->ppp_timeout_handler = g_timeout_add (NM_FORTISSLVPN_WAIT_PPPD, pppd_timed_out, plugin);
-
 	return TRUE;
-}
-
-static void
-remove_timeout_handler (NMFortisslvpnPlugin *plugin)
-{
-	NMFortisslvpnPluginPrivate *priv = NM_FORTISSLVPN_PLUGIN_GET_PRIVATE (plugin);
-
-	if (priv->ppp_timeout_handler) {
-		g_source_remove (priv->ppp_timeout_handler);
-		priv->ppp_timeout_handler = 0;
-	}
 }
 
 static gboolean
@@ -307,11 +297,10 @@ handle_set_state (NMDBusFortisslvpnPpp *object,
                   guint arg_state,
                   gpointer user_data)
 {
-	remove_timeout_handler (NM_FORTISSLVPN_PLUGIN (user_data));
 	if (arg_state == NM_PPP_STATUS_DEAD || arg_state == NM_PPP_STATUS_DISCONNECT)
 		nm_vpn_service_plugin_disconnect (NM_VPN_SERVICE_PLUGIN (user_data), NULL);
 
-	nmdbus_fortisslvpn_ppp_complete_set_state (object, invocation);
+	nmdbus_fortisslvpn_ppp_complete_set_state (object, invocation); /// remove me
 	return TRUE;
 }
 
@@ -323,10 +312,69 @@ handle_set_ip4_config (NMDBusFortisslvpnPpp *object,
 {
 	_LOGI ("FORTISSLVPN service (IP Config Get) reply received.");
 
-	remove_timeout_handler (NM_FORTISSLVPN_PLUGIN (user_data));
 	nm_vpn_service_plugin_set_ip4_config (NM_VPN_SERVICE_PLUGIN (user_data), arg_config);
 
-	nmdbus_fortisslvpn_ppp_complete_set_ip4_config (object, invocation);
+	nmdbus_fortisslvpn_ppp_complete_set_ip4_config (object, invocation); /// remove me
+	return TRUE;
+}
+
+static gboolean
+handle_get_pin (NMDBusFortisslvpnPpp *object,
+                GDBusMethodInvocation *invocation,
+                const gchar *arg_title,
+                const gchar *arg_desc,
+                const gchar *arg_prompt,
+                const gchar *arg_hint,
+                gpointer user_data)
+{
+	NMFortisslvpnPlugin *plugin = NM_FORTISSLVPN_PLUGIN (user_data);
+	NMFortisslvpnPluginPrivate *priv = NM_FORTISSLVPN_PLUGIN_GET_PRIVATE (plugin);
+	const char *hints[] = { arg_hint, NULL };
+
+	_LOGI ("FORTISSLVPN service (%s) password request received.", arg_hint);
+
+	if (!priv->interactive) {
+		g_dbus_method_invocation_return_error_literal (invocation,
+		                                               NMV_EDITOR_PLUGIN_ERROR,
+		                                               NMV_EDITOR_PLUGIN_ERROR_FAILED,
+		                                               "More secrets required but cannot ask interactively");
+		return TRUE;
+	}
+
+	if (strcmp (arg_hint, NM_FORTISSLVPN_KEY_OTP) == 0) {
+		NMSettingSecretFlags flags = NM_SETTING_SECRET_FLAG_NONE;
+		NMSetting *s_vpn = nm_connection_get_setting (priv->connection, NM_TYPE_SETTING_VPN);
+
+		g_return_val_if_fail (NM_IS_SETTING_VPN (s_vpn), FALSE);
+		nm_setting_get_secret_flags (s_vpn, arg_hint, &flags, NULL);
+		if ((flags & NM_SETTING_SECRET_FLAG_NOT_SAVED) == 0) {
+			g_dbus_method_invocation_return_error (invocation,
+			                                       NMV_EDITOR_PLUGIN_ERROR,
+			                                       NMV_EDITOR_PLUGIN_ERROR_FAILED,
+			                                       "Secret '%s' is not configured as required", arg_hint);
+			return TRUE;
+		}
+	} else if (strcmp (arg_hint, NM_FORTISSLVPN_KEY_PASSWORD) != 0) {
+		/* nm_fortisslvpn_properties_validate_secrets()() is not tolerant
+		 * towards unknown secrets. Don't make NetworkManager add one. */
+		g_dbus_method_invocation_return_error (invocation,
+		                                       NMV_EDITOR_PLUGIN_ERROR,
+		                                       NMV_EDITOR_PLUGIN_ERROR_FAILED,
+		                                       "Secret '%s' is not supported", arg_hint);
+	}
+
+	if (priv->get_pin_invocation) {
+		/* Should not happen! */
+		g_dbus_method_invocation_return_error_literal (priv->get_pin_invocation,
+		                                               NMV_EDITOR_PLUGIN_ERROR,
+		                                               NMV_EDITOR_PLUGIN_ERROR_FAILED,
+		                                               "Superseded by anoher GetPin() call");
+	}
+
+	priv->get_pin_invocation = invocation;
+	nm_vpn_service_plugin_secrets_required (NM_VPN_SERVICE_PLUGIN (plugin),
+	                                        arg_prompt, hints);
+
 	return TRUE;
 }
 
@@ -423,6 +471,15 @@ real_connect (NMVpnServicePlugin *plugin, NMConnection *connection, GError **err
 }
 
 static gboolean
+real_connect_interactive (NMVpnServicePlugin *plugin, NMConnection *connection,
+                          GVariant *details, GError **error)
+{
+	NMFortisslvpnPluginPrivate *priv = NM_FORTISSLVPN_PLUGIN_GET_PRIVATE (plugin);
+	priv->interactive = TRUE;
+	return real_connect (plugin, connection, error);
+}
+
+static gboolean
 real_need_secrets (NMVpnServicePlugin *plugin,
                    NMConnection *connection,
                    const char **setting_name,
@@ -444,12 +501,6 @@ real_need_secrets (NMVpnServicePlugin *plugin,
 	    && !nm_setting_vpn_get_secret (NM_SETTING_VPN (s_vpn), NM_FORTISSLVPN_KEY_PASSWORD))
 		return TRUE;
 
-	/* Do we require the one-time-password and don't have it? */
-	nm_setting_get_secret_flags (NM_SETTING (s_vpn), NM_FORTISSLVPN_KEY_OTP, &flags, NULL);
-	if (   (flags & NM_SETTING_SECRET_FLAG_NOT_SAVED)
-	    && !nm_setting_vpn_get_secret (NM_SETTING_VPN (s_vpn), NM_FORTISSLVPN_KEY_OTP))
-		return TRUE;
-
 	/* Otherwise we're fine */
 	*setting_name = NULL;
 	return FALSE;
@@ -462,21 +513,73 @@ real_disconnect (NMVpnServicePlugin *plugin, GError **err)
 	return TRUE;
 }
 
+static gboolean
+real_new_secrets (NMVpnServicePlugin *plugin, NMConnection *connection, GError **error)
+{
+	NMFortisslvpnPluginPrivate *priv = NM_FORTISSLVPN_PLUGIN_GET_PRIVATE (plugin);
+	GVariant *parameters;
+	NMSettingVpn *s_vpn;
+	const char *hint = NULL;
+	const char *pin;
+
+	if (!priv->get_pin_invocation) {
+		g_set_error (error,
+		             NM_VPN_PLUGIN_ERROR,
+		             NM_VPN_PLUGIN_ERROR_LAUNCH_FAILED,
+		             "%s",
+		             _("Got new secrets, but nobody asked for them."));
+		return FALSE;
+	}
+
+	s_vpn = NM_SETTING_VPN (nm_connection_get_setting (connection, NM_TYPE_SETTING_VPN));
+	if (!s_vpn) {
+		g_dbus_method_invocation_return_error_literal (priv->get_pin_invocation,
+		                                               NMV_EDITOR_PLUGIN_ERROR,
+		                                               NMV_EDITOR_PLUGIN_ERROR_FAILED,
+		                                               "Connection lacked VPN setting");
+		goto out;
+	}
+
+	parameters = g_dbus_method_invocation_get_parameters (priv->get_pin_invocation);
+	g_variant_get_child (parameters, 3 /* hint */, "&s", &hint);
+	if (!hint) {
+		/* Can not happen. */
+		g_dbus_method_invocation_return_error_literal (priv->get_pin_invocation,
+		                                               NMV_EDITOR_PLUGIN_ERROR,
+		                                               NMV_EDITOR_PLUGIN_ERROR_FAILED,
+		                                               "Forgotten the secrets hint?");
+		goto out;
+	}
+
+	pin = nm_setting_vpn_get_secret (s_vpn, hint);
+	if (!pin) {
+		g_dbus_method_invocation_return_error (priv->get_pin_invocation,
+		                                       NMV_EDITOR_PLUGIN_ERROR,
+		                                       NMV_EDITOR_PLUGIN_ERROR_FAILED,
+		                                       "No '%s' hint in VPN setting", hint);
+		goto out;
+	}
+
+	nmdbus_fortisslvpn_ppp_complete_get_pin (priv->dbus_skeleton,
+	                                         priv->get_pin_invocation,
+	                                         pin);
+
+out:
+	priv->get_pin_invocation = NULL;
+	return TRUE;
+}
+
 static void
 state_changed_cb (GObject *object, NMVpnServiceState state, gpointer user_data)
 {
 	NMFortisslvpnPluginPrivate *priv = NM_FORTISSLVPN_PLUGIN_GET_PRIVATE (object);
 
 	switch (state) {
-	case NM_VPN_SERVICE_STATE_STARTED:
-		remove_timeout_handler (NM_FORTISSLVPN_PLUGIN (object));
-		break;
 	case NM_VPN_SERVICE_STATE_UNKNOWN:
 	case NM_VPN_SERVICE_STATE_INIT:
 	case NM_VPN_SERVICE_STATE_SHUTDOWN:
 	case NM_VPN_SERVICE_STATE_STOPPING:
 	case NM_VPN_SERVICE_STATE_STOPPED:
-		remove_timeout_handler (NM_FORTISSLVPN_PLUGIN (object));
 		g_clear_object (&priv->connection);
 		break;
 	default:
@@ -500,6 +603,7 @@ dispose (GObject *object)
 			g_dbus_interface_skeleton_unexport (skeleton);
 		g_signal_handlers_disconnect_by_func (skeleton, handle_set_state, object);
 		g_signal_handlers_disconnect_by_func (skeleton, handle_set_ip4_config, object);
+		g_signal_handlers_disconnect_by_func (skeleton, handle_get_pin, object);
 	}
 
 	G_OBJECT_CLASS (nm_fortisslvpn_plugin_parent_class)->dispose (object);
@@ -521,8 +625,10 @@ nm_fortisslvpn_plugin_class_init (NMFortisslvpnPluginClass *fortisslvpn_class)
 	/* virtual methods */
 	object_class->dispose = dispose;
 	parent_class->connect = real_connect;
+	parent_class->connect_interactive = real_connect_interactive;
 	parent_class->need_secrets = real_need_secrets;
 	parent_class->disconnect = real_disconnect;
+	parent_class->new_secrets = real_new_secrets;
 }
 
 static GInitableIface *ginitable_parent_iface = NULL;
@@ -555,6 +661,7 @@ init_sync (GInitable *object, GCancellable *cancellable, GError **error)
 
 	g_signal_connect (priv->dbus_skeleton, "handle-set-state", G_CALLBACK (handle_set_state), object);
 	g_signal_connect (priv->dbus_skeleton, "handle-set-ip4-config", G_CALLBACK (handle_set_ip4_config), object);
+	g_signal_connect (priv->dbus_skeleton, "handle-get-pin", G_CALLBACK (handle_get_pin), object);
 
 	g_object_unref (connection);
 	return TRUE;
