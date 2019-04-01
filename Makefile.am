@@ -38,8 +38,7 @@ src_cppflags = \
         -I$(srcdir)/shared \
         -I$(builddir)/src \
         -DNM_FORTISSLVPN_LOCALEDIR=\"$(datadir)/locale\" \
-        -DNM_FORTISSLVPN_STATEDIR=\"$(fortisslvpn_statedir)\" \
-        -DPLUGINDIR=\"$(PPPD_PLUGIN_DIR)\"
+        -DNM_FORTISSLVPN_STATEDIR=\"$(fortisslvpn_statedir)\"
 
 ###############################################################################
 
@@ -85,7 +84,11 @@ src_nm_fortisslvpn_service_SOURCES = \
 	src/nm-fortisslvpn-service.c \
 	shared/nm-fortissl-properties.c \
 	shared/nm-fortissl-properties.h
-src_nm_fortisslvpn_service_CPPFLAGS = $(src_cppflags)
+
+src_nm_fortisslvpn_service_CPPFLAGS = \
+	$(src_cppflags) \
+        -DPLUGINDIR=\"$(PPPD_PLUGIN_DIR)\"
+
 src_nm_fortisslvpn_service_LDADD = \
 	src/libnm-fortisslvpn-pppd-service-dbus.la \
 	$(GLIB_LIBS) \
