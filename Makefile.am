@@ -316,6 +316,7 @@ endif
 appdata_in_files = appdata/network-manager-fortisslvpn.metainfo.xml.in
 
 appdata/network-manager-fortisslvpn.metainfo.xml: appdata/network-manager-fortisslvpn.metainfo.xml.in
+	@$(MKDIR_P) appdata/
 	$(AM_V_GEN)$(MSGFMT) --xml --template $< -d $(top_srcdir)/po -o $@
 
 nm-fortisslvpn-service.name: $(srcdir)/nm-fortisslvpn-service.name.in
