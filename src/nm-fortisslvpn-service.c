@@ -376,7 +376,7 @@ real_connect (NMVpnServicePlugin *plugin, NMConnection *connection, GError **err
 	g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
 	s_vpn = NM_SETTING_VPN (nm_connection_get_setting (connection, NM_TYPE_SETTING_VPN));
-	g_assert (s_vpn);
+	g_return_val_if_fail (NM_IS_SETTING_VPN (s_vpn), FALSE);
 
 	if (!nm_fortisslvpn_properties_validate (s_vpn, error))
 		return FALSE;
