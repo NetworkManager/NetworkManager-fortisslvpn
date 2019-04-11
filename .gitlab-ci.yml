@@ -26,7 +26,7 @@
 .dist: &dist
   stage: test
   dependencies:
-    - fedora29_dist
+    - fedora28_dist
   variables:
     GIT_STRATEGY: none
 
@@ -39,20 +39,24 @@
     - cd NetworkManager-fortisslvpn-*/
     - ./configure
       --disable-silent-rules
+      --without-libnm-glib
     - make -j
     - make -j check
     - make -j install
     - make -j uninstall
 
 # Roll the distribution tarball
-fedora29_dist:
+fedora28_dist:
   <<: *fedora_deps
-  image: fedora:29
+  image: fedora:28
   stage: build
   script:
     - dnf -y install
       /usr/bin/autopoint
       autoconf automake make
+      NetworkManager-devel
+      NetworkManager-glib-devel
+      libnm-gtk-devel
     - sh autogen.sh
     - make -j distcheck
   artifacts:
