@@ -20,6 +20,7 @@
       NetworkManager-libnm-devel
       pkgconfig
       ppp-devel
+      appstream
 
 # Disable fetching Git, run after the tarball is rolled
 .dist: &dist
