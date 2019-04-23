@@ -235,7 +235,7 @@ get_ip4_routes (in_addr_t ouraddr)
 {
 	GVariantBuilder builder;
 	GVariant *value;
-	int i;
+	guint i;
 
 	g_variant_builder_init (&builder, G_VARIANT_TYPE ("aau"));
 
@@ -246,14 +246,14 @@ get_ip4_routes (in_addr_t ouraddr)
 		in_addr_t dest, gateway;
 		guint32 metric, prefix;
 
-		var = g_strdup_printf ("VPN_ROUTE_DEST_%d", i);
+		var = g_strdup_printf ("VPN_ROUTE_DEST_%u", i);
 		str = g_getenv (var);
 		g_free (var);
 		if (!str || !*str)
 			break;
 		dest = inet_addr (str);
 
-		var = g_strdup_printf ("VPN_ROUTE_MASK_%d", i);
+		var = g_strdup_printf ("VPN_ROUTE_MASK_%u", i);
 		str = g_getenv (var);
 		g_free (var);
 		if (!str || !*str)
@@ -261,7 +261,7 @@ get_ip4_routes (in_addr_t ouraddr)
 		else
 			prefix = nm_utils_ip4_netmask_to_prefix (inet_addr (str));
 
-		var = g_strdup_printf ("VPN_ROUTE_GATEWAY_%d", i);
+		var = g_strdup_printf ("VPN_ROUTE_GATEWAY_%u", i);
 		str = g_getenv (var);
 		g_free (var);
 		if (!str || !*str)
@@ -269,7 +269,7 @@ get_ip4_routes (in_addr_t ouraddr)
 		else
 			gateway = inet_addr (str);
 
-		var = g_strdup_printf ("VPN_ROUTE_METRIC_%d", i);
+		var = g_strdup_printf ("VPN_ROUTE_METRIC_%u", i);
 		str = g_getenv (var);
 		g_free (var);
 		if (!str || !*str)
