@@ -1,9 +1,9 @@
 Fortinet SSLVPN support for NetworkManager
 
-This requires the openfortivpn client installed 
+This requires the openfortivpn client installed, version 1.10 or newer.
 https://github.com/adrienverge/openfortivpn
 
-(C) 2015 Lubomir Rintel <lkundrak@v3.sk>
+(C) 2015 - 2019 Lubomir Rintel <lkundrak@v3.sk>
 
 Based entirely on PPTP support:
 
