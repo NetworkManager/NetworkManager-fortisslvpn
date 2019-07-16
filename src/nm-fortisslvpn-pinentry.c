@@ -131,7 +131,7 @@ main (int argc, char *argv[])
 			g_free (escaped);
 		} else {
 			/* You're not my real pinentry program! */
-			g_printerr (line);
+			g_printerr ("Error: line from pinentry not understood: '%s'\n", line);
 			g_print ("ERR 666 Not understood\n");
 		}
 		g_free (line);
