@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "fortisslvpn/issues\n"
-"POT-Creation-Date: 2019-03-23 18:39+0000\n"
-"PO-Revision-Date: 2019-03-25 13:27+0100\n"
+"POT-Creation-Date: 2019-07-16 10:36+0000\n"
+"PO-Revision-Date: 2019-07-21 13:33+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -46,26 +46,26 @@ msgstr "Programiści projektu NetworkManager"
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
 #.
-#: auth-dialog/main.c:150
+#: auth-dialog/main.c:165
 #, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
 msgstr ""
 "Aby uzyskać dostęp do wirtualnej sieci prywatnej „%s”, należy się "
 "uwierzytelnić."
 
-#: auth-dialog/main.c:159 auth-dialog/main.c:183
+#: auth-dialog/main.c:174 auth-dialog/main.c:198
 msgid "Authenticate VPN"
 msgstr "Uwierzytelnianie VPN"
 
-#: auth-dialog/main.c:162
+#: auth-dialog/main.c:177
 msgid "Password:"
 msgstr "Hasło:"
 
-#: auth-dialog/main.c:164
+#: auth-dialog/main.c:179
 msgid "Token:"
 msgstr "Token:"
 
-#: auth-dialog/main.c:187
+#: auth-dialog/main.c:202
 msgid "_Token:"
 msgstr "_Token:"
 
@@ -184,31 +184,35 @@ msgstr "nie można wczytać generatora %s z wtyczki: %s"
 msgid "unknown error creating editor instance"
 msgstr "nieznany błąd podczas tworzenia wystąpienia edytora"
 
-#: src/nm-fortisslvpn-service.c:222
+#: src/nm-fortisslvpn-service.c:220
 msgid "Could not find the openfortivpn binary."
 msgstr "Nie można odnaleźć pliku binarnego openfortivpn."
 
-#: src/nm-fortisslvpn-service.c:350
+#: src/nm-fortisslvpn-service.c:396
 msgid "Missing VPN username."
 msgstr "Brak nazwy użytkownika VPN."
 
-#: src/nm-fortisslvpn-service.c:360
+#: src/nm-fortisslvpn-service.c:406
 msgid "Missing or invalid VPN password."
 msgstr "Brak hasła VPN lub jest nieprawidłowe."
 
-#: src/nm-fortisslvpn-service.c:609
+#: src/nm-fortisslvpn-service.c:530
+msgid "Got new secrets, but nobody asked for them."
+msgstr "Otrzymano nowe hasła, ale nikt o nie nie prosił."
+
+#: src/nm-fortisslvpn-service.c:714
 msgid "Don’t quit when VPN connection terminates"
 msgstr "Nie kończy działania, kiedy połączenie VPN jest kończone"
 
-#: src/nm-fortisslvpn-service.c:610
+#: src/nm-fortisslvpn-service.c:715
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr "Włącza więcej komunikatów debugowania (może wyjawić hasła)"
 
-#: src/nm-fortisslvpn-service.c:611
+#: src/nm-fortisslvpn-service.c:716
 msgid "D-Bus name to use for this instance"
 msgstr "Nazwa D-Bus dla tego wystąpienia"
 
-#: src/nm-fortisslvpn-service.c:632
+#: src/nm-fortisslvpn-service.c:737
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
