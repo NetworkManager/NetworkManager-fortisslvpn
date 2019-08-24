@@ -4,21 +4,21 @@
 #
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2006, 2007, 2008, 2010, 2012, 2015, 2016.
 # Mate Ory <orymate at ubuntu dot com>, 2011.
-# Balázs Úr <urbalazs at gmail dot com>, 2017, 2019.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2017, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
-"fortisslvpn/issues\n"
-"POT-Creation-Date: 2019-03-23 18:39+0000\n"
-"PO-Revision-Date: 2019-06-10 18:44+0200\n"
-"Last-Translator: Meskó Balázs <mesko.balazs@fsf.hu>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-fortisslvp"
+"n/issues\n"
+"POT-Creation-Date: 2019-07-16 10:36+0000\n"
+"PO-Revision-Date: 2019-08-24 23:02+0200\n"
+"Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Lokalize 18.12.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
@@ -47,24 +47,24 @@ msgstr "A Hálózatkezelő fejlesztői"
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
 #.
-#: auth-dialog/main.c:150
+#: auth-dialog/main.c:165
 #, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
 msgstr "Azonosítania kell magát a(z) „%s” virtuális magánhálózat eléréséhez."
 
-#: auth-dialog/main.c:159 auth-dialog/main.c:183
+#: auth-dialog/main.c:174 auth-dialog/main.c:198
 msgid "Authenticate VPN"
 msgstr "VPN-hitelesítés"
 
-#: auth-dialog/main.c:162
+#: auth-dialog/main.c:177
 msgid "Password:"
 msgstr "Jelszó:"
 
-#: auth-dialog/main.c:164
+#: auth-dialog/main.c:179
 msgid "Token:"
 msgstr "Jelsor:"
 
-#: auth-dialog/main.c:187
+#: auth-dialog/main.c:202
 msgid "_Token:"
 msgstr "_Jelsor:"
 
@@ -183,33 +183,37 @@ msgstr "a(z) %s gyár nem tölthető be a bővítményből: %s"
 msgid "unknown error creating editor instance"
 msgstr "ismeretlen hiba a szerkesztő példány létrehozásakor"
 
-#: src/nm-fortisslvpn-service.c:222
+#: src/nm-fortisslvpn-service.c:220
 msgid "Could not find the openfortivpn binary."
 msgstr "Nem található az openfortivpn program."
 
-#: src/nm-fortisslvpn-service.c:350
+#: src/nm-fortisslvpn-service.c:396
 msgid "Missing VPN username."
 msgstr "Hiányzó VPN-felhasználónév."
 
-#: src/nm-fortisslvpn-service.c:360
+#: src/nm-fortisslvpn-service.c:406
 msgid "Missing or invalid VPN password."
 msgstr "Hiányzó vagy érvénytelen VPN-jelszó."
 
-#: src/nm-fortisslvpn-service.c:609
+#: src/nm-fortisslvpn-service.c:530
+msgid "Got new secrets, but nobody asked for them."
+msgstr "Új titkokat kaptam, de senki sem kérte azokat."
+
+#: src/nm-fortisslvpn-service.c:714
 msgid "Don’t quit when VPN connection terminates"
 msgstr "Ne lépjen ki, ha a VPN-kapcsolat megszakad"
 
-#: src/nm-fortisslvpn-service.c:610
+#: src/nm-fortisslvpn-service.c:715
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr ""
 "Részletes hibakeresési naplózás engedélyezése (jelszavak is a naplóba "
 "kerülhetnek)"
 
-#: src/nm-fortisslvpn-service.c:611
+#: src/nm-fortisslvpn-service.c:716
 msgid "D-Bus name to use for this instance"
 msgstr "A példányhoz használandó D-Bus név"
 
-#: src/nm-fortisslvpn-service.c:632
+#: src/nm-fortisslvpn-service.c:737
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
@@ -311,9 +315,3 @@ msgstr "Spe_ciális…"
 #: properties/nm-fortisslvpn-dialog.ui:463
 msgid "Default"
 msgstr "Alapértelmezett"
-
-#~ msgid ""
-#~ "Ask for an one-time password (OTP) for two factor authentication (2FA)."
-#~ msgstr ""
-#~ "Egy egyszer használható jelszó (OTP) bekérése a kétfaktoros "
-#~ "hitelesítéshez (2FA)."
