@@ -4,15 +4,15 @@
 #
 # Jakub Friedl <jfriedl@suse.cz>, 2006.
 # Jiří Eischmann <jiri@eischmann.cz>, 2008.
-# Zdeněk Hataš <zdenek.hatas@gmail.com>, 2009 - 2017.
+# Zdeněk Hataš <zdenek.hatas@gmail.com>, 2009 - 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
-"fortisslvpn/\n"
-"POT-Creation-Date: 2019-03-21 17:04+0100\n"
-"PO-Revision-Date: 2017-08-01 13:16+0200\n"
+"fortisslvpn/issues\n"
+"POT-Creation-Date: 2019-03-23 18:39+0000\n"
+"PO-Revision-Date: 2019-05-08 13:15+0200\n"
 "Last-Translator: Zdeněk Hataš <zdenek.hatas@gmail.com>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
 msgid "Fortinet SSLVPN client"
@@ -36,9 +36,8 @@ msgid ""
 msgstr "Podpora konfigurace připojení Fortinet SSLVPN."
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:32
-#, fuzzy
 msgid "The advanced options dialog"
-msgstr "Pokročilé volby SSLVPN"
+msgstr "Dialog pokročilých voleb"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:41
 msgid "The NetworkManager Developers"
@@ -57,19 +56,16 @@ msgid "Authenticate VPN"
 msgstr "Autentizovat VPN"
 
 #: auth-dialog/main.c:162
-#, fuzzy
 msgid "Password:"
-msgstr "Heslo"
+msgstr "Heslo:"
 
 #: auth-dialog/main.c:164
-#, fuzzy
 msgid "Token:"
-msgstr "Tiket"
+msgstr "Token:"
 
 #: auth-dialog/main.c:187
-#, fuzzy
 msgid "_Token:"
-msgstr "_Tiket"
+msgstr "_Token:"
 
 #: properties/nm-fortisslvpn-editor-plugin.c:38
 msgid "Fortinet SSLVPN"
@@ -78,6 +74,49 @@ msgstr "Fortinet SSLVPN"
 #: properties/nm-fortisslvpn-editor-plugin.c:39
 msgid "Compatible with Fortinet SSLVPN servers."
 msgstr "Kompatibilní se servery Fortinet SSLVPN."
+
+#: shared/nm-fortissl-properties.c:125
+#, c-format
+msgid "invalid gateway “%s”"
+msgstr "neplatná brána „%s“"
+
+#: shared/nm-fortissl-properties.c:133
+#, c-format
+msgid "invalid certificate authority “%s”"
+msgstr "neplatná certifikační autorita „%s“"
+
+#: shared/nm-fortissl-properties.c:147
+#, c-format
+msgid "invalid integer property “%s”"
+msgstr "neplatná celočíselná vlastnost „%s“"
+
+#: shared/nm-fortissl-properties.c:157
+#, c-format
+msgid "invalid boolean property “%s” (not yes or no)"
+msgstr "neplatná pravdivostní vlastnost „%s“ (není ano či ne)"
+
+#: shared/nm-fortissl-properties.c:164
+#, c-format
+msgid "unhandled property “%s” type %s"
+msgstr "neošetřená vlastnost „%s“ typu %s"
+
+#: shared/nm-fortissl-properties.c:175
+#, c-format
+msgid "property “%s” invalid or not supported"
+msgstr "vlastnost „%s“ není platná nebo podporovaná"
+
+#: shared/nm-fortissl-properties.c:192
+msgid "No VPN configuration options."
+msgstr "Žádné volby nastavení VPN."
+
+#: shared/nm-fortissl-properties.c:212
+#, c-format
+msgid "Missing required option “%s”."
+msgstr "Chybí požadovaná volba „%s“."
+
+#: shared/nm-fortissl-properties.c:232
+msgid "No VPN secrets!"
+msgstr "Žádná hesla VPN!"
 
 #: shared/nm-utils/nm-shared-utils.c:264
 #, c-format
@@ -196,7 +235,6 @@ msgid "Security"
 msgstr "Zabezpečení"
 
 #: properties/nm-fortisslvpn-dialog.ui:133
-#, fuzzy
 msgid "Trusted _certificate"
 msgstr "Důvěryhodný certifikát"
 
@@ -209,24 +247,20 @@ msgstr ""
 "není pro certifikační autoritu důvěryhodný."
 
 #: properties/nm-fortisslvpn-dialog.ui:162
-#, fuzzy
 msgid "_One time password"
-msgstr "Použít jedn_orázové heslo"
+msgstr "Jedn_orázové heslo"
 
 #: properties/nm-fortisslvpn-dialog.ui:237
-#, fuzzy
 msgid "User _Key"
-msgstr "Uživatelský klíč"
+msgstr "Uživatelský _klíč"
 
 #: properties/nm-fortisslvpn-dialog.ui:251
-#, fuzzy
 msgid "_User Certificate"
-msgstr "Uživatelský certifikát"
+msgstr "_Uživatelský certifikát"
 
 #: properties/nm-fortisslvpn-dialog.ui:265
-#, fuzzy
 msgid "_CA Certificate"
-msgstr "Certifikát CA"
+msgstr "_Certifikát CA"
 
 #: properties/nm-fortisslvpn-dialog.ui:277
 msgid "Show password"
@@ -247,14 +281,12 @@ msgstr ""
 "config: user <název>"
 
 #: properties/nm-fortisslvpn-dialog.ui:319
-#, fuzzy
 msgid "_Password"
-msgstr "Heslo"
+msgstr "_Heslo"
 
 #: properties/nm-fortisslvpn-dialog.ui:333
-#, fuzzy
 msgid "User _name"
-msgstr "Uživatelské jméno"
+msgstr "Uživatelské jmé_no"
 
 #: properties/nm-fortisslvpn-dialog.ui:347
 msgid "_Gateway"
@@ -271,33 +303,6 @@ msgstr "Po_kročilé…"
 #: properties/nm-fortisslvpn-dialog.ui:463
 msgid "Default"
 msgstr "Výchozí"
-
-#~ msgid "invalid gateway “%s”"
-#~ msgstr "neplatná brána „%s“"
-
-#~ msgid "invalid certificate authority “%s”"
-#~ msgstr "neplatná certifikační autorita „%s“"
-
-#~ msgid "invalid integer property “%s”"
-#~ msgstr "neplatná celočíselná vlastnost „%s“"
-
-#~ msgid "invalid boolean property “%s” (not yes or no)"
-#~ msgstr "neplatná pravdivostní vlastnost „%s“ (není ano či ne)"
-
-#~ msgid "unhandled property “%s” type %s"
-#~ msgstr "neošetřená vlastnost „%s“ typu %s"
-
-#~ msgid "property “%s” invalid or not supported"
-#~ msgstr "vlastnost „%s“ není platná nebo podporovaná"
-
-#~ msgid "No VPN configuration options."
-#~ msgstr "Žádné volby nastavení VPN."
-
-#~ msgid "Missing required option “%s”."
-#~ msgstr "Chybí požadovaná volba „%s“."
-
-#~ msgid "No VPN secrets!"
-#~ msgstr "Žádná hesla VPN!"
 
 #~ msgid ""
 #~ "Ask for an one-time password (OTP) for two factor authentication (2FA)."
