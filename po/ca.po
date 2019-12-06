@@ -45,7 +45,7 @@ msgstr "Opcions avançades de l'SSLVPN"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:41
 msgid "The NetworkManager Developers"
-msgstr "Els desenvolupadors del NewtorkManager"
+msgstr "Els desenvolupadors del NetworkManager"
 
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
@@ -61,19 +61,16 @@ msgid "Authenticate VPN"
 msgstr "Autentica la VPN"
 
 #: auth-dialog/main.c:162
-#, fuzzy
 msgid "Password:"
-msgstr "Contrasenya"
+msgstr "Contrasenya:"
 
 #: auth-dialog/main.c:164
-#, fuzzy
 msgid "Token:"
-msgstr "Testimoni"
+msgstr "Testimoni:"
 
 #: auth-dialog/main.c:187
-#, fuzzy
 msgid "_Token:"
-msgstr "_Testimoni"
+msgstr "_Testimoni:"
 
 #: properties/nm-fortisslvpn-editor-plugin.c:38
 msgid "Fortinet SSLVPN"
@@ -209,9 +206,8 @@ msgid "Security"
 msgstr "Seguretat"
 
 #: properties/nm-fortisslvpn-dialog.ui:133
-#, fuzzy
 msgid "Trusted _certificate"
-msgstr "Certificat de confiança"
+msgstr "_Certificat de confiança"
 
 #: properties/nm-fortisslvpn-dialog.ui:147
 msgid ""
@@ -222,24 +218,20 @@ msgstr ""
 "no sigui de confiança per a una autoritat de certificats."
 
 #: properties/nm-fortisslvpn-dialog.ui:162
-#, fuzzy
 msgid "_One time password"
-msgstr "_Utilitza una contrasenya d'un sol ús"
+msgstr "_Contrasenya d'un sol ús"
 
 #: properties/nm-fortisslvpn-dialog.ui:237
-#, fuzzy
 msgid "User _Key"
-msgstr "Clau de l'usuari"
+msgstr "_Clau de l'usuari"
 
 #: properties/nm-fortisslvpn-dialog.ui:251
-#, fuzzy
 msgid "_User Certificate"
-msgstr "Certificat d'usuari"
+msgstr "C_ertificat d'usuari"
 
 #: properties/nm-fortisslvpn-dialog.ui:265
-#, fuzzy
 msgid "_CA Certificate"
-msgstr "Certificat CA"
+msgstr "_Certificat CA"
 
 #: properties/nm-fortisslvpn-dialog.ui:277
 msgid "Show password"
@@ -259,14 +251,12 @@ msgstr ""
 "configuració: usuari <nom>"
 
 #: properties/nm-fortisslvpn-dialog.ui:319
-#, fuzzy
 msgid "_Password"
-msgstr "Contrasenya"
+msgstr "_Contrasenya"
 
 #: properties/nm-fortisslvpn-dialog.ui:333
-#, fuzzy
 msgid "User _name"
-msgstr "Nom d'usuari"
+msgstr "_Nom d'usuari"
 
 #: properties/nm-fortisslvpn-dialog.ui:347
 msgid "_Gateway"
