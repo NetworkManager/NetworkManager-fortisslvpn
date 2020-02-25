@@ -4,22 +4,22 @@
 # package.
 #
 # Tino Meinen <a.t.meinen@chello.nl>, 2008.
-# Nathan Follens <nthn@unseen.is>, 2018-2019.
+# Nathan Follens <nthn@unseen.is>, 2018-2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager PPTP\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "fortisslvpn/issues\n"
-"POT-Creation-Date: 2019-03-23 18:39+0000\n"
-"PO-Revision-Date: 2019-04-01 14:01+0200\n"
+"POT-Creation-Date: 2019-10-27 19:14+0000\n"
+"PO-Revision-Date: 2020-02-25 18:22+0100\n"
 "Last-Translator: Nathan Follens <nthn@unseen.is>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.3\n"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
 msgid "Fortinet SSLVPN client"
@@ -47,26 +47,26 @@ msgstr "De NetworkManager-ontwikkelaars"
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
 #.
-#: auth-dialog/main.c:150
+#: auth-dialog/main.c:165
 #, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
 msgstr ""
 "Om toegang te krijgen tot het virtuele privénetwerk ‘%s’ moet u zich "
 "aanmelden."
 
-#: auth-dialog/main.c:159 auth-dialog/main.c:183
+#: auth-dialog/main.c:174 auth-dialog/main.c:198
 msgid "Authenticate VPN"
 msgstr "Aanmeldingscontrole voor VPN"
 
-#: auth-dialog/main.c:162
+#: auth-dialog/main.c:177
 msgid "Password:"
 msgstr "Wachtwoord:"
 
-#: auth-dialog/main.c:164
+#: auth-dialog/main.c:179
 msgid "Token:"
 msgstr "Token:"
 
-#: auth-dialog/main.c:187
+#: auth-dialog/main.c:202
 msgid "_Token:"
 msgstr "_Token:"
 
@@ -183,31 +183,35 @@ msgstr "laden van factory %s uit plug-in %s mislukt"
 msgid "unknown error creating editor instance"
 msgstr "onbekende fout bij aanmaken van verwerkersinstantie"
 
-#: src/nm-fortisslvpn-service.c:222
+#: src/nm-fortisslvpn-service.c:220
 msgid "Could not find the openfortivpn binary."
 msgstr "Kon het openfortivpn-binaire bestand niet vinden."
 
-#: src/nm-fortisslvpn-service.c:350
+#: src/nm-fortisslvpn-service.c:396
 msgid "Missing VPN username."
 msgstr "VPN-gebruikersnaam ontbreekt."
 
-#: src/nm-fortisslvpn-service.c:360
+#: src/nm-fortisslvpn-service.c:406
 msgid "Missing or invalid VPN password."
 msgstr "VPN-wachtwoord ontbreekt of is ongeldig."
 
-#: src/nm-fortisslvpn-service.c:609
+#: src/nm-fortisslvpn-service.c:530
+msgid "Got new secrets, but nobody asked for them."
+msgstr "Nieuwe geheimen verkregen, maar niemand heeft ernaar gevraagd."
+
+#: src/nm-fortisslvpn-service.c:714
 msgid "Don’t quit when VPN connection terminates"
 msgstr "Niet afsluiten wanneer VPN-verbinding beëindigt"
 
-#: src/nm-fortisslvpn-service.c:610
+#: src/nm-fortisslvpn-service.c:715
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr "Uitgebreide debug-logging inschakelen (kan wachtwoorden blootstellen)"
 
-#: src/nm-fortisslvpn-service.c:611
+#: src/nm-fortisslvpn-service.c:716
 msgid "D-Bus name to use for this instance"
 msgstr "D-Bus-naam voor deze instantie"
 
-#: src/nm-fortisslvpn-service.c:632
+#: src/nm-fortisslvpn-service.c:737
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
