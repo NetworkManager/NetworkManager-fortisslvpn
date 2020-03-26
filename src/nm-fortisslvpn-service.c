@@ -390,21 +390,24 @@ get_credentials (NMSettingVpn *s_vpn,
                  const char **otp,
                  GError **error)
 {
+	const char *cert;
+
+	cert = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_CERT);
+
 	/* Username; try SSLVPN specific username first, then generic username */
 	*username = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_USER);
-	if (!*username || !strlen (*username)) {
+	if (!*username || !strlen (*username))
 		*username = nm_setting_vpn_get_user_name (s_vpn);
-		if (!*username || !strlen (*username)) {
-			g_set_error_literal (error,
-			                     NM_VPN_PLUGIN_ERROR,
-			                     NM_VPN_PLUGIN_ERROR_INVALID_CONNECTION,
-			                     _("Missing VPN username."));
-			return FALSE;
-		}
+	if (!cert && (!*username || !strlen (*username))) {
+		g_set_error_literal (error,
+		                     NM_VPN_PLUGIN_ERROR,
+		                     NM_VPN_PLUGIN_ERROR_INVALID_CONNECTION,
+		                     _("Missing VPN username."));
+		return FALSE;
 	}
 
 	*password = nm_setting_vpn_get_secret (s_vpn, NM_FORTISSLVPN_KEY_PASSWORD);
-	if (!*password || !strlen (*password)) {
+	if (!cert && (!*password || !strlen (*password))) {
 		g_set_error_literal (error,
 		                     NM_VPN_PLUGIN_ERROR,
 		                     NM_VPN_PLUGIN_ERROR_INVALID_CONNECTION,
@@ -458,7 +461,8 @@ real_connect (NMVpnServicePlugin *plugin, NMConnection *connection, GError **err
 	                          "password = %s"
 	                          "%s%s"
 	                          "%s%s\n",
-	                          username, password,
+	                          username ? username : "",
+	                          password ? password : "",
 	                          realm ? "\nrealm = " : "", realm ? realm : "",
 	                          otp ? "\notp = " : "", otp ? otp : "");
 	old_umask = umask (0077);
