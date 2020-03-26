@@ -34,7 +34,7 @@ typedef struct {
 
 static const ValidProperty valid_properties[] = {
 	{ NM_FORTISSLVPN_KEY_GATEWAY,           G_TYPE_STRING, TRUE },
-	{ NM_FORTISSLVPN_KEY_USER,              G_TYPE_STRING, TRUE },
+	{ NM_FORTISSLVPN_KEY_USER,              G_TYPE_STRING, FALSE },
 	{ NM_FORTISSLVPN_KEY_CA,                G_TYPE_STRING, FALSE },
 	{ NM_FORTISSLVPN_KEY_TRUSTED_CERT,      G_TYPE_STRING, FALSE },
 	{ NM_FORTISSLVPN_KEY_CERT,              G_TYPE_STRING, FALSE },
@@ -223,14 +223,19 @@ nm_fortisslvpn_properties_validate_secrets (NMSettingVpn *s_vpn, GError **error)
 {
 	ValidateInfo info = { &valid_secrets[0], error, FALSE };
 
+  const char *cert;
+  cert = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_CERT);
+
 	nm_setting_vpn_foreach_secret (s_vpn, validate_one_property, &info);
 	if (!info.have_items) {
-		g_set_error (error,
-		             NM_VPN_PLUGIN_ERROR,
-		             NM_VPN_PLUGIN_ERROR_BAD_ARGUMENTS,
-		             "%s",
-		             _("No VPN secrets!"));
-		return FALSE;
+		if (!cert) {
+			g_set_error (error,
+				NM_VPN_PLUGIN_ERROR,
+				NM_VPN_PLUGIN_ERROR_BAD_ARGUMENTS,
+				"%s",
+				_("No VPN secrets!"));
+			return FALSE;
+		}
 	}
 
 	return *error ? FALSE : TRUE;
