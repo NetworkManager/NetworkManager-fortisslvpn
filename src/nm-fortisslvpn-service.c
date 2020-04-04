@@ -210,6 +210,7 @@ run_openfortivpn (NMFortisslvpnPlugin *plugin, NMSettingVpn *s_vpn, GError **err
 	GPtrArray *argv;
 	const char *value;
 	gs_free char *str_tmp = NULL;
+	NMSettingIPConfig *ip4_config;
 
 	openfortivpn = nm_find_openfortivpn ();
 	if (!openfortivpn) {
@@ -229,6 +230,10 @@ run_openfortivpn (NMFortisslvpnPlugin *plugin, NMSettingVpn *s_vpn, GError **err
 
 	g_ptr_array_add (argv, (gpointer) g_strdup ("--no-routes"));
 	g_ptr_array_add (argv, (gpointer) g_strdup ("--no-dns"));
+	ip4_config = nm_connection_get_setting_ip4_config (priv->connection);
+	if (!nm_setting_ip_config_get_ignore_auto_dns (ip4_config)) {
+		g_ptr_array_add (argv, (gpointer) g_strdup ("--pppd-use-peerdns=1"));
+	}
 
 	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_GATEWAY);
 	g_ptr_array_add (argv, (gpointer) g_strdup (value));
