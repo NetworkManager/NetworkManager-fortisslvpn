@@ -1,104 +1,150 @@
 # Turkish translation for NetworkManager-fortisslvpn.
 # This file is distributed under the same license as the NetworkManager-fortisslvpn package.
 # Necdet Yücel <necdetyucel@gmail.com>, 2014.
+# Sabri Ünal <libreajans@gmail.com>, 2019.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2020.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: NetworkManager-fortisslvpn nm-0-9-10\n"
+"Project-Id-Version: NetworkManager-fortisslvpn master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
-"fortisslvpn/\n"
-"POT-Creation-Date: 2019-03-21 17:04+0100\n"
-"PO-Revision-Date: 2014-11-07 18:12+0000\n"
-"Last-Translator: Necdet <necdetyucel@gmail.com>\n"
+"fortisslvpn/issues\n"
+"POT-Creation-Date: 2019-09-09 07:18+0000\n"
+"PO-Revision-Date: 2020-04-09 20:26+0300\n"
+"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Pootle 2.5.1.1\n"
+"X-Generator: Poedit 2.3\n"
 "X-POOTLE-MTIME: 1415383953.000000\n"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
 msgid "Fortinet SSLVPN client"
-msgstr ""
+msgstr "Fortinet SSLVPN istemcisi"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:10
 msgid "Client for Fortinet SSLVPN virtual private networks"
-msgstr ""
+msgstr "Fortinet SSLVPN sanal özel ağlar için istemci"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:24
 msgid ""
 "Support for configuring Fortinet SSLVPN virtual private network connections."
-msgstr ""
+msgstr "SSLVPN sanal özel ağ bağlantılarını yapılandırma desteği."
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:32
 msgid "The advanced options dialog"
-msgstr ""
+msgstr "Gelişmiş seçenekler iletişim penceresi"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:41
 msgid "The NetworkManager Developers"
-msgstr ""
+msgstr "NetworkManager Geliştiricileri"
 
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
 #.
-#: auth-dialog/main.c:150
-#, fuzzy, c-format
+#: auth-dialog/main.c:165
+#, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
 msgstr ""
-"'%s' Sanal Özel Ağına erişmek için kimlik doğrulaması yapmanız gerekiyor."
+"“%s” Sanal Özel Ağına erişmek için kimlik doğrulaması yapmanız gerekiyor."
 
-#: auth-dialog/main.c:159 auth-dialog/main.c:183
+#: auth-dialog/main.c:174 auth-dialog/main.c:198
 msgid "Authenticate VPN"
 msgstr "VPN Kimlik Doğrulaması"
 
-#: auth-dialog/main.c:162
-#, fuzzy
+#: auth-dialog/main.c:177
 msgid "Password:"
-msgstr "Parola"
+msgstr "Parola:"
 
-#: auth-dialog/main.c:164
+#: auth-dialog/main.c:179
 msgid "Token:"
-msgstr ""
+msgstr "Jeton:"
 
-#: auth-dialog/main.c:187
+#: auth-dialog/main.c:202
 msgid "_Token:"
-msgstr ""
+msgstr "_Jeton:"
 
 #: properties/nm-fortisslvpn-editor-plugin.c:38
 msgid "Fortinet SSLVPN"
-msgstr ""
+msgstr "Fortinet SSLVPN"
 
 #: properties/nm-fortisslvpn-editor-plugin.c:39
 msgid "Compatible with Fortinet SSLVPN servers."
-msgstr ""
+msgstr "Fortinet SSLVPN sunucularıyla uyumludur."
+
+#: shared/nm-fortissl-properties.c:125
+#, c-format
+msgid "invalid gateway “%s”"
+msgstr "geçersiz ağ geçidi “%s”"
+
+#: shared/nm-fortissl-properties.c:133
+#, c-format
+msgid "invalid certificate authority “%s”"
+msgstr "geçersiz sertifika yetkilisi “%s”"
+
+#: shared/nm-fortissl-properties.c:147
+#, c-format
+msgid "invalid integer property “%s”"
+msgstr "geçersiz tamsayı özelliği “%s”"
+
+#: shared/nm-fortissl-properties.c:157
+#, c-format
+msgid "invalid boolean property “%s” (not yes or no)"
+msgstr "“%s” geçersiz bir mantıksal sabit (evet veya hayır değil)"
+
+#: shared/nm-fortissl-properties.c:164
+#, c-format
+msgid "unhandled property “%s” type %s"
+msgstr "tanınmayan özellik “%s” tür %s"
+
+#: shared/nm-fortissl-properties.c:175
+#, c-format
+msgid "property “%s” invalid or not supported"
+msgstr "“%s” özelliği geçersiz veya desteklenmiyor"
+
+#: shared/nm-fortissl-properties.c:192
+msgid "No VPN configuration options."
+msgstr "VPN yapılandırma seçeneği bulunamadı."
+
+#: shared/nm-fortissl-properties.c:212
+#, c-format
+msgid "Missing required option “%s”."
+msgstr "Gerekli “%s” seçeneği eksik."
+
+#: shared/nm-fortissl-properties.c:232
+msgid "No VPN secrets!"
+msgstr "VPN gizi yok!"
 
 #: shared/nm-utils/nm-shared-utils.c:264
 #, c-format
 msgid "object class '%s' has no property named '%s'"
-msgstr ""
+msgstr "'%s' nesne sınıfının '%s' adlı özelliği yok"
 
 #: shared/nm-utils/nm-shared-utils.c:271
 #, c-format
 msgid "property '%s' of object class '%s' is not writable"
-msgstr ""
+msgstr "'%s$2' nesne sınıfının '%s$1' özelliği yazılabilir değil"
 
 #: shared/nm-utils/nm-shared-utils.c:278
 #, c-format
 msgid ""
 "construct property \"%s\" for object '%s' can't be set after construction"
-msgstr ""
+msgstr "'%2$s' nesnesi için \"%1$s\" kurgu özelliği inşadan sonra ayarlanamaz"
 
 #: shared/nm-utils/nm-shared-utils.c:286
 #, c-format
 msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
 msgstr ""
+"'%s::%s' geçerli bir özellik adı değil; '%s' bir GObject alt türü değil"
 
 #: shared/nm-utils/nm-shared-utils.c:295
 #, c-format
 msgid "unable to set property '%s' of type '%s' from value of type '%s'"
 msgstr ""
+"'%2$s' türündeki '%1$s' özelliğinin '%3$s' türünden değeri ayarlanamadı"
 
 #: shared/nm-utils/nm-shared-utils.c:306
 #, c-format
@@ -106,77 +152,84 @@ msgid ""
 "value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
 "type '%s'"
 msgstr ""
+"'%2$s' türünde \"%1$s\" değeri geçersiz veya '%4$s' türünde '%3$s' özelliği "
+"için aralık dışında"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:69
 #, c-format
 msgid "unable to get editor plugin name: %s"
-msgstr ""
+msgstr "düzenleyici eklenti adı alınamadı: %s"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:103
 #, c-format
 msgid "missing plugin file \"%s\""
-msgstr ""
+msgstr "kayıp eklenti dosyası \"%s\""
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:109
 #, c-format
 msgid "cannot load editor plugin: %s"
-msgstr ""
+msgstr "düzenleyici eklentisi yüklenemedi: %s"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:118
 #, c-format
 msgid "cannot load factory %s from plugin: %s"
-msgstr ""
+msgstr "üretici %s eklentiden yüklenemedi: %s"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:144
 msgid "unknown error creating editor instance"
-msgstr ""
+msgstr "düzenleyici örneği oluşturulurken bilinmeyen hata"
 
-#: src/nm-fortisslvpn-service.c:222
+#: src/nm-fortisslvpn-service.c:220
 msgid "Could not find the openfortivpn binary."
-msgstr ""
+msgstr "openfortivpn uygulaması bulunamadı."
 
-#: src/nm-fortisslvpn-service.c:350
+#: src/nm-fortisslvpn-service.c:396
 msgid "Missing VPN username."
 msgstr "Eksik VPN kullanıcı adı."
 
-#: src/nm-fortisslvpn-service.c:360
+#: src/nm-fortisslvpn-service.c:406
 msgid "Missing or invalid VPN password."
 msgstr "Eksik veya geçersiz VPN kullanıcı adı."
 
-#: src/nm-fortisslvpn-service.c:609
-#, fuzzy
+#: src/nm-fortisslvpn-service.c:530
+msgid "Got new secrets, but nobody asked for them."
+msgstr "Yeni gizler alındı ama kimse bunu sormadı."
+
+#: src/nm-fortisslvpn-service.c:714
 msgid "Don’t quit when VPN connection terminates"
 msgstr "VPN bağlantısı sonlandığında çıkma"
 
-#: src/nm-fortisslvpn-service.c:610
+#: src/nm-fortisslvpn-service.c:715
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr ""
 "Ayrıntılı hata ayıklama günlüklemesini etkinleştir (parolaları görünür "
 "yapabilir)"
 
-#: src/nm-fortisslvpn-service.c:611
+#: src/nm-fortisslvpn-service.c:716
 msgid "D-Bus name to use for this instance"
-msgstr ""
+msgstr "Bu örnek için kullanılacak D-Bus adı"
 
-#: src/nm-fortisslvpn-service.c:632
+#: src/nm-fortisslvpn-service.c:737
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
 msgstr ""
+"nm-fortisslvpn-service, NetworkManager’e (Fortinet ile uyumlu) tümleşik "
+"SSLVPN yeteneği sağlar."
 
 #: properties/nm-fortisslvpn-dialog.ui:8
 msgid "SSLVPN Advanced Options"
-msgstr ""
+msgstr "SSLVPN Gelişmiş Seçenekler"
 
 #: properties/nm-fortisslvpn-dialog.ui:73
 #: properties/nm-fortisslvpn-dialog.ui:375
-#, fuzzy
 msgid "Authentication"
-msgstr "<b>Kimlik Doğrulama</b>"
+msgstr "Kimlik Doğrulama"
 
+# Realm için yerleşik çeviri bulamadım.
 #: properties/nm-fortisslvpn-dialog.ui:89
 msgid "_Realm"
-msgstr ""
+msgstr "_Realm"
 
 #: properties/nm-fortisslvpn-dialog.ui:103
 #: properties/nm-fortisslvpn-dialog.ui:361
@@ -184,38 +237,40 @@ msgid ""
 "SSLVPN server IP or name.\n"
 "config: the first parameter of fortisslvpn"
 msgstr ""
+"SSLVPN sunucu IP adresi veya adı.\n"
+"yapılandırma: fortisslvpn’nin ilk parametresi"
 
 #: properties/nm-fortisslvpn-dialog.ui:117
-#, fuzzy
 msgid "Security"
-msgstr "<b>Genel</b>"
+msgstr "Güvenlik"
 
 #: properties/nm-fortisslvpn-dialog.ui:133
 msgid "Trusted _certificate"
-msgstr ""
+msgstr "Günenilir _sertifika"
 
 #: properties/nm-fortisslvpn-dialog.ui:147
 msgid ""
 "A SHA256 sum of the X509 certificate that will be accepted even if the "
 "certificate is not trusted by a certificate authority."
 msgstr ""
+"Sertifika, sertifika otoritesince güvenilir değilse bile kabul edilecek olan "
+"X509 sertifikasının SHA256 özeti."
 
 #: properties/nm-fortisslvpn-dialog.ui:162
 msgid "_One time password"
-msgstr ""
+msgstr "_Tek kullanımlık parola"
 
 #: properties/nm-fortisslvpn-dialog.ui:237
-#, fuzzy
 msgid "User _Key"
-msgstr "Kullanıcı adı"
+msgstr "Kullanıcı _Anahtarı"
 
 #: properties/nm-fortisslvpn-dialog.ui:251
 msgid "_User Certificate"
-msgstr ""
+msgstr "K_ullanıcı sertifikası"
 
 #: properties/nm-fortisslvpn-dialog.ui:265
 msgid "_CA Certificate"
-msgstr ""
+msgstr "_CA sertifikası"
 
 #: properties/nm-fortisslvpn-dialog.ui:277
 msgid "Show password"
@@ -223,7 +278,7 @@ msgstr "Parolayı göster"
 
 #: properties/nm-fortisslvpn-dialog.ui:293
 msgid "Password passed to SSLVPN when prompted for it."
-msgstr ""
+msgstr "İstendiğinde SSLVPN’e gönderilecek parola."
 
 #: properties/nm-fortisslvpn-dialog.ui:306
 msgid ""
@@ -236,27 +291,24 @@ msgstr ""
 "yapılandırma: user <isim>"
 
 #: properties/nm-fortisslvpn-dialog.ui:319
-#, fuzzy
 msgid "_Password"
-msgstr "Parola"
+msgstr "_Parola"
 
 #: properties/nm-fortisslvpn-dialog.ui:333
-#, fuzzy
 msgid "User _name"
-msgstr "Kullanıcı adı"
+msgstr "Kullanıcı _adı"
 
 #: properties/nm-fortisslvpn-dialog.ui:347
 msgid "_Gateway"
 msgstr "_Ağ geçidi"
 
 #: properties/nm-fortisslvpn-dialog.ui:391
-#, fuzzy
 msgid "General"
-msgstr "<b>Genel</b>"
+msgstr "Genel"
 
 #: properties/nm-fortisslvpn-dialog.ui:434
 msgid "A_dvanced…"
-msgstr ""
+msgstr "_Gelişmiş…"
 
 #: properties/nm-fortisslvpn-dialog.ui:463
 msgid "Default"
@@ -267,27 +319,3 @@ msgstr "Varsayılan"
 
 #~ msgid "Invalid VPN username."
 #~ msgstr "Geçersiz VPN kullanıcı adı."
-
-#~ msgid "invalid gateway '%s'"
-#~ msgstr "geçersiz ağ geçidi '%s'"
-
-#~ msgid "invalid integer property '%s'"
-#~ msgstr "geçersiz tamsayı özelliği '%s'"
-
-#~ msgid "invalid boolean property '%s' (not yes or no)"
-#~ msgstr "'%s' geçersiz bir mantıksal özellik (evet veya hayır değil)"
-
-#~ msgid "unhandled property '%s' type %s"
-#~ msgstr "tanınmayan özellik '%s' tür %s"
-
-#~ msgid "property '%s' invalid or not supported"
-#~ msgstr "'%s' özelliği geçersiz veya desteklenmiyor"
-
-#~ msgid "No VPN configuration options."
-#~ msgstr "VPN yapılandırma seçeneği bulunamadı."
-
-#~ msgid "Missing required option '%s'."
-#~ msgstr "Gerekli '%s' seçeneği eksik."
-
-#~ msgid "No VPN secrets!"
-#~ msgstr "VPN sırrı yok!"
