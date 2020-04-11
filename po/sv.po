@@ -1,17 +1,17 @@
 # Swedish messages for NetworkManager PPTP.
-# Copyright © 2004-2015 Free Software Foundation, Inc.
+# Copyright © 2004-2020 Free Software Foundation, Inc.
 # Christian Rose <menthos@menthos.com>, 2004, 2005, 2006.
 # Daniel Nylander <po@danielnylander.se>, 2006, 2007, 2008, 2009, 2011, 2012.
-# Josef Andersson <josef.andersson@fripost.org>, 2014.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015.
+# Josef Andersson <josef.andersson@fripost.org>, 2014, 2017.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015, 2016, 2017, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "fortisslvpn/issues\n"
-"POT-Creation-Date: 2019-12-06 20:21+0000\n"
-"PO-Revision-Date: 2019-12-31 16:36+0100\n"
+"POT-Creation-Date: 2020-04-02 21:09+0000\n"
+"PO-Revision-Date: 2020-04-11 20:17+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.3\n"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
 msgid "Fortinet SSLVPN client"
@@ -37,7 +37,6 @@ msgstr ""
 "nätverksanslutningar."
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:32
-#, fuzzy
 msgid "The advanced options dialog"
 msgstr "Dialogen för avancerade alternativ"
 
@@ -198,7 +197,6 @@ msgid "Missing or invalid VPN password."
 msgstr "Saknat eller ogiltigt VPN-lösenord."
 
 #: src/nm-fortisslvpn-service.c:530
-#, fuzzy
 msgid "Got new secrets, but nobody asked for them."
 msgstr "Har nya hemligheter, men ingen efterfrågade dem."
 
@@ -232,9 +230,8 @@ msgid "Authentication"
 msgstr "Autentisering"
 
 #: properties/nm-fortisslvpn-dialog.ui:89
-#, fuzzy
 msgid "_Realm"
-msgstr "_Domän"
+msgstr "_Rike"
 
 #: properties/nm-fortisslvpn-dialog.ui:103
 #: properties/nm-fortisslvpn-dialog.ui:361
