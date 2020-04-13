@@ -2,15 +2,15 @@
 # Copyright (C) 2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the NetworkManager package.
 # Žygimantas Beručka <zygis@gnome.org>, 2008.
-# Aurimas Černius <aurisc4@gmail.com>, 2015-2018.
+# Aurimas Černius <aurisc4@gmail.com>, 2015-2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
-"fortisslvpn/\n"
-"POT-Creation-Date: 2019-03-21 17:04+0100\n"
-"PO-Revision-Date: 2018-11-25 18:59+0200\n"
+"fortisslvpn/issues\n"
+"POT-Creation-Date: 2020-04-02 21:09+0000\n"
+"PO-Revision-Date: 2020-04-13 22:56+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -18,8 +18,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
-"%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Gtranslator 3.30.1\n"
+"%100<10 || n%100>=20) ? 1 : 2)\n"
+"X-Generator: Gtranslator 3.34.0\n"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
 msgid "Fortinet SSLVPN client"
@@ -36,9 +36,8 @@ msgstr ""
 "Fortinet SSLVPN virtualių privačių tinklo ryšių konfigūracijos palaikymas."
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:32
-#, fuzzy
 msgid "The advanced options dialog"
-msgstr "SSLVPN išplėstiniai parametrai"
+msgstr "Išplėstinių parametrų dialogas"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:41
 msgid "The NetworkManager Developers"
@@ -47,31 +46,28 @@ msgstr "NetworkManager kūrėjai"
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
 #.
-#: auth-dialog/main.c:150
+#: auth-dialog/main.c:165
 #, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
 msgstr ""
 "Norint gauti prieigą prie Virtualiojo Privačiojo Tinklo „%s“, reikia "
 "nustatyti jūsų tapatybę."
 
-#: auth-dialog/main.c:159 auth-dialog/main.c:183
+#: auth-dialog/main.c:174 auth-dialog/main.c:198
 msgid "Authenticate VPN"
 msgstr "Nustatyti tapatybę VPN"
 
-#: auth-dialog/main.c:162
-#, fuzzy
+#: auth-dialog/main.c:177
 msgid "Password:"
-msgstr "Slaptažodis"
+msgstr "Slaptažodis:"
 
-#: auth-dialog/main.c:164
-#, fuzzy
+#: auth-dialog/main.c:179
 msgid "Token:"
-msgstr "Prieigos kodas"
+msgstr "Prieigos kodas:"
 
-#: auth-dialog/main.c:187
-#, fuzzy
+#: auth-dialog/main.c:202
 msgid "_Token:"
-msgstr "_Prieigos kodas"
+msgstr "_Prieigos kodas:"
 
 #: properties/nm-fortisslvpn-editor-plugin.c:38
 msgid "Fortinet SSLVPN"
@@ -80,6 +76,49 @@ msgstr "Fortinet SSLVPN"
 #: properties/nm-fortisslvpn-editor-plugin.c:39
 msgid "Compatible with Fortinet SSLVPN servers."
 msgstr "Suderinamas su Fortinet SSLVPN serveriais."
+
+#: shared/nm-fortissl-properties.c:125
+#, c-format
+msgid "invalid gateway “%s”"
+msgstr "netinkamas tinklų sietuvas „%s“"
+
+#: shared/nm-fortissl-properties.c:133
+#, c-format
+msgid "invalid certificate authority “%s”"
+msgstr "netinkama liudijimų įstaiga „%s“"
+
+#: shared/nm-fortissl-properties.c:147
+#, c-format
+msgid "invalid integer property “%s”"
+msgstr "netinkama sveikaskaitinė savybė „%s“"
+
+#: shared/nm-fortissl-properties.c:157
+#, c-format
+msgid "invalid boolean property “%s” (not yes or no)"
+msgstr "netinkama loginė savybė „%s“ (ne taip arba ne)"
+
+#: shared/nm-fortissl-properties.c:164
+#, c-format
+msgid "unhandled property “%s” type %s"
+msgstr "neapdorotas savybės „%s“ tipas %s"
+
+#: shared/nm-fortissl-properties.c:175
+#, c-format
+msgid "property “%s” invalid or not supported"
+msgstr "savybė „%s“ netinkama arba nepalaikoma"
+
+#: shared/nm-fortissl-properties.c:192
+msgid "No VPN configuration options."
+msgstr "Nėra VPN konfigūracijos parametrų."
+
+#: shared/nm-fortissl-properties.c:212
+#, c-format
+msgid "Missing required option “%s”."
+msgstr "Trūksta būtino parametro „%s“."
+
+#: shared/nm-fortissl-properties.c:232
+msgid "No VPN secrets!"
+msgstr "Nėra VPN paslapčių!"
 
 #: shared/nm-utils/nm-shared-utils.c:264
 #, c-format
@@ -144,31 +183,35 @@ msgstr "nepavyko įkelti gamyklos %s iš įskiepio: %s"
 msgid "unknown error creating editor instance"
 msgstr "nežinoma klaida kuriant redaktoriaus egzempliorių"
 
-#: src/nm-fortisslvpn-service.c:222
+#: src/nm-fortisslvpn-service.c:220
 msgid "Could not find the openfortivpn binary."
 msgstr "Nepavyko rasti openfortivpn programos."
 
-#: src/nm-fortisslvpn-service.c:350
+#: src/nm-fortisslvpn-service.c:396
 msgid "Missing VPN username."
 msgstr "Trūksta VPN naudotojo vardo."
 
-#: src/nm-fortisslvpn-service.c:360
+#: src/nm-fortisslvpn-service.c:406
 msgid "Missing or invalid VPN password."
 msgstr "Nėra arba netinkamas VPN slaptažodis."
 
-#: src/nm-fortisslvpn-service.c:609
+#: src/nm-fortisslvpn-service.c:530
+msgid "Got new secrets, but nobody asked for them."
+msgstr "Gautos naujos paslaptys, bet niakas jų neprašė."
+
+#: src/nm-fortisslvpn-service.c:714
 msgid "Don’t quit when VPN connection terminates"
 msgstr "Neišeiti, kai VPN ryšys yra nutraukiamas"
 
-#: src/nm-fortisslvpn-service.c:610
+#: src/nm-fortisslvpn-service.c:715
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr "Įjungti išsamų derinimo žurnalą (gali atskleisti slaptažodžius)"
 
-#: src/nm-fortisslvpn-service.c:611
+#: src/nm-fortisslvpn-service.c:716
 msgid "D-Bus name to use for this instance"
 msgstr "D-Bus pavadinimas, kurį naudoti šiam egzemplioriui"
 
-#: src/nm-fortisslvpn-service.c:632
+#: src/nm-fortisslvpn-service.c:737
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
@@ -187,7 +230,7 @@ msgstr "Tapatybės nustatymas"
 
 #: properties/nm-fortisslvpn-dialog.ui:89
 msgid "_Realm"
-msgstr ""
+msgstr "S_ritis"
 
 #: properties/nm-fortisslvpn-dialog.ui:103
 #: properties/nm-fortisslvpn-dialog.ui:361
@@ -203,9 +246,8 @@ msgid "Security"
 msgstr "Saugumas"
 
 #: properties/nm-fortisslvpn-dialog.ui:133
-#, fuzzy
 msgid "Trusted _certificate"
-msgstr "Patikimas liudijimas"
+msgstr "Patikimas _liudijimas"
 
 #: properties/nm-fortisslvpn-dialog.ui:147
 msgid ""
@@ -216,24 +258,20 @@ msgstr ""
 "liudijimų įstaiga."
 
 #: properties/nm-fortisslvpn-dialog.ui:162
-#, fuzzy
 msgid "_One time password"
-msgstr "Naudoti vien_o karto slaptažodį"
+msgstr "Vien_kartinis slaptažodis"
 
 #: properties/nm-fortisslvpn-dialog.ui:237
-#, fuzzy
 msgid "User _Key"
-msgstr "Naudotojo raktas"
+msgstr "Naudotojo ra_ktas"
 
 #: properties/nm-fortisslvpn-dialog.ui:251
-#, fuzzy
 msgid "_User Certificate"
-msgstr "Naudotojo liudijimas"
+msgstr "Na_udotojo liudijimas"
 
 #: properties/nm-fortisslvpn-dialog.ui:265
-#, fuzzy
 msgid "_CA Certificate"
-msgstr "LĮ liudijimas"
+msgstr "_LĮ liudijimas"
 
 #: properties/nm-fortisslvpn-dialog.ui:277
 msgid "Show password"
@@ -253,14 +291,12 @@ msgstr ""
 "konfig.: user <vardas>"
 
 #: properties/nm-fortisslvpn-dialog.ui:319
-#, fuzzy
 msgid "_Password"
-msgstr "Slaptažodis"
+msgstr "Sla_ptažodis"
 
 #: properties/nm-fortisslvpn-dialog.ui:333
-#, fuzzy
 msgid "User _name"
-msgstr "Naudotojo vardas"
+msgstr "_Naudotojo vardas"
 
 #: properties/nm-fortisslvpn-dialog.ui:347
 msgid "_Gateway"
@@ -277,33 +313,6 @@ msgstr "Išplės_tiniai…"
 #: properties/nm-fortisslvpn-dialog.ui:463
 msgid "Default"
 msgstr "Numatytasis"
-
-#~ msgid "invalid gateway “%s”"
-#~ msgstr "netinkamas tinklų sietuvas „%s“"
-
-#~ msgid "invalid certificate authority “%s”"
-#~ msgstr "netinkama liudijimų įstaiga „%s“"
-
-#~ msgid "invalid integer property “%s”"
-#~ msgstr "netinkama sveikaskaitinė savybė „%s“"
-
-#~ msgid "invalid boolean property “%s” (not yes or no)"
-#~ msgstr "netinkama loginė savybė „%s“ (ne taip arba ne)"
-
-#~ msgid "unhandled property “%s” type %s"
-#~ msgstr "neapdorotas savybės „%s“ tipas %s"
-
-#~ msgid "property “%s” invalid or not supported"
-#~ msgstr "savybė „%s“ netinkama arba nepalaikoma"
-
-#~ msgid "No VPN configuration options."
-#~ msgstr "Nėra VPN konfigūracijos parametrų."
-
-#~ msgid "Missing required option “%s”."
-#~ msgstr "Trūksta būtino parametro „%s“."
-
-#~ msgid "No VPN secrets!"
-#~ msgstr "Nėra VPN paslapčių!"
 
 #~ msgid ""
 #~ "Ask for an one-time password (OTP) for two factor authentication (2FA)."
