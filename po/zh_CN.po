@@ -1,259 +1,288 @@
 # Simplified Chinese translation of NetworkManager-fortisslvpn
-# Copyright (C) 2009, 2010 Free software Foundation, Inc.
+# Copyright (C) 2009-2018 NetworkManager-fortisslvpn'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the NetworkManager-fortisslvpn package.
 # Wei Mingzhi <whistler@openoffice.org>, 2009.
 # Aron Xu <aronxu@gnome.org>, 2010.
 # YunQiang Su <wzssyqa@gmail.com>, 2011.
+# Dingzhong Chen <wsxy162@gmail.com>, 2016, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
-"fortisslvpn/\n"
-"POT-Creation-Date: 2019-03-21 17:04+0100\n"
-"PO-Revision-Date: 2011-11-27 18:26+0800\n"
-"Last-Translator: YunQiang Su <wzssyqa@gmail.com>\n"
-"Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
+"fortisslvpn/issues\n"
+"POT-Creation-Date: 2018-06-04 12:14+0000\n"
+"PO-Revision-Date: 2018-07-07 23:07+0800\n"
+"Last-Translator: Dingzhong Chen <wsxy162@gmail.com>\n"
+"Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
+#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:1
 msgid "Fortinet SSLVPN client"
-msgstr ""
+msgstr "飞塔（Fortinet）SSLVPN 客户端"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:10
+#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:2
 msgid "Client for Fortinet SSLVPN virtual private networks"
-msgstr ""
+msgstr "飞塔（Fortinet）虚拟专用网络的客户端"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:24
+#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:3
 msgid ""
 "Support for configuring Fortinet SSLVPN virtual private network connections."
-msgstr ""
+msgstr "支持配置飞塔（Fortinet）SSLVPN 虚拟专用网络连接。"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:32
-msgid "The advanced options dialog"
-msgstr ""
-
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:41
+#: ../appdata/network-manager-fortisslvpn.metainfo.xml.in.h:4
 msgid "The NetworkManager Developers"
-msgstr ""
+msgstr "NetworkManager 开发者"
 
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
 #.
-#: auth-dialog/main.c:150
-#, fuzzy, c-format
+#: ../auth-dialog/main.c:150
+#, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
-msgstr "您需要进行身份验证才能访问虚拟专用网络 '%s'。"
+msgstr "您需要进行身份验证才能访问虚拟专用网络“%s”。"
 
-#: auth-dialog/main.c:159 auth-dialog/main.c:183
+#: ../auth-dialog/main.c:159 ../auth-dialog/main.c:182
 msgid "Authenticate VPN"
-msgstr "认证 VPN"
+msgstr "验证 VPN"
 
-#: auth-dialog/main.c:162
-#, fuzzy
+#: ../auth-dialog/main.c:162 ../properties/nm-fortisslvpn-dialog.ui.h:14
 msgid "Password:"
-msgstr "密码"
+msgstr "密码："
 
-#: auth-dialog/main.c:164
+#: ../auth-dialog/main.c:164
 msgid "Token:"
-msgstr ""
+msgstr "令牌："
 
-#: auth-dialog/main.c:187
+#: ../auth-dialog/main.c:186
 msgid "_Token:"
-msgstr ""
+msgstr "令牌(_T)："
 
-#: properties/nm-fortisslvpn-editor-plugin.c:38
+#: ../properties/nm-fortisslvpn-editor-plugin.c:38
 msgid "Fortinet SSLVPN"
-msgstr ""
+msgstr "飞塔（Fortinet）SSLVPN"
 
-#: properties/nm-fortisslvpn-editor-plugin.c:39
+#: ../properties/nm-fortisslvpn-editor-plugin.c:39
 msgid "Compatible with Fortinet SSLVPN servers."
-msgstr ""
+msgstr "兼容于飞塔（Fortinet）SSLVPN 服务器。"
 
-#: shared/nm-utils/nm-shared-utils.c:264
+#: ../shared/nm-utils/nm-shared-utils.c:264
 #, c-format
 msgid "object class '%s' has no property named '%s'"
-msgstr ""
+msgstr "对象类 \"%s\" 没有名为 \"%s\" 的属性"
 
-#: shared/nm-utils/nm-shared-utils.c:271
+#: ../shared/nm-utils/nm-shared-utils.c:271
 #, c-format
 msgid "property '%s' of object class '%s' is not writable"
-msgstr ""
+msgstr "对象类 \"%2$s\" 的 \"%1$s\" 属性是不可写的"
 
-#: shared/nm-utils/nm-shared-utils.c:278
+#: ../shared/nm-utils/nm-shared-utils.c:278
 #, c-format
 msgid ""
 "construct property \"%s\" for object '%s' can't be set after construction"
-msgstr ""
+msgstr "对象 \"%2$s\" 的构造属性 \"%1$s\" 在构造后不能被设定"
 
-#: shared/nm-utils/nm-shared-utils.c:286
+#: ../shared/nm-utils/nm-shared-utils.c:286
 #, c-format
 msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
-msgstr ""
+msgstr "\"%s::%s\" 不是有效的属性名；\"%s\" 不是 GObject 子类型"
 
-#: shared/nm-utils/nm-shared-utils.c:295
+#: ../shared/nm-utils/nm-shared-utils.c:295
 #, c-format
 msgid "unable to set property '%s' of type '%s' from value of type '%s'"
-msgstr ""
+msgstr "无法从类型 \"%3$s\" 的值设定类型为 \"%2$s\" 的属性 \"%1$s\""
 
-#: shared/nm-utils/nm-shared-utils.c:306
+#: ../shared/nm-utils/nm-shared-utils.c:306
 #, c-format
 msgid ""
 "value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
 "type '%s'"
 msgstr ""
+"类型 \"%2$s\" 的值 \"%1$s\" 无效或超出类型为 \"%4$s\" 的属性 \"%3$s\" 范围"
 
-#: shared/nm-utils/nm-vpn-plugin-utils.c:69
-#, c-format
-msgid "unable to get editor plugin name: %s"
-msgstr ""
-
-#: shared/nm-utils/nm-vpn-plugin-utils.c:103
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:80
 #, c-format
 msgid "missing plugin file \"%s\""
-msgstr ""
+msgstr "缺少插件文件 \"%s\""
 
-#: shared/nm-utils/nm-vpn-plugin-utils.c:109
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:86
 #, c-format
 msgid "cannot load editor plugin: %s"
-msgstr ""
+msgstr "无法加载编辑器插件：%s"
 
-#: shared/nm-utils/nm-vpn-plugin-utils.c:118
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:95
 #, c-format
 msgid "cannot load factory %s from plugin: %s"
-msgstr ""
+msgstr "无法加载来自插件的工厂（factory）%s：%s"
 
-#: shared/nm-utils/nm-vpn-plugin-utils.c:144
+#: ../shared/nm-utils/nm-vpn-plugin-utils.c:121
 msgid "unknown error creating editor instance"
-msgstr ""
+msgstr "创建编辑器实例时出现未知错误"
 
-#: src/nm-fortisslvpn-service.c:222
+#: ../src/nm-fortisslvpn-service.c:210
+#, c-format
+msgid "invalid gateway “%s”"
+msgstr "无效的网关“%s”"
+
+#: ../src/nm-fortisslvpn-service.c:218
+#, c-format
+msgid "invalid certificate authority “%s”"
+msgstr "无效的证书颁发机构“%s”"
+
+#: ../src/nm-fortisslvpn-service.c:232
+#, c-format
+msgid "invalid integer property “%s”"
+msgstr "无效的整数型属性“%s”"
+
+#: ../src/nm-fortisslvpn-service.c:242
+#, c-format
+msgid "invalid boolean property “%s” (not yes or no)"
+msgstr "无效的布尔属性“%s”（不是 yes 或 no）"
+
+#: ../src/nm-fortisslvpn-service.c:249
+#, c-format
+msgid "unhandled property “%s” type %s"
+msgstr "未处理的属性“%s”类型 %s"
+
+#: ../src/nm-fortisslvpn-service.c:260
+#, c-format
+msgid "property “%s” invalid or not supported"
+msgstr "属性“%s”无效或不支持"
+
+#: ../src/nm-fortisslvpn-service.c:277
+msgid "No VPN configuration options."
+msgstr "没有 VPN 配置选项。"
+
+#: ../src/nm-fortisslvpn-service.c:297
+#, c-format
+msgid "Missing required option “%s”."
+msgstr "缺少需要的选项“%s”。"
+
+#: ../src/nm-fortisslvpn-service.c:317
+msgid "No VPN secrets!"
+msgstr "没有 VPN 密钥（secret）！"
+
+#: ../src/nm-fortisslvpn-service.c:434
 msgid "Could not find the openfortivpn binary."
-msgstr ""
+msgstr "无法找到 openfortivpn 二进制文件。"
 
-#: src/nm-fortisslvpn-service.c:350
+#: ../src/nm-fortisslvpn-service.c:556
 msgid "Missing VPN username."
 msgstr "缺少 VPN 用户名。"
 
-#: src/nm-fortisslvpn-service.c:360
+#: ../src/nm-fortisslvpn-service.c:566
 msgid "Missing or invalid VPN password."
 msgstr "VPN 密码缺失或无效。"
 
-#: src/nm-fortisslvpn-service.c:609
-#, fuzzy
+#: ../src/nm-fortisslvpn-service.c:809
 msgid "Don’t quit when VPN connection terminates"
-msgstr "在 VPN 连接终止时不退出"
+msgstr "VPN 连接终止时不要退出"
 
-#: src/nm-fortisslvpn-service.c:610
+#: ../src/nm-fortisslvpn-service.c:810
 msgid "Enable verbose debug logging (may expose passwords)"
-msgstr "启用详细的调试记录(可能暴露密码)"
+msgstr "启用详细调试日志记录（可能暴露密码）"
 
-#: src/nm-fortisslvpn-service.c:611
+#: ../src/nm-fortisslvpn-service.c:811
 msgid "D-Bus name to use for this instance"
-msgstr ""
+msgstr "此实例使用的 D-Bus 名称"
 
-#: src/nm-fortisslvpn-service.c:632
+#: ../src/nm-fortisslvpn-service.c:832
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
 msgstr ""
+"nm-fortisslvpn-service 提供集成到网络管理器（NetworkManager）的 SSLVPN 功能"
+"（兼容于飞塔（Fortinet））。"
 
-#: properties/nm-fortisslvpn-dialog.ui:8
+#: ../properties/nm-fortisslvpn-dialog.ui.h:1
 msgid "SSLVPN Advanced Options"
-msgstr ""
+msgstr "SSLVPN 高级选项"
 
-#: properties/nm-fortisslvpn-dialog.ui:73
-#: properties/nm-fortisslvpn-dialog.ui:375
-#, fuzzy
+#: ../properties/nm-fortisslvpn-dialog.ui.h:2
 msgid "Authentication"
-msgstr "<b>身份验证</b>"
+msgstr "身份验证"
 
-#: properties/nm-fortisslvpn-dialog.ui:89
-msgid "_Realm"
-msgstr ""
+#: ../properties/nm-fortisslvpn-dialog.ui.h:3
+msgid "Use a _one-time password"
+msgstr "使用一次性密码"
 
-#: properties/nm-fortisslvpn-dialog.ui:103
-#: properties/nm-fortisslvpn-dialog.ui:361
+#: ../properties/nm-fortisslvpn-dialog.ui.h:4
+msgid "Ask for an one-time password (OTP) for two factor authentication (2FA)."
+msgstr "询问用于双重验证（2FA）的一次性密码（OTP）。"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:5
+msgid "Security"
+msgstr "安全性"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:6
+msgid ""
+"A SHA256 sum of the X509 certificate that will be accepted even if the "
+"certificate is not trusted by a certificate authority."
+msgstr "将接受一个 X509 证书的 SHA256 校验和即使该证书未被证书颁发机构信任。"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:7
+msgid "Trusted certificate:"
+msgstr "已信任证书："
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:8
+msgid "General"
+msgstr "常规"
+
+#: ../properties/nm-fortisslvpn-dialog.ui.h:9
 msgid ""
 "SSLVPN server IP or name.\n"
 "config: the first parameter of fortisslvpn"
 msgstr ""
+"SSLVPN 服务器 IP 或名称。\n"
+"配置：fortisslvpn 的第一项参数"
 
-#: properties/nm-fortisslvpn-dialog.ui:117
-#, fuzzy
-msgid "Security"
-msgstr "<b>一般</b>"
+#: ../properties/nm-fortisslvpn-dialog.ui.h:11
+msgid "_Gateway:"
+msgstr "网关(_G)："
 
-#: properties/nm-fortisslvpn-dialog.ui:133
-msgid "Trusted _certificate"
-msgstr ""
-
-#: properties/nm-fortisslvpn-dialog.ui:147
-msgid ""
-"A SHA256 sum of the X509 certificate that will be accepted even if the "
-"certificate is not trusted by a certificate authority."
-msgstr ""
-
-#: properties/nm-fortisslvpn-dialog.ui:162
-msgid "_One time password"
-msgstr ""
-
-#: properties/nm-fortisslvpn-dialog.ui:237
-#, fuzzy
-msgid "User _Key"
-msgstr "用户名(_U)："
-
-#: properties/nm-fortisslvpn-dialog.ui:251
-msgid "_User Certificate"
-msgstr ""
-
-#: properties/nm-fortisslvpn-dialog.ui:265
-msgid "_CA Certificate"
-msgstr ""
-
-#: properties/nm-fortisslvpn-dialog.ui:277
+#: ../properties/nm-fortisslvpn-dialog.ui.h:12
 msgid "Show password"
 msgstr "显示密码"
 
-#: properties/nm-fortisslvpn-dialog.ui:293
+#: ../properties/nm-fortisslvpn-dialog.ui.h:13
 msgid "Password passed to SSLVPN when prompted for it."
-msgstr ""
+msgstr "当被提示时传递给 SSLVPN 的密码。"
 
-#: properties/nm-fortisslvpn-dialog.ui:306
+#: ../properties/nm-fortisslvpn-dialog.ui.h:15
 msgid ""
 "Set the name used for authenticating the local system to the peer to "
 "<name>.\n"
 "config: user <name>"
 msgstr ""
+"设置用于验证本地系统对等连接到的名称 <name>。\n"
+"配置：用户 <name>"
 
-#: properties/nm-fortisslvpn-dialog.ui:319
-#, fuzzy
-msgid "_Password"
-msgstr "密码"
+#: ../properties/nm-fortisslvpn-dialog.ui.h:17
+msgid "User name:"
+msgstr "用户名："
 
-#: properties/nm-fortisslvpn-dialog.ui:333
-#, fuzzy
-msgid "User _name"
-msgstr "用户名(_U)："
+#: ../properties/nm-fortisslvpn-dialog.ui.h:18
+msgid "CA Certificate:"
+msgstr "CA 证书："
 
-#: properties/nm-fortisslvpn-dialog.ui:347
-msgid "_Gateway"
-msgstr "网关(_G)："
+#: ../properties/nm-fortisslvpn-dialog.ui.h:19
+msgid "User Key:"
+msgstr "用户密钥："
 
-#: properties/nm-fortisslvpn-dialog.ui:391
-#, fuzzy
-msgid "General"
-msgstr "<b>一般</b>"
+#: ../properties/nm-fortisslvpn-dialog.ui.h:20
+msgid "User Certificate:"
+msgstr "用户证书："
 
-#: properties/nm-fortisslvpn-dialog.ui:434
+#: ../properties/nm-fortisslvpn-dialog.ui.h:21
 msgid "A_dvanced…"
-msgstr ""
+msgstr "高级(_D)…"
 
-#: properties/nm-fortisslvpn-dialog.ui:463
+#: ../properties/nm-fortisslvpn-dialog.ui.h:22
 msgid "Default"
 msgstr "默认"
 
@@ -262,27 +291,3 @@ msgstr "默认"
 
 #~ msgid "Invalid VPN username."
 #~ msgstr "无效的 VPN 用户名。"
-
-#~ msgid "invalid gateway '%s'"
-#~ msgstr "无效的网关“%s”"
-
-#~ msgid "invalid integer property '%s'"
-#~ msgstr "无效的整型属性“%s”"
-
-#~ msgid "invalid boolean property '%s' (not yes or no)"
-#~ msgstr "无效的布尔型属性“%s”(不是 yes 或 no)"
-
-#~ msgid "unhandled property '%s' type %s"
-#~ msgstr "无法处理的属性“%s”类型 %s"
-
-#~ msgid "property '%s' invalid or not supported"
-#~ msgstr "属性“%s”无效或不支持"
-
-#~ msgid "No VPN configuration options."
-#~ msgstr "没有 VPN 配置选项。"
-
-#~ msgid "Missing required option '%s'."
-#~ msgstr "缺少需要的选项“%s”。"
-
-#~ msgid "No VPN secrets!"
-#~ msgstr "没有 VPN 机密信息！"
