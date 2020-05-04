@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: NetworkManager pptp\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-fortisslvp"
 "n/issues\n"
-"POT-Creation-Date: 2019-10-27 19:14+0000\n"
-"PO-Revision-Date: 2020-01-26 12:06+0200\n"
+"POT-Creation-Date: 2020-05-04 15:35+0000\n"
+"PO-Revision-Date: 2020-05-04 20:35+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
 "=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 20.03.70\n"
+"X-Generator: Lokalize 20.07.70\n"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
 msgid "Fortinet SSLVPN client"
@@ -33,8 +33,8 @@ msgstr "Клієнт для віртуальних приватних мереж
 msgid ""
 "Support for configuring Fortinet SSLVPN virtual private network connections."
 msgstr ""
-"Підтримка налаштовування з'єднань із віртуальними приватними мережами SSLVPN"
-" Fortinet."
+"Підтримка налаштовування з'єднань із віртуальними приватними мережами SSLVPN "
+"Fortinet."
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:32
 msgid "The advanced options dialog"
@@ -51,20 +51,22 @@ msgstr "Розробники NetworkManager"
 #, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
 msgstr ""
-"Вам слід пройти розпізнавання для отримання доступу до віртуальної приватної"
-" мережі «%s»."
+"Вам слід пройти розпізнавання для отримання доступу до віртуальної приватної "
+"мережі «%s»."
 
 #: auth-dialog/main.c:174 auth-dialog/main.c:198
 msgid "Authenticate VPN"
 msgstr "Розпізнавання у VPN"
 
 #: auth-dialog/main.c:177
-msgid "Password:"
-msgstr "Пароль:"
+#| msgid "Password:"
+msgid "Password"
+msgstr "Пароль"
 
 #: auth-dialog/main.c:179
-msgid "Token:"
-msgstr "Ключ:"
+#| msgid "Token:"
+msgid "Token"
+msgstr "Ключ"
 
 #: auth-dialog/main.c:202
 msgid "_Token:"
@@ -97,8 +99,8 @@ msgstr "некоректна цілочисельна властивість «%
 #, c-format
 msgid "invalid boolean property “%s” (not yes or no)"
 msgstr ""
-"некоректна булева властивість «%s» (має значення, яке відрізняється від «yes»"
-" або «no»)"
+"некоректна булева властивість «%s» (має значення, яке відрізняється від "
+"«yes» або «no»)"
 
 #: shared/nm-fortissl-properties.c:164
 #, c-format
@@ -218,8 +220,8 @@ msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
 msgstr ""
-"nm-fortisslvpn-service надає NetworkManager доступ до інтегрованих"
-" можливостей SSLVPN (сумісної із Fortinet)."
+"nm-fortisslvpn-service надає NetworkManager доступ до інтегрованих "
+"можливостей SSLVPN (сумісної із Fortinet)."
 
 #: properties/nm-fortisslvpn-dialog.ui:8
 msgid "SSLVPN Advanced Options"
@@ -256,8 +258,8 @@ msgid ""
 "A SHA256 sum of the X509 certificate that will be accepted even if the "
 "certificate is not trusted by a certificate authority."
 msgstr ""
-"Сума SHA256 сертифіката X509, яку буде прийнято, навіть якщо сертифікат не"
-" вважається надійним службою сертифікації."
+"Сума SHA256 сертифіката X509, яку буде прийнято, навіть якщо сертифікат не "
+"вважається надійним службою сертифікації."
 
 #: properties/nm-fortisslvpn-dialog.ui:162
 msgid "_One time password"
