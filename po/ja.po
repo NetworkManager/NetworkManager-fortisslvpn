@@ -4,6 +4,8 @@
 # Hajime Taira <htaira@redhat.com>, 2011.
 # NISHIBORI Kiyotaka <ml.nishibori.kiyotaka@gmail.com>, 2011.
 # OKANO Takayoshi <kano@na.rim.or.jp>, 2011.
+# Jiro Matsuzawa <jmatsuzawa@src.gnome.org>, 2012.
+# sicklylife <translation@sicklylife.jp>, 2020.
 #
 msgid ""
 msgstr ""
@@ -11,8 +13,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "fortisslvpn/issues\n"
 "POT-Creation-Date: 2020-05-04 15:35+0000\n"
-"PO-Revision-Date: 2012-01-01 19:56+0900\n"
-"Last-Translator: Jiro Matsuzawa <jmatsuzawa@src.gnome.org>\n"
+"PO-Revision-Date: 2020-05-10 21:00+0900\n"
+"Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +23,7 @@ msgstr ""
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
 msgid "Fortinet SSLVPN client"
-msgstr ""
+msgstr "Fortinet SSLVPN クライアント"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:10
 msgid "Client for Fortinet SSLVPN virtual private networks"
@@ -44,26 +46,25 @@ msgstr ""
 #. * that the password should never be saved.
 #.
 #: auth-dialog/main.c:165
-#, fuzzy, c-format
+#, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
-msgstr "仮想プライベートネットワーク %s にアクセスするには認証が必要です。"
+msgstr "仮想プライベートネットワーク“%s”にアクセスするには認証が必要です。"
 
 #: auth-dialog/main.c:174 auth-dialog/main.c:198
 msgid "Authenticate VPN"
 msgstr "認証 VPN"
 
 #: auth-dialog/main.c:177
-#, fuzzy
 msgid "Password"
 msgstr "パスワード"
 
 #: auth-dialog/main.c:179
 msgid "Token"
-msgstr ""
+msgstr "トークン"
 
 #: auth-dialog/main.c:202
 msgid "_Token:"
-msgstr ""
+msgstr "トークン(_T):"
 
 #: properties/nm-fortisslvpn-editor-plugin.c:38
 msgid "Fortinet SSLVPN"
@@ -74,10 +75,9 @@ msgid "Compatible with Fortinet SSLVPN servers."
 msgstr ""
 
 #: shared/nm-fortissl-properties.c:125
-#, fuzzy, c-format
-#| msgid "invalid gateway '%s'"
+#, c-format
 msgid "invalid gateway “%s”"
-msgstr "無効なゲートウェイ %s"
+msgstr "無効なゲートウェイ“%s”"
 
 #: shared/nm-fortissl-properties.c:133
 #, c-format
@@ -85,43 +85,38 @@ msgid "invalid certificate authority “%s”"
 msgstr ""
 
 #: shared/nm-fortissl-properties.c:147
-#, fuzzy, c-format
-#| msgid "invalid integer property '%s'"
+#, c-format
 msgid "invalid integer property “%s”"
-msgstr "数値型パラメーター %s が無効な数値です。"
+msgstr "無効な数値型パラメーターの数値“%s”"
 
 #: shared/nm-fortissl-properties.c:157
-#, fuzzy, c-format
-#| msgid "invalid boolean property '%s' (not yes or no)"
+#, c-format
 msgid "invalid boolean property “%s” (not yes or no)"
 msgstr ""
-"ブーリアン型パラメーター %s が無効な値です。(値はyes、noではありません)"
+"無効なブーリアン型パラメーターの値“%s” (yes、no ではありません)"
 
 #: shared/nm-fortissl-properties.c:164
-#, fuzzy, c-format
-#| msgid "unhandled property '%s' type %s"
+#, c-format
 msgid "unhandled property “%s” type %s"
-msgstr "対処できない %s 型パラメーターの %s"
+msgstr "対処できない“%s”型パラメーターの %s"
 
 #: shared/nm-fortissl-properties.c:175
-#, fuzzy, c-format
-#| msgid "property '%s' invalid or not supported"
+#, c-format
 msgid "property “%s” invalid or not supported"
-msgstr "パラメーター %s は無効かサポートされていません。"
+msgstr "パラメーター“%s”は無効かサポートされていません"
 
 #: shared/nm-fortissl-properties.c:192
 msgid "No VPN configuration options."
 msgstr "VPN 構成オプションがありません。"
 
 #: shared/nm-fortissl-properties.c:212
-#, fuzzy, c-format
-#| msgid "Missing required option '%s'."
+#, c-format
 msgid "Missing required option “%s”."
-msgstr "必須オプション %s が不足しています。"
+msgstr "必須オプション“%s”が不足しています。"
 
 #: shared/nm-fortissl-properties.c:232
 msgid "No VPN secrets!"
-msgstr "VPN シークレットがありません。"
+msgstr "VPN シークレットがありません!"
 
 #: shared/nm-utils/nm-shared-utils.c:264
 #, c-format
@@ -178,11 +173,11 @@ msgstr ""
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:144
 msgid "unknown error creating editor instance"
-msgstr ""
+msgstr "エディターインスタンス作成中の不明なエラー"
 
 #: src/nm-fortisslvpn-service.c:220
 msgid "Could not find the openfortivpn binary."
-msgstr ""
+msgstr "openfortivpn のバイナリが見つかりませんでした。"
 
 #: src/nm-fortisslvpn-service.c:396
 msgid "Missing VPN username."
@@ -197,17 +192,16 @@ msgid "Got new secrets, but nobody asked for them."
 msgstr ""
 
 #: src/nm-fortisslvpn-service.c:714
-#, fuzzy
 msgid "Don’t quit when VPN connection terminates"
-msgstr "VPN 接続が切断された時に終了しないでください。"
+msgstr "VPN 接続が切断されても終了しない"
 
 #: src/nm-fortisslvpn-service.c:715
 msgid "Enable verbose debug logging (may expose passwords)"
-msgstr "詳細なデバッグ情報の保存を有効にする。(パスワードも含まれます。)"
+msgstr "詳細なデバッグ情報の保存を有効にする (パスワードも含まれます)"
 
 #: src/nm-fortisslvpn-service.c:716
 msgid "D-Bus name to use for this instance"
-msgstr ""
+msgstr "このインスタンスの D-Bus 名"
 
 #: src/nm-fortisslvpn-service.c:737
 msgid ""
@@ -217,17 +211,16 @@ msgstr ""
 
 #: properties/nm-fortisslvpn-dialog.ui:8
 msgid "SSLVPN Advanced Options"
-msgstr ""
+msgstr "SSLVPN の詳細オプション"
 
 #: properties/nm-fortisslvpn-dialog.ui:73
 #: properties/nm-fortisslvpn-dialog.ui:375
-#, fuzzy
 msgid "Authentication"
-msgstr "<b>認証</b>"
+msgstr "認証"
 
 #: properties/nm-fortisslvpn-dialog.ui:89
 msgid "_Realm"
-msgstr ""
+msgstr "レルム(_R)"
 
 #: properties/nm-fortisslvpn-dialog.ui:103
 #: properties/nm-fortisslvpn-dialog.ui:361
@@ -237,13 +230,12 @@ msgid ""
 msgstr ""
 
 #: properties/nm-fortisslvpn-dialog.ui:117
-#, fuzzy
 msgid "Security"
-msgstr "<b>一般</b>"
+msgstr "セキュリティ"
 
 #: properties/nm-fortisslvpn-dialog.ui:133
 msgid "Trusted _certificate"
-msgstr ""
+msgstr "信頼できる証明書(_C)"
 
 #: properties/nm-fortisslvpn-dialog.ui:147
 msgid ""
@@ -253,24 +245,23 @@ msgstr ""
 
 #: properties/nm-fortisslvpn-dialog.ui:162
 msgid "_One time password"
-msgstr ""
+msgstr "ワンタイムパスワード(_O)"
 
 #: properties/nm-fortisslvpn-dialog.ui:237
-#, fuzzy
 msgid "User _Key"
-msgstr "ユーザー名"
+msgstr "ユーザーキー(_K)"
 
 #: properties/nm-fortisslvpn-dialog.ui:251
 msgid "_User Certificate"
-msgstr ""
+msgstr "ユーザー証明書(_U)"
 
 #: properties/nm-fortisslvpn-dialog.ui:265
 msgid "_CA Certificate"
-msgstr ""
+msgstr "CA 証明書(_C)"
 
 #: properties/nm-fortisslvpn-dialog.ui:277
 msgid "Show password"
-msgstr "パスワードを表示します。"
+msgstr "パスワードを表示する"
 
 #: properties/nm-fortisslvpn-dialog.ui:293
 msgid "Password passed to SSLVPN when prompted for it."
@@ -284,27 +275,24 @@ msgid ""
 msgstr ""
 
 #: properties/nm-fortisslvpn-dialog.ui:319
-#, fuzzy
 msgid "_Password"
-msgstr "パスワード"
+msgstr "パスワード(_P)"
 
 #: properties/nm-fortisslvpn-dialog.ui:333
-#, fuzzy
 msgid "User _name"
-msgstr "ユーザー名"
+msgstr "ユーザー名(_N)"
 
 #: properties/nm-fortisslvpn-dialog.ui:347
 msgid "_Gateway"
 msgstr "ゲートウェイ(_G)"
 
 #: properties/nm-fortisslvpn-dialog.ui:391
-#, fuzzy
 msgid "General"
-msgstr "<b>一般</b>"
+msgstr "全般"
 
 #: properties/nm-fortisslvpn-dialog.ui:434
 msgid "A_dvanced…"
-msgstr ""
+msgstr "詳細(_D)…"
 
 #: properties/nm-fortisslvpn-dialog.ui:463
 msgid "Default"
@@ -312,7 +300,7 @@ msgstr "デフォルト"
 
 #~ msgid "Could not find secrets (connection invalid, no vpn setting)."
 #~ msgstr ""
-#~ "VPN シークレットが見つかりません。(接続が無効か、VPN 設定されていません。)"
+#~ "VPN シークレットが見つかりませんでした (接続が無効か、VPN 設定されていません)。"
 
 #~ msgid "Invalid VPN username."
 #~ msgstr "無効な VPN ユーザー名です。"
