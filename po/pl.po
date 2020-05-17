@@ -1,17 +1,17 @@
 # Polish translation for NetworkManager-fortisslvpn.
-# Copyright © 2008-2019 the NetworkManager-fortisslvpn authors.
+# Copyright © 2008-2020 the NetworkManager-fortisslvpn authors.
 # This file is distributed under the same license as the NetworkManager-fortisslvpn package.
 # Tomasz Dominikowski <dominikowski@gmail.com>, 2008-2009.
-# Piotr Drąg <piotrdrag@gmail.com>, 2010-2019.
-# Aviary.pl <community-poland@mozilla.org>, 2008-2019.
+# Piotr Drąg <piotrdrag@gmail.com>, 2010-2020.
+# Aviary.pl <community-poland@mozilla.org>, 2008-2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "fortisslvpn/issues\n"
-"POT-Creation-Date: 2019-07-16 10:36+0000\n"
-"PO-Revision-Date: 2019-07-21 13:33+0200\n"
+"POT-Creation-Date: 2020-05-14 15:19+0000\n"
+"PO-Revision-Date: 2020-05-17 11:47+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -58,12 +58,12 @@ msgid "Authenticate VPN"
 msgstr "Uwierzytelnianie VPN"
 
 #: auth-dialog/main.c:177
-msgid "Password:"
-msgstr "Hasło:"
+msgid "Password"
+msgstr "Hasło"
 
 #: auth-dialog/main.c:179
-msgid "Token:"
-msgstr "Token:"
+msgid "Token"
+msgstr "Token"
 
 #: auth-dialog/main.c:202
 msgid "_Token:"
