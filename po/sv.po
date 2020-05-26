@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "fortisslvpn/issues\n"
-"POT-Creation-Date: 2020-04-02 21:09+0000\n"
-"PO-Revision-Date: 2020-04-11 20:17+0200\n"
+"POT-Creation-Date: 2020-05-17 09:48+0000\n"
+"PO-Revision-Date: 2020-05-27 01:31+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
 msgid "Fortinet SSLVPN client"
@@ -59,12 +59,12 @@ msgid "Authenticate VPN"
 msgstr "Autentisera VPN"
 
 #: auth-dialog/main.c:177
-msgid "Password:"
-msgstr "Lösenord:"
+msgid "Password"
+msgstr "Lösenord"
 
 #: auth-dialog/main.c:179
-msgid "Token:"
-msgstr "Token:"
+msgid "Token"
+msgstr "Token"
 
 #: auth-dialog/main.c:202
 msgid "_Token:"
