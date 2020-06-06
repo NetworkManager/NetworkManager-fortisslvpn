@@ -1,14 +1,14 @@
 # Indonesian translation of NetworkManager-fortisslvpn.
 # This file is distributed under the same license as the NetworkManager-fortisslvpn package.
-# Andika Triwidada <andika@gmail.com>, 2009, 2010, 2011, 2012.
+# Andika Triwidada <andika@gmail.com>, 2009-2012, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: network-manager-fortisslvpn master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "fortisslvpn/issues\n"
-"POT-Creation-Date: 2019-10-27 19:14+0000\n"
-"PO-Revision-Date: 2019-11-12 03:19+0700\n"
+"POT-Creation-Date: 2020-05-26 23:32+0000\n"
+"PO-Revision-Date: 2020-06-06 16:21+0700\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian Translator <gnome@i15n.org>\n"
 "Language: id\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.3.1\n"
 "Plural-Forms: nplurals=2; plural=n!=1;\n"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
@@ -55,12 +55,12 @@ msgid "Authenticate VPN"
 msgstr "Otentikasikan VPN"
 
 #: auth-dialog/main.c:177
-msgid "Password:"
-msgstr "Kata Sandi:"
+msgid "Password"
+msgstr "Kata Sandi"
 
 #: auth-dialog/main.c:179
-msgid "Token:"
-msgstr "Token:"
+msgid "Token"
+msgstr "Token"
 
 #: auth-dialog/main.c:202
 msgid "_Token:"
