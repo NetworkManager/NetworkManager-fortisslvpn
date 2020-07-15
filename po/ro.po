@@ -4,12 +4,12 @@
 # Lucian Adrian Grijincu <lucian.grijincu@gmail.com>, 2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
-"fortisslvpn/\n"
-"POT-Creation-Date: 2019-03-21 17:04+0100\n"
-"PO-Revision-Date: 2010-11-27 14:19+0300\n"
-"Last-Translator: Lucian Adrian Grijincu <lucian.grijincu@gmail.com>\n"
+"fortisslvpn/issues\n"
+"POT-Creation-Date: 2020-05-26 23:32+0000\n"
+"PO-Revision-Date: 2020-07-15 18:18+0300\n"
+"Last-Translator: Florentina Mușat <florentina.musat.28@gmail.com>\n"
 "Language-Team: Romanian Gnome Team <gnomero-list@lists.sourceforge.net>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
@@ -17,88 +17,138 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);;\n"
-"X-Generator: Virtaal 0.6.1\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
 msgid "Fortinet SSLVPN client"
-msgstr ""
+msgstr "Client SSLVPN Fortinet"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:10
 msgid "Client for Fortinet SSLVPN virtual private networks"
-msgstr ""
+msgstr "Client pentru rețelele private virtuale SSLVPN Fortinet"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:24
 msgid ""
 "Support for configuring Fortinet SSLVPN virtual private network connections."
 msgstr ""
+"Suport pentru configurarea conexiunilor de rețea privată virtuală SSLVPN "
+"Fortinet."
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:32
 msgid "The advanced options dialog"
-msgstr ""
+msgstr "Dialogul de opțiuni avansate"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:41
 msgid "The NetworkManager Developers"
-msgstr ""
+msgstr "Dezvoltatori ManagerRețea"
 
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
 #.
-#: auth-dialog/main.c:150
-#, fuzzy, c-format
+#: auth-dialog/main.c:165
+#, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
 msgstr ""
-"Trebuie să vă autentificați pentru a accesa Rețeaua privată virtuală „%s”."
+"Trebuie să vă autentificați pentru a accesa rețeaua privată virtuală „%s”."
 
-#: auth-dialog/main.c:159 auth-dialog/main.c:183
+#: auth-dialog/main.c:174 auth-dialog/main.c:198
 msgid "Authenticate VPN"
 msgstr "Autentifică VPN"
 
-#: auth-dialog/main.c:162
-#, fuzzy
-msgid "Password:"
+#: auth-dialog/main.c:177
+msgid "Password"
 msgstr "Parolă"
 
-#: auth-dialog/main.c:164
-msgid "Token:"
-msgstr ""
+#: auth-dialog/main.c:179
+msgid "Token"
+msgstr "Jeton"
 
-#: auth-dialog/main.c:187
+#: auth-dialog/main.c:202
 msgid "_Token:"
-msgstr ""
+msgstr "_Jeton:"
 
 #: properties/nm-fortisslvpn-editor-plugin.c:38
 msgid "Fortinet SSLVPN"
-msgstr ""
+msgstr "SSLVPN Fortinet"
 
 #: properties/nm-fortisslvpn-editor-plugin.c:39
 msgid "Compatible with Fortinet SSLVPN servers."
-msgstr ""
+msgstr "Compatibil cu serverele SSLVPN Fortinet."
+
+#: shared/nm-fortissl-properties.c:125
+#, c-format
+msgid "invalid gateway “%s”"
+msgstr "gateway nevalid „%s”"
+
+#: shared/nm-fortissl-properties.c:133
+#, c-format
+msgid "invalid certificate authority “%s”"
+msgstr "autoritate de certificat nevalid „%s”"
+
+#: shared/nm-fortissl-properties.c:147
+#, c-format
+msgid "invalid integer property “%s”"
+msgstr "proprietate de întreg nevalid „%s”"
+
+#: shared/nm-fortissl-properties.c:157
+#, c-format
+msgid "invalid boolean property “%s” (not yes or no)"
+msgstr "proprietatea logică nevalidă „%s” (nu da sau nu)"
+
+#: shared/nm-fortissl-properties.c:164
+#, c-format
+msgid "unhandled property “%s” type %s"
+msgstr "proprietate nemanipulabilă „%s” tipul %s"
+
+#: shared/nm-fortissl-properties.c:175
+#, c-format
+msgid "property “%s” invalid or not supported"
+msgstr "proprietatea „%s” nu este validă sau nu este suportată"
+
+#: shared/nm-fortissl-properties.c:192
+msgid "No VPN configuration options."
+msgstr "Nu există opțiuni de configurare VPN."
+
+#: shared/nm-fortissl-properties.c:212
+#, c-format
+msgid "Missing required option “%s”."
+msgstr "Lipsește opțiunea necesară „%s”."
+
+#: shared/nm-fortissl-properties.c:232
+msgid "No VPN secrets!"
+msgstr "Nu există secrete VPN!"
 
 #: shared/nm-utils/nm-shared-utils.c:264
 #, c-format
 msgid "object class '%s' has no property named '%s'"
-msgstr ""
+msgstr "clasa obiectului „%s” nu are nicio proprietate numită „%s”"
 
 #: shared/nm-utils/nm-shared-utils.c:271
 #, c-format
 msgid "property '%s' of object class '%s' is not writable"
-msgstr ""
+msgstr "proprietatea „%s” a clasei de obiect „%s” nu este inscriptibilă"
 
 #: shared/nm-utils/nm-shared-utils.c:278
 #, c-format
 msgid ""
 "construct property \"%s\" for object '%s' can't be set after construction"
 msgstr ""
+"proprietatea de construct „%s” pentru obiectul „%s” nu poate fi stabilită "
+"după construcție"
 
 #: shared/nm-utils/nm-shared-utils.c:286
 #, c-format
 msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
 msgstr ""
+"„%s::%s” nu este un nume de proprietate valid; „%s” nu este un subtip de "
+"GObject"
 
 #: shared/nm-utils/nm-shared-utils.c:295
 #, c-format
 msgid "unable to set property '%s' of type '%s' from value of type '%s'"
 msgstr ""
+"nu se poate stabili proprietatea „%s” de tipul „%s” de la valoarea de tipul "
+"„%s”"
 
 #: shared/nm-utils/nm-shared-utils.c:306
 #, c-format
@@ -106,74 +156,81 @@ msgid ""
 "value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
 "type '%s'"
 msgstr ""
+"valoarea „%s” de tipul „%s” nu este validă sau este în afara intervalului "
+"pentru proprietatea „%s” de tipul „%s”"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:69
 #, c-format
 msgid "unable to get editor plugin name: %s"
-msgstr ""
+msgstr "nu se poate obține numele modulului editor: %s"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:103
 #, c-format
 msgid "missing plugin file \"%s\""
-msgstr ""
+msgstr "lipsește fișierul modul „%s”"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:109
 #, c-format
 msgid "cannot load editor plugin: %s"
-msgstr ""
+msgstr "nu se poate încărca modulul editorului: %s"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:118
 #, c-format
 msgid "cannot load factory %s from plugin: %s"
-msgstr ""
+msgstr "nu se poate încărca fabrica %s de la modulul: %s"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:144
 msgid "unknown error creating editor instance"
-msgstr ""
+msgstr "eroare necunoscută la crearea instanței editorului"
 
-#: src/nm-fortisslvpn-service.c:222
+#: src/nm-fortisslvpn-service.c:220
 msgid "Could not find the openfortivpn binary."
-msgstr ""
+msgstr "Nu s-a putut găsi binarul openfortivpn."
 
-#: src/nm-fortisslvpn-service.c:350
+#: src/nm-fortisslvpn-service.c:396
 msgid "Missing VPN username."
-msgstr ""
+msgstr "Lipsește numele de utilizator VPN."
 
-#: src/nm-fortisslvpn-service.c:360
+#: src/nm-fortisslvpn-service.c:406
 msgid "Missing or invalid VPN password."
-msgstr ""
+msgstr "Parolă VPN care lipsește sau care nu este validă."
 
-#: src/nm-fortisslvpn-service.c:609
+#: src/nm-fortisslvpn-service.c:530
+msgid "Got new secrets, but nobody asked for them."
+msgstr "Avem secrete noi, dar nimeni nu le-a cerut."
+
+#: src/nm-fortisslvpn-service.c:714
 msgid "Don’t quit when VPN connection terminates"
-msgstr ""
+msgstr "Nu ieși când conexiunea VPN se termină"
 
-#: src/nm-fortisslvpn-service.c:610
+#: src/nm-fortisslvpn-service.c:715
 msgid "Enable verbose debug logging (may expose passwords)"
-msgstr ""
+msgstr "Activează înregistrarea de depanare detaliată (poate expune parole)"
 
-#: src/nm-fortisslvpn-service.c:611
+#: src/nm-fortisslvpn-service.c:716
 msgid "D-Bus name to use for this instance"
-msgstr ""
+msgstr "Numele D-Bus de utilizat pentru această instanță"
 
-#: src/nm-fortisslvpn-service.c:632
+#: src/nm-fortisslvpn-service.c:737
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
 msgstr ""
+"nm-fortisslvpn-service furnizează capabilitate SSLVPN integrată "
+"(compatibilă cu Fortinet) la ManagerRețea."
 
 #: properties/nm-fortisslvpn-dialog.ui:8
 msgid "SSLVPN Advanced Options"
-msgstr ""
+msgstr "Opțiuni avansate SSLVPN"
 
 #: properties/nm-fortisslvpn-dialog.ui:73
 #: properties/nm-fortisslvpn-dialog.ui:375
-#, fuzzy
 msgid "Authentication"
-msgstr "<b>Autentificare</b>"
+msgstr "Autentificare"
 
 #: properties/nm-fortisslvpn-dialog.ui:89
 msgid "_Realm"
-msgstr ""
+msgstr "_Domeniu"
 
 #: properties/nm-fortisslvpn-dialog.ui:103
 #: properties/nm-fortisslvpn-dialog.ui:361
@@ -181,38 +238,40 @@ msgid ""
 "SSLVPN server IP or name.\n"
 "config: the first parameter of fortisslvpn"
 msgstr ""
+"IP sau nume de server SSLVPN.\n"
+"config: primul parametru a lui fortisslvpn"
 
 #: properties/nm-fortisslvpn-dialog.ui:117
-#, fuzzy
 msgid "Security"
-msgstr "<b>Generale</b>"
+msgstr "Securitate"
 
 #: properties/nm-fortisslvpn-dialog.ui:133
 msgid "Trusted _certificate"
-msgstr ""
+msgstr "_Certificat de încredere"
 
 #: properties/nm-fortisslvpn-dialog.ui:147
 msgid ""
 "A SHA256 sum of the X509 certificate that will be accepted even if the "
 "certificate is not trusted by a certificate authority."
 msgstr ""
+"O sumă SHA256 a certificatului X509 care va fi acceptată chiar dacă "
+"certificatul nu este de încredere de către o autoritate de certificat."
 
 #: properties/nm-fortisslvpn-dialog.ui:162
 msgid "_One time password"
-msgstr ""
+msgstr "Parolă de uz _unic"
 
 #: properties/nm-fortisslvpn-dialog.ui:237
-#, fuzzy
 msgid "User _Key"
-msgstr "Nume utilizator"
+msgstr "_Cheie utilizator"
 
 #: properties/nm-fortisslvpn-dialog.ui:251
 msgid "_User Certificate"
-msgstr ""
+msgstr "Certificat _utilizator"
 
 #: properties/nm-fortisslvpn-dialog.ui:265
 msgid "_CA Certificate"
-msgstr ""
+msgstr "Certificat _CA"
 
 #: properties/nm-fortisslvpn-dialog.ui:277
 msgid "Show password"
@@ -220,7 +279,7 @@ msgstr "Arată parola"
 
 #: properties/nm-fortisslvpn-dialog.ui:293
 msgid "Password passed to SSLVPN when prompted for it."
-msgstr ""
+msgstr "Parola trecută la SSLVPN când vi se solicită."
 
 #: properties/nm-fortisslvpn-dialog.ui:306
 msgid ""
@@ -228,29 +287,29 @@ msgid ""
 "<name>.\n"
 "config: user <name>"
 msgstr ""
+"Stabiliți numele utilizat pentru autentificarea sistemului loca la "
+"partenerul de conexiune la <name>.\n"
+"config: user <name>"
 
 #: properties/nm-fortisslvpn-dialog.ui:319
-#, fuzzy
 msgid "_Password"
-msgstr "Parolă"
+msgstr "_Parolă"
 
 #: properties/nm-fortisslvpn-dialog.ui:333
-#, fuzzy
 msgid "User _name"
-msgstr "Nume utilizator"
+msgstr "_Nume de utilizator"
 
 #: properties/nm-fortisslvpn-dialog.ui:347
 msgid "_Gateway"
 msgstr "_Gateway"
 
 #: properties/nm-fortisslvpn-dialog.ui:391
-#, fuzzy
 msgid "General"
-msgstr "<b>Generale</b>"
+msgstr "Generale"
 
 #: properties/nm-fortisslvpn-dialog.ui:434
 msgid "A_dvanced…"
-msgstr ""
+msgstr "A_vansat…"
 
 #: properties/nm-fortisslvpn-dialog.ui:463
 msgid "Default"
