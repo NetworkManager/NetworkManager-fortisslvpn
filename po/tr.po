@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "fortisslvpn/issues\n"
-"POT-Creation-Date: 2019-09-09 07:18+0000\n"
-"PO-Revision-Date: 2020-04-09 20:26+0300\n"
+"POT-Creation-Date: 2020-05-26 23:32+0000\n"
+"PO-Revision-Date: 2020-07-16 14:15+0300\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.3.1\n"
 "X-POOTLE-MTIME: 1415383953.000000\n"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
@@ -56,12 +56,12 @@ msgid "Authenticate VPN"
 msgstr "VPN Kimlik Doğrulaması"
 
 #: auth-dialog/main.c:177
-msgid "Password:"
-msgstr "Parola:"
+msgid "Password"
+msgstr "Parola"
 
 #: auth-dialog/main.c:179
-msgid "Token:"
-msgstr "Jeton:"
+msgid "Token"
+msgstr "Jeton"
 
 #: auth-dialog/main.c:202
 msgid "_Token:"
