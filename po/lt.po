@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "fortisslvpn/issues\n"
-"POT-Creation-Date: 2020-04-02 21:09+0000\n"
-"PO-Revision-Date: 2020-04-13 22:56+0300\n"
+"POT-Creation-Date: 2020-05-26 23:32+0000\n"
+"PO-Revision-Date: 2020-09-06 22:54+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2)\n"
-"X-Generator: Gtranslator 3.34.0\n"
+"X-Generator: Gtranslator 3.36.0\n"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
 msgid "Fortinet SSLVPN client"
@@ -58,12 +58,14 @@ msgid "Authenticate VPN"
 msgstr "Nustatyti tapatybę VPN"
 
 #: auth-dialog/main.c:177
-msgid "Password:"
-msgstr "Slaptažodis:"
+#| msgid "Password:"
+msgid "Password"
+msgstr "Slaptažodis"
 
 #: auth-dialog/main.c:179
-msgid "Token:"
-msgstr "Prieigos kodas:"
+#| msgid "Token:"
+msgid "Token"
+msgstr "Prieigos kodas"
 
 #: auth-dialog/main.c:202
 msgid "_Token:"
