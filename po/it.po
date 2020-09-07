@@ -1,17 +1,17 @@
 # Italian translation of  NetworkManager-PPTP.
-# Copyright (C) 2006, 2007, 2008, 2009, 2010, 2012, 2017, 2019 Free Software Foundation, Inc.
+# Copyright (C) 2006, 2007, 2008, 2009, 2010, 2012, 2017, 2019, 2020 Free Software Foundation, Inc.
 # This file is distributed under the same license as the NetworkManager-PPTP package.
 # Francesco Marletta <francesco.marletta@tiscali.it>, 2006, 2007, 2008, 2009, 2010.
 # Luca Ferretti <elle.uca@libero.it>, 2010.
-# Milo Casagrande <milo@milo.name>, 2012, 2017, 2019.
+# Milo Casagrande <milo@milo.name>, 2012, 2017, 2019, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "fortisslvpn/issues\n"
-"POT-Creation-Date: 2019-07-16 10:36+0000\n"
-"PO-Revision-Date: 2019-09-04 18:09+0200\n"
+"POT-Creation-Date: 2020-05-26 23:32+0000\n"
+"PO-Revision-Date: 2020-09-07 09:45+0200\n"
 "Last-Translator: Milo Casagrande <milo@milo.name>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "Language: it\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2012-04-14 14:49+0000\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.4.1\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
@@ -59,12 +59,12 @@ msgid "Authenticate VPN"
 msgstr "Autenticazione VPN"
 
 #: auth-dialog/main.c:177
-msgid "Password:"
-msgstr "Password:"
+msgid "Password"
+msgstr "Password"
 
 #: auth-dialog/main.c:179
-msgid "Token:"
-msgstr "Token:"
+msgid "Token"
+msgstr "Token"
 
 #: auth-dialog/main.c:202
 msgid "_Token:"
