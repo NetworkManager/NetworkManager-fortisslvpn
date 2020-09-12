@@ -118,7 +118,7 @@ msgstr "Falta l'opció requerida «%s»."
 
 #: shared/nm-fortissl-properties.c:232
 msgid "No VPN secrets!"
-msgstr "No hi ha secrets VPN!"
+msgstr "La VPN no té secrets!"
 
 #: shared/nm-utils/nm-shared-utils.c:264
 #, c-format
@@ -189,11 +189,11 @@ msgstr "No s'ha pogut trobar el binari de l'openfortivpn."
 
 #: src/nm-fortisslvpn-service.c:396
 msgid "Missing VPN username."
-msgstr "Falta el nom d'usuari del VPN."
+msgstr "Falta el nom d'usuari de la VPN."
 
 #: src/nm-fortisslvpn-service.c:406
 msgid "Missing or invalid VPN password."
-msgstr "Falta la contrasenya del VPN o no és vàlida."
+msgstr "Falta la contrasenya de la VPN o no és vàlida."
 
 #: src/nm-fortisslvpn-service.c:530
 msgid "Got new secrets, but nobody asked for them."
@@ -201,7 +201,7 @@ msgstr "Tinc nous secrets però ningú els ha demanat."
 
 #: src/nm-fortisslvpn-service.c:714
 msgid "Don’t quit when VPN connection terminates"
-msgstr "No sortiu quan la connexió del VPN es tanca"
+msgstr "No sortiu quan la connexió de la VPN es tanca"
 
 #: src/nm-fortisslvpn-service.c:715
 msgid "Enable verbose debug logging (may expose passwords)"
@@ -256,7 +256,7 @@ msgid ""
 "A SHA256 sum of the X509 certificate that will be accepted even if the "
 "certificate is not trusted by a certificate authority."
 msgstr ""
-"Una suma SHA256 del certificat X509 que s'acceptarà tot i que el certificat "
+"Una suma SHA256 del certificat X509 que s'acceptarà encara que el certificat "
 "no sigui de confiança per a una autoritat de certificats."
 
 #: properties/nm-fortisslvpn-dialog.ui:162
