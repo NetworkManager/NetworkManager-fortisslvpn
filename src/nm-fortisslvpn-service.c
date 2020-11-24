@@ -84,8 +84,6 @@ typedef struct {
 
 #define NM_FORTISSLVPN_PLUGIN_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), NM_TYPE_FORTISSLVPN_PLUGIN, NMFortisslvpnPluginPrivate))
 
-#define NM_FORTISSLVPN_WAIT_PPPD 10000 /* 10 seconds */
-
 #define _NMLOG(level, ...) \
     G_STMT_START { \
          if (gl.log_level >= (level)) { \
