@@ -197,7 +197,7 @@ msgstr "Falta la contrasenya de la VPN o no és vàlida."
 
 #: src/nm-fortisslvpn-service.c:530
 msgid "Got new secrets, but nobody asked for them."
-msgstr "Tinc nous secrets però ningú els ha demanat."
+msgstr "Tinc nous secrets, però ningú els ha demanat."
 
 #: src/nm-fortisslvpn-service.c:714
 msgid "Don’t quit when VPN connection terminates"
@@ -288,7 +288,7 @@ msgid ""
 "Set the name used for authenticating the local system to the peer to <name>.\n"
 "config: user <name>"
 msgstr ""
-"Estableix el nom per autentificar el sistema local al parell a <nom>.\n"
+"Estableix el nom per a autentificar el sistema local al parell a <nom>.\n"
 "configuració: usuari <nom>"
 
 #: properties/nm-fortisslvpn-dialog.ui:319
