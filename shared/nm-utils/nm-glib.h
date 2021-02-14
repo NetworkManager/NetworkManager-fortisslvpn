@@ -86,6 +86,14 @@ __g_type_ensure (GType type)
  * the APIs that we emulate above.
  */
 
+#undef g_clear_pointer
+#define g_clear_pointer(pp, destroy) \
+	G_STMT_START { \
+		G_GNUC_BEGIN_IGNORE_DEPRECATIONS \
+		g_clear_pointer((void **)pp, destroy); \
+		G_GNUC_END_IGNORE_DEPRECATIONS \
+	} G_STMT_END
+
 #define g_test_expect_message(domain, level, format...) \
 	G_STMT_START { \
 		G_GNUC_BEGIN_IGNORE_DEPRECATIONS \
