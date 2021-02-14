@@ -182,9 +182,8 @@ nm_find_openfortivpn (void)
 {
 	static const char *openfortivpn_binary_paths[] =
 		{
-			"/bin/openfortivpn",
-			"/usr/bin/openfortivpn",
 			"/usr/local/bin/openfortivpn",
+			"/usr/bin/openfortivpn",
 			NULL
 		};
 
