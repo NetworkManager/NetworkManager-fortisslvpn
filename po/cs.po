@@ -4,15 +4,15 @@
 #
 # Jakub Friedl <jfriedl@suse.cz>, 2006.
 # Jiří Eischmann <jiri@eischmann.cz>, 2008.
-# Zdeněk Hataš <zdenek.hatas@gmail.com>, 2009 - 2019.
+# Zdeněk Hataš <zdenek.hatas@gmail.com>, 2009 - 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "fortisslvpn/issues\n"
-"POT-Creation-Date: 2019-03-23 18:39+0000\n"
-"PO-Revision-Date: 2019-05-08 13:15+0200\n"
+"POT-Creation-Date: 2020-05-26 23:32+0000\n"
+"PO-Revision-Date: 2021-03-25 16:12+0100\n"
 "Last-Translator: Zdeněk Hataš <zdenek.hatas@gmail.com>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.3\n"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
 msgid "Fortinet SSLVPN client"
@@ -46,24 +46,24 @@ msgstr "Vývojáři aplikace NetworkManager"
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
 #.
-#: auth-dialog/main.c:150
+#: auth-dialog/main.c:165
 #, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
 msgstr "Pro přístup k virtuální privátní síti „%s“ musíte provést autentizaci."
 
-#: auth-dialog/main.c:159 auth-dialog/main.c:183
+#: auth-dialog/main.c:174 auth-dialog/main.c:198
 msgid "Authenticate VPN"
 msgstr "Autentizovat VPN"
 
-#: auth-dialog/main.c:162
-msgid "Password:"
-msgstr "Heslo:"
+#: auth-dialog/main.c:177
+msgid "Password"
+msgstr "Heslo"
 
-#: auth-dialog/main.c:164
-msgid "Token:"
-msgstr "Token:"
+#: auth-dialog/main.c:179
+msgid "Token"
+msgstr "Token"
 
-#: auth-dialog/main.c:187
+#: auth-dialog/main.c:202
 msgid "_Token:"
 msgstr "_Token:"
 
@@ -176,31 +176,35 @@ msgstr "nelze načíst generátor %s ze zásuvného modulu: %s"
 msgid "unknown error creating editor instance"
 msgstr "neznámá chyba vytváření instance editoru"
 
-#: src/nm-fortisslvpn-service.c:222
+#: src/nm-fortisslvpn-service.c:220
 msgid "Could not find the openfortivpn binary."
 msgstr "Nelze nalézt program openfortivpn."
 
-#: src/nm-fortisslvpn-service.c:350
+#: src/nm-fortisslvpn-service.c:396
 msgid "Missing VPN username."
 msgstr "Chybí jméno uživatele VPN."
 
-#: src/nm-fortisslvpn-service.c:360
+#: src/nm-fortisslvpn-service.c:406
 msgid "Missing or invalid VPN password."
 msgstr "Chybějící nebo neplatné heslo VPN."
 
-#: src/nm-fortisslvpn-service.c:609
+#: src/nm-fortisslvpn-service.c:530
+msgid "Got new secrets, but nobody asked for them."
+msgstr "Nová hesla byla získána,  přestože je nikdo nepožadoval."
+
+#: src/nm-fortisslvpn-service.c:714
 msgid "Don’t quit when VPN connection terminates"
 msgstr "Neukončovat během ukončování spojení VPN"
 
-#: src/nm-fortisslvpn-service.c:610
+#: src/nm-fortisslvpn-service.c:715
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr "Povolit podrobný ladicí výpis (může prozradit hesla)"
 
-#: src/nm-fortisslvpn-service.c:611
+#: src/nm-fortisslvpn-service.c:716
 msgid "D-Bus name to use for this instance"
 msgstr "Název použitý pro tuto instanci v D-Bus"
 
-#: src/nm-fortisslvpn-service.c:632
+#: src/nm-fortisslvpn-service.c:737
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
@@ -219,7 +223,7 @@ msgstr "Autentizace"
 
 #: properties/nm-fortisslvpn-dialog.ui:89
 msgid "_Realm"
-msgstr ""
+msgstr "_Realm"
 
 #: properties/nm-fortisslvpn-dialog.ui:103
 #: properties/nm-fortisslvpn-dialog.ui:361
