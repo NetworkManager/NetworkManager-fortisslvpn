@@ -515,9 +515,11 @@ dispose (GObject *object)
 	GtkWidget *widget;
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "user_password_entry"));
-	g_signal_handlers_disconnect_by_func (G_OBJECT (widget),
-	                                      (GCallback) password_storage_changed_cb,
-	                                      plugin);
+	if (widget) {
+		g_signal_handlers_disconnect_by_func (G_OBJECT (widget),
+						      (GCallback) password_storage_changed_cb,
+						      plugin);
+	}
 
 	if (priv->group)
 		g_object_unref (priv->group);
