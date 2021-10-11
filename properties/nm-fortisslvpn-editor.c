@@ -24,6 +24,8 @@
 #include "nm-fortisslvpn-editor.h"
 #include "nm-fortissl-properties.h"
 
+#include "nma-cert-chooser.h"
+
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <errno.h>
@@ -288,32 +290,33 @@ init_editor_plugin (FortisslvpnEditor *self, NMConnection *connection, GError **
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "ca_chooser"));
 	g_return_val_if_fail (widget, FALSE);
 
+	nma_cert_chooser_add_to_size_group (NMA_CERT_CHOOSER (widget), group);
 	if (s_vpn) {
 		value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_CA);
-		if (value && strlen (value))
-			gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (widget), value);
+		if (value && strlen (value)) {
+			nma_cert_chooser_set_cert (NMA_CERT_CHOOSER (widget), value,
+			                           NM_SETTING_802_1X_CK_SCHEME_PATH);
+		}
 	}
-	g_signal_connect (G_OBJECT (widget), "update-preview", G_CALLBACK (stuff_changed_cb), self);
+	g_signal_connect (G_OBJECT (widget), "changed", G_CALLBACK (stuff_changed_cb), self);
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "cert_chooser"));
 	g_return_val_if_fail (widget, FALSE);
 
+	nma_cert_chooser_add_to_size_group (NMA_CERT_CHOOSER (widget), group);
 	if (s_vpn) {
 		value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_CERT);
-		if (value && strlen (value))
-			gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (widget), value);
-	}
-	g_signal_connect (G_OBJECT (widget), "update-preview", G_CALLBACK (stuff_changed_cb), self);
-
-	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "key_chooser"));
-	g_return_val_if_fail (widget, FALSE);
-
-	if (s_vpn) {
+		if (value && strlen (value)) {
+			nma_cert_chooser_set_cert (NMA_CERT_CHOOSER (widget), value,
+			                           NM_SETTING_802_1X_CK_SCHEME_PATH);
+		}
 		value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_KEY);
-		if (value && strlen (value))
-			gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (widget), value);
+		if (value && strlen (value)) {
+			nma_cert_chooser_set_key (NMA_CERT_CHOOSER (widget), value,
+			                          NM_SETTING_802_1X_CK_SCHEME_PATH);
+		}
 	}
-	g_signal_connect (G_OBJECT (widget), "update-preview", G_CALLBACK (stuff_changed_cb), self);
+	g_signal_connect (G_OBJECT (widget), "changed", G_CALLBACK (stuff_changed_cb), self);
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "advanced_dialog"));
 	g_return_val_if_fail (widget, FALSE);
@@ -402,19 +405,19 @@ update_connection (NMVpnEditor *iface,
 
 	/* CA file */
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "ca_chooser"));
-	str = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (widget));
+	str = nma_cert_chooser_get_cert (NMA_CERT_CHOOSER (widget), NULL);
 	if (str && strlen (str))
 		nm_setting_vpn_add_data_item (s_vpn, NM_FORTISSLVPN_KEY_CA, str);
 
 	/* User certificate */
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "cert_chooser"));
-	str = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (widget));
+	str = nma_cert_chooser_get_cert (NMA_CERT_CHOOSER (widget), NULL);
 	if (str && strlen (str))
 		nm_setting_vpn_add_data_item (s_vpn, NM_FORTISSLVPN_KEY_CERT, str);
 
 	/* User key */
-	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "key_chooser"));
-	str = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (widget));
+	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "cert_chooser"));
+	str = nma_cert_chooser_get_key (NMA_CERT_CHOOSER (widget), NULL);
 	if (str && strlen (str))
 		nm_setting_vpn_add_data_item (s_vpn, NM_FORTISSLVPN_KEY_KEY, str);
 
