@@ -171,7 +171,7 @@ config: the first parameter of fortisslvpn</property>
     </child>
     <action-widgets>
       <action-widget response="-6">cancel_button</action-widget>
-      <action-widget response="-5">ok_button</action-widget>
+      <action-widget response="-5" default="true">ok_button</action-widget>
     </action-widgets>
     <child type="titlebar">
       <object class="GtkHeaderBar">
@@ -193,7 +193,6 @@ config: the first parameter of fortisslvpn</property>
             <property name="label" translatable="yes">_Cancel</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
-            <property name="receives-default">True</property>
             <property name="use-underline">True</property>
           </object>
         </child>
@@ -204,6 +203,7 @@ config: the first parameter of fortisslvpn</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
             <property name="use-underline">True</property>
+            <property name="can-default">True</property>
             <style>
               <class name="default"/>
               <class name="suggested-action"/>
