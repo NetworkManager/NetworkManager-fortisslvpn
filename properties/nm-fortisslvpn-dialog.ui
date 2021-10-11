@@ -453,6 +453,13 @@ config: the first parameter of fortisslvpn</property>
       <placeholder/>
     </child>
   </object>
+  <object class="GtkSizeGroup" id="group">
+    <widgets>
+      <widget name="label2"/>
+      <widget name="label26"/>
+      <widget name="label23"/>
+    </widgets>
+  </object>
   <object class="GtkListStore" id="model1">
     <columns>
       <!-- column-name gchararray -->

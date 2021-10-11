@@ -36,7 +36,6 @@
 typedef struct {
 	GtkBuilder *builder;
 	GtkWidget *widget;
-	GtkSizeGroup *group;
 	GtkWindowGroup *window_group;
 	gboolean window_added;
 	gboolean new_connection;
@@ -74,7 +73,6 @@ setup_password_widget (FortisslvpnEditor *self,
 
 	widget = (GtkWidget *) gtk_builder_get_object (priv->builder, entry_name);
 	g_assert (widget);
-	gtk_size_group_add_widget (priv->group, widget);
 
 	if (s_vpn) {
 		value = nm_setting_vpn_get_secret (s_vpn, secret_name);
@@ -209,16 +207,16 @@ init_editor_plugin (FortisslvpnEditor *self, NMConnection *connection, GError **
 	FortisslvpnEditorPrivate *priv = FORTISSLVPN_EDITOR_GET_PRIVATE (self);
 	NMSettingVpn *s_vpn;
 	GtkWidget *widget;
+	GtkSizeGroup *group;
 	const char *value;
 
 	s_vpn = (NMSettingVpn *) nm_connection_get_setting (connection, NM_TYPE_SETTING_VPN);
 
-	priv->group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
+	group = GTK_SIZE_GROUP (gtk_builder_get_object (priv->builder, "group"));
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "gateway_entry"));
 	g_return_val_if_fail (widget, FALSE);
 
-	gtk_size_group_add_widget (priv->group, widget);
 	if (s_vpn) {
 		value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_GATEWAY);
 		if (value && strlen (value))
@@ -229,7 +227,6 @@ init_editor_plugin (FortisslvpnEditor *self, NMConnection *connection, GError **
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "user_entry"));
 	g_return_val_if_fail (widget, FALSE);
 
-	gtk_size_group_add_widget (priv->group, widget);
 	if (s_vpn) {
 		value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_USER);
 		if (value && strlen (value))
@@ -291,7 +288,6 @@ init_editor_plugin (FortisslvpnEditor *self, NMConnection *connection, GError **
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "ca_chooser"));
 	g_return_val_if_fail (widget, FALSE);
 
-	gtk_size_group_add_widget (priv->group, widget);
 	if (s_vpn) {
 		value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_CA);
 		if (value && strlen (value))
@@ -302,7 +298,6 @@ init_editor_plugin (FortisslvpnEditor *self, NMConnection *connection, GError **
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "cert_chooser"));
 	g_return_val_if_fail (widget, FALSE);
 
-	gtk_size_group_add_widget (priv->group, widget);
 	if (s_vpn) {
 		value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_CERT);
 		if (value && strlen (value))
@@ -313,7 +308,6 @@ init_editor_plugin (FortisslvpnEditor *self, NMConnection *connection, GError **
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "key_chooser"));
 	g_return_val_if_fail (widget, FALSE);
 
-	gtk_size_group_add_widget (priv->group, widget);
 	if (s_vpn) {
 		value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_KEY);
 		if (value && strlen (value))
@@ -520,9 +514,6 @@ dispose (GObject *object)
 						      (GCallback) password_storage_changed_cb,
 						      plugin);
 	}
-
-	if (priv->group)
-		g_object_unref (priv->group);
 
 	if (priv->window_group)
 		g_object_unref (priv->window_group);
