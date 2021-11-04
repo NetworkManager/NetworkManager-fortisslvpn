@@ -6,170 +6,218 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
-"fortisslvpn/\n"
-"POT-Creation-Date: 2019-03-21 17:04+0100\n"
-"PO-Revision-Date: 2011-01-23 12:39+0200\n"
+"fortisslvpn/issues\n"
+"POT-Creation-Date: 2020-05-26 23:32+0000\n"
+"PO-Revision-Date: 2021-11-04 23:48+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: he\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
 msgid "Fortinet SSLVPN client"
-msgstr ""
+msgstr "לקוח SSLVPN של Fortinet"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:10
 msgid "Client for Fortinet SSLVPN virtual private networks"
-msgstr ""
+msgstr "לקוח לרשתות פרטיות מסוג SSLVPN של Fortinet"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:24
 msgid ""
 "Support for configuring Fortinet SSLVPN virtual private network connections."
-msgstr ""
+msgstr "תמיכה בהגדרות חיבורי רשתות וירטואליות פרטיות מסוג SSLVPN של Fortinet."
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:32
 msgid "The advanced options dialog"
-msgstr ""
+msgstr "חלונית האפשרויות המתקדמות"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:41
 msgid "The NetworkManager Developers"
-msgstr ""
+msgstr "מפתחי NetworkManager"
 
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
 #.
-#: auth-dialog/main.c:150
-#, fuzzy, c-format
+#: auth-dialog/main.c:165
+#, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
-msgstr "עליך להזדהות כדי לגשת אל הרשת הווירטואלית הפרטית '%s'."
+msgstr "עליך להזדהות כדי לגשת אל הרשת הווירטואלית הפרטית „%s”."
 
-#: auth-dialog/main.c:159 auth-dialog/main.c:183
+#: auth-dialog/main.c:174 auth-dialog/main.c:198
 msgid "Authenticate VPN"
 msgstr "אימות מול ה־VPN"
 
-#: auth-dialog/main.c:162
-#, fuzzy
-msgid "Password:"
-msgstr "ססמה"
+#: auth-dialog/main.c:177
+msgid "Password"
+msgstr "סיסמה"
 
-#: auth-dialog/main.c:164
-msgid "Token:"
-msgstr ""
+#: auth-dialog/main.c:179
+msgid "Token"
+msgstr "אסימון"
 
-#: auth-dialog/main.c:187
+#: auth-dialog/main.c:202
 msgid "_Token:"
-msgstr ""
+msgstr "א_סימון:"
 
 #: properties/nm-fortisslvpn-editor-plugin.c:38
 msgid "Fortinet SSLVPN"
-msgstr ""
+msgstr "Fortinet SSLVPN"
 
 #: properties/nm-fortisslvpn-editor-plugin.c:39
 msgid "Compatible with Fortinet SSLVPN servers."
-msgstr ""
+msgstr "תומך בשרתי SSLVPN של Fortinet."
+
+#: shared/nm-fortissl-properties.c:125
+#, c-format
+msgid "invalid gateway “%s”"
+msgstr "שער גישה „%s” שגוי"
+
+#: shared/nm-fortissl-properties.c:133
+#, c-format
+msgid "invalid certificate authority “%s”"
+msgstr "רשות אישורים „%s” שגויה"
+
+#: shared/nm-fortissl-properties.c:147
+#, c-format
+msgid "invalid integer property “%s”"
+msgstr "מאפיין מספרי שלם „%s” שגוי"
+
+#: shared/nm-fortissl-properties.c:157
+#, c-format
+msgid "invalid boolean property “%s” (not yes or no)"
+msgstr "מאפיין בוליאני „%s” שגוי (אינו כן או לא)"
+
+#: shared/nm-fortissl-properties.c:164
+#, c-format
+msgid "unhandled property “%s” type %s"
+msgstr "מאפיין „%s” מסוג „%s” בלתי מטופל"
+
+#: shared/nm-fortissl-properties.c:175
+#, c-format
+msgid "property “%s” invalid or not supported"
+msgstr "המאפיין „%s” שגוי או שאינו נתמך"
+
+#: shared/nm-fortissl-properties.c:192
+msgid "No VPN configuration options."
+msgstr "אין אפשרויות הגדרת VPN."
+
+#: shared/nm-fortissl-properties.c:212
+#, c-format
+msgid "Missing required option “%s”."
+msgstr "אפשרות נדרשת „%s” חסרה."
+
+#: shared/nm-fortissl-properties.c:232
+msgid "No VPN secrets!"
+msgstr "אין סודות VPN!"
 
 #: shared/nm-utils/nm-shared-utils.c:264
 #, c-format
 msgid "object class '%s' has no property named '%s'"
-msgstr ""
+msgstr "למחלקת העצמים ‚%s’ אין מאפיין בשם ‚%s’"
 
 #: shared/nm-utils/nm-shared-utils.c:271
 #, c-format
 msgid "property '%s' of object class '%s' is not writable"
-msgstr ""
+msgstr "המאפיין ‚%s’ של מחלקת העצמים ‚%s’ נעול בפני כתיבה"
 
 #: shared/nm-utils/nm-shared-utils.c:278
 #, c-format
 msgid ""
 "construct property \"%s\" for object '%s' can't be set after construction"
-msgstr ""
+msgstr "אי אפשר להגדיר את מאפיין הבנייה „%s” לפריט ‚%s’ לאחר הבנייה"
 
 #: shared/nm-utils/nm-shared-utils.c:286
 #, c-format
 msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
-msgstr ""
+msgstr "‫‚%s::%s’ אינו שם מאפיין תקף, ‚%s’ אינו תת־סוג של GObject"
 
 #: shared/nm-utils/nm-shared-utils.c:295
 #, c-format
 msgid "unable to set property '%s' of type '%s' from value of type '%s'"
-msgstr ""
+msgstr "לא ניתן להגדיר מאפיין ‚%s’ מסוג ‚%s’ מערך מסוג ‚%s’"
 
 #: shared/nm-utils/nm-shared-utils.c:306
 #, c-format
 msgid ""
 "value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
 "type '%s'"
-msgstr ""
+msgstr "הערך „%s” מסוג ‚%s’ שגוי או שחרג מהתחום למאפיין ‚%s’ מסוג ‚%s’"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:69
 #, c-format
 msgid "unable to get editor plugin name: %s"
-msgstr ""
+msgstr "לא ניתן לקבל שם תוסף עורך: %s"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:103
 #, c-format
 msgid "missing plugin file \"%s\""
-msgstr ""
+msgstr "קובץ תוסף „%s” חסר"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:109
 #, c-format
 msgid "cannot load editor plugin: %s"
-msgstr ""
+msgstr "לא ניתן לטעון תוסף עורך: %s"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:118
 #, c-format
 msgid "cannot load factory %s from plugin: %s"
-msgstr ""
+msgstr "לא ניתן לטעון את היצרן %s מהתוסף: %s"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:144
 msgid "unknown error creating editor instance"
-msgstr ""
+msgstr "שגיאה בלתי ידועה ביצירת מופע עורך"
 
-#: src/nm-fortisslvpn-service.c:222
+#: src/nm-fortisslvpn-service.c:220
 msgid "Could not find the openfortivpn binary."
-msgstr ""
+msgstr "לא ניתן למצוא את הקובץ הבינרי של openfortivpn."
 
-#: src/nm-fortisslvpn-service.c:350
+#: src/nm-fortisslvpn-service.c:396
 msgid "Missing VPN username."
-msgstr ""
+msgstr "שם משתמש VPN חסר."
 
-#: src/nm-fortisslvpn-service.c:360
+#: src/nm-fortisslvpn-service.c:406
 msgid "Missing or invalid VPN password."
-msgstr ""
+msgstr "סיסמת VPN חסרה או שגויה."
 
-#: src/nm-fortisslvpn-service.c:609
+#: src/nm-fortisslvpn-service.c:530
+msgid "Got new secrets, but nobody asked for them."
+msgstr "התקבלו סודות חדשים, אך אף אחד לא ביקש אותם."
+
+#: src/nm-fortisslvpn-service.c:714
 msgid "Don’t quit when VPN connection terminates"
-msgstr ""
+msgstr "לא לצאת עם סיום חיבור ה־VPN"
 
-#: src/nm-fortisslvpn-service.c:610
+#: src/nm-fortisslvpn-service.c:715
 msgid "Enable verbose debug logging (may expose passwords)"
-msgstr ""
+msgstr "הפעלת תיעוד שגיאות מפורט (עשוי לחשוף סיסמאות)"
 
-#: src/nm-fortisslvpn-service.c:611
+#: src/nm-fortisslvpn-service.c:716
 msgid "D-Bus name to use for this instance"
-msgstr ""
+msgstr "שם D-Bus לשימוש עבור המופע הזה"
 
-#: src/nm-fortisslvpn-service.c:632
+#: src/nm-fortisslvpn-service.c:737
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
 msgstr ""
+"‫nm-fortisslvpn-service מספק יכולת SSLVPN מובנית (תואמת Fortinet) עבור "
+"NetworkManager."
 
 #: properties/nm-fortisslvpn-dialog.ui:8
 msgid "SSLVPN Advanced Options"
-msgstr ""
+msgstr "אפשרויות מתקדמות של SSLVPN"
 
 #: properties/nm-fortisslvpn-dialog.ui:73
 #: properties/nm-fortisslvpn-dialog.ui:375
-#, fuzzy
 msgid "Authentication"
-msgstr "<b>אימות</b>"
+msgstr "אימות"
 
 #: properties/nm-fortisslvpn-dialog.ui:89
 msgid "_Realm"
-msgstr ""
+msgstr "מ_תחם"
 
 #: properties/nm-fortisslvpn-dialog.ui:103
 #: properties/nm-fortisslvpn-dialog.ui:361
@@ -177,46 +225,49 @@ msgid ""
 "SSLVPN server IP or name.\n"
 "config: the first parameter of fortisslvpn"
 msgstr ""
+"כתובת IP או שם של שרת SSLVPN.\n"
+"‬\n"
+"‫הגדרה: המשתנה הראשון של fortisslvpn"
 
 #: properties/nm-fortisslvpn-dialog.ui:117
-#, fuzzy
 msgid "Security"
-msgstr "<b>כללי</b>"
+msgstr "אבטחה"
 
 #: properties/nm-fortisslvpn-dialog.ui:133
 msgid "Trusted _certificate"
-msgstr ""
+msgstr "אישור מ_הימן"
 
 #: properties/nm-fortisslvpn-dialog.ui:147
 msgid ""
 "A SHA256 sum of the X509 certificate that will be accepted even if the "
 "certificate is not trusted by a certificate authority."
 msgstr ""
+"סכום SHA256 של אישור ה־X509 שיאושר אפילו אם האישור אינו מהימן מול אף רשות "
+"אישורים."
 
 #: properties/nm-fortisslvpn-dialog.ui:162
 msgid "_One time password"
-msgstr ""
+msgstr "סיסמה _חד־פעמית"
 
 #: properties/nm-fortisslvpn-dialog.ui:237
-#, fuzzy
 msgid "User _Key"
-msgstr "שם משתמש"
+msgstr "מ_פתח משתמש"
 
 #: properties/nm-fortisslvpn-dialog.ui:251
 msgid "_User Certificate"
-msgstr ""
+msgstr "אישור _משתמש"
 
 #: properties/nm-fortisslvpn-dialog.ui:265
 msgid "_CA Certificate"
-msgstr ""
+msgstr "_אישור רשות אישורים"
 
 #: properties/nm-fortisslvpn-dialog.ui:277
 msgid "Show password"
-msgstr "הצגת הססמה"
+msgstr "הצגת הסיסמה"
 
 #: properties/nm-fortisslvpn-dialog.ui:293
 msgid "Password passed to SSLVPN when prompted for it."
-msgstr ""
+msgstr "הסיסמה מועברת ל־SSLVPN כשנדרש."
 
 #: properties/nm-fortisslvpn-dialog.ui:306
 msgid ""
@@ -224,29 +275,29 @@ msgid ""
 "<name>.\n"
 "config: user <name>"
 msgstr ""
+"הגדרת השם שמשמש לאימות המערכת המקומית לעמית מול <name>.\n"
+"‬\n"
+"‫הגדרה: user <name>‎"
 
 #: properties/nm-fortisslvpn-dialog.ui:319
-#, fuzzy
 msgid "_Password"
-msgstr "ססמה"
+msgstr "_סיסמה"
 
 #: properties/nm-fortisslvpn-dialog.ui:333
-#, fuzzy
 msgid "User _name"
-msgstr "שם משתמש"
+msgstr "_שם משתמש"
 
 #: properties/nm-fortisslvpn-dialog.ui:347
 msgid "_Gateway"
 msgstr "שער _גישה"
 
 #: properties/nm-fortisslvpn-dialog.ui:391
-#, fuzzy
 msgid "General"
-msgstr "<b>כללי</b>"
+msgstr "כללי"
 
 #: properties/nm-fortisslvpn-dialog.ui:434
 msgid "A_dvanced…"
-msgstr ""
+msgstr "מת_קדם…"
 
 #: properties/nm-fortisslvpn-dialog.ui:463
 msgid "Default"
