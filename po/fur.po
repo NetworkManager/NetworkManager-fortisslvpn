@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "fortisslvpn/issues\n"
 "POT-Creation-Date: 2020-05-26 23:32+0000\n"
-"PO-Revision-Date: 2021-11-05 17:37+0100\n"
+"PO-Revision-Date: 2021-11-05 18:25+0100\n"
 "Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
@@ -255,7 +255,7 @@ msgstr ""
 
 #: properties/nm-fortisslvpn-dialog.ui:162
 msgid "_One time password"
-msgstr "Password _temporanie"
+msgstr "Password a _singul ûs"
 
 #: properties/nm-fortisslvpn-dialog.ui:237
 msgid "User _Key"
