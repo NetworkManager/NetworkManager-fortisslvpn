@@ -386,7 +386,7 @@ endif
 install-data-hook: install-compat-name-file
 	$(mkinstalldirs) -m 0700 $(DESTDIR)$(fortisslvpn_statedir)
 
-appdatadir = $(datadir)/appdata
+appdatadir = $(datadir)/metainfo
 appdata_files = $(appdata_in_files:.xml.in=.xml)
 if WITH_GNOME
 appdata_DATA = $(appdata_files)
