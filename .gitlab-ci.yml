@@ -58,7 +58,7 @@ fedora28_dist:
       NetworkManager-glib-devel
       libnm-gtk-devel
     - sh autogen.sh
-    - make -j distcheck
+    - make -j dist
   artifacts:
     paths:
       - "*.xz"
