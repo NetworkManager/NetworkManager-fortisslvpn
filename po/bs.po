@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "fortisslvpn/\n"
-"POT-Creation-Date: 2019-03-21 17:04+0100\n"
+"POT-Creation-Date: 2022-03-11 16:59+0100\n"
 "PO-Revision-Date: 2015-02-04 16:06+0000\n"
 "Last-Translator: Samir Ribić <Unknown>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -38,26 +38,26 @@ msgstr ""
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
 #.
-#: auth-dialog/main.c:150
+#: auth-dialog/main.c:165
 #, fuzzy, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
 msgstr ""
 "Trebate provjeriti atutentičnost za pristup virtuelnoj privatnoj mreži '%s'."
 
-#: auth-dialog/main.c:159 auth-dialog/main.c:183
+#: auth-dialog/main.c:174 auth-dialog/main.c:198
 msgid "Authenticate VPN"
 msgstr "Autentificiraj VPN"
 
-#: auth-dialog/main.c:162
+#: auth-dialog/main.c:177
 #, fuzzy
-msgid "Password:"
+msgid "Password"
 msgstr "Lozinka"
 
-#: auth-dialog/main.c:164
-msgid "Token:"
+#: auth-dialog/main.c:179
+msgid "Token"
 msgstr ""
 
-#: auth-dialog/main.c:187
+#: auth-dialog/main.c:202
 msgid "_Token:"
 msgstr ""
 
@@ -68,6 +68,49 @@ msgstr ""
 #: properties/nm-fortisslvpn-editor-plugin.c:39
 msgid "Compatible with Fortinet SSLVPN servers."
 msgstr ""
+
+#: shared/nm-fortissl-properties.c:125
+#, fuzzy, c-format
+msgid "invalid gateway “%s”"
+msgstr "nevažeći mrežni izlaz '%s'"
+
+#: shared/nm-fortissl-properties.c:133
+#, c-format
+msgid "invalid certificate authority “%s”"
+msgstr ""
+
+#: shared/nm-fortissl-properties.c:147
+#, fuzzy, c-format
+msgid "invalid integer property “%s”"
+msgstr "nevažeće cjelobrojno svojstvo'%s'"
+
+#: shared/nm-fortissl-properties.c:157
+#, fuzzy, c-format
+msgid "invalid boolean property “%s” (not yes or no)"
+msgstr "nevažeće bulovo svojstvo '%s' (nije da ili ne)"
+
+#: shared/nm-fortissl-properties.c:164
+#, fuzzy, c-format
+msgid "unhandled property “%s” type %s"
+msgstr "neobrađeno svojstvo '%s' tipa %s"
+
+#: shared/nm-fortissl-properties.c:175
+#, fuzzy, c-format
+msgid "property “%s” invalid or not supported"
+msgstr "svojstvo '%s' nevažeće ili nije podržano"
+
+#: shared/nm-fortissl-properties.c:192
+msgid "No VPN configuration options."
+msgstr "Nema VPN konfiguracijskih opcija."
+
+#: shared/nm-fortissl-properties.c:212
+#, fuzzy, c-format
+msgid "Missing required option “%s”."
+msgstr "Nedostaje potebna opcija '%s'."
+
+#: shared/nm-fortissl-properties.c:236
+msgid "No VPN secrets!"
+msgstr "Nema VPN tajni!"
 
 #: shared/nm-utils/nm-shared-utils.c:264
 #, c-format
@@ -126,99 +169,102 @@ msgstr ""
 msgid "unknown error creating editor instance"
 msgstr ""
 
-#: src/nm-fortisslvpn-service.c:222
+#: src/nm-fortisslvpn-service.c:218
 msgid "Could not find the openfortivpn binary."
 msgstr ""
 
-#: src/nm-fortisslvpn-service.c:350
+#: src/nm-fortisslvpn-service.c:402
 msgid "Missing VPN username."
 msgstr "Nedostaje VPN korisničko ime."
 
-#: src/nm-fortisslvpn-service.c:360
+#: src/nm-fortisslvpn-service.c:411
 msgid "Missing or invalid VPN password."
 msgstr "Neodstaje ili ne važi VPN lozinka."
 
-#: src/nm-fortisslvpn-service.c:609
+#: src/nm-fortisslvpn-service.c:536
+msgid "Got new secrets, but nobody asked for them."
+msgstr ""
+
+#: src/nm-fortisslvpn-service.c:720
 #, fuzzy
 msgid "Don’t quit when VPN connection terminates"
 msgstr "Ne izlazi kada se VPN konekcija prekida"
 
-#: src/nm-fortisslvpn-service.c:610
+#: src/nm-fortisslvpn-service.c:721
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr "Omogući detaljno praćenje grešaka (može otkriti lozinke)"
 
-#: src/nm-fortisslvpn-service.c:611
+#: src/nm-fortisslvpn-service.c:722
 msgid "D-Bus name to use for this instance"
 msgstr ""
 
-#: src/nm-fortisslvpn-service.c:632
+#: src/nm-fortisslvpn-service.c:743
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
 msgstr ""
 
-#: properties/nm-fortisslvpn-dialog.ui:8
+#: properties/nm-fortisslvpn-dialog.ui:7
 msgid "SSLVPN Advanced Options"
 msgstr ""
 
-#: properties/nm-fortisslvpn-dialog.ui:73
-#: properties/nm-fortisslvpn-dialog.ui:375
+#: properties/nm-fortisslvpn-dialog.ui:50
+#: properties/nm-fortisslvpn-dialog.ui:351
 #, fuzzy
 msgid "Authentication"
 msgstr "<b>Autentifikacija</b>"
 
-#: properties/nm-fortisslvpn-dialog.ui:89
+#: properties/nm-fortisslvpn-dialog.ui:67
 msgid "_Realm"
 msgstr ""
 
-#: properties/nm-fortisslvpn-dialog.ui:103
-#: properties/nm-fortisslvpn-dialog.ui:361
+#: properties/nm-fortisslvpn-dialog.ui:81
+#: properties/nm-fortisslvpn-dialog.ui:337
 msgid ""
 "SSLVPN server IP or name.\n"
 "config: the first parameter of fortisslvpn"
 msgstr ""
 
-#: properties/nm-fortisslvpn-dialog.ui:117
+#: properties/nm-fortisslvpn-dialog.ui:95
 #, fuzzy
 msgid "Security"
 msgstr "<b>Opšte</b>"
 
-#: properties/nm-fortisslvpn-dialog.ui:133
+#: properties/nm-fortisslvpn-dialog.ui:113
 msgid "Trusted _certificate"
 msgstr ""
 
-#: properties/nm-fortisslvpn-dialog.ui:147
+#: properties/nm-fortisslvpn-dialog.ui:127
 msgid ""
 "A SHA256 sum of the X509 certificate that will be accepted even if the "
 "certificate is not trusted by a certificate authority."
 msgstr ""
 
-#: properties/nm-fortisslvpn-dialog.ui:162
+#: properties/nm-fortisslvpn-dialog.ui:142
 msgid "_One time password"
 msgstr ""
 
-#: properties/nm-fortisslvpn-dialog.ui:237
-#, fuzzy
-msgid "User _Key"
-msgstr "Korisničko ime"
-
-#: properties/nm-fortisslvpn-dialog.ui:251
-msgid "_User Certificate"
+#: properties/nm-fortisslvpn-dialog.ui:185
+msgid "Advanced Properties"
 msgstr ""
 
-#: properties/nm-fortisslvpn-dialog.ui:265
-msgid "_CA Certificate"
+#: properties/nm-fortisslvpn-dialog.ui:193
+msgid "_Cancel"
 msgstr ""
 
-#: properties/nm-fortisslvpn-dialog.ui:277
+#: properties/nm-fortisslvpn-dialog.ui:201
+msgid "_Apply"
+msgstr ""
+
+#: properties/nm-fortisslvpn-dialog.ui:253
 msgid "Show password"
 msgstr "Prikaži lozinku"
 
-#: properties/nm-fortisslvpn-dialog.ui:293
+#: properties/nm-fortisslvpn-dialog.ui:269
 msgid "Password passed to SSLVPN when prompted for it."
 msgstr ""
 
-#: properties/nm-fortisslvpn-dialog.ui:306
+#: properties/nm-fortisslvpn-dialog.ui:282
 msgid ""
 "Set the name used for authenticating the local system to the peer to "
 "<name>.\n"
@@ -228,59 +274,39 @@ msgstr ""
 "imenom <name>.\n"
 "config: user <name>"
 
-#: properties/nm-fortisslvpn-dialog.ui:319
+#: properties/nm-fortisslvpn-dialog.ui:295
 #, fuzzy
 msgid "_Password"
 msgstr "Lozinka"
 
-#: properties/nm-fortisslvpn-dialog.ui:333
+#: properties/nm-fortisslvpn-dialog.ui:309
 #, fuzzy
 msgid "User _name"
 msgstr "Korisničko ime"
 
-#: properties/nm-fortisslvpn-dialog.ui:347
+#: properties/nm-fortisslvpn-dialog.ui:323
 msgid "_Gateway"
 msgstr "_Mrežni izlaz"
 
-#: properties/nm-fortisslvpn-dialog.ui:391
+#: properties/nm-fortisslvpn-dialog.ui:369
 #, fuzzy
 msgid "General"
 msgstr "<b>Opšte</b>"
 
-#: properties/nm-fortisslvpn-dialog.ui:434
+#: properties/nm-fortisslvpn-dialog.ui:413
 msgid "A_dvanced…"
 msgstr ""
 
-#: properties/nm-fortisslvpn-dialog.ui:463
+#: properties/nm-fortisslvpn-dialog.ui:449
 msgid "Default"
 msgstr "Podrazumijevano"
+
+#, fuzzy
+#~ msgid "User _Key"
+#~ msgstr "Korisničko ime"
 
 #~ msgid "Could not find secrets (connection invalid, no vpn setting)."
 #~ msgstr "Ne mogu da nađem tajne (konekcija neispravna, nema vpn postavki)."
 
 #~ msgid "Invalid VPN username."
 #~ msgstr "Nevažeće VPN korisničko ime."
-
-#~ msgid "invalid gateway '%s'"
-#~ msgstr "nevažeći mrežni izlaz '%s'"
-
-#~ msgid "invalid integer property '%s'"
-#~ msgstr "nevažeće cjelobrojno svojstvo'%s'"
-
-#~ msgid "invalid boolean property '%s' (not yes or no)"
-#~ msgstr "nevažeće bulovo svojstvo '%s' (nije da ili ne)"
-
-#~ msgid "unhandled property '%s' type %s"
-#~ msgstr "neobrađeno svojstvo '%s' tipa %s"
-
-#~ msgid "property '%s' invalid or not supported"
-#~ msgstr "svojstvo '%s' nevažeće ili nije podržano"
-
-#~ msgid "No VPN configuration options."
-#~ msgstr "Nema VPN konfiguracijskih opcija."
-
-#~ msgid "Missing required option '%s'."
-#~ msgstr "Nedostaje potebna opcija '%s'."
-
-#~ msgid "No VPN secrets!"
-#~ msgstr "Nema VPN tajni!"

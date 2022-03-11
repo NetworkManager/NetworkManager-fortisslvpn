@@ -7,9 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
-"fortisslvpn/issues\n"
-"POT-Creation-Date: 2021-07-25 19:14+0000\n"
+"fortisslvpn/\n"
+"POT-Creation-Date: 2022-03-11 16:59+0100\n"
 "PO-Revision-Date: 2021-11-01 18:22+0100\n"
+"Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +18,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "X-Generator: Poedit 2.3\n"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
@@ -131,8 +131,7 @@ msgstr "svojstvo '%s' klase objekta '%s' nije zapisivo"
 msgid ""
 "construct property \"%s\" for object '%s' can't be set after construction"
 msgstr ""
-"svojstvo izgradnje \"%s\" za objekt '%s' ne može se postaviti nakon "
-"izgradnje"
+"svojstvo izgradnje \"%s\" za objekt '%s' ne može se postaviti nakon izgradnje"
 
 #: shared/nm-utils/nm-shared-utils.c:286
 #, c-format
@@ -200,8 +199,7 @@ msgstr "Ne zatvaraj kada se VPN povezivanje prekida"
 
 #: src/nm-fortisslvpn-service.c:721
 msgid "Enable verbose debug logging (may expose passwords)"
-msgstr ""
-"Omogući opširno zapisivanje otklanjanja grešaka (može otkriti lozinke)"
+msgstr "Omogući opširno zapisivanje otklanjanja grešaka (može otkriti lozinke)"
 
 #: src/nm-fortisslvpn-service.c:722
 msgid "D-Bus name to use for this instance"
@@ -215,21 +213,21 @@ msgstr ""
 "nm-fortisslvpn-service pruža integrirane SSLVPN mogućnosti (kompatibilno sa "
 "Fortinet) u Mrežnom upravitelju."
 
-#: properties/nm-fortisslvpn-dialog.ui:8
+#: properties/nm-fortisslvpn-dialog.ui:7
 msgid "SSLVPN Advanced Options"
 msgstr "SSLVPN napredne mogućnosti"
 
-#: properties/nm-fortisslvpn-dialog.ui:73
-#: properties/nm-fortisslvpn-dialog.ui:375
+#: properties/nm-fortisslvpn-dialog.ui:50
+#: properties/nm-fortisslvpn-dialog.ui:351
 msgid "Authentication"
 msgstr "Ovjera"
 
-#: properties/nm-fortisslvpn-dialog.ui:89
+#: properties/nm-fortisslvpn-dialog.ui:67
 msgid "_Realm"
 msgstr "_Područje"
 
-#: properties/nm-fortisslvpn-dialog.ui:103
-#: properties/nm-fortisslvpn-dialog.ui:361
+#: properties/nm-fortisslvpn-dialog.ui:81
+#: properties/nm-fortisslvpn-dialog.ui:337
 msgid ""
 "SSLVPN server IP or name.\n"
 "config: the first parameter of fortisslvpn"
@@ -237,15 +235,15 @@ msgstr ""
 "SSTPVPN poslužitelja ili naziv.\n"
 "podešavanje: prvi fortisslvpn parametar"
 
-#: properties/nm-fortisslvpn-dialog.ui:117
+#: properties/nm-fortisslvpn-dialog.ui:95
 msgid "Security"
 msgstr "Sigurnost"
 
-#: properties/nm-fortisslvpn-dialog.ui:133
+#: properties/nm-fortisslvpn-dialog.ui:113
 msgid "Trusted _certificate"
 msgstr "Pouzdana _vjerodajnica"
 
-#: properties/nm-fortisslvpn-dialog.ui:147
+#: properties/nm-fortisslvpn-dialog.ui:127
 msgid ""
 "A SHA256 sum of the X509 certificate that will be accepted even if the "
 "certificate is not trusted by a certificate authority."
@@ -253,31 +251,32 @@ msgstr ""
 "SHA256 provjera X509 vjerodajnice koja će biti prihvaćena čak iako "
 "vjerodajnice nije pouzdana od strane izdavatelja vjerodajnice."
 
-#: properties/nm-fortisslvpn-dialog.ui:162
+#: properties/nm-fortisslvpn-dialog.ui:142
 msgid "_One time password"
 msgstr "_Jednokratna lozinka"
 
-#: properties/nm-fortisslvpn-dialog.ui:237
-msgid "User _Key"
-msgstr "Ključ _korisnika"
+#: properties/nm-fortisslvpn-dialog.ui:185
+#, fuzzy
+msgid "Advanced Properties"
+msgstr "SSLVPN napredne mogućnosti"
 
-#: properties/nm-fortisslvpn-dialog.ui:251
-msgid "_User Certificate"
-msgstr "_Vjerodajnica korisnika"
+#: properties/nm-fortisslvpn-dialog.ui:193
+msgid "_Cancel"
+msgstr ""
 
-#: properties/nm-fortisslvpn-dialog.ui:265
-msgid "_CA Certificate"
-msgstr "_CA vjerodajnica"
+#: properties/nm-fortisslvpn-dialog.ui:201
+msgid "_Apply"
+msgstr ""
 
-#: properties/nm-fortisslvpn-dialog.ui:277
+#: properties/nm-fortisslvpn-dialog.ui:253
 msgid "Show password"
 msgstr "Prikaži lozinku"
 
-#: properties/nm-fortisslvpn-dialog.ui:293
+#: properties/nm-fortisslvpn-dialog.ui:269
 msgid "Password passed to SSLVPN when prompted for it."
 msgstr "Lozinka proslijeđena SSLVPN-u pri upitu."
 
-#: properties/nm-fortisslvpn-dialog.ui:306
+#: properties/nm-fortisslvpn-dialog.ui:282
 msgid ""
 "Set the name used for authenticating the local system to the peer to "
 "<name>.\n"
@@ -286,26 +285,35 @@ msgstr ""
 "Postavi ime za korištenje ovjere lokalnog sustava s točke u <ime>.\n"
 "podešavanje: user <ime>"
 
-#: properties/nm-fortisslvpn-dialog.ui:319
+#: properties/nm-fortisslvpn-dialog.ui:295
 msgid "_Password"
 msgstr "_Lozinka"
 
-#: properties/nm-fortisslvpn-dialog.ui:333
+#: properties/nm-fortisslvpn-dialog.ui:309
 msgid "User _name"
 msgstr "Korisničko _ime"
 
-#: properties/nm-fortisslvpn-dialog.ui:347
+#: properties/nm-fortisslvpn-dialog.ui:323
 msgid "_Gateway"
 msgstr "_Pristupnik"
 
-#: properties/nm-fortisslvpn-dialog.ui:391
+#: properties/nm-fortisslvpn-dialog.ui:369
 msgid "General"
 msgstr "Općenito"
 
-#: properties/nm-fortisslvpn-dialog.ui:434
+#: properties/nm-fortisslvpn-dialog.ui:413
 msgid "A_dvanced…"
 msgstr "N_apredno…"
 
-#: properties/nm-fortisslvpn-dialog.ui:463
+#: properties/nm-fortisslvpn-dialog.ui:449
 msgid "Default"
 msgstr "Zadano"
+
+#~ msgid "User _Key"
+#~ msgstr "Ključ _korisnika"
+
+#~ msgid "_User Certificate"
+#~ msgstr "_Vjerodajnica korisnika"
+
+#~ msgid "_CA Certificate"
+#~ msgstr "_CA vjerodajnica"

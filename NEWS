@@ -1,19 +1,22 @@
 ===========================================================
-NetworkManager-fortisslvpn-1.3.90 (1.4.0-rc1)
+NetworkManager-fortisslvpn-1.4.0
 Overview of changes since NetworkManager-fortisslvpn-1.2.10
 ===========================================================
 
-This is a release candidate of NetworkManager-fortisslvpn 1.4.0
-USE AT YOUR OWN RISK.  NOT RECOMMENDED FOR PRODUCTION USE!
-
+This is a new stable release of NetworkManager-fortisslvpn.
 The required openfortivpn version is now 1.10.0.
 
 Notable changes include:
 
+* Gtk4 version of the editor plugin is now available (for use with Control
+  Center of GNOME 42 or later).
 * Add support for interactive connect (e.g. OTP via SMS)
 * Drop privileges in pppd if "nm-fortisslvpn" user exists
 * Allow more than 100 routes
-* Translation updates
+* Update Basque, Brazilian Portuguese, Catalan, Chinese (both China &
+  Taiwan), Croatian, Czech, Danish, Dutch, Friulian, German, Hebrew,
+  Hungarian, Indonesian, Italian, Japanese, Lithuanian, Polish, Romanian,
+  Russian, Serbian, Spanish, Swedish, Turkish and Ukrainian translations.
 
 ==========================================================
 NetworkManager-fortisslvpn-1.2.10

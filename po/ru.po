@@ -10,9 +10,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-fortisslvp"
-"n/issues\n"
-"POT-Creation-Date: 2020-05-26 23:32+0000\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
+"fortisslvpn/\n"
+"POT-Creation-Date: 2022-03-11 16:59+0100\n"
 "PO-Revision-Date: 2021-03-17 17:49+0300\n"
 "Last-Translator: Дронова Ю <juliette.tux@gmail.com>\n"
 "Language-Team: Russian <kde-i18n-doc@kde.org>\n"
@@ -20,8 +20,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
-"=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 "X-Generator: Lokalize 19.12.3\n"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
@@ -81,7 +81,6 @@ msgstr "Совместимо с серверами Fortinet SSLVPN"
 
 #: shared/nm-fortissl-properties.c:125
 #, c-format
-#| msgid "invalid gateway '%s'"
 msgid "invalid gateway “%s”"
 msgstr "недопустимый шлюз «%s»"
 
@@ -92,26 +91,22 @@ msgstr "недопустимый издатель сертификата «%s»"
 
 #: shared/nm-fortissl-properties.c:147
 #, c-format
-#| msgid "invalid integer property '%s'"
 msgid "invalid integer property “%s”"
 msgstr "недопустимое целочисленное свойство «%s»"
 
 #: shared/nm-fortissl-properties.c:157
 #, c-format
-#| msgid "invalid boolean property '%s' (not yes or no)"
 msgid "invalid boolean property “%s” (not yes or no)"
 msgstr ""
 "недопустимое логическое свойство «%s» (должно быть только «да», или «нет»)"
 
 #: shared/nm-fortissl-properties.c:164
 #, c-format
-#| msgid "unhandled property '%s' type %s"
 msgid "unhandled property “%s” type %s"
 msgstr "необрабатываемое свойство «%s», тип %s"
 
 #: shared/nm-fortissl-properties.c:175
 #, c-format
-#| msgid "property '%s' invalid or not supported"
 msgid "property “%s” invalid or not supported"
 msgstr "свойство «%s» является недопустимым или не поддерживается"
 
@@ -121,11 +116,10 @@ msgstr "Нет параметров конфигурации VPN."
 
 #: shared/nm-fortissl-properties.c:212
 #, c-format
-#| msgid "Missing required option '%s'."
 msgid "Missing required option “%s”."
 msgstr "Отсутствует требуемый параметр «%s»."
 
-#: shared/nm-fortissl-properties.c:232
+#: shared/nm-fortissl-properties.c:236
 msgid "No VPN secrets!"
 msgstr "Секреты VPN отсутствуют"
 
@@ -144,15 +138,15 @@ msgstr "свойство «%s» класса объекта «%s» недост�
 msgid ""
 "construct property \"%s\" for object '%s' can't be set after construction"
 msgstr ""
-"свойство конструкции \"%s\" объекта '%s' не может быть установлено после"
-" создания конструкции"
+"свойство конструкции \"%s\" объекта '%s' не может быть установлено после "
+"создания конструкции"
 
 #: shared/nm-utils/nm-shared-utils.c:286
 #, c-format
 msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
 msgstr ""
-"'%s::%s' не является допустимым именем свойства; '%s' не является подтипом"
-" GObject"
+"'%s::%s' не является допустимым именем свойства; '%s' не является подтипом "
+"GObject"
 
 #: shared/nm-utils/nm-shared-utils.c:295
 #, c-format
@@ -166,8 +160,8 @@ msgid ""
 "value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
 "type '%s'"
 msgstr ""
-"значение \"%s\" с типом '%s' для свойства '%s' с типом '%s' не является"
-" действительным, или выходит за пределы диапазона"
+"значение \"%s\" с типом '%s' для свойства '%s' с типом '%s' не является "
+"действительным, или выходит за пределы диапазона"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:69
 #, c-format
@@ -193,35 +187,35 @@ msgstr "невозможно загрузить фабрику %s из моду�
 msgid "unknown error creating editor instance"
 msgstr "неизвестная ошибка при создании экземпляра редактора"
 
-#: src/nm-fortisslvpn-service.c:220
+#: src/nm-fortisslvpn-service.c:218
 msgid "Could not find the openfortivpn binary."
 msgstr "Не удалось найти бинарный файл openfortivpn"
 
-#: src/nm-fortisslvpn-service.c:396
+#: src/nm-fortisslvpn-service.c:402
 msgid "Missing VPN username."
 msgstr "Отсутствует имя пользователя VPN."
 
-#: src/nm-fortisslvpn-service.c:406
+#: src/nm-fortisslvpn-service.c:411
 msgid "Missing or invalid VPN password."
 msgstr "Пароль VPN отсутствует или неверный."
 
-#: src/nm-fortisslvpn-service.c:530
+#: src/nm-fortisslvpn-service.c:536
 msgid "Got new secrets, but nobody asked for them."
 msgstr "Получены новые секреты, но они не были запрошены"
 
-#: src/nm-fortisslvpn-service.c:714
+#: src/nm-fortisslvpn-service.c:720
 msgid "Don’t quit when VPN connection terminates"
 msgstr "Не завершать работу при прерывании подключений VPN"
 
-#: src/nm-fortisslvpn-service.c:715
+#: src/nm-fortisslvpn-service.c:721
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr "Включить подробный режим отладки (могут отображаться пароли)"
 
-#: src/nm-fortisslvpn-service.c:716
+#: src/nm-fortisslvpn-service.c:722
 msgid "D-Bus name to use for this instance"
 msgstr "Имя D-Bus, используемое для этого экземпляра"
 
-#: src/nm-fortisslvpn-service.c:737
+#: src/nm-fortisslvpn-service.c:743
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
@@ -229,21 +223,21 @@ msgstr ""
 "служба nm-fortisslvpn-service предоставляет для NetworkManager встроенные "
 "возможности SSLVPN (совместимые с Fortinet)"
 
-#: properties/nm-fortisslvpn-dialog.ui:8
+#: properties/nm-fortisslvpn-dialog.ui:7
 msgid "SSLVPN Advanced Options"
 msgstr "Расширенные параметры SSLVPN"
 
-#: properties/nm-fortisslvpn-dialog.ui:73
-#: properties/nm-fortisslvpn-dialog.ui:375
+#: properties/nm-fortisslvpn-dialog.ui:50
+#: properties/nm-fortisslvpn-dialog.ui:351
 msgid "Authentication"
 msgstr "Аутентификация"
 
-#: properties/nm-fortisslvpn-dialog.ui:89
+#: properties/nm-fortisslvpn-dialog.ui:67
 msgid "_Realm"
 msgstr "_Область"
 
-#: properties/nm-fortisslvpn-dialog.ui:103
-#: properties/nm-fortisslvpn-dialog.ui:361
+#: properties/nm-fortisslvpn-dialog.ui:81
+#: properties/nm-fortisslvpn-dialog.ui:337
 msgid ""
 "SSLVPN server IP or name.\n"
 "config: the first parameter of fortisslvpn"
@@ -251,79 +245,89 @@ msgstr ""
 "Адрес IP или имя сервера SSLVPN.\n"
 "файл конфигурации: первый параметр fortisslvpn"
 
-#: properties/nm-fortisslvpn-dialog.ui:117
+#: properties/nm-fortisslvpn-dialog.ui:95
 msgid "Security"
 msgstr "Безопасность"
 
-#: properties/nm-fortisslvpn-dialog.ui:133
+#: properties/nm-fortisslvpn-dialog.ui:113
 msgid "Trusted _certificate"
 msgstr "Доверенный _сертификат"
 
-#: properties/nm-fortisslvpn-dialog.ui:147
+#: properties/nm-fortisslvpn-dialog.ui:127
 msgid ""
 "A SHA256 sum of the X509 certificate that will be accepted even if the "
 "certificate is not trusted by a certificate authority."
 msgstr ""
-"Сумма SHA256 сертификата X509, который будет принят, даже "
-"если сертификат не является доверенным для издателя"
+"Сумма SHA256 сертификата X509, который будет принят, даже если сертификат не "
+"является доверенным для издателя"
 
-#: properties/nm-fortisslvpn-dialog.ui:162
+#: properties/nm-fortisslvpn-dialog.ui:142
 msgid "_One time password"
 msgstr "Одноразовый _пароль"
 
-#: properties/nm-fortisslvpn-dialog.ui:237
-msgid "User _Key"
-msgstr "Ключ _пользователя"
+#: properties/nm-fortisslvpn-dialog.ui:185
+#, fuzzy
+msgid "Advanced Properties"
+msgstr "Расширенные параметры SSLVPN"
 
-#: properties/nm-fortisslvpn-dialog.ui:251
-msgid "_User Certificate"
-msgstr "Сертификат _пользователя"
+#: properties/nm-fortisslvpn-dialog.ui:193
+msgid "_Cancel"
+msgstr ""
 
-#: properties/nm-fortisslvpn-dialog.ui:265
-msgid "_CA Certificate"
-msgstr "Сертификат _ЦС"
+#: properties/nm-fortisslvpn-dialog.ui:201
+msgid "_Apply"
+msgstr ""
 
-#: properties/nm-fortisslvpn-dialog.ui:277
+#: properties/nm-fortisslvpn-dialog.ui:253
 msgid "Show password"
 msgstr "Показать пароль"
 
-#: properties/nm-fortisslvpn-dialog.ui:293
+#: properties/nm-fortisslvpn-dialog.ui:269
 msgid "Password passed to SSLVPN when prompted for it."
 msgstr "Пароль был передан SSLVPN по запросу"
 
-#: properties/nm-fortisslvpn-dialog.ui:306
+#: properties/nm-fortisslvpn-dialog.ui:282
 msgid ""
 "Set the name used for authenticating the local system to the peer to "
 "<name>.\n"
 "config: user <name>"
 msgstr ""
-"Установить имя, используемое для аутентификации локальной системы на"
-" одноранговом узле <name>.\n"
+"Установить имя, используемое для аутентификации локальной системы на "
+"одноранговом узле <name>.\n"
 "файл конфигурации: user <имя>"
 
-#: properties/nm-fortisslvpn-dialog.ui:319
+#: properties/nm-fortisslvpn-dialog.ui:295
 msgid "_Password"
 msgstr "_Пароль"
 
-#: properties/nm-fortisslvpn-dialog.ui:333
+#: properties/nm-fortisslvpn-dialog.ui:309
 msgid "User _name"
 msgstr "Имя _пользователя"
 
-#: properties/nm-fortisslvpn-dialog.ui:347
+#: properties/nm-fortisslvpn-dialog.ui:323
 msgid "_Gateway"
 msgstr "_Шлюз"
 
-#: properties/nm-fortisslvpn-dialog.ui:391
+#: properties/nm-fortisslvpn-dialog.ui:369
 msgid "General"
 msgstr "Общие"
 
-#: properties/nm-fortisslvpn-dialog.ui:434
+#: properties/nm-fortisslvpn-dialog.ui:413
 msgid "A_dvanced…"
 msgstr "До_полнительно…"
 
-#: properties/nm-fortisslvpn-dialog.ui:463
+#: properties/nm-fortisslvpn-dialog.ui:449
 msgid "Default"
 msgstr "По умолчанию"
+
+#~ msgid "User _Key"
+#~ msgstr "Ключ _пользователя"
+
+#~ msgid "_User Certificate"
+#~ msgstr "Сертификат _пользователя"
+
+#~ msgid "_CA Certificate"
+#~ msgstr "Сертификат _ЦС"
 
 #~ msgid "Could not find secrets (connection invalid, no vpn setting)."
 #~ msgstr ""

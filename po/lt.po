@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
-"fortisslvpn/issues\n"
-"POT-Creation-Date: 2020-05-26 23:32+0000\n"
+"fortisslvpn/\n"
+"POT-Creation-Date: 2022-03-11 16:59+0100\n"
 "PO-Revision-Date: 2020-09-06 22:54+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
@@ -58,12 +58,10 @@ msgid "Authenticate VPN"
 msgstr "Nustatyti tapatybę VPN"
 
 #: auth-dialog/main.c:177
-#| msgid "Password:"
 msgid "Password"
 msgstr "Slaptažodis"
 
 #: auth-dialog/main.c:179
-#| msgid "Token:"
 msgid "Token"
 msgstr "Prieigos kodas"
 
@@ -118,7 +116,7 @@ msgstr "Nėra VPN konfigūracijos parametrų."
 msgid "Missing required option “%s”."
 msgstr "Trūksta būtino parametro „%s“."
 
-#: shared/nm-fortissl-properties.c:232
+#: shared/nm-fortissl-properties.c:236
 msgid "No VPN secrets!"
 msgstr "Nėra VPN paslapčių!"
 
@@ -185,35 +183,35 @@ msgstr "nepavyko įkelti gamyklos %s iš įskiepio: %s"
 msgid "unknown error creating editor instance"
 msgstr "nežinoma klaida kuriant redaktoriaus egzempliorių"
 
-#: src/nm-fortisslvpn-service.c:220
+#: src/nm-fortisslvpn-service.c:218
 msgid "Could not find the openfortivpn binary."
 msgstr "Nepavyko rasti openfortivpn programos."
 
-#: src/nm-fortisslvpn-service.c:396
+#: src/nm-fortisslvpn-service.c:402
 msgid "Missing VPN username."
 msgstr "Trūksta VPN naudotojo vardo."
 
-#: src/nm-fortisslvpn-service.c:406
+#: src/nm-fortisslvpn-service.c:411
 msgid "Missing or invalid VPN password."
 msgstr "Nėra arba netinkamas VPN slaptažodis."
 
-#: src/nm-fortisslvpn-service.c:530
+#: src/nm-fortisslvpn-service.c:536
 msgid "Got new secrets, but nobody asked for them."
 msgstr "Gautos naujos paslaptys, bet niakas jų neprašė."
 
-#: src/nm-fortisslvpn-service.c:714
+#: src/nm-fortisslvpn-service.c:720
 msgid "Don’t quit when VPN connection terminates"
 msgstr "Neišeiti, kai VPN ryšys yra nutraukiamas"
 
-#: src/nm-fortisslvpn-service.c:715
+#: src/nm-fortisslvpn-service.c:721
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr "Įjungti išsamų derinimo žurnalą (gali atskleisti slaptažodžius)"
 
-#: src/nm-fortisslvpn-service.c:716
+#: src/nm-fortisslvpn-service.c:722
 msgid "D-Bus name to use for this instance"
 msgstr "D-Bus pavadinimas, kurį naudoti šiam egzemplioriui"
 
-#: src/nm-fortisslvpn-service.c:737
+#: src/nm-fortisslvpn-service.c:743
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
@@ -221,21 +219,21 @@ msgstr ""
 "nm-fortisslvpn-service suteikia NetworkManager integruotą SSLVPN galimybę "
 "(suderinamą su Fortinet)."
 
-#: properties/nm-fortisslvpn-dialog.ui:8
+#: properties/nm-fortisslvpn-dialog.ui:7
 msgid "SSLVPN Advanced Options"
 msgstr "SSLVPN išplėstiniai parametrai"
 
-#: properties/nm-fortisslvpn-dialog.ui:73
-#: properties/nm-fortisslvpn-dialog.ui:375
+#: properties/nm-fortisslvpn-dialog.ui:50
+#: properties/nm-fortisslvpn-dialog.ui:351
 msgid "Authentication"
 msgstr "Tapatybės nustatymas"
 
-#: properties/nm-fortisslvpn-dialog.ui:89
+#: properties/nm-fortisslvpn-dialog.ui:67
 msgid "_Realm"
 msgstr "S_ritis"
 
-#: properties/nm-fortisslvpn-dialog.ui:103
-#: properties/nm-fortisslvpn-dialog.ui:361
+#: properties/nm-fortisslvpn-dialog.ui:81
+#: properties/nm-fortisslvpn-dialog.ui:337
 msgid ""
 "SSLVPN server IP or name.\n"
 "config: the first parameter of fortisslvpn"
@@ -243,15 +241,15 @@ msgstr ""
 "SSLVPN serverio IP arba pavadinimas.\n"
 "konfig.: pirmas fortisslvpn parametras"
 
-#: properties/nm-fortisslvpn-dialog.ui:117
+#: properties/nm-fortisslvpn-dialog.ui:95
 msgid "Security"
 msgstr "Saugumas"
 
-#: properties/nm-fortisslvpn-dialog.ui:133
+#: properties/nm-fortisslvpn-dialog.ui:113
 msgid "Trusted _certificate"
 msgstr "Patikimas _liudijimas"
 
-#: properties/nm-fortisslvpn-dialog.ui:147
+#: properties/nm-fortisslvpn-dialog.ui:127
 msgid ""
 "A SHA256 sum of the X509 certificate that will be accepted even if the "
 "certificate is not trusted by a certificate authority."
@@ -259,31 +257,32 @@ msgstr ""
 "X509 liudijimo SHA256 suma, kuri bus priimta net jeigu liudijimu nepasitiki "
 "liudijimų įstaiga."
 
-#: properties/nm-fortisslvpn-dialog.ui:162
+#: properties/nm-fortisslvpn-dialog.ui:142
 msgid "_One time password"
 msgstr "Vien_kartinis slaptažodis"
 
-#: properties/nm-fortisslvpn-dialog.ui:237
-msgid "User _Key"
-msgstr "Naudotojo ra_ktas"
+#: properties/nm-fortisslvpn-dialog.ui:185
+#, fuzzy
+msgid "Advanced Properties"
+msgstr "SSLVPN išplėstiniai parametrai"
 
-#: properties/nm-fortisslvpn-dialog.ui:251
-msgid "_User Certificate"
-msgstr "Na_udotojo liudijimas"
+#: properties/nm-fortisslvpn-dialog.ui:193
+msgid "_Cancel"
+msgstr ""
 
-#: properties/nm-fortisslvpn-dialog.ui:265
-msgid "_CA Certificate"
-msgstr "_LĮ liudijimas"
+#: properties/nm-fortisslvpn-dialog.ui:201
+msgid "_Apply"
+msgstr ""
 
-#: properties/nm-fortisslvpn-dialog.ui:277
+#: properties/nm-fortisslvpn-dialog.ui:253
 msgid "Show password"
 msgstr "Rodyti slaptažodį"
 
-#: properties/nm-fortisslvpn-dialog.ui:293
+#: properties/nm-fortisslvpn-dialog.ui:269
 msgid "Password passed to SSLVPN when prompted for it."
 msgstr "Slaptažodis, perduodamas SSLVPN, kai jo paprašoma."
 
-#: properties/nm-fortisslvpn-dialog.ui:306
+#: properties/nm-fortisslvpn-dialog.ui:282
 msgid ""
 "Set the name used for authenticating the local system to the peer to "
 "<name>.\n"
@@ -292,29 +291,38 @@ msgstr ""
 "Nustatyti <vardas> tapatybės nustatymo vardą vietinei sistemai porininkui.\n"
 "konfig.: user <vardas>"
 
-#: properties/nm-fortisslvpn-dialog.ui:319
+#: properties/nm-fortisslvpn-dialog.ui:295
 msgid "_Password"
 msgstr "Sla_ptažodis"
 
-#: properties/nm-fortisslvpn-dialog.ui:333
+#: properties/nm-fortisslvpn-dialog.ui:309
 msgid "User _name"
 msgstr "_Naudotojo vardas"
 
-#: properties/nm-fortisslvpn-dialog.ui:347
+#: properties/nm-fortisslvpn-dialog.ui:323
 msgid "_Gateway"
 msgstr "Tinklų _sietuvas"
 
-#: properties/nm-fortisslvpn-dialog.ui:391
+#: properties/nm-fortisslvpn-dialog.ui:369
 msgid "General"
 msgstr "Bendra"
 
-#: properties/nm-fortisslvpn-dialog.ui:434
+#: properties/nm-fortisslvpn-dialog.ui:413
 msgid "A_dvanced…"
 msgstr "Išplės_tiniai…"
 
-#: properties/nm-fortisslvpn-dialog.ui:463
+#: properties/nm-fortisslvpn-dialog.ui:449
 msgid "Default"
 msgstr "Numatytasis"
+
+#~ msgid "User _Key"
+#~ msgstr "Naudotojo ra_ktas"
+
+#~ msgid "_User Certificate"
+#~ msgstr "Na_udotojo liudijimas"
+
+#~ msgid "_CA Certificate"
+#~ msgstr "_LĮ liudijimas"
 
 #~ msgid ""
 #~ "Ask for an one-time password (OTP) for two factor authentication (2FA)."

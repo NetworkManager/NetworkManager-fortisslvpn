@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
-"fortisslvpn/issues\n"
-"POT-Creation-Date: 2020-05-26 23:32+0000\n"
+"fortisslvpn/\n"
+"POT-Creation-Date: 2022-03-11 16:59+0100\n"
 "PO-Revision-Date: 2021-03-25 16:12+0100\n"
 "Last-Translator: Zdeněk Hataš <zdenek.hatas@gmail.com>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
@@ -114,7 +114,7 @@ msgstr "Žádné volby nastavení VPN."
 msgid "Missing required option “%s”."
 msgstr "Chybí požadovaná volba „%s“."
 
-#: shared/nm-fortissl-properties.c:232
+#: shared/nm-fortissl-properties.c:236
 msgid "No VPN secrets!"
 msgstr "Žádná hesla VPN!"
 
@@ -176,35 +176,35 @@ msgstr "nelze načíst generátor %s ze zásuvného modulu: %s"
 msgid "unknown error creating editor instance"
 msgstr "neznámá chyba vytváření instance editoru"
 
-#: src/nm-fortisslvpn-service.c:220
+#: src/nm-fortisslvpn-service.c:218
 msgid "Could not find the openfortivpn binary."
 msgstr "Nelze nalézt program openfortivpn."
 
-#: src/nm-fortisslvpn-service.c:396
+#: src/nm-fortisslvpn-service.c:402
 msgid "Missing VPN username."
 msgstr "Chybí jméno uživatele VPN."
 
-#: src/nm-fortisslvpn-service.c:406
+#: src/nm-fortisslvpn-service.c:411
 msgid "Missing or invalid VPN password."
 msgstr "Chybějící nebo neplatné heslo VPN."
 
-#: src/nm-fortisslvpn-service.c:530
+#: src/nm-fortisslvpn-service.c:536
 msgid "Got new secrets, but nobody asked for them."
 msgstr "Nová hesla byla získána,  přestože je nikdo nepožadoval."
 
-#: src/nm-fortisslvpn-service.c:714
+#: src/nm-fortisslvpn-service.c:720
 msgid "Don’t quit when VPN connection terminates"
 msgstr "Neukončovat během ukončování spojení VPN"
 
-#: src/nm-fortisslvpn-service.c:715
+#: src/nm-fortisslvpn-service.c:721
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr "Povolit podrobný ladicí výpis (může prozradit hesla)"
 
-#: src/nm-fortisslvpn-service.c:716
+#: src/nm-fortisslvpn-service.c:722
 msgid "D-Bus name to use for this instance"
 msgstr "Název použitý pro tuto instanci v D-Bus"
 
-#: src/nm-fortisslvpn-service.c:737
+#: src/nm-fortisslvpn-service.c:743
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
@@ -212,21 +212,21 @@ msgstr ""
 "Modul nm-fortisslvpn-service poskytuje integraci SSLVPN (kompatibilní s "
 "Fortinet) pro NetworkManager."
 
-#: properties/nm-fortisslvpn-dialog.ui:8
+#: properties/nm-fortisslvpn-dialog.ui:7
 msgid "SSLVPN Advanced Options"
 msgstr "Pokročilé volby SSLVPN"
 
-#: properties/nm-fortisslvpn-dialog.ui:73
-#: properties/nm-fortisslvpn-dialog.ui:375
+#: properties/nm-fortisslvpn-dialog.ui:50
+#: properties/nm-fortisslvpn-dialog.ui:351
 msgid "Authentication"
 msgstr "Autentizace"
 
-#: properties/nm-fortisslvpn-dialog.ui:89
+#: properties/nm-fortisslvpn-dialog.ui:67
 msgid "_Realm"
 msgstr "_Realm"
 
-#: properties/nm-fortisslvpn-dialog.ui:103
-#: properties/nm-fortisslvpn-dialog.ui:361
+#: properties/nm-fortisslvpn-dialog.ui:81
+#: properties/nm-fortisslvpn-dialog.ui:337
 msgid ""
 "SSLVPN server IP or name.\n"
 "config: the first parameter of fortisslvpn"
@@ -234,15 +234,15 @@ msgstr ""
 "Název nebo IP serveru SSLVPN.\n"
 "config: první parametr pro fortisslvpn"
 
-#: properties/nm-fortisslvpn-dialog.ui:117
+#: properties/nm-fortisslvpn-dialog.ui:95
 msgid "Security"
 msgstr "Zabezpečení"
 
-#: properties/nm-fortisslvpn-dialog.ui:133
+#: properties/nm-fortisslvpn-dialog.ui:113
 msgid "Trusted _certificate"
 msgstr "Důvěryhodný certifikát"
 
-#: properties/nm-fortisslvpn-dialog.ui:147
+#: properties/nm-fortisslvpn-dialog.ui:127
 msgid ""
 "A SHA256 sum of the X509 certificate that will be accepted even if the "
 "certificate is not trusted by a certificate authority."
@@ -250,31 +250,32 @@ msgstr ""
 "Součet SHA256 certifikátu X509, který bude přijat i v případě, že certifikát "
 "není pro certifikační autoritu důvěryhodný."
 
-#: properties/nm-fortisslvpn-dialog.ui:162
+#: properties/nm-fortisslvpn-dialog.ui:142
 msgid "_One time password"
 msgstr "Jedn_orázové heslo"
 
-#: properties/nm-fortisslvpn-dialog.ui:237
-msgid "User _Key"
-msgstr "Uživatelský _klíč"
+#: properties/nm-fortisslvpn-dialog.ui:185
+#, fuzzy
+msgid "Advanced Properties"
+msgstr "Pokročilé volby SSLVPN"
 
-#: properties/nm-fortisslvpn-dialog.ui:251
-msgid "_User Certificate"
-msgstr "_Uživatelský certifikát"
+#: properties/nm-fortisslvpn-dialog.ui:193
+msgid "_Cancel"
+msgstr ""
 
-#: properties/nm-fortisslvpn-dialog.ui:265
-msgid "_CA Certificate"
-msgstr "_Certifikát CA"
+#: properties/nm-fortisslvpn-dialog.ui:201
+msgid "_Apply"
+msgstr ""
 
-#: properties/nm-fortisslvpn-dialog.ui:277
+#: properties/nm-fortisslvpn-dialog.ui:253
 msgid "Show password"
 msgstr "Zobrazit heslo"
 
-#: properties/nm-fortisslvpn-dialog.ui:293
+#: properties/nm-fortisslvpn-dialog.ui:269
 msgid "Password passed to SSLVPN when prompted for it."
 msgstr "Heslo poskytnuté SSLVPN, pokud o něj požádá."
 
-#: properties/nm-fortisslvpn-dialog.ui:306
+#: properties/nm-fortisslvpn-dialog.ui:282
 msgid ""
 "Set the name used for authenticating the local system to the peer to "
 "<name>.\n"
@@ -284,29 +285,38 @@ msgstr ""
 "<název>.\n"
 "config: user <název>"
 
-#: properties/nm-fortisslvpn-dialog.ui:319
+#: properties/nm-fortisslvpn-dialog.ui:295
 msgid "_Password"
 msgstr "_Heslo"
 
-#: properties/nm-fortisslvpn-dialog.ui:333
+#: properties/nm-fortisslvpn-dialog.ui:309
 msgid "User _name"
 msgstr "Uživatelské jmé_no"
 
-#: properties/nm-fortisslvpn-dialog.ui:347
+#: properties/nm-fortisslvpn-dialog.ui:323
 msgid "_Gateway"
 msgstr "_Brána"
 
-#: properties/nm-fortisslvpn-dialog.ui:391
+#: properties/nm-fortisslvpn-dialog.ui:369
 msgid "General"
 msgstr "Obecné"
 
-#: properties/nm-fortisslvpn-dialog.ui:434
+#: properties/nm-fortisslvpn-dialog.ui:413
 msgid "A_dvanced…"
 msgstr "Po_kročilé…"
 
-#: properties/nm-fortisslvpn-dialog.ui:463
+#: properties/nm-fortisslvpn-dialog.ui:449
 msgid "Default"
 msgstr "Výchozí"
+
+#~ msgid "User _Key"
+#~ msgstr "Uživatelský _klíč"
+
+#~ msgid "_User Certificate"
+#~ msgstr "_Uživatelský certifikát"
+
+#~ msgid "_CA Certificate"
+#~ msgstr "_Certifikát CA"
 
 #~ msgid ""
 #~ "Ask for an one-time password (OTP) for two factor authentication (2FA)."

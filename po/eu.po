@@ -6,9 +6,11 @@
 # Asier Sarasua Garmendia <asier.sarasua@gmail.com>, 2019.
 #
 msgid ""
-msgstr "Project-Id-Version: NetworkManager-fortisslvpn nm-1-0\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-fortisslvpn/issues\n"
-"POT-Creation-Date: 2019-07-16 10:36+0000\n"
+msgstr ""
+"Project-Id-Version: NetworkManager-fortisslvpn nm-1-0\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
+"fortisslvpn/\n"
+"POT-Creation-Date: 2022-03-11 16:59+0100\n"
 "PO-Revision-Date: 2019-10-27 10:00+0100\n"
 "Last-Translator: Asier Sarasua Garmendia <asier.sarasua@gmail.com>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
@@ -29,7 +31,8 @@ msgstr "Fortinet SSLVPN sare birtual pribatuetarako bezeroa"
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:24
 msgid ""
 "Support for configuring Fortinet SSLVPN virtual private network connections."
-msgstr "Fortinet SSLVPN sare birtual pribatuetako konexioak konfiguratzeko euskarria"
+msgstr ""
+"Fortinet SSLVPN sare birtual pribatuetako konexioak konfiguratzeko euskarria"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:32
 msgid "The advanced options dialog"
@@ -45,18 +48,21 @@ msgstr "NetworkManager-en garatzaileak"
 #: auth-dialog/main.c:165
 #, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
-msgstr "Autentifikatu egin behar duzu “%s” Sare Birtual Pribatura sarbidetzeko."
+msgstr ""
+"Autentifikatu egin behar duzu “%s” Sare Birtual Pribatura sarbidetzeko."
 
 #: auth-dialog/main.c:174 auth-dialog/main.c:198
 msgid "Authenticate VPN"
 msgstr "Autentifikatu VPNa"
 
 #: auth-dialog/main.c:177
-msgid "Password:"
+#, fuzzy
+msgid "Password"
 msgstr "Pasahitza:"
 
 #: auth-dialog/main.c:179
-msgid "Token:"
+#, fuzzy
+msgid "Token"
 msgstr "Tokena:"
 
 #: auth-dialog/main.c:202
@@ -110,7 +116,7 @@ msgstr "Ez dago VPNaren konfigurazioaren aukerarik."
 msgid "Missing required option “%s”."
 msgstr "Derrigorrezkoa den “%s” aukera falta da."
 
-#: shared/nm-fortissl-properties.c:232
+#: shared/nm-fortissl-properties.c:236
 msgid "No VPN secrets!"
 msgstr "Ez dago VPNaren ezkutukorik."
 
@@ -128,7 +134,8 @@ msgstr "'%s' propietatea ez da idazgarria '%s' klaseko objektuaren"
 #, c-format
 msgid ""
 "construct property \"%s\" for object '%s' can't be set after construction"
-msgstr "eraiki ondoren ezin da \"% s\" eraikitzeko jabetza \"% s\" objekturako aldatu"
+msgstr ""
+"eraiki ondoren ezin da \"% s\" eraikitzeko jabetza \"% s\" objekturako aldatu"
 
 #: shared/nm-utils/nm-shared-utils.c:286
 #, c-format
@@ -145,7 +152,9 @@ msgstr "ezin ezarri '%s' propietatea, '%s' motakoa, '%s' motako baliotik"
 msgid ""
 "value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
 "type '%s'"
-msgstr "“%s” balioa '%s' motakoa ez da baliozkoa edo tartetik kanpo dago '%s' propietaterako '%s' motakoa"
+msgstr ""
+"“%s” balioa '%s' motakoa ez da baliozkoa edo tartetik kanpo dago '%s' "
+"propietaterako '%s' motakoa"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:69
 #, c-format
@@ -171,130 +180,147 @@ msgstr "ezin da %s fabrika kargatu pluginetik: %s"
 msgid "unknown error creating editor instance"
 msgstr "errore ezezaguna editore-instantzia sortzean"
 
-#: src/nm-fortisslvpn-service.c:220
+#: src/nm-fortisslvpn-service.c:218
 msgid "Could not find the openfortivpn binary."
 msgstr "Ezin izan da openfortivpn bitarra aurkitu."
 
-#: src/nm-fortisslvpn-service.c:396
+#: src/nm-fortisslvpn-service.c:402
 msgid "Missing VPN username."
 msgstr "VPNaren erabiltzaile-izena falta da."
 
-#: src/nm-fortisslvpn-service.c:406
+#: src/nm-fortisslvpn-service.c:411
 msgid "Missing or invalid VPN password."
 msgstr "VPNaren pasahitza falta da, edo baliogabea da."
 
-#: src/nm-fortisslvpn-service.c:530
+#: src/nm-fortisslvpn-service.c:536
 msgid "Got new secrets, but nobody asked for them."
 msgstr "Sekretu berriak ditut, baina inork ez du haiengatik galdetu."
 
-#: src/nm-fortisslvpn-service.c:714
+#: src/nm-fortisslvpn-service.c:720
 msgid "Don’t quit when VPN connection terminates"
 msgstr "Ez irten VPN konexioa amaitzen denean"
 
-#: src/nm-fortisslvpn-service.c:715
+#: src/nm-fortisslvpn-service.c:721
 msgid "Enable verbose debug logging (may expose passwords)"
 msgstr "Gaitu arazketaren erregistro xehea (pasahitzak erakuts ditzake)"
 
-#: src/nm-fortisslvpn-service.c:716
+#: src/nm-fortisslvpn-service.c:722
 msgid "D-Bus name to use for this instance"
 msgstr "Instantzia honetan erabiliko den D-Bus izena"
 
-#: src/nm-fortisslvpn-service.c:737
+#: src/nm-fortisslvpn-service.c:743
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
-msgstr "nm-fortisslvpn-service liburutegiak SSLVPN gaitasun integratua (Fortinet-ekin bateragarria) ematen dio NetworkManager aplikazioari."
+msgstr ""
+"nm-fortisslvpn-service liburutegiak SSLVPN gaitasun integratua (Fortinet-"
+"ekin bateragarria) ematen dio NetworkManager aplikazioari."
 
-#: properties/nm-fortisslvpn-dialog.ui:8
+#: properties/nm-fortisslvpn-dialog.ui:7
 msgid "SSLVPN Advanced Options"
 msgstr "SSLVPN aukera aurreratuak"
 
-#: properties/nm-fortisslvpn-dialog.ui:73
-#: properties/nm-fortisslvpn-dialog.ui:375
+#: properties/nm-fortisslvpn-dialog.ui:50
+#: properties/nm-fortisslvpn-dialog.ui:351
 msgid "Authentication"
 msgstr "Autentifikazioa"
 
-#: properties/nm-fortisslvpn-dialog.ui:89
+#: properties/nm-fortisslvpn-dialog.ui:67
 msgid "_Realm"
 msgstr "_Domeinua"
 
-#: properties/nm-fortisslvpn-dialog.ui:103
-#: properties/nm-fortisslvpn-dialog.ui:361
+#: properties/nm-fortisslvpn-dialog.ui:81
+#: properties/nm-fortisslvpn-dialog.ui:337
 msgid ""
 "SSLVPN server IP or name.\n"
 "config: the first parameter of fortisslvpn"
-msgstr "SSLVPN zerbitzariaren IPa edo izena.\n"
+msgstr ""
+"SSLVPN zerbitzariaren IPa edo izena.\n"
 "konfigurazioa: fortisslvpn-ren lehen parametroa"
 
-#: properties/nm-fortisslvpn-dialog.ui:117
+#: properties/nm-fortisslvpn-dialog.ui:95
 msgid "Security"
 msgstr "Segurtasuna"
 
-#: properties/nm-fortisslvpn-dialog.ui:133
+#: properties/nm-fortisslvpn-dialog.ui:113
 msgid "Trusted _certificate"
 msgstr "_Ziurtagiri fidagarria"
 
-#: properties/nm-fortisslvpn-dialog.ui:147
+#: properties/nm-fortisslvpn-dialog.ui:127
 msgid ""
 "A SHA256 sum of the X509 certificate that will be accepted even if the "
 "certificate is not trusted by a certificate authority."
-msgstr "X509 ziurtagiriaren SHA256 batura bat onartuko da, ziurtagiriak autoritate baten fidagarritasuna ez badu ere."
+msgstr ""
+"X509 ziurtagiriaren SHA256 batura bat onartuko da, ziurtagiriak autoritate "
+"baten fidagarritasuna ez badu ere."
 
-#: properties/nm-fortisslvpn-dialog.ui:162
+#: properties/nm-fortisslvpn-dialog.ui:142
 msgid "_One time password"
 msgstr "Denbora _bateko pasahitza"
 
-#: properties/nm-fortisslvpn-dialog.ui:237
-msgid "User _Key"
-msgstr "Erabiltzaile-_gakoa"
+#: properties/nm-fortisslvpn-dialog.ui:185
+#, fuzzy
+msgid "Advanced Properties"
+msgstr "SSLVPN aukera aurreratuak"
 
-#: properties/nm-fortisslvpn-dialog.ui:251
-msgid "_User Certificate"
-msgstr "E_rabiltzaile-ziurtagiria"
+#: properties/nm-fortisslvpn-dialog.ui:193
+msgid "_Cancel"
+msgstr ""
 
-#: properties/nm-fortisslvpn-dialog.ui:265
-msgid "_CA Certificate"
-msgstr "_ZE ziurtagiria"
+#: properties/nm-fortisslvpn-dialog.ui:201
+msgid "_Apply"
+msgstr ""
 
-#: properties/nm-fortisslvpn-dialog.ui:277
+#: properties/nm-fortisslvpn-dialog.ui:253
 msgid "Show password"
 msgstr "Erakutsi pasahitza"
 
-#: properties/nm-fortisslvpn-dialog.ui:293
+#: properties/nm-fortisslvpn-dialog.ui:269
 msgid "Password passed to SSLVPN when prompted for it."
 msgstr "SSLVPNri igorritako pasahitza eskatutakoan."
 
-#: properties/nm-fortisslvpn-dialog.ui:306
+#: properties/nm-fortisslvpn-dialog.ui:282
 msgid ""
 "Set the name used for authenticating the local system to the peer to "
 "<name>.\n"
 "config: user <name>"
-msgstr "Ezarri parekoari <izena> (sistema lokalean autentifikatzeko erabilitako izena).\n"
+msgstr ""
+"Ezarri parekoari <izena> (sistema lokalean autentifikatzeko erabilitako "
+"izena).\n"
 "konfigurazioa: user <izena>"
 
-#: properties/nm-fortisslvpn-dialog.ui:319
+#: properties/nm-fortisslvpn-dialog.ui:295
 msgid "_Password"
 msgstr "_Pasahitza"
 
-#: properties/nm-fortisslvpn-dialog.ui:333
+#: properties/nm-fortisslvpn-dialog.ui:309
 msgid "User _name"
 msgstr "Erabiltzaile-ize_na"
 
-#: properties/nm-fortisslvpn-dialog.ui:347
+#: properties/nm-fortisslvpn-dialog.ui:323
 msgid "_Gateway"
 msgstr "_Atebidea"
 
-#: properties/nm-fortisslvpn-dialog.ui:391
+#: properties/nm-fortisslvpn-dialog.ui:369
 msgid "General"
 msgstr "Orokorra"
 
-#: properties/nm-fortisslvpn-dialog.ui:434
+#: properties/nm-fortisslvpn-dialog.ui:413
 msgid "A_dvanced…"
 msgstr "A_urreratua…"
 
-#: properties/nm-fortisslvpn-dialog.ui:463
+#: properties/nm-fortisslvpn-dialog.ui:449
 msgid "Default"
 msgstr "Lehenetsia"
+
+#~ msgid "User _Key"
+#~ msgstr "Erabiltzaile-_gakoa"
+
+#~ msgid "_User Certificate"
+#~ msgstr "E_rabiltzaile-ziurtagiria"
+
+#~ msgid "_CA Certificate"
+#~ msgstr "_ZE ziurtagiria"
 
 #~ msgid "Could not find secrets (connection invalid, no vpn setting)."
 #~ msgstr ""
