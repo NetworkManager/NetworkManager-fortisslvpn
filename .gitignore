@@ -23,6 +23,7 @@ stamp-*
 .libs
 autom4te.cache
 intltool-*
+gtk4/
 po/boldquot.sed
 po/en@boldquot.header
 po/en@quot.header
@@ -80,6 +81,8 @@ auth-dialog/nm-fortisslvpn-auth-dialog
 nm-fortisslvpn-service.name
 nm-fortisslvpn.desktop
 properties/resources.[ch]
+gtk4/resources.c
+gtk4/nm-fortisslvpn-dialog.ui
 src/nm-fortisslvpn-pppd-service-dbus.c
 src/nm-fortisslvpn-pppd-service-dbus.h
 src/nm-fortisslvpn-pinentry

@@ -24,6 +24,8 @@
 #include "nm-fortisslvpn-editor.h"
 #include "nm-fortissl-properties.h"
 
+#include "nma-cert-chooser.h"
+
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <errno.h>
@@ -33,10 +35,23 @@
 
 /*****************************************************************************/
 
+#if !GTK_CHECK_VERSION(4,0,0)
+#define gtk_editable_set_text(editable,text)	gtk_entry_set_text(GTK_ENTRY(editable), (text))
+#define gtk_editable_get_text(editable)		gtk_entry_get_text(GTK_ENTRY(editable))
+#define gtk_widget_get_root(widget)		gtk_widget_get_toplevel(widget)
+#define gtk_window_set_hide_on_close(window, hide)						\
+	G_STMT_START {										\
+		G_STATIC_ASSERT(hide);								\
+		g_signal_connect_swapped (G_OBJECT (window), "delete-event",			\
+		                          G_CALLBACK (gtk_widget_hide_on_delete), window);	\
+	} G_STMT_END
+#endif
+
+/*****************************************************************************/
+
 typedef struct {
 	GtkBuilder *builder;
 	GtkWidget *widget;
-	GtkSizeGroup *group;
 	GtkWindowGroup *window_group;
 	gboolean window_added;
 	gboolean new_connection;
@@ -74,11 +89,10 @@ setup_password_widget (FortisslvpnEditor *self,
 
 	widget = (GtkWidget *) gtk_builder_get_object (priv->builder, entry_name);
 	g_assert (widget);
-	gtk_size_group_add_widget (priv->group, widget);
 
 	if (s_vpn) {
 		value = nm_setting_vpn_get_secret (s_vpn, secret_name);
-		gtk_entry_set_text (GTK_ENTRY (widget), value ? value : "");
+		gtk_editable_set_text (GTK_EDITABLE (widget), value ? value : "");
 	}
 
 	g_signal_connect (widget, "changed", G_CALLBACK (stuff_changed_cb), self);
@@ -133,7 +147,7 @@ init_password_icon (FortisslvpnEditor *self,
 	 */
 	if (s_vpn)
 		nm_setting_get_secret_flags (NM_SETTING (s_vpn), secret_key, &pw_flags, NULL);
-	value = gtk_entry_get_text (GTK_ENTRY (entry));
+	value = gtk_editable_get_text (GTK_EDITABLE (entry));
 	if ((!value || !*value) && (pw_flags == NM_SETTING_SECRET_FLAG_NONE))
 		nma_utils_update_password_storage (entry, NM_SETTING_SECRET_FLAG_NOT_SAVED,
 		                                   (NMSetting *) s_vpn, secret_key);
@@ -142,29 +156,25 @@ init_password_icon (FortisslvpnEditor *self,
 	                  G_CALLBACK (password_storage_changed_cb), self);
 }
 
-static gboolean
-advanced_dialog_delete_cb (GtkWidget *dialog, gpointer user_data)
-{
-	/* Don't destroy it. */
-	return TRUE;
-}
-
 static void
 advanced_dialog_response_cb (GtkWidget *dialog, gint response, gpointer user_data)
 {
 	FortisslvpnEditor *self = FORTISSLVPN_EDITOR (user_data);
 	FortisslvpnEditorPrivate *priv = FORTISSLVPN_EDITOR_GET_PRIVATE (self);
-	GtkEntry *trusted_cert_entry = GTK_ENTRY (gtk_builder_get_object (priv->builder, "trusted_cert_entry"));
-	GtkEntry *realm_entry = GTK_ENTRY (gtk_builder_get_object (priv->builder, "realm_entry"));
+	GtkEditable *trusted_cert_entry = GTK_EDITABLE (gtk_builder_get_object (priv->builder, "trusted_cert_entry"));
+	GtkEditable *realm_entry = GTK_EDITABLE (gtk_builder_get_object (priv->builder, "realm_entry"));
 	GtkSwitch *use_otp = GTK_SWITCH (gtk_builder_get_object (priv->builder, "use_otp"));
 
 	g_return_if_fail (trusted_cert_entry);
 	g_return_if_fail (realm_entry);
 
+	gtk_widget_hide (dialog);
+	gtk_window_set_transient_for (GTK_WINDOW (dialog), NULL);
+
 	if (response == GTK_RESPONSE_OK) {
 		g_free (priv->trusted_cert);
-		priv->trusted_cert = g_strdup (gtk_entry_get_text (trusted_cert_entry));
-		priv->realm = g_strdup (gtk_entry_get_text (realm_entry));
+		priv->trusted_cert = g_strdup (gtk_editable_get_text (trusted_cert_entry));
+		priv->realm = g_strdup (gtk_editable_get_text (realm_entry));
 		stuff_changed_cb (NULL, self);
 
 		if (gtk_switch_get_active (use_otp))
@@ -172,13 +182,11 @@ advanced_dialog_response_cb (GtkWidget *dialog, gint response, gpointer user_dat
 		else
 			priv->otp_flags &= ~NM_SETTING_SECRET_FLAG_NOT_SAVED;
 	} else {
-		gtk_entry_set_text (trusted_cert_entry, priv->trusted_cert);
-		gtk_entry_set_text (realm_entry, priv->realm);
+		gtk_editable_set_text (trusted_cert_entry, priv->trusted_cert);
+		gtk_editable_set_text (realm_entry, priv->realm);
 		gtk_switch_set_active (use_otp,
 		                       priv->otp_flags & NM_SETTING_SECRET_FLAG_NOT_SAVED);
 	}
-
-	gtk_widget_hide (dialog);
 }
 
 static void
@@ -187,20 +195,21 @@ advanced_button_clicked_cb (GtkWidget *button, gpointer user_data)
 	FortisslvpnEditor *self = FORTISSLVPN_EDITOR (user_data);
 	FortisslvpnEditorPrivate *priv = FORTISSLVPN_EDITOR_GET_PRIVATE (self);
 	GtkWidget *dialog = GTK_WIDGET (gtk_builder_get_object (priv->builder, "advanced_dialog"));
+	void *root;
+
 	g_assert (dialog);
 
-	if (!priv->window_added) {
-		GtkWidget *toplevel = gtk_widget_get_toplevel (priv->widget);
-
-		g_assert (gtk_widget_is_toplevel (toplevel));
-		gtk_window_group_add_window (priv->window_group, GTK_WINDOW (toplevel));
-		gtk_window_group_add_window (priv->window_group, GTK_WINDOW (dialog));
-		gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (toplevel));
-		priv->window_added = TRUE;
+	root = gtk_widget_get_root (priv->widget);
+	if (GTK_IS_WINDOW(root)) {
+		gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (root));
+		if (!priv->window_added) {
+			gtk_window_group_add_window (priv->window_group, GTK_WINDOW (root));
+			gtk_window_group_add_window (priv->window_group, GTK_WINDOW (dialog));
+			priv->window_added = TRUE;
+		}
 	}
 
-	gtk_widget_grab_focus (GTK_WIDGET (gtk_builder_get_object (priv->builder, "ok_button")));
-	gtk_widget_show_all (dialog);
+	gtk_widget_show (dialog);
 }
 
 static gboolean
@@ -209,31 +218,30 @@ init_editor_plugin (FortisslvpnEditor *self, NMConnection *connection, GError **
 	FortisslvpnEditorPrivate *priv = FORTISSLVPN_EDITOR_GET_PRIVATE (self);
 	NMSettingVpn *s_vpn;
 	GtkWidget *widget;
+	GtkSizeGroup *group;
 	const char *value;
 
 	s_vpn = (NMSettingVpn *) nm_connection_get_setting (connection, NM_TYPE_SETTING_VPN);
 
-	priv->group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
+	group = GTK_SIZE_GROUP (gtk_builder_get_object (priv->builder, "group"));
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "gateway_entry"));
 	g_return_val_if_fail (widget, FALSE);
 
-	gtk_size_group_add_widget (priv->group, widget);
 	if (s_vpn) {
 		value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_GATEWAY);
 		if (value && strlen (value))
-			gtk_entry_set_text (GTK_ENTRY (widget), value);
+			gtk_editable_set_text (GTK_EDITABLE (widget), value);
 	}
 	g_signal_connect (G_OBJECT (widget), "changed", G_CALLBACK (stuff_changed_cb), self);
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "user_entry"));
 	g_return_val_if_fail (widget, FALSE);
 
-	gtk_size_group_add_widget (priv->group, widget);
 	if (s_vpn) {
 		value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_USER);
 		if (value && strlen (value))
-			gtk_entry_set_text (GTK_ENTRY (widget), value);
+			gtk_editable_set_text (GTK_EDITABLE (widget), value);
 	}
 	g_signal_connect (G_OBJECT (widget), "changed", G_CALLBACK (stuff_changed_cb), self);
 
@@ -244,7 +252,7 @@ init_editor_plugin (FortisslvpnEditor *self, NMConnection *connection, GError **
 		                                                             NM_FORTISSLVPN_KEY_TRUSTED_CERT));
 		if (!priv->trusted_cert)
 			priv->trusted_cert = g_strdup ("");
-		gtk_entry_set_text (GTK_ENTRY (widget), priv->trusted_cert);
+		gtk_editable_set_text (GTK_EDITABLE (widget), priv->trusted_cert);
 	}
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "realm_entry"));
@@ -254,7 +262,7 @@ init_editor_plugin (FortisslvpnEditor *self, NMConnection *connection, GError **
 		                                                      NM_FORTISSLVPN_KEY_REALM));
 		if (!priv->realm)
 			priv->realm = g_strdup ("");
-		gtk_entry_set_text (GTK_ENTRY (widget), priv->realm);
+		gtk_editable_set_text (GTK_EDITABLE (widget), priv->realm);
 	}
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "use_otp"));
@@ -291,41 +299,39 @@ init_editor_plugin (FortisslvpnEditor *self, NMConnection *connection, GError **
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "ca_chooser"));
 	g_return_val_if_fail (widget, FALSE);
 
-	gtk_size_group_add_widget (priv->group, widget);
+	nma_cert_chooser_add_to_size_group (NMA_CERT_CHOOSER (widget), group);
 	if (s_vpn) {
 		value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_CA);
-		if (value && strlen (value))
-			gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (widget), value);
+		if (value && strlen (value)) {
+			nma_cert_chooser_set_cert (NMA_CERT_CHOOSER (widget), value,
+			                           NM_SETTING_802_1X_CK_SCHEME_PATH);
+		}
 	}
-	g_signal_connect (G_OBJECT (widget), "update-preview", G_CALLBACK (stuff_changed_cb), self);
+	g_signal_connect (G_OBJECT (widget), "changed", G_CALLBACK (stuff_changed_cb), self);
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "cert_chooser"));
 	g_return_val_if_fail (widget, FALSE);
 
-	gtk_size_group_add_widget (priv->group, widget);
+	nma_cert_chooser_add_to_size_group (NMA_CERT_CHOOSER (widget), group);
 	if (s_vpn) {
 		value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_CERT);
-		if (value && strlen (value))
-			gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (widget), value);
-	}
-	g_signal_connect (G_OBJECT (widget), "update-preview", G_CALLBACK (stuff_changed_cb), self);
-
-	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "key_chooser"));
-	g_return_val_if_fail (widget, FALSE);
-
-	gtk_size_group_add_widget (priv->group, widget);
-	if (s_vpn) {
+		if (value && strlen (value)) {
+			nma_cert_chooser_set_cert (NMA_CERT_CHOOSER (widget), value,
+			                           NM_SETTING_802_1X_CK_SCHEME_PATH);
+		}
 		value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_KEY);
-		if (value && strlen (value))
-			gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (widget), value);
+		if (value && strlen (value)) {
+			nma_cert_chooser_set_key (NMA_CERT_CHOOSER (widget), value,
+			                          NM_SETTING_802_1X_CK_SCHEME_PATH);
+		}
 	}
-	g_signal_connect (G_OBJECT (widget), "update-preview", G_CALLBACK (stuff_changed_cb), self);
+	g_signal_connect (G_OBJECT (widget), "changed", G_CALLBACK (stuff_changed_cb), self);
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "advanced_dialog"));
 	g_return_val_if_fail (widget, FALSE);
 
 	g_signal_connect (G_OBJECT (widget), "response", G_CALLBACK (advanced_dialog_response_cb), self);
-	g_signal_connect (G_OBJECT (widget), "delete-event", G_CALLBACK (advanced_dialog_delete_cb), NULL);
+	gtk_window_set_hide_on_close (GTK_WINDOW (widget), TRUE);
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "advanced_button"));
 	g_return_val_if_fail (widget, FALSE);
@@ -362,7 +368,7 @@ save_password_and_flags (NMSettingVpn *s_vpn,
 	switch (flags) {
 	case NM_SETTING_SECRET_FLAG_NONE:
 	case NM_SETTING_SECRET_FLAG_AGENT_OWNED:
-		password = gtk_entry_get_text (GTK_ENTRY (entry));
+		password = gtk_editable_get_text (GTK_EDITABLE (entry));
 		if (password && strlen (password))
 			nm_setting_vpn_add_secret (s_vpn, secret_key, password);
 		break;
@@ -390,13 +396,13 @@ update_connection (NMVpnEditor *iface,
 
 	/* Gateway */
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "gateway_entry"));
-	str = gtk_entry_get_text (GTK_ENTRY (widget));
+	str = gtk_editable_get_text (GTK_EDITABLE (widget));
 	if (str && strlen (str))
 		nm_setting_vpn_add_data_item (s_vpn, NM_FORTISSLVPN_KEY_GATEWAY, str);
 
 	/* Username */
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "user_entry"));
-	str = gtk_entry_get_text (GTK_ENTRY (widget));
+	str = gtk_editable_get_text (GTK_EDITABLE (widget));
 	if (str && strlen (str))
 		nm_setting_vpn_add_data_item (s_vpn, NM_FORTISSLVPN_KEY_USER, str);
 
@@ -405,24 +411,6 @@ update_connection (NMVpnEditor *iface,
 	                         priv->builder,
 	                         "user_password_entry",
 	                         NM_FORTISSLVPN_KEY_PASSWORD);
-
-	/* CA file */
-	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "ca_chooser"));
-	str = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (widget));
-	if (str && strlen (str))
-		nm_setting_vpn_add_data_item (s_vpn, NM_FORTISSLVPN_KEY_CA, str);
-
-	/* User certificate */
-	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "cert_chooser"));
-	str = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (widget));
-	if (str && strlen (str))
-		nm_setting_vpn_add_data_item (s_vpn, NM_FORTISSLVPN_KEY_CERT, str);
-
-	/* User key */
-	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "key_chooser"));
-	str = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (widget));
-	if (str && strlen (str))
-		nm_setting_vpn_add_data_item (s_vpn, NM_FORTISSLVPN_KEY_KEY, str);
 
 	/* Trusted certificate */
 	if (priv->trusted_cert && strlen (priv->trusted_cert))
@@ -515,12 +503,11 @@ dispose (GObject *object)
 	GtkWidget *widget;
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "user_password_entry"));
-	g_signal_handlers_disconnect_by_func (G_OBJECT (widget),
-	                                      (GCallback) password_storage_changed_cb,
-	                                      plugin);
-
-	if (priv->group)
-		g_object_unref (priv->group);
+	if (widget) {
+		g_signal_handlers_disconnect_by_func (G_OBJECT (widget),
+						      (GCallback) password_storage_changed_cb,
+						      plugin);
+	}
 
 	if (priv->window_group)
 		g_object_unref (priv->window_group);

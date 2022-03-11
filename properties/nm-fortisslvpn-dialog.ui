@@ -4,53 +4,27 @@
   <requires lib="gtk+" version="3.4"/>
   <object class="GtkDialog" id="advanced_dialog">
     <property name="can_focus">False</property>
-    <property name="border_width">5</property>
     <property name="title" translatable="yes">SSLVPN Advanced Options</property>
     <property name="modal">True</property>
-    <property name="window_position">center-on-parent</property>
     <property name="destroy_with_parent">True</property>
     <property name="icon_name">stock-preferences</property>
-    <property name="type_hint">dialog</property>
-    <property name="skip_pager_hint">True</property>
     <child>
       <placeholder/>
     </child>
     <child internal-child="vbox">
       <object class="GtkBox" id="dialog-vbox1">
+        <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkButtonBox" id="dialog-action_area1">
+          <object class="GtkBox" id="dialog-action_area1">
             <property name="can_focus">False</property>
-            <property name="layout_style">end</property>
             <child>
-              <object class="GtkButton" id="cancel_button">
-                <property name="label">gtk-cancel</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="use_stock">True</property>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
+              <placeholder/>
             </child>
             <child>
-              <object class="GtkButton" id="ok_button">
-                <property name="label">gtk-ok</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="use_stock">True</property>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
+              <placeholder/>
             </child>
           </object>
           <packing>
@@ -62,16 +36,20 @@
         <child>
           <object class="GtkGrid">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="border_width">12</property>
-            <property name="row_spacing">6</property>
-            <property name="column_spacing">12</property>
+            <property name="can-focus">False</property>
+            <property name="margin-start">24</property>
+            <property name="margin-end">24</property>
+            <property name="margin-top">24</property>
+            <property name="margin-bottom">24</property>
+            <property name="row-spacing">6</property>
+            <property name="column-spacing">6</property>
             <child>
               <object class="GtkLabel" id="label3">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Authentication</property>
-                <property name="xalign">0.5</property>
+                <property name="margin_bottom">6</property>
+                <property name="xalign">0</property>
                 <attributes>
                   <attribute name="weight" value="bold"/>
                 </attributes>
@@ -115,7 +93,9 @@ config: the first parameter of fortisslvpn</property>
                 <property name="can_focus">False</property>
                 <property name="margin_top">12</property>
                 <property name="label" translatable="yes">Security</property>
-                <property name="xalign">0.5</property>
+                <property name="margin_top">12</property>
+                <property name="margin_bottom">6</property>
+                <property name="xalign">0</property>
                 <attributes>
                   <attribute name="weight" value="bold"/>
                 </attributes>
@@ -191,85 +171,81 @@ config: the first parameter of fortisslvpn</property>
     </child>
     <action-widgets>
       <action-widget response="-6">cancel_button</action-widget>
-      <action-widget response="-5">ok_button</action-widget>
+      <action-widget response="-5" default="true">ok_button</action-widget>
     </action-widgets>
+    <child type="titlebar">
+      <object class="GtkHeaderBar">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="show-close-button">False</property>
+        <child type="title">
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">Advanced Properties</property>
+            <style>
+              <class name="title"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="cancel_button">
+            <property name="label" translatable="yes">_Cancel</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="use-underline">True</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="ok_button">
+            <property name="label" translatable="yes">_Apply</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="use-underline">True</property>
+            <property name="can-default">True</property>
+            <style>
+              <class name="default"/>
+              <class name="suggested-action"/>
+            </style>
+          </object>
+          <packing>
+            <property name="pack-type">end</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
   </object>
   <object class="GtkGrid" id="fortisslvpn_grid">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="border_width">12</property>
     <property name="row_spacing">6</property>
-    <property name="column_spacing">12</property>
+    <property name="column_spacing">6</property>
     <child>
-      <object class="GtkFileChooserButton" id="key_chooser">
+      <object class="NmaCertChooser" id="ca_chooser">
+        <property name="flags">13</property>
+        <property name="title">CA</property>
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
+        <property name="can-focus">False</property>
       </object>
       <packing>
-        <property name="left_attach">1</property>
-        <property name="top_attach">8</property>
+        <property name="left-attach">0</property>
+        <property name="top-attach">6</property>
+        <property name="width">2</property>
       </packing>
     </child>
     <child>
-      <object class="GtkFileChooserButton" id="cert_chooser">
+      <object class="NmaCertChooser" id="cert_chooser">
+        <property name="flags">12</property>
+        <property name="title">User</property>
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
+        <property name="can-focus">False</property>
       </object>
       <packing>
-        <property name="left_attach">1</property>
-        <property name="top_attach">7</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkFileChooserButton" id="ca_chooser">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-      </object>
-      <packing>
-        <property name="left_attach">1</property>
-        <property name="top_attach">6</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel" id="label7">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="label" translatable="yes">User _Key</property>
-        <property name="use_underline">True</property>
-        <property name="mnemonic_widget">key_chooser</property>
-        <property name="xalign">1</property>
-      </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">8</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel" id="label">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="label" translatable="yes">_User Certificate</property>
-        <property name="use_underline">True</property>
-        <property name="mnemonic_widget">cert_chooser</property>
-        <property name="xalign">1</property>
-      </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">7</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel" id="label5">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="label" translatable="yes">_CA Certificate</property>
-        <property name="use_underline">True</property>
-        <property name="mnemonic_widget">ca_chooser</property>
-        <property name="xalign">1</property>
-      </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">6</property>
+        <property name="left-attach">0</property>
+        <property name="top-attach">7</property>
+        <property name="width">2</property>
       </packing>
     </child>
     <child>
@@ -373,7 +349,9 @@ config: the first parameter of fortisslvpn</property>
         <property name="can_focus">False</property>
         <property name="margin_top">12</property>
         <property name="label" translatable="yes">Authentication</property>
-        <property name="xalign">0.5</property>
+        <property name="margin_top">12</property>
+        <property name="margin_bottom">6</property>
+        <property name="xalign">0</property>
         <attributes>
           <attribute name="weight" value="bold"/>
         </attributes>
@@ -389,7 +367,8 @@ config: the first parameter of fortisslvpn</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">General</property>
-        <property name="xalign">0.5</property>
+        <property name="margin_bottom">6</property>
+        <property name="xalign">0</property>
         <attributes>
           <attribute name="weight" value="bold"/>
         </attributes>
@@ -452,6 +431,13 @@ config: the first parameter of fortisslvpn</property>
     <child>
       <placeholder/>
     </child>
+  </object>
+  <object class="GtkSizeGroup" id="group">
+    <widgets>
+      <widget name="label2"/>
+      <widget name="label26"/>
+      <widget name="label23"/>
+    </widgets>
   </object>
   <object class="GtkListStore" id="model1">
     <columns>
