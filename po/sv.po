@@ -1,17 +1,17 @@
 # Swedish messages for NetworkManager fortisslvpn.
-# Copyright © 2004-2021 Free Software Foundation, Inc.
+# Copyright © 2004-2022 Free Software Foundation, Inc.
 # Christian Rose <menthos@menthos.com>, 2004, 2005, 2006.
 # Daniel Nylander <po@danielnylander.se>, 2006, 2007, 2008, 2009, 2011, 2012.
 # Josef Andersson <josef.andersson@fripost.org>, 2014, 2017.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015, 2016, 2017, 2020, 2021.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015, 2016, 2017, 2020, 2021, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
-"fortisslvpn/\n"
-"POT-Creation-Date: 2022-03-11 16:59+0100\n"
-"PO-Revision-Date: 2021-07-25 21:13+0200\n"
+"fortisslvpn/issues\n"
+"POT-Creation-Date: 2022-03-11 16:32+0000\n"
+"PO-Revision-Date: 2022-03-11 21:34+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
 msgid "Fortinet SSLVPN client"
@@ -263,17 +263,16 @@ msgid "_One time password"
 msgstr "_Engångslösenord"
 
 #: properties/nm-fortisslvpn-dialog.ui:185
-#, fuzzy
 msgid "Advanced Properties"
-msgstr "Avancerade SSLVPN-alternativ"
+msgstr "Avancerade egenskaper"
 
 #: properties/nm-fortisslvpn-dialog.ui:193
 msgid "_Cancel"
-msgstr ""
+msgstr "A_vbryt"
 
 #: properties/nm-fortisslvpn-dialog.ui:201
 msgid "_Apply"
-msgstr ""
+msgstr "V_erkställ"
 
 #: properties/nm-fortisslvpn-dialog.ui:253
 msgid "Show password"
@@ -316,12 +315,3 @@ msgstr "A_vancerat…"
 #: properties/nm-fortisslvpn-dialog.ui:449
 msgid "Default"
 msgstr "Standard"
-
-#~ msgid "User _Key"
-#~ msgstr "Användar_nyckel"
-
-#~ msgid "_User Certificate"
-#~ msgstr "_Användarcertifikat"
-
-#~ msgid "_CA Certificate"
-#~ msgstr "_CA-certifikat"
