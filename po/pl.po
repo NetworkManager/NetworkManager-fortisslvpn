@@ -1,17 +1,17 @@
 # Polish translation for NetworkManager-fortisslvpn.
-# Copyright © 2008-2020 the NetworkManager-fortisslvpn authors.
+# Copyright © 2008-2022 the NetworkManager-fortisslvpn authors.
 # This file is distributed under the same license as the NetworkManager-fortisslvpn package.
 # Tomasz Dominikowski <dominikowski@gmail.com>, 2008-2009.
-# Piotr Drąg <piotrdrag@gmail.com>, 2010-2020.
-# Aviary.pl <community-poland@mozilla.org>, 2008-2020.
+# Piotr Drąg <piotrdrag@gmail.com>, 2010-2022.
+# Aviary.pl <community-poland@mozilla.org>, 2008-2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
-"fortisslvpn/\n"
-"POT-Creation-Date: 2022-03-11 16:59+0100\n"
-"PO-Revision-Date: 2020-05-17 11:47+0200\n"
+"fortisslvpn/issues\n"
+"POT-Creation-Date: 2022-03-11 16:32+0000\n"
+"PO-Revision-Date: 2022-03-13 13:14+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -263,17 +263,16 @@ msgid "_One time password"
 msgstr "_Hasło jednorazowe"
 
 #: properties/nm-fortisslvpn-dialog.ui:185
-#, fuzzy
 msgid "Advanced Properties"
-msgstr "Zaawansowane opcje SSLVPN"
+msgstr "Zaawansowane właściwości"
 
 #: properties/nm-fortisslvpn-dialog.ui:193
 msgid "_Cancel"
-msgstr ""
+msgstr "_Anuluj"
 
 #: properties/nm-fortisslvpn-dialog.ui:201
 msgid "_Apply"
-msgstr ""
+msgstr "_Zastosuj"
 
 #: properties/nm-fortisslvpn-dialog.ui:253
 msgid "Show password"
@@ -316,12 +315,3 @@ msgstr "Zaa_wansowane…"
 #: properties/nm-fortisslvpn-dialog.ui:449
 msgid "Default"
 msgstr "Domyślne"
-
-#~ msgid "User _Key"
-#~ msgstr "_Klucz użytkownika"
-
-#~ msgid "_User Certificate"
-#~ msgstr "Certyfikat _użytkownika"
-
-#~ msgid "_CA Certificate"
-#~ msgstr "_Certyfikat CA"
