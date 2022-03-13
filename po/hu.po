@@ -1,17 +1,17 @@
 # Hungarian translation for NetworkManager-fortisslvpn.
-# Copyright (C) 2006, 2007, 2008, 2010, 2011, 2015, 2016, 2017, 2019, 2021 Free Software Foundation, Inc.
+# Copyright (C) 2006, 2007, 2008, 2010, 2011, 2015, 2016, 2017, 2019, 2021, 2022 Free Software Foundation, Inc.
 # This file is distributed under the same license as the NetworkManager-fortisslvpn package.
 #
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2006, 2007, 2008, 2010, 2012, 2015, 2016.
 # Mate Ory <orymate at ubuntu dot com>, 2011.
-# Balázs Úr <ur.balazs at fsf dot hu>, 2017, 2019, 2021.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2017, 2019, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
-"fortisslvpn/\n"
-"POT-Creation-Date: 2022-03-11 16:59+0100\n"
-"PO-Revision-Date: 2021-02-15 01:42+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-fortisslvp"
+"n/issues\n"
+"POT-Creation-Date: 2022-03-11 16:32+0000\n"
+"PO-Revision-Date: 2022-03-13 02:18+0100\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
@@ -264,17 +264,16 @@ msgid "_One time password"
 msgstr "_Egyszer használható jelszó"
 
 #: properties/nm-fortisslvpn-dialog.ui:185
-#, fuzzy
 msgid "Advanced Properties"
-msgstr "SSLVPN speciális beállításai"
+msgstr "Speciális tulajdonságok"
 
 #: properties/nm-fortisslvpn-dialog.ui:193
 msgid "_Cancel"
-msgstr ""
+msgstr "_Mégse"
 
 #: properties/nm-fortisslvpn-dialog.ui:201
 msgid "_Apply"
-msgstr ""
+msgstr "_Alkalmaz"
 
 #: properties/nm-fortisslvpn-dialog.ui:253
 msgid "Show password"
@@ -316,12 +315,3 @@ msgstr "Spe_ciális…"
 #: properties/nm-fortisslvpn-dialog.ui:449
 msgid "Default"
 msgstr "Alapértelmezett"
-
-#~ msgid "User _Key"
-#~ msgstr "Felhasználói _kulcs"
-
-#~ msgid "_User Certificate"
-#~ msgstr "Felhasználói _tanúsítvány"
-
-#~ msgid "_CA Certificate"
-#~ msgstr "_CA tanúsítvány"
