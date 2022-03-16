@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
-"fortisslvpn/\n"
-"POT-Creation-Date: 2022-03-11 16:59+0100\n"
+"fortisslvpn/issues\n"
+"POT-Creation-Date: 2022-03-13 12:18+0000\n"
 "PO-Revision-Date: 2021-03-25 16:12+0100\n"
 "Last-Translator: Zdeněk Hataš <zdenek.hatas@gmail.com>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
@@ -255,17 +255,16 @@ msgid "_One time password"
 msgstr "Jedn_orázové heslo"
 
 #: properties/nm-fortisslvpn-dialog.ui:185
-#, fuzzy
 msgid "Advanced Properties"
-msgstr "Pokročilé volby SSLVPN"
+msgstr "Pokročilé vlastnosti"
 
 #: properties/nm-fortisslvpn-dialog.ui:193
 msgid "_Cancel"
-msgstr ""
+msgstr "_Zrušit"
 
 #: properties/nm-fortisslvpn-dialog.ui:201
 msgid "_Apply"
-msgstr ""
+msgstr "_Použít"
 
 #: properties/nm-fortisslvpn-dialog.ui:253
 msgid "Show password"
@@ -308,16 +307,3 @@ msgstr "Po_kročilé…"
 #: properties/nm-fortisslvpn-dialog.ui:449
 msgid "Default"
 msgstr "Výchozí"
-
-#~ msgid "User _Key"
-#~ msgstr "Uživatelský _klíč"
-
-#~ msgid "_User Certificate"
-#~ msgstr "_Uživatelský certifikát"
-
-#~ msgid "_CA Certificate"
-#~ msgstr "_Certifikát CA"
-
-#~ msgid ""
-#~ "Ask for an one-time password (OTP) for two factor authentication (2FA)."
-#~ msgstr "Vyžadovat jednorázové heslo (OTP) pro dvoufaktorové ověření (2FA)"
