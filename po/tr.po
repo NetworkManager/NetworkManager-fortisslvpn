@@ -2,15 +2,15 @@
 # This file is distributed under the same license as the NetworkManager-fortisslvpn package.
 # Necdet Yücel <necdetyucel@gmail.com>, 2014.
 # Sabri Ünal <libreajans@gmail.com>, 2019.
-# Emin Tufan Çetin <etcetin@gmail.com>, 2020.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2020, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
-"fortisslvpn/\n"
-"POT-Creation-Date: 2022-03-11 16:59+0100\n"
-"PO-Revision-Date: 2020-07-16 14:15+0300\n"
+"fortisslvpn/issues\n"
+"POT-Creation-Date: 2022-03-13 12:18+0000\n"
+"PO-Revision-Date: 2022-03-20 22:39+0300\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 2.4.3\n"
 "X-POOTLE-MTIME: 1415383953.000000\n"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
@@ -261,17 +261,16 @@ msgid "_One time password"
 msgstr "_Tek kullanımlık parola"
 
 #: properties/nm-fortisslvpn-dialog.ui:185
-#, fuzzy
 msgid "Advanced Properties"
-msgstr "SSLVPN Gelişmiş Seçenekler"
+msgstr "Gelişmiş Özellikler"
 
 #: properties/nm-fortisslvpn-dialog.ui:193
 msgid "_Cancel"
-msgstr ""
+msgstr "İptal _Et"
 
 #: properties/nm-fortisslvpn-dialog.ui:201
 msgid "_Apply"
-msgstr ""
+msgstr "_Uygula"
 
 #: properties/nm-fortisslvpn-dialog.ui:253
 msgid "Show password"
