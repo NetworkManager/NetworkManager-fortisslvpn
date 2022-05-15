@@ -3,16 +3,14 @@
 #
 # Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2008, 2009, 2010, 2014, 2015.
 # Edurne Labaka <elabaka@uzei.com>, 2015.
-# Asier Sarasua Garmendia <asier.sarasua@gmail.com>, 2019.
+# Asier Sarasua Garmendia <asiersarasua@ni.eus>, 2019, 2022.
 #
 msgid ""
-msgstr ""
-"Project-Id-Version: NetworkManager-fortisslvpn nm-1-0\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
-"fortisslvpn/\n"
-"POT-Creation-Date: 2022-03-11 16:59+0100\n"
-"PO-Revision-Date: 2019-10-27 10:00+0100\n"
-"Last-Translator: Asier Sarasua Garmendia <asier.sarasua@gmail.com>\n"
+msgstr "Project-Id-Version: NetworkManager-fortisslvpn nm-1-0\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-fortisslvpn/issues\n"
+"POT-Creation-Date: 2022-03-13 12:18+0000\n"
+"PO-Revision-Date: 2022-05-15 10:00+0100\n"
+"Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
@@ -31,8 +29,7 @@ msgstr "Fortinet SSLVPN sare birtual pribatuetarako bezeroa"
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:24
 msgid ""
 "Support for configuring Fortinet SSLVPN virtual private network connections."
-msgstr ""
-"Fortinet SSLVPN sare birtual pribatuetako konexioak konfiguratzeko euskarria"
+msgstr "Fortinet SSLVPN sare birtual pribatuetako konexioak konfiguratzeko euskarria"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:32
 msgid "The advanced options dialog"
@@ -48,22 +45,19 @@ msgstr "NetworkManager-en garatzaileak"
 #: auth-dialog/main.c:165
 #, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
-msgstr ""
-"Autentifikatu egin behar duzu “%s” Sare Birtual Pribatura sarbidetzeko."
+msgstr "Autentifikatu egin behar duzu “%s” Sare Birtual Pribatura sarbidetzeko."
 
 #: auth-dialog/main.c:174 auth-dialog/main.c:198
 msgid "Authenticate VPN"
 msgstr "Autentifikatu VPNa"
 
 #: auth-dialog/main.c:177
-#, fuzzy
 msgid "Password"
-msgstr "Pasahitza:"
+msgstr "Pasahitza"
 
 #: auth-dialog/main.c:179
-#, fuzzy
 msgid "Token"
-msgstr "Tokena:"
+msgstr "Tokena"
 
 #: auth-dialog/main.c:202
 msgid "_Token:"
@@ -134,8 +128,7 @@ msgstr "'%s' propietatea ez da idazgarria '%s' klaseko objektuaren"
 #, c-format
 msgid ""
 "construct property \"%s\" for object '%s' can't be set after construction"
-msgstr ""
-"eraiki ondoren ezin da \"% s\" eraikitzeko jabetza \"% s\" objekturako aldatu"
+msgstr "eraiki ondoren ezin da \"% s\" eraikitzeko jabetza \"% s\" objekturako aldatu"
 
 #: shared/nm-utils/nm-shared-utils.c:286
 #, c-format
@@ -152,9 +145,7 @@ msgstr "ezin ezarri '%s' propietatea, '%s' motakoa, '%s' motako baliotik"
 msgid ""
 "value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
 "type '%s'"
-msgstr ""
-"“%s” balioa '%s' motakoa ez da baliozkoa edo tartetik kanpo dago '%s' "
-"propietaterako '%s' motakoa"
+msgstr "“%s” balioa '%s' motakoa ez da baliozkoa edo tartetik kanpo dago '%s' propietaterako '%s' motakoa"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:69
 #, c-format
@@ -212,9 +203,7 @@ msgstr "Instantzia honetan erabiliko den D-Bus izena"
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
-msgstr ""
-"nm-fortisslvpn-service liburutegiak SSLVPN gaitasun integratua (Fortinet-"
-"ekin bateragarria) ematen dio NetworkManager aplikazioari."
+msgstr "nm-fortisslvpn-service liburutegiak SSLVPN gaitasun integratua (Fortinet-ekin bateragarria) ematen dio NetworkManager aplikazioari."
 
 #: properties/nm-fortisslvpn-dialog.ui:7
 msgid "SSLVPN Advanced Options"
@@ -234,8 +223,7 @@ msgstr "_Domeinua"
 msgid ""
 "SSLVPN server IP or name.\n"
 "config: the first parameter of fortisslvpn"
-msgstr ""
-"SSLVPN zerbitzariaren IPa edo izena.\n"
+msgstr "SSLVPN zerbitzariaren IPa edo izena.\n"
 "konfigurazioa: fortisslvpn-ren lehen parametroa"
 
 #: properties/nm-fortisslvpn-dialog.ui:95
@@ -250,26 +238,23 @@ msgstr "_Ziurtagiri fidagarria"
 msgid ""
 "A SHA256 sum of the X509 certificate that will be accepted even if the "
 "certificate is not trusted by a certificate authority."
-msgstr ""
-"X509 ziurtagiriaren SHA256 batura bat onartuko da, ziurtagiriak autoritate "
-"baten fidagarritasuna ez badu ere."
+msgstr "X509 ziurtagiriaren SHA256 batura bat onartuko da, ziurtagiriak autoritate baten fidagarritasuna ez badu ere."
 
 #: properties/nm-fortisslvpn-dialog.ui:142
 msgid "_One time password"
 msgstr "Denbora _bateko pasahitza"
 
 #: properties/nm-fortisslvpn-dialog.ui:185
-#, fuzzy
 msgid "Advanced Properties"
-msgstr "SSLVPN aukera aurreratuak"
+msgstr "Propietate aurreratuak"
 
 #: properties/nm-fortisslvpn-dialog.ui:193
 msgid "_Cancel"
-msgstr ""
+msgstr "_Utzi"
 
 #: properties/nm-fortisslvpn-dialog.ui:201
 msgid "_Apply"
-msgstr ""
+msgstr "_Aplikatu"
 
 #: properties/nm-fortisslvpn-dialog.ui:253
 msgid "Show password"
@@ -284,9 +269,7 @@ msgid ""
 "Set the name used for authenticating the local system to the peer to "
 "<name>.\n"
 "config: user <name>"
-msgstr ""
-"Ezarri parekoari <izena> (sistema lokalean autentifikatzeko erabilitako "
-"izena).\n"
+msgstr "Ezarri parekoari <izena> (sistema lokalean autentifikatzeko erabilitako izena).\n"
 "konfigurazioa: user <izena>"
 
 #: properties/nm-fortisslvpn-dialog.ui:295
