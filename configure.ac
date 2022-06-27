@@ -12,19 +12,20 @@ AC_USE_SYSTEM_EXTENSIONS
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_HEADERS([config.h])
 
+AC_USE_SYSTEM_EXTENSIONS
+
 dnl
 dnl Require programs
 dnl
 AC_PROG_CC
 AM_PROG_CC_C_O
 AC_PROG_INSTALL
-AC_PROG_LIBTOOL
 AC_PROG_CPP
 AC_PROG_EGREP
+LT_INIT([disable-static])
 AC_PATH_PROG(GLIB_COMPILE_RESOURCES, glib-compile-resources)
 PKG_PROG_PKG_CONFIG()
 
-AC_GNU_SOURCE
 
 AC_CHECK_PROG([has_file], file, yes, no)
 if test x$has_file = xno ; then
@@ -39,7 +40,6 @@ fi
 dnl
 dnl Required headers
 dnl
-AC_HEADER_STDC
 AC_CHECK_HEADERS(fcntl.h paths.h stdarg.h stdbool.h sys/ioctl.h sys/time.h syslog.h unistd.h)
 
 AC_CHECK_HEADERS(pppd/pppd.h,,
@@ -85,7 +85,6 @@ dnl Checks for typedefs, structures, and compiler characteristics.
 dnl
 AC_TYPE_MODE_T
 AC_TYPE_PID_T
-AC_HEADER_TIME
 
 dnl
 dnl Checks for library functions.
