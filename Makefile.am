@@ -296,49 +296,9 @@ properties_libnm_gtk4_vpn_plugin_fortisslvpn_editor_la_LDFLAGS = \
 
 ###############################################################################
 
-if WITH_LIBNM_GLIB
-noinst_LTLIBRARIES += properties/libnm-fortisslvpn-properties-core.la
-endif
-
-nodist_properties_libnm_fortisslvpn_properties_core_la_SOURCES = \
-	properties/resources.h \
-	properties/resources.c
-
-properties_libnm_fortisslvpn_properties_core_la_SOURCES = \
-	$(shared_sources) \
-	$(plugin_sources) \
-	$(editor_sources)
-
-properties_libnm_fortisslvpn_properties_core_la_CPPFLAGS = \
-	-DNM_VPN_OLD \
-	-DNETWORKMANAGER_COMPILATION=NM_NETWORKMANAGER_COMPILATION_LIB \
-	$(properties_cppflags) \
-	$(GTK_CFLAGS) \
-	$(LIBNM_GLIB_CFLAGS) \
-	$(LIBNM_GTK_CFLAGS)
-
-properties_libnm_fortisslvpn_properties_core_la_LIBADD = \
-	$(GLIB_LIBS) \
-	$(GTK_LIBS) \
-	$(LIBNM_GLIB_LIBS) \
-	$(LIBNM_GTK_LIBS)
-
-
-if WITH_LIBNM_GLIB
-plugin_LTLIBRARIES += properties/libnm-fortisslvpn-properties.la
-endif
-
-properties_libnm_fortisslvpn_properties_la_SOURCES =
-properties_libnm_fortisslvpn_properties_la_LIBADD = \
-	properties/libnm-fortisslvpn-properties-core.la
-properties_libnm_fortisslvpn_properties_la_LDFLAGS = \
-	-avoid-version \
-	-Wl,--version-script=$(srcdir)/properties/libnm-fortisslvpn-properties.ver
-
 EXTRA_DIST += \
 	properties/libnm-vpn-plugin-fortisslvpn.ver \
 	properties/libnm-vpn-plugin-fortisslvpn-editor.ver \
-	properties/libnm-fortisslvpn-properties.ver \
 	properties/nm-fortisslvpn-dialog.ui
 
 ###############################################################################
@@ -366,25 +326,7 @@ auth_dialog_nm_fortisslvpn_auth_dialog_LDADD = \
 
 ###############################################################################
 
-if WITH_LIBNM_GLIB
-# Install a file with full path to plugins for an old gnome-shell
-# https://bugzilla.gnome.org/show_bug.cgi?id=693590
-install-compat-name-file:
-	mkdir -p $(DESTDIR)$(sysconfdir)/NetworkManager/VPN
-	sed -e "1s|^|# This file is obsoleted by a file in $(NM_VPN_SERVICE_DIR)\n\n|" \
-	    -e 's|[@]LIBEXECDIR[@]|$(libexecdir)|g' \
-	    -e 's|[@]PLUGINDIR[@]|@NM_PLUGIN_DIR@|g' \
-	    <$(srcdir)/nm-fortisslvpn-service.name.in \
-	    >$(DESTDIR)$(sysconfdir)/NetworkManager/VPN/nm-fortisslvpn-service.name
-
-uninstall-hook:
-	 rm -f $(DESTDIR)$(sysconfdir)/NetworkManager/VPN/nm-fortisslvpn-service.name
-else
-install-compat-name-file:
-	@:
-endif
-
-install-data-hook: install-compat-name-file
+install-data-hook:
 	$(mkinstalldirs) -m 0700 $(DESTDIR)$(fortisslvpn_statedir)
 
 appdatadir = $(datadir)/metainfo

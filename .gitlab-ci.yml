@@ -38,7 +38,6 @@
     - cd NetworkManager-fortisslvpn-*/
     - ./configure
       --disable-silent-rules
-      --without-libnm-glib
     - make -j
     - make -j check
     - make -j install
@@ -53,9 +52,6 @@ fedora28_dist:
     - dnf -y install
       /usr/bin/autopoint
       autoconf automake make
-      NetworkManager-devel
-      NetworkManager-glib-devel
-      libnm-gtk-devel
     - sh autogen.sh
     - make -j dist
   artifacts:

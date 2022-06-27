@@ -546,8 +546,6 @@ fortisslvpn_editor_interface_init (NMVpnEditorInterface *iface_class)
 
 /*****************************************************************************/
 
-#ifndef NM_VPN_OLD
-
 #include "nm-fortisslvpn-editor-plugin.h"
 
 G_MODULE_EXPORT NMVpnEditor *
@@ -559,4 +557,3 @@ nm_vpn_editor_factory_fortisslvpn (NMVpnEditorPlugin *editor_plugin,
 
 	return nm_fortisslvpn_editor_new (connection, error);
 }
-#endif
