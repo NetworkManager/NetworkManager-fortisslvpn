@@ -1,5 +1,5 @@
 # Quick syntax check:
-# python -c 'import sys, yaml; yaml.dump (yaml.load (sys.stdin), sys.stdout)' <.gitlab-ci.yml
+# python -c 'import sys, yaml; yaml.dump (yaml.safe_load (sys.stdin), sys.stdout)' <.gitlab-ci.yml
 
 # If things don't seem to work, this can help:
 # https://gitlab.gnome.org/GNOME/NetworkManager-fortisslvpn/-/ci/lint
