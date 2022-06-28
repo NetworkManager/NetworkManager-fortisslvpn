@@ -13,7 +13,6 @@
       gettext-devel
       glib2-devel
       gtk3-devel
-      intltool
       libtool
       libsecret-devel
       libnma-devel
