@@ -1,14 +1,14 @@
 # Indonesian translation of NetworkManager-fortisslvpn.
 # This file is distributed under the same license as the NetworkManager-fortisslvpn package.
-# Andika Triwidada <andika@gmail.com>, 2009-2012, 2020.
+# Andika Triwidada <andika@gmail.com>, 2009-2012, 2020, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: network-manager-fortisslvpn master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
-"fortisslvpn/\n"
-"POT-Creation-Date: 2022-03-11 16:59+0100\n"
-"PO-Revision-Date: 2020-06-06 16:21+0700\n"
+"fortisslvpn/issues\n"
+"POT-Creation-Date: 2022-05-15 19:22+0000\n"
+"PO-Revision-Date: 2022-07-08 10:57+0700\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian Translator <gnome@i15n.org>\n"
 "Language: id\n"
@@ -16,28 +16,28 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=2; plural=n!=1;\n"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:10
 msgid "Fortinet SSLVPN client"
 msgstr "Klien SSLVPN Fortinet"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:10
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:11
 msgid "Client for Fortinet SSLVPN virtual private networks"
 msgstr "Klien untuk virtual private network SSLVPN Fortinet"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:24
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:25
 msgid ""
 "Support for configuring Fortinet SSLVPN virtual private network connections."
 msgstr ""
 "Dukungan bagi penataan koneksi virtual private network SSLVPN Fortinet."
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:32
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:33
 msgid "The advanced options dialog"
 msgstr "Dialog opsi tingkat lanjut"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:41
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:42
 msgid "The NetworkManager Developers"
 msgstr "Para Pengembang NetworkManager"
 
@@ -258,17 +258,16 @@ msgid "_One time password"
 msgstr "_One time password"
 
 #: properties/nm-fortisslvpn-dialog.ui:185
-#, fuzzy
 msgid "Advanced Properties"
-msgstr "Opsi Tingkat Lanjut SSLVPN"
+msgstr "Properti Tingkat Lanjut"
 
 #: properties/nm-fortisslvpn-dialog.ui:193
 msgid "_Cancel"
-msgstr ""
+msgstr "_Batal"
 
 #: properties/nm-fortisslvpn-dialog.ui:201
 msgid "_Apply"
-msgstr ""
+msgstr "Ter_apkan"
 
 #: properties/nm-fortisslvpn-dialog.ui:253
 msgid "Show password"
@@ -311,12 +310,3 @@ msgstr "Tingkat _Lanjut…"
 #: properties/nm-fortisslvpn-dialog.ui:449
 msgid "Default"
 msgstr "Baku"
-
-#~ msgid "User _Key"
-#~ msgstr "_Kunci Pengguna"
-
-#~ msgid "_User Certificate"
-#~ msgstr "Sertifikat Pengg_una"
-
-#~ msgid "_CA Certificate"
-#~ msgstr "Sertifikat _CA"
