@@ -8,43 +8,44 @@
 # Wolfgang Stöggl <c72578@yahoo.de>, 2012, 2015-2016.
 # Mario Blättermann <mario.blaettermann@gmail.com>, 2009, 2011, 2016, 2018.
 # Philipp Kiemle <philipp.kiemle@gmail.com>, 2021.
+# Jürgen Benvenuti <gastornis@posteo.org>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
-"fortisslvpn/\n"
-"POT-Creation-Date: 2022-03-11 16:59+0100\n"
-"PO-Revision-Date: 2021-03-18 15:26+0100\n"
-"Last-Translator: Philipp Kiemle <philipp.kiemle@gmail.com>\n"
+"fortisslvpn/issues\n"
+"POT-Creation-Date: 2022-07-08 03:58+0000\n"
+"PO-Revision-Date: 2022-07-13 18:04+0200\n"
+"Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 3.1\n"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:10
 msgid "Fortinet SSLVPN client"
 msgstr "Fortinet-SSLVPN-Client"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:10
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:11
 msgid "Client for Fortinet SSLVPN virtual private networks"
 msgstr "Client für virtuelle private Netze des Typs Fortinet-SSLVPN"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:24
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:25
 msgid ""
 "Support for configuring Fortinet SSLVPN virtual private network connections."
 msgstr ""
 "Unterstützung für die Konfiguration von Fortinet-SSLVPN virtuellen privaten "
 "Netz-Verbindungen."
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:32
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:33
 msgid "The advanced options dialog"
 msgstr "Der »Erweiterte Optionen«-Dialog"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:41
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:42
 msgid "The NetworkManager Developers"
 msgstr "Die Entwickler von NetworkManager"
 
@@ -271,17 +272,16 @@ msgid "_One time password"
 msgstr "Ein_malpasswort"
 
 #: properties/nm-fortisslvpn-dialog.ui:185
-#, fuzzy
 msgid "Advanced Properties"
-msgstr "Erweiterte Optionen für SSLVPN"
+msgstr "Erweiterte Eigenschaften"
 
 #: properties/nm-fortisslvpn-dialog.ui:193
 msgid "_Cancel"
-msgstr ""
+msgstr "_Abbrechen"
 
 #: properties/nm-fortisslvpn-dialog.ui:201
 msgid "_Apply"
-msgstr ""
+msgstr "_Anwenden"
 
 #: properties/nm-fortisslvpn-dialog.ui:253
 msgid "Show password"
