@@ -2,15 +2,16 @@
 # This file is distributed under the same license as the NetworkManager-fortisslvpn package.
 #
 # Matej Urbančič <mateju@svn.gnome.org>, 2009 - 2010.
+# Martin Srebotnjak <miles@filmsi.net>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
-"fortisslvpn/\n"
-"POT-Creation-Date: 2022-03-11 16:59+0100\n"
-"PO-Revision-Date: 2012-02-29 14:27+0100\n"
-"Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
+"fortisslvpn/issues\n"
+"POT-Creation-Date: 2022-07-08 03:58+0000\n"
+"PO-Revision-Date: 2022-09-22 21:48+0200\n"
+"Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -18,102 +19,102 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Poedit-Country: SLOVENIA\n"
-"X-Poedit-Language: Slovenian\n"
 "X-Poedit-SourceCharset: utf-8\n"
-
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
-msgid "Fortinet SSLVPN client"
-msgstr ""
+"X-Generator: Poedit 3.1.1\n"
 
 #: appdata/network-manager-fortisslvpn.metainfo.xml.in:10
-msgid "Client for Fortinet SSLVPN virtual private networks"
-msgstr ""
+msgid "Fortinet SSLVPN client"
+msgstr "Odjemalec Fortinet SSLVPN"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:24
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:11
+msgid "Client for Fortinet SSLVPN virtual private networks"
+msgstr "Odjemalec za navidezna zasebna omrežja Fortinet SSLVPN"
+
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:25
 msgid ""
 "Support for configuring Fortinet SSLVPN virtual private network connections."
 msgstr ""
+"Podpora za prilagajanje navideznih zasebnih omrežnih povezav Fortinet SSLVPN."
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:32
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:33
 msgid "The advanced options dialog"
-msgstr ""
+msgstr "Pogovorno okno z naprednimi možnostmi"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:41
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:42
+#, fuzzy
 msgid "The NetworkManager Developers"
-msgstr ""
+msgstr "Razvijalci programa NetworkManager"
 
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
 #.
 #: auth-dialog/main.c:165
-#, fuzzy, c-format
+#, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
-msgstr "Dostop do navideznega zasebnega omrežja '%s' zahteva overitev."
+msgstr "Dostop do navideznega zasebnega omrežja VPN »%s« zahteva overitev."
 
 #: auth-dialog/main.c:174 auth-dialog/main.c:198
 msgid "Authenticate VPN"
 msgstr "Overi VPN"
 
 #: auth-dialog/main.c:177
-#, fuzzy
 msgid "Password"
 msgstr "Geslo"
 
 #: auth-dialog/main.c:179
 msgid "Token"
-msgstr ""
+msgstr "Žeton"
 
 #: auth-dialog/main.c:202
 msgid "_Token:"
-msgstr ""
+msgstr "_Žeton:"
 
 #: properties/nm-fortisslvpn-editor-plugin.c:38
 msgid "Fortinet SSLVPN"
-msgstr ""
+msgstr "Fortinet SSLVPN"
 
 #: properties/nm-fortisslvpn-editor-plugin.c:39
 msgid "Compatible with Fortinet SSLVPN servers."
-msgstr ""
+msgstr "Združljiv s strežniki Fortinet SSLVPN."
 
 #: shared/nm-fortissl-properties.c:125
-#, fuzzy, c-format
+#, c-format
 msgid "invalid gateway “%s”"
-msgstr "neveljaven prehod '%s'"
+msgstr "neveljaven prehod »%s«"
 
 #: shared/nm-fortissl-properties.c:133
-#, c-format
+#, fuzzy, c-format
 msgid "invalid certificate authority “%s”"
-msgstr ""
+msgstr "neveljaven organ za potrdila »%s«"
 
 #: shared/nm-fortissl-properties.c:147
-#, fuzzy, c-format
+#, c-format
 msgid "invalid integer property “%s”"
-msgstr "neveljavna lastnost celega števila '%s'"
+msgstr "neveljavna lastnost celega števila »%s«"
 
 #: shared/nm-fortissl-properties.c:157
-#, fuzzy, c-format
+#, c-format
 msgid "invalid boolean property “%s” (not yes or no)"
-msgstr "neveljavna logična lastnost '%s' (ni vrednost da oziroma ne)"
+msgstr "neveljavna logična lastnost »%s« (ni vrednost da oziroma ne)"
 
 #: shared/nm-fortissl-properties.c:164
-#, fuzzy, c-format
+#, c-format
 msgid "unhandled property “%s” type %s"
-msgstr "neupravljana lastnost  '%s' vrste %s"
+msgstr "neupravljana lastnost »%s« vrste %s"
 
 #: shared/nm-fortissl-properties.c:175
-#, fuzzy, c-format
+#, c-format
 msgid "property “%s” invalid or not supported"
-msgstr "lastnost  '%s' ni veljavna ali pa ni podprta"
+msgstr "lastnost  »%s« ni veljavna ali pa ni podprta"
 
 #: shared/nm-fortissl-properties.c:192
 msgid "No VPN configuration options."
 msgstr "Ni možnosti nastavitev VPN"
 
 #: shared/nm-fortissl-properties.c:212
-#, fuzzy, c-format
+#, c-format
 msgid "Missing required option “%s”."
-msgstr "Manjka zahtevana možnost '%s'."
+msgstr "Manjka zahtevana možnost »%s«."
 
 #: shared/nm-fortissl-properties.c:236
 msgid "No VPN secrets!"
@@ -122,28 +123,29 @@ msgstr "Ni skrivnih podatkov VPN!"
 #: shared/nm-utils/nm-shared-utils.c:264
 #, c-format
 msgid "object class '%s' has no property named '%s'"
-msgstr ""
+msgstr "razred predmetov »%s« nima lastnosti z imenom »%s«"
 
 #: shared/nm-utils/nm-shared-utils.c:271
 #, c-format
 msgid "property '%s' of object class '%s' is not writable"
-msgstr ""
+msgstr "lastnost »%s« razreda predmetov »%s« ni zapisljiva"
 
 #: shared/nm-utils/nm-shared-utils.c:278
 #, c-format
 msgid ""
 "construct property \"%s\" for object '%s' can't be set after construction"
 msgstr ""
+"lastnost konstrukta »%s« za predmet »%s« ni mogoče nastaviti po gradnji"
 
 #: shared/nm-utils/nm-shared-utils.c:286
 #, c-format
 msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
-msgstr ""
+msgstr "»%s::%s« ni veljavno ime lastnosti; »%s« ni podvrsta GObject"
 
 #: shared/nm-utils/nm-shared-utils.c:295
 #, c-format
 msgid "unable to set property '%s' of type '%s' from value of type '%s'"
-msgstr ""
+msgstr "lastnosti »%s« vrste »%s« iz vrednosti vrste »%s« ni mogoče nastaviti"
 
 #: shared/nm-utils/nm-shared-utils.c:306
 #, c-format
@@ -151,34 +153,36 @@ msgid ""
 "value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
 "type '%s'"
 msgstr ""
+"vrednost »%s« vrste »%s« ni veljavna ali je zunaj obsega za lastnost »%s« "
+"vrste »%s«"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:69
 #, c-format
 msgid "unable to get editor plugin name: %s"
-msgstr ""
+msgstr "ni mogoče pridobiti imena vstavka urejevalnika: %s"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:103
 #, c-format
 msgid "missing plugin file \"%s\""
-msgstr ""
+msgstr "manjka datoteka vstavka »%s«"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:109
 #, c-format
 msgid "cannot load editor plugin: %s"
-msgstr ""
+msgstr "vstavka urejevalnika ni mogoče naložiti: %s"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:118
 #, c-format
 msgid "cannot load factory %s from plugin: %s"
-msgstr ""
+msgstr "ni mogoče naložiti tovarniške %s iz vstavka: %s"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:144
 msgid "unknown error creating editor instance"
-msgstr ""
+msgstr "neznana napaka pri ustvarjanju primerka urejevalnika"
 
 #: src/nm-fortisslvpn-service.c:218
 msgid "Could not find the openfortivpn binary."
-msgstr ""
+msgstr "Binarne datoteke openfortivpn ni bilo mogoče najti."
 
 #: src/nm-fortisslvpn-service.c:402
 msgid "Missing VPN username."
@@ -189,13 +193,13 @@ msgid "Missing or invalid VPN password."
 msgstr "Geslo VPN manjka ali pa ni veljavno."
 
 #: src/nm-fortisslvpn-service.c:536
+#, fuzzy
 msgid "Got new secrets, but nobody asked for them."
-msgstr ""
+msgstr "Imate nove skrivnosti, nihče ni prosil zanje."
 
 #: src/nm-fortisslvpn-service.c:720
-#, fuzzy
 msgid "Don’t quit when VPN connection terminates"
-msgstr "Ne končaj, ko se povezava VPN zaustavi"
+msgstr "Ne končaj, ko se VPN povezava prekine"
 
 #: src/nm-fortisslvpn-service.c:721
 msgid "Enable verbose debug logging (may expose passwords)"
@@ -203,27 +207,30 @@ msgstr "Omogoči podrobno beleženje razhroščevanja (lahko razkrije gesla)"
 
 #: src/nm-fortisslvpn-service.c:722
 msgid "D-Bus name to use for this instance"
-msgstr ""
+msgstr "Ime D-Bus za ta primerek"
 
 #: src/nm-fortisslvpn-service.c:743
+#, fuzzy
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
 msgstr ""
+"nm-fortisslvpn-service zagotavlja integrirano zmožnost SSLVPN (združljivo s "
+"Fortinet) za NetworkManager."
 
 #: properties/nm-fortisslvpn-dialog.ui:7
 msgid "SSLVPN Advanced Options"
-msgstr ""
+msgstr "Napredne možnosti SSLVPN"
 
 #: properties/nm-fortisslvpn-dialog.ui:50
 #: properties/nm-fortisslvpn-dialog.ui:351
-#, fuzzy
 msgid "Authentication"
-msgstr "<b>Overitev</b>"
+msgstr "Overitev"
 
 #: properties/nm-fortisslvpn-dialog.ui:67
+#, fuzzy
 msgid "_Realm"
-msgstr ""
+msgstr "_Področje"
 
 #: properties/nm-fortisslvpn-dialog.ui:81
 #: properties/nm-fortisslvpn-dialog.ui:337
@@ -231,37 +238,41 @@ msgid ""
 "SSLVPN server IP or name.\n"
 "config: the first parameter of fortisslvpn"
 msgstr ""
+"IP ali ime strežnika SSLVPN.\n"
+"config: prvi parameter fortisslvpn"
 
 #: properties/nm-fortisslvpn-dialog.ui:95
-#, fuzzy
 msgid "Security"
-msgstr "<b>Splošno</b>"
+msgstr "Varnost"
 
 #: properties/nm-fortisslvpn-dialog.ui:113
 msgid "Trusted _certificate"
-msgstr ""
+msgstr "Zaupanja vredno po_trdilo"
 
 #: properties/nm-fortisslvpn-dialog.ui:127
+#, fuzzy
 msgid ""
 "A SHA256 sum of the X509 certificate that will be accepted even if the "
 "certificate is not trusted by a certificate authority."
 msgstr ""
+"Vsota SHA256 potrdila X509, ki bo sprejeta, tudi če potrdilu ne zaupa organ "
+"za potrdila."
 
 #: properties/nm-fortisslvpn-dialog.ui:142
 msgid "_One time password"
-msgstr ""
+msgstr "_Enkratno geslo"
 
 #: properties/nm-fortisslvpn-dialog.ui:185
 msgid "Advanced Properties"
-msgstr ""
+msgstr "Napredne lastnosti"
 
 #: properties/nm-fortisslvpn-dialog.ui:193
 msgid "_Cancel"
-msgstr ""
+msgstr "Pre_kliči"
 
 #: properties/nm-fortisslvpn-dialog.ui:201
 msgid "_Apply"
-msgstr ""
+msgstr "_Uveljavi"
 
 #: properties/nm-fortisslvpn-dialog.ui:253
 msgid "Show password"
@@ -269,7 +280,7 @@ msgstr "Pokaži geslo"
 
 #: properties/nm-fortisslvpn-dialog.ui:269
 msgid "Password passed to SSLVPN when prompted for it."
-msgstr ""
+msgstr "Geslo, posredovano SSLVPN, ko bo potrebno."
 
 #: properties/nm-fortisslvpn-dialog.ui:282
 msgid ""
@@ -281,40 +292,25 @@ msgstr ""
 "Nastavitev: uporabnik <ime>"
 
 #: properties/nm-fortisslvpn-dialog.ui:295
-#, fuzzy
 msgid "_Password"
-msgstr "Geslo"
+msgstr "_Geslo"
 
 #: properties/nm-fortisslvpn-dialog.ui:309
-#, fuzzy
 msgid "User _name"
-msgstr "Uporabniško ime"
+msgstr "_Uporabniško ime"
 
 #: properties/nm-fortisslvpn-dialog.ui:323
 msgid "_Gateway"
 msgstr "_Prehod"
 
 #: properties/nm-fortisslvpn-dialog.ui:369
-#, fuzzy
 msgid "General"
-msgstr "<b>Splošno</b>"
+msgstr "Splošno"
 
 #: properties/nm-fortisslvpn-dialog.ui:413
 msgid "A_dvanced…"
-msgstr ""
+msgstr "_Napredno …"
 
 #: properties/nm-fortisslvpn-dialog.ui:449
 msgid "Default"
 msgstr "Privzeto"
-
-#, fuzzy
-#~ msgid "User _Key"
-#~ msgstr "Uporabniško ime"
-
-#~ msgid "Could not find secrets (connection invalid, no vpn setting)."
-#~ msgstr ""
-#~ "No mogoče najti skrivnih podatkov (povezava ni veljavna ali pa ni "
-#~ "nastavitev VPN)"
-
-#~ msgid "Invalid VPN username."
-#~ msgstr "Neveljavno uporabniško ime."
