@@ -2,44 +2,44 @@
 # Copyright (C) 2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the NetworkManager package.
 # Žygimantas Beručka <zygis@gnome.org>, 2008.
-# Aurimas Černius <aurisc4@gmail.com>, 2015-2020.
+# Aurimas Černius <aurisc4@gmail.com>, 2015-2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
-"fortisslvpn/\n"
-"POT-Creation-Date: 2022-03-11 16:59+0100\n"
-"PO-Revision-Date: 2020-09-06 22:54+0300\n"
+"fortisslvpn/issues\n"
+"POT-Creation-Date: 2022-07-08 03:58+0000\n"
+"PO-Revision-Date: 2023-02-27 22:22+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
-"%100<10 || n%100>=20) ? 1 : 2)\n"
-"X-Generator: Gtranslator 3.36.0\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"(n%100<10 || n%100>=20) ? 1 : 2)\n"
+"X-Generator: Gtranslator 42.0\n"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:10
 msgid "Fortinet SSLVPN client"
 msgstr "Fortinet SSLVPN klientas"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:10
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:11
 msgid "Client for Fortinet SSLVPN virtual private networks"
 msgstr "Klientas Fortinet SSLVPN virtualiems privatiems tinklams"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:24
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:25
 msgid ""
 "Support for configuring Fortinet SSLVPN virtual private network connections."
 msgstr ""
 "Fortinet SSLVPN virtualių privačių tinklo ryšių konfigūracijos palaikymas."
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:32
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:33
 msgid "The advanced options dialog"
 msgstr "Išplėstinių parametrų dialogas"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:41
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:42
 msgid "The NetworkManager Developers"
 msgstr "NetworkManager kūrėjai"
 
@@ -262,17 +262,16 @@ msgid "_One time password"
 msgstr "Vien_kartinis slaptažodis"
 
 #: properties/nm-fortisslvpn-dialog.ui:185
-#, fuzzy
 msgid "Advanced Properties"
-msgstr "SSLVPN išplėstiniai parametrai"
+msgstr "Išplėstiniai parametrai"
 
 #: properties/nm-fortisslvpn-dialog.ui:193
 msgid "_Cancel"
-msgstr ""
+msgstr "_Atsisakyti"
 
 #: properties/nm-fortisslvpn-dialog.ui:201
 msgid "_Apply"
-msgstr ""
+msgstr "_Pritaikyti"
 
 #: properties/nm-fortisslvpn-dialog.ui:253
 msgid "Show password"
