@@ -40,7 +40,7 @@
 #include <glib/gstdio.h>
 
 #include "nm-fortissl-properties.h"
-#include "nm-ppp-status.h"
+#include "nm-fortisslvpn-pppd-status.h"
 #include "nm-fortisslvpn-pppd-service-dbus.h"
 #include "nm-utils/nm-shared-utils.h"
 #include "nm-utils/nm-vpn-plugin-macros.h"

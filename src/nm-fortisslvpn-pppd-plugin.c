@@ -23,12 +23,6 @@
 #define ___CONFIG_H__
 #include <config.h>
 
-#include <pppd/pppd.h>
-#include <pppd/fsm.h>
-#include <pppd/ipcp.h>
-
-#include "nm-default.h"
-
 #include <sys/types.h>
 #include <string.h>
 #include <sys/socket.h>
@@ -42,10 +36,12 @@
 #include <grp.h>
 #include <glib/gstdio.h>
 
+#include "nm-fortisslvpn-pppd-status.h"
+#include "nm-fortisslvpn-pppd-compat.h"
 #include "nm-fortisslvpn-pppd-service-dbus.h"
-#include "nm-fortisslvpn-service.h"
-#include "nm-ppp-status.h"
 
+#include "nm-default.h"
+#include "nm-fortisslvpn-service.h"
 #include "nm-utils/nm-shared-utils.h"
 #include "nm-utils/nm-vpn-plugin-macros.h"
 
@@ -80,7 +76,7 @@ static struct {
 
 int plugin_init (void);
 
-char pppd_version[] = VERSION;
+char pppd_version[] = PPPD_VERSION;
 
 static void
 chroot_sandbox (void)
@@ -296,7 +292,7 @@ get_ip4_routes (in_addr_t ouraddr)
 static void
 nm_ip_up (void *data, int arg)
 {
-	guint32 pppd_made_up_address = htonl (0x0a404040 + ifunit);
+	guint32 pppd_made_up_address = htonl (0x0a404040 + ppp_ifunit());
 	ipcp_options opts = ipcp_gotoptions[0];
 	ipcp_options peer_opts = ipcp_hisoptions[0];
 	GVariantBuilder builder;
@@ -317,7 +313,7 @@ nm_ip_up (void *data, int arg)
 
 	g_variant_builder_add (&builder, "{sv}",
 	                       NM_VPN_PLUGIN_IP4_CONFIG_TUNDEV,
-	                       g_variant_new_string (ifname));
+	                       g_variant_new_string (ppp_ifname()));
 
 	str = g_getenv ("VPN_GATEWAY");
 	if (str) {
@@ -442,8 +438,14 @@ plugin_init (void)
 		return -1;
 	}
 
+#if WITH_PPP_VERSION < PPP_VERSION(2,5,0)
 	add_notifier (&phasechange, nm_phasechange, NULL);
 	add_notifier (&ip_up_notifier, nm_ip_up, NULL);
 	add_notifier (&exitnotify, nm_exit_notify, NULL);
+#else
+	ppp_add_notify (NF_PHASE_CHANGE, nm_phasechange, NULL);
+	ppp_add_notify (NF_IP_UP, nm_ip_up, NULL);
+	ppp_add_notify (NF_EXIT, nm_exit_notify, NULL);
+#endif	
 	return 0;
 }

@@ -81,7 +81,7 @@ libexec_PROGRAMS += src/nm-fortisslvpn-service
 src_nm_fortisslvpn_service_SOURCES = \
 	shared/nm-utils/nm-shared-utils.c \
 	shared/nm-utils/nm-shared-utils.h \
-	src/nm-ppp-status.h \
+	src/nm-fortisslvpn-pppd-status.h \
 	src/nm-fortisslvpn-service.h \
 	src/nm-fortisslvpn-service.c \
 	shared/nm-fortissl-properties.c \
@@ -106,7 +106,8 @@ src_nm_fortisslvpn_pppd_plugin_la_SOURCES = \
 	shared/nm-utils/nm-shared-utils.c \
 	shared/nm-utils/nm-shared-utils.h \
 	src/nm-fortisslvpn-pppd-plugin.c \
-	src/nm-ppp-status.h
+	src/nm-fortisslvpn-pppd-compat.h \
+	src/nm-fortisslvpn-pppd-status.h
 nodist_src_nm_fortisslvpn_pppd_plugin_la_SOURCES = \
 	src/nm-fortisslvpn-pppd-service-dbus.h
 src_nm_fortisslvpn_pppd_plugin_la_CPPFLAGS = $(src_cppflags)
