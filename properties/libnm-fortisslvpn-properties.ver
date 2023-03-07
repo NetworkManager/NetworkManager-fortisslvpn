@@ -1,6 +1,0 @@
-{
-global:
-	nm_vpn_plugin_ui_factory;
-local:
-	*;
-};

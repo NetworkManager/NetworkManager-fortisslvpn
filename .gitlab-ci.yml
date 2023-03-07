@@ -1,32 +1,31 @@
 # Quick syntax check:
-# python -c 'import sys, yaml; yaml.dump (yaml.load (sys.stdin), sys.stdout)' <.gitlab-ci.yml
+# python -c 'import sys, yaml; yaml.dump (yaml.safe_load (sys.stdin), sys.stdout)' <.gitlab-ci.yml
 
 # If things don't seem to work, this can help:
 # https://gitlab.gnome.org/GNOME/NetworkManager-fortisslvpn/-/ci/lint
 
 .fedora_deps: &fedora_deps
   before_script:
-    - dnf -y install
+    - dnf -y install $EXTRA_PACKAGES
       file
       findutils
       gcc
+      make
       gettext-devel
       glib2-devel
       gtk3-devel
-      intltool
       libtool
       libsecret-devel
       libnma-devel
       NetworkManager-libnm-devel
       pkgconfig
       ppp-devel
-      appstream
 
 # Disable fetching Git, run after the tarball is rolled
 .dist: &dist
   stage: test
   dependencies:
-    - fedora28_dist
+    - fedora36_dist
   variables:
     GIT_STRATEGY: none
 
@@ -34,35 +33,40 @@
   <<: *fedora_deps
   <<: *dist
   script:
-    - dnf -y install make
     - tar xJf NetworkManager-fortisslvpn-*.tar.xz
     - cd NetworkManager-fortisslvpn-*/
-    - ./configure
+    - ./configure $EXTRA_CONFIGURE_FLAGS
       --disable-silent-rules
-      --without-libnm-glib
     - make -j
     - make -j check
     - make -j install
     - make -j uninstall
 
 # Roll the distribution tarball
-fedora28_dist:
+fedora36_dist:
   <<: *fedora_deps
-  image: fedora:28
+  image: fedora:36
   stage: build
   script:
     - dnf -y install
       /usr/bin/autopoint
-      autoconf automake make
-      NetworkManager-devel
-      NetworkManager-glib-devel
-      libnm-gtk-devel
+      autoconf automake appstream
+      gtk4-devel
     - sh autogen.sh
     - make -j dist
   artifacts:
     paths:
       - "*.xz"
 
-fedora_from_dist:
+# Oldest we support, build without Gtk4
+fedora_36_from_dist:
   <<: *fedora_from_dist
+  image: fedora:36
+
+# Test on a recent distro
+fedora_latest_from_dist:
+  <<: *fedora_from_dist
+  variables:
+    EXTRA_PACKAGES: libnma-gtk4-devel
+    EXTRA_CONFIGURE_FLAGS: --with-gtk4
   image: fedora:latest

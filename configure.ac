@@ -12,19 +12,20 @@ AC_USE_SYSTEM_EXTENSIONS
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_HEADERS([config.h])
 
+AC_USE_SYSTEM_EXTENSIONS
+
 dnl
 dnl Require programs
 dnl
 AC_PROG_CC
 AM_PROG_CC_C_O
 AC_PROG_INSTALL
-AC_PROG_LIBTOOL
 AC_PROG_CPP
 AC_PROG_EGREP
+LT_INIT([disable-static])
 AC_PATH_PROG(GLIB_COMPILE_RESOURCES, glib-compile-resources)
 PKG_PROG_PKG_CONFIG()
 
-AC_GNU_SOURCE
 
 AC_CHECK_PROG([has_file], file, yes, no)
 if test x$has_file = xno ; then
@@ -39,7 +40,6 @@ fi
 dnl
 dnl Required headers
 dnl
-AC_HEADER_STDC
 AC_CHECK_HEADERS(fcntl.h paths.h stdarg.h stdbool.h sys/ioctl.h sys/time.h syslog.h unistd.h)
 
 AC_CHECK_HEADERS(pppd/pppd.h,,
@@ -85,7 +85,6 @@ dnl Checks for typedefs, structures, and compiler characteristics.
 dnl
 AC_TYPE_MODE_T
 AC_TYPE_PID_T
-AC_HEADER_TIME
 
 dnl
 dnl Checks for library functions.
@@ -104,12 +103,6 @@ dnl GNOME support
 dnl
 AC_ARG_WITH(gnome, AS_HELP_STRING([--without-gnome], [Build NetworkManager-fortisslvpn without GNOME support, e.g. vpn service only]), [], [with_gnome_specified=no])
 AC_ARG_WITH(gtk4, AS_HELP_STRING([--with-gtk4], [Build NetworkManager-fortisslvpn with libnma-gtk4 support]), [], [with_gtk4_specified=no])
-AC_ARG_WITH(libnm-glib, AS_HELP_STRING([--with-libnm-glib], [Build NetworkManager-fortisslvpn with libnm-glib comatibility (depreacted)]), [], [with_libnm_glib_specified=no])
-if test "$with_libnm_glib_specified" != no -a "$with_libnm_glib" != no; then
-	if test "$with_gnome_specified" != no -a "$with_gnome" == no; then
-		AC_MSG_ERROR(Building --with-libnm-glib conflicts with --without-gnome)
-	fi
-fi
 if test "$with_gnome" != no; then
 	with_gnome=yes
 fi
@@ -119,15 +112,8 @@ fi
 if test "$with_gtk4" != yes; then
 	with_gtk4=no
 fi
-if test "$with_libnm_glib_specified" == no; then
-	with_libnm_glib=no
-fi
-if test "$with_libnm_glib" != yes; then
-	with_libnm_glib=no
-fi
 AM_CONDITIONAL(WITH_GNOME, test "$with_gnome" != no)
 AM_CONDITIONAL(WITH_GTK4, test "$with_gtk4" != no)
-AM_CONDITIONAL(WITH_LIBNM_GLIB, test "$with_libnm_glib" != no)
 
 AC_ARG_ENABLE(absolute-paths, AS_HELP_STRING([--enable-absolute-paths], [Use absolute paths to in .name files. Useful for development. (default is no)]))
 
@@ -158,18 +144,6 @@ if test x"$with_gnome" != xno; then
 	GTK_CFLAGS="$GTK_CFLAGS -DGDK_VERSION_MIN_REQUIRED=GDK_VERSION_3_4"
 	GTK_CFLAGS="$GTK_CFLAGS -DGDK_VERSION_MAX_ALLOWED=GDK_VERSION_3_4"
 	PKG_CHECK_MODULES(LIBNMA, libnma >= 1.8.33)
-
-	if test x"$with_libnm_glib" != xno; then
-		PKG_CHECK_MODULES(LIBNM_GTK, libnm-gtk >= 1.2.0)
-
-		PKG_CHECK_MODULES(LIBNM_GLIB,
-		                NetworkManager >= 1.2.0
-		                libnm-util >= 1.2.0
-		                libnm-glib >= 1.2.0
-		                libnm-glib-vpn >= 1.2.0)
-		LIBNM_GLIB_CFLAGS="$LIBNM_GLIB_CFLAGS -DNM_VERSION_MIN_REQUIRED=NM_VERSION_1_2"
-		LIBNM_GLIB_CFLAGS="$LIBNM_GLIB_CFLAGS -DNM_VERSION_MAX_ALLOWED=NM_VERSION_1_2"
-	fi
 fi
 
 if test x"$with_gtk4" != xno; then
@@ -217,7 +191,6 @@ echo "Build configuration: "
 echo "  --with-dist-version=$ac_distver"
 echo "  --with-gnome=$with_gnome"
 echo "  --with-gtk4=$with_gtk4"
-echo "  --with-libnm-glib=$with_libnm_glib"
 echo "  --with-pppd-plugin-dir=$PPPD_PLUGIN_DIR"
 echo "  --enable-absolute-paths=$enable_absolute_paths"
 echo "  --enable-more-warnings=$set_more_warnings"
