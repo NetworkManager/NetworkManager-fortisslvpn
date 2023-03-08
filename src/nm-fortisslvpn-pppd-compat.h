@@ -1,32 +1,15 @@
-/* -*- Mode: C; tab-width: 4; indent-tabs-mode: t; c-basic-offset: 4 -*- */
-/* nm-sstp-service - sstp (and other pppd) integration with NetworkManager
- *
- * Copyright (C) Eivind Næss, eivnaes@yahoo.com
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License along
- * with this program; if not, write to the Free Software Foundation, Inc.,
- * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- */
+/* Copyright (C) 2023 Eivind Naess, eivnaes@yahoo.com */
+/* SPDX-License-Identifier: GPL-2.0-or-later */
 
 #ifndef __NM_FORTISSLVPN_PPPD_COMPAT_H__
 #define __NM_FORTISSLVPN_PPPD_COMPAT_H__
 
-#define INET6      1
+/* Define INET6 to compile with IPv6 support against older pppd headers,
+ *   pppd >= 2.5.0 use WITH_PPP_IPV6 and is defined in pppdconf.h */
+#define INET6 1
 
-// PPP < 2.5.0 defines and exports VERSION which overlaps with current package VERSION define.
-//   this silly macro magic is to work around that.
-
+/* PPP < 2.5.0 defines and exports VERSION which overlaps with current package VERSION define.
+ *   this silly macro magic is to work around that. */
 #undef VERSION
 #include <pppd/pppd.h>
 
@@ -43,51 +26,98 @@
 #include <pppd/upap.h>
 
 #ifdef HAVE_PPPD_CHAP_H
- #include <pppd/chap.h>
+#include <pppd/chap.h>
 #endif
 
 #ifdef HAVE_PPPD_CHAP_NEW_H
- #include <pppd/chap-new.h>
+#include <pppd/chap-new.h>
 #endif
 
 #ifdef HAVE_PPPD_CHAP_MS_H
- #include <pppd/chap_ms.h>
+#include <pppd/chap_ms.h>
 #endif
 
 #ifndef PPP_PROTO_CHAP
-#define PPP_PROTO_CHAP              0xc223
+#define PPP_PROTO_CHAP 0xc223
 #endif 
 
 #ifndef PPP_PROTO_EAP
-#define PPP_PROTO_EAP               0xc227
+#define PPP_PROTO_EAP  0xc227
 #endif
+
 
 #if WITH_PPP_VERSION < PPP_VERSION(2,5,0)
 
-static inline bool debug_on(void)
+static inline bool
+debug_on (void)
 {
-    return debug;
+	return debug;
 }
 
-static inline const char *ppp_ipparam(void)
+static inline const char
+*ppp_ipparam (void)
 {
-    return ipparam;
+	return ipparam;
 }
 
-static inline int ppp_ifunit(void)
+static inline int
+ppp_ifunit (void)
 {
-    return ifunit;
+	return ifunit;
 }
 
-static inline const char *ppp_ifname(void)
+static inline const char *
+ppp_ifname (void)
 {
-    return ifname;
+	return ifname;
 }
 
-static inline int ppp_get_mtu(int idx)
+static inline int
+ppp_get_mtu (int idx)
 {
-    return netif_get_mtu(idx);
+	return netif_get_mtu(idx);
 }
 
-#endif // #if WITH_PPP_VERSION < PPP_VERSION(2,5,0)
-#endif // #ifdef __NM_FORTISSLVPN_PPPD_COMPAT_H__
+typedef enum ppp_notify
+{
+    NF_PID_CHANGE,
+    NF_PHASE_CHANGE,
+    NF_EXIT,
+    NF_SIGNALED,
+    NF_IP_UP,
+    NF_IP_DOWN,
+    NF_IPV6_UP,
+    NF_IPV6_DOWN,
+    NF_AUTH_UP,
+    NF_LINK_DOWN,
+    NF_FORK,
+    NF_MAX_NOTIFY
+} ppp_notify_t;
+
+typedef void (ppp_notify_fn) (void *ctx, int arg);
+
+static inline void
+ppp_add_notify (ppp_notify_t type, ppp_notify_fn *func, void *ctx)
+{
+	struct notifier **list[NF_MAX_NOTIFY] = {
+		[NF_PID_CHANGE  ] = &pidchange,
+		[NF_PHASE_CHANGE] = &phasechange,
+		[NF_EXIT        ] = &exitnotify,
+		[NF_SIGNALED    ] = &sigreceived,
+		[NF_IP_UP       ] = &ip_up_notifier,
+		[NF_IP_DOWN     ] = &ip_down_notifier,
+		[NF_IPV6_UP     ] = &ipv6_up_notifier,
+		[NF_IPV6_DOWN   ] = &ipv6_down_notifier,
+		[NF_AUTH_UP     ] = &auth_up_notifier,
+		[NF_LINK_DOWN   ] = &link_down_notifier,
+		[NF_FORK        ] = &fork_notifier,
+	};
+
+	struct notifier **notify = list[type];
+	if (notify) {
+		add_notifier(notify, func, ctx);
+	}
+}
+
+#endif /* #if WITH_PPP_VERSION < PPP_VERSION(2,5,0) */
+#endif /* #ifdef __NM_FORTISSLVPN_PPPD_COMPAT_H__ */

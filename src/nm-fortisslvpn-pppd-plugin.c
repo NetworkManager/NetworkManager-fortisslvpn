@@ -438,14 +438,8 @@ plugin_init (void)
 		return -1;
 	}
 
-#if WITH_PPP_VERSION < PPP_VERSION(2,5,0)
-	add_notifier (&phasechange, nm_phasechange, NULL);
-	add_notifier (&ip_up_notifier, nm_ip_up, NULL);
-	add_notifier (&exitnotify, nm_exit_notify, NULL);
-#else
 	ppp_add_notify (NF_PHASE_CHANGE, nm_phasechange, NULL);
 	ppp_add_notify (NF_IP_UP, nm_ip_up, NULL);
 	ppp_add_notify (NF_EXIT, nm_exit_notify, NULL);
-#endif	
 	return 0;
 }
