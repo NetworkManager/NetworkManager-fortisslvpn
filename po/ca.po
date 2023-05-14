@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager-fortisslvpn\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
-"fortisslvpn/\n"
-"POT-Creation-Date: 2022-03-11 16:59+0100\n"
-"PO-Revision-Date: 2018-07-22 12:58+0200\n"
+"fortisslvpn/issues\n"
+"POT-Creation-Date: 2022-07-08 03:58+0000\n"
+"PO-Revision-Date: 2023-05-13 23:43+0200\n"
 "Last-Translator: Jordi Estrada <jordi.estrada@gmail.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "Language: ca\n"
@@ -21,28 +21,28 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.4.2\n"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:10
 msgid "Fortinet SSLVPN client"
 msgstr "Client Fortinet SSLVPN"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:10
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:11
 msgid "Client for Fortinet SSLVPN virtual private networks"
 msgstr "Client per a xarxes privades virtuals Fortinet SSLVPN"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:24
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:25
 msgid ""
 "Support for configuring Fortinet SSLVPN virtual private network connections."
 msgstr ""
 "Suport per a la configuració de connexions de xarxes privades virtuals "
 "Fortinet SSLVPN."
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:32
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:33
 msgid "The advanced options dialog"
 msgstr "El diàleg d'opcions avançades"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:41
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:42
 msgid "The NetworkManager Developers"
 msgstr "Els desenvolupadors del NetworkManager"
 
@@ -82,27 +82,27 @@ msgstr "Compatible amb servidors Fortinet SSLVPN."
 #: shared/nm-fortissl-properties.c:125
 #, c-format
 msgid "invalid gateway “%s”"
-msgstr "Passarel·la «%s» no vàlida"
+msgstr "passarel·la «%s» no vàlida"
 
 #: shared/nm-fortissl-properties.c:133
 #, c-format
 msgid "invalid certificate authority “%s”"
-msgstr "Autoritat de certificats «%s» no vàlida"
+msgstr "autoritat de certificats «%s» no vàlida"
 
 #: shared/nm-fortissl-properties.c:147
 #, c-format
 msgid "invalid integer property “%s”"
-msgstr "Propietat d'enters «%s» no vàlida"
+msgstr "propietat entera «%s» no vàlida"
 
 #: shared/nm-fortissl-properties.c:157
 #, c-format
 msgid "invalid boolean property “%s” (not yes or no)"
-msgstr "Propietat booleana «%s» no vàlida (no és sí o no)"
+msgstr "propietat booleana «%s» no vàlida (no és «sí» o «no»)"
 
 #: shared/nm-fortissl-properties.c:164
 #, c-format
 msgid "unhandled property “%s” type %s"
-msgstr "Propietat no gestionada «%s» de tipus %s"
+msgstr "propietat no gestionada «%s» de tipus %s"
 
 #: shared/nm-fortissl-properties.c:175
 #, c-format
@@ -268,17 +268,16 @@ msgid "_One time password"
 msgstr "_Contrasenya d'un sol ús"
 
 #: properties/nm-fortisslvpn-dialog.ui:185
-#, fuzzy
 msgid "Advanced Properties"
-msgstr "Opcions avançades de l'SSLVPN"
+msgstr "Opcions avançades"
 
 #: properties/nm-fortisslvpn-dialog.ui:193
 msgid "_Cancel"
-msgstr ""
+msgstr "_Cancel·la"
 
 #: properties/nm-fortisslvpn-dialog.ui:201
 msgid "_Apply"
-msgstr ""
+msgstr "_Aplica"
 
 #: properties/nm-fortisslvpn-dialog.ui:253
 msgid "Show password"
