@@ -370,7 +370,7 @@ handle_get_pin (NMDBusFortisslvpnPpp *object,
 		g_dbus_method_invocation_return_error_literal (priv->get_pin_invocation,
 		                                               NMV_EDITOR_PLUGIN_ERROR,
 		                                               NMV_EDITOR_PLUGIN_ERROR_FAILED,
-		                                               "Superseded by anoher GetPin() call");
+		                                               "Superseded by another GetPin() call");
 	}
 
 	priv->get_pin_invocation = invocation;
@@ -472,7 +472,7 @@ real_connect (NMVpnServicePlugin *plugin, NMConnection *connection, GError **err
 	umask (old_umask);
 	g_free (config);
 
-	/* Run the acutal openfortivpn process */
+	/* Run the actual openfortivpn process */
 	return run_openfortivpn (NM_FORTISSLVPN_PLUGIN (plugin), s_vpn, error);
 }
 
