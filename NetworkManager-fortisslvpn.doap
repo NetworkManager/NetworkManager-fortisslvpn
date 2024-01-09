@@ -10,8 +10,9 @@
   <description xml:lang="en">SSLVPN support for NetworkManager. Compatible with FortiOS servers.</description>
 
   <homepage rdf:resource="https://wiki.gnome.org/Projects/NetworkManager" />
-  <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/networkmanager-list" />
-  <download-page rdf:resource="http://download.gnome.org/sources/NetworkManager-fortisslvpn/" />
+  <developer-forum rdf:resource="https://discourse.gnome.org/tag/networkmanager" />
+  <support-forum rdf:resource="https://discourse.gnome.org/tag/networkmanager" />
+  <download-page rdf:resource="https://download.gnome.org/sources/NetworkManager-fortisslvpn/" />
   <bug-database rdf:resource="https://gitlab.gnome.org/GNOME/NetworkManager-fortisslvpn/issues" />
   <category rdf:resource="http://api.gnome.org/doap-extensions#apps" />
   <programming-language>C</programming-language>
@@ -37,13 +38,13 @@
       <gnome:userid>bgalvani</gnome:userid>
     </foaf:Person>
   </maintainer>
-  <maintainer>
+<!--  <maintainer>
     <foaf:Person>
       <foaf:name>Francesco Giudici</foaf:name>
       <foaf:mbox rdf:resource="mailto:fgiudici@redhat.com" />
       <gnome:userid>fgiudici</gnome:userid>
     </foaf:Person>
-  </maintainer>
+  </maintainer> -->
 
 </Project>
 
