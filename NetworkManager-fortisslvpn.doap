@@ -38,13 +38,5 @@
       <gnome:userid>bgalvani</gnome:userid>
     </foaf:Person>
   </maintainer>
-<!--  <maintainer>
-    <foaf:Person>
-      <foaf:name>Francesco Giudici</foaf:name>
-      <foaf:mbox rdf:resource="mailto:fgiudici@redhat.com" />
-      <gnome:userid>fgiudici</gnome:userid>
-    </foaf:Person>
-  </maintainer> -->
-
 </Project>
 
