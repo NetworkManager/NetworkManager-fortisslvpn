@@ -1,0 +1,308 @@
+# Hindi translation for NetworkManager-fortisslvpn.
+# Copyright (C) 2024 NetworkManager-fortisslvpn's COPYRIGHT HOLDER
+# This file is distributed under the same license as the NetworkManager-fortisslvpn package.
+# Scrambled777 <weblate.scrambled777@simplelogin.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: NetworkManager-fortisslvpn main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
+"fortisslvpn/issues\n"
+"POT-Creation-Date: 2024-04-10 13:47+0000\n"
+"PO-Revision-Date: 2024-04-23 18:04+0530\n"
+"Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
+"Language-Team: Hindi\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Gtranslator 46.0\n"
+
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:10
+msgid "Fortinet SSLVPN client"
+msgstr "Fortinet SSLVPN क्लाइंट"
+
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:11
+msgid "Client for Fortinet SSLVPN virtual private networks"
+msgstr "Fortinet SSLVPN वर्चुअल प्राइवेट नेटवर्क के लिए क्लाइंट"
+
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:25
+msgid ""
+"Support for configuring Fortinet SSLVPN virtual private network connections."
+msgstr "Fortinet SSLVPN वर्चुअल प्राइवेट नेटवर्क कनेक्शन को विन्यस्त करने के लिए समर्थन।"
+
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:33
+msgid "The advanced options dialog"
+msgstr "उन्नत विकल्प संवाद"
+
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:42
+msgid "The NetworkManager Developers"
+msgstr "NetworkManager विकासकर्ता"
+
+#. Otherwise, we have no saved password, or the password flags indicated
+#. * that the password should never be saved.
+#.
+#: auth-dialog/main.c:165
+#, c-format
+msgid "You need to authenticate to access the Virtual Private Network “%s”."
+msgstr "आपको वर्चुअल प्राइवेट नेटवर्क “%s” तक पहुंचने के लिए प्रमाणित करने की आवश्यकता है।"
+
+#: auth-dialog/main.c:174 auth-dialog/main.c:198
+msgid "Authenticate VPN"
+msgstr "VPN को प्रमाणित करें"
+
+#: auth-dialog/main.c:177
+msgid "Password"
+msgstr "पासवर्ड"
+
+#: auth-dialog/main.c:179
+msgid "Token"
+msgstr "टोकन"
+
+#: auth-dialog/main.c:202
+msgid "_Token:"
+msgstr "टोकन (_T):"
+
+#: properties/nm-fortisslvpn-editor-plugin.c:34
+msgid "Fortinet SSLVPN"
+msgstr "Fortinet SSLVPN"
+
+#: properties/nm-fortisslvpn-editor-plugin.c:35
+msgid "Compatible with Fortinet SSLVPN servers."
+msgstr "Fortinet SSLVPN सर्वर के साथ संगत।"
+
+#: shared/nm-fortissl-properties.c:125
+#, c-format
+msgid "invalid gateway “%s”"
+msgstr "अमान्य गेटवे “%s”"
+
+#: shared/nm-fortissl-properties.c:133
+#, c-format
+msgid "invalid certificate authority “%s”"
+msgstr "अमान्य प्रमाणपत्र प्राधिकरण “%s”"
+
+#: shared/nm-fortissl-properties.c:147
+#, c-format
+msgid "invalid integer property “%s”"
+msgstr "अमान्य पूर्णांक गुण “%s”"
+
+#: shared/nm-fortissl-properties.c:157
+#, c-format
+msgid "invalid boolean property “%s” (not yes or no)"
+msgstr "अमान्य बूलियन गुण “%s” (हां नहीं या नहीं)"
+
+#: shared/nm-fortissl-properties.c:164
+#, c-format
+msgid "unhandled property “%s” type %s"
+msgstr "असंभाला हुए गुण “%s” प्रकार %s"
+
+#: shared/nm-fortissl-properties.c:175
+#, c-format
+msgid "property “%s” invalid or not supported"
+msgstr "गुण “%s” अमान्य है या समर्थित नहीं है"
+
+#: shared/nm-fortissl-properties.c:192
+msgid "No VPN configuration options."
+msgstr "कोई VPN विन्यास विकल्प नहीं।"
+
+#: shared/nm-fortissl-properties.c:212
+#, c-format
+msgid "Missing required option “%s”."
+msgstr "आवश्यक विकल्प “%s” अनुपलब्ध है।"
+
+#: shared/nm-fortissl-properties.c:236
+msgid "No VPN secrets!"
+msgstr "कोई VPN रहस्य नहीं!"
+
+#: shared/nm-utils/nm-shared-utils.c:264
+#, c-format
+msgid "object class '%s' has no property named '%s'"
+msgstr "वस्तु वर्ग '%s' में '%s' नाम का कोई गुण नहीं है"
+
+#: shared/nm-utils/nm-shared-utils.c:271
+#, c-format
+msgid "property '%s' of object class '%s' is not writable"
+msgstr "वस्तु वर्ग '%2$s' का गुण '%1$s' लिखने योग्य नहीं है"
+
+#: shared/nm-utils/nm-shared-utils.c:278
+#, c-format
+msgid ""
+"construct property \"%s\" for object '%s' can't be set after construction"
+msgstr ""
+"वस्तु '%2$s' के लिए निर्माण गुण \"%1$s\" निर्माण के बाद निर्धारित नहीं की जा सकती"
+
+#: shared/nm-utils/nm-shared-utils.c:286
+#, c-format
+msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
+msgstr "'%s::%s' मान्य गुण नाम नहीं है; '%s' एक GObject उपप्रकार नहीं है"
+
+#: shared/nm-utils/nm-shared-utils.c:295
+#, c-format
+msgid "unable to set property '%s' of type '%s' from value of type '%s'"
+msgstr "'%2$s' प्रकार की गुण '%1$s' को '%3$s' प्रकार के मान से निर्धारित करने में असमर्थ"
+
+#: shared/nm-utils/nm-shared-utils.c:306
+#, c-format
+msgid ""
+"value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
+"type '%s'"
+msgstr ""
+"प्रकार '%2$s' का मान \"%1$s\" प्रकार '%4$s' के गुण '%3$s' के लिए अमान्य या सीमा से "
+"बाहर है"
+
+#: shared/nm-utils/nm-vpn-plugin-utils.c:69
+#, c-format
+msgid "unable to get editor plugin name: %s"
+msgstr "संपादक प्लगइन नाम प्राप्त करने में असमर्थ: %s"
+
+#: shared/nm-utils/nm-vpn-plugin-utils.c:103
+#, c-format
+msgid "missing plugin file \"%s\""
+msgstr "अनुपलब्ध प्लगइन फाइल \"%s\""
+
+#: shared/nm-utils/nm-vpn-plugin-utils.c:109
+#, c-format
+msgid "cannot load editor plugin: %s"
+msgstr "संपादक प्लगइन लोड नहीं कर सकता: %s"
+
+#: shared/nm-utils/nm-vpn-plugin-utils.c:118
+#, c-format
+msgid "cannot load factory %s from plugin: %s"
+msgstr "प्लगइन से फ़ैक्टरी %s लोड नहीं हो सकता: %s"
+
+#: shared/nm-utils/nm-vpn-plugin-utils.c:144
+msgid "unknown error creating editor instance"
+msgstr "संपादक इंस्टैंस बनाने में अज्ञात त्रुटि"
+
+#: src/nm-fortisslvpn-service.c:218
+msgid "Could not find the openfortivpn binary."
+msgstr "openfortivpn बाइनरी नहीं मिली।"
+
+#: src/nm-fortisslvpn-service.c:402
+msgid "Missing VPN username."
+msgstr "VPN उपयोक्तानाम अनुपलब्ध है।"
+
+#: src/nm-fortisslvpn-service.c:411
+msgid "Missing or invalid VPN password."
+msgstr "अनुपलब्ध या अमान्य VPN पासवर्ड।"
+
+#: src/nm-fortisslvpn-service.c:536
+msgid "Got new secrets, but nobody asked for them."
+msgstr "नये रहस्य मिले, पर किसी ने पूछा नहीं।"
+
+#: src/nm-fortisslvpn-service.c:720
+msgid "Don’t quit when VPN connection terminates"
+msgstr "VPN कनेक्शन समाप्त होने पर न छोड़ें"
+
+#: src/nm-fortisslvpn-service.c:721
+msgid "Enable verbose debug logging (may expose passwords)"
+msgstr "वाचाल डिबग लॉगिंग सक्षम करें (पासवर्ड उजागर हो सकता है)"
+
+#: src/nm-fortisslvpn-service.c:722
+msgid "D-Bus name to use for this instance"
+msgstr "इस इंस्टैंस के लिए उपयोग हेतु D-Bus नाम"
+
+#: src/nm-fortisslvpn-service.c:743
+msgid ""
+"nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
+"with Fortinet) to NetworkManager."
+msgstr ""
+"nm-fortisslvpn-service NetworkManager को एकीकृत SSLVPN क्षमता (Fortinet के साथ "
+"संगत) प्रदान करती है।"
+
+#: properties/nm-fortisslvpn-dialog.ui:7
+msgid "SSLVPN Advanced Options"
+msgstr "SSLVPN उन्नत विकल्प"
+
+#: properties/nm-fortisslvpn-dialog.ui:50
+#: properties/nm-fortisslvpn-dialog.ui:351
+msgid "Authentication"
+msgstr "प्रमाणीकरण"
+
+#: properties/nm-fortisslvpn-dialog.ui:67
+msgid "_Realm"
+msgstr "क्षेत्र (_R)"
+
+#: properties/nm-fortisslvpn-dialog.ui:81
+#: properties/nm-fortisslvpn-dialog.ui:337
+msgid ""
+"SSLVPN server IP or name.\n"
+"config: the first parameter of fortisslvpn"
+msgstr ""
+"SSLVPN सर्वर IP या नाम।\n"
+"विन्यास: fortisslvpn का पहला पैरामीटर"
+
+#: properties/nm-fortisslvpn-dialog.ui:95
+msgid "Security"
+msgstr "सुरक्षा"
+
+#: properties/nm-fortisslvpn-dialog.ui:113
+msgid "Trusted _certificate"
+msgstr "विश्वसनीय प्रमाणपत्र (_c)"
+
+#: properties/nm-fortisslvpn-dialog.ui:127
+msgid ""
+"A SHA256 sum of the X509 certificate that will be accepted even if the "
+"certificate is not trusted by a certificate authority."
+msgstr ""
+"X509 प्रमाणपत्र का एक SHA256 योग जिसे प्रमाणपत्र प्राधिकारी द्वारा प्रमाणपत्र पर "
+"भरोसा न किए जाने पर भी स्वीकार किया जाएगा।"
+
+#: properties/nm-fortisslvpn-dialog.ui:142
+msgid "_One time password"
+msgstr "एक बारी पासवर्ड (_O)"
+
+#: properties/nm-fortisslvpn-dialog.ui:185
+msgid "Advanced Properties"
+msgstr "उन्नत गुण"
+
+#: properties/nm-fortisslvpn-dialog.ui:193
+msgid "_Cancel"
+msgstr "रद्द करें (_C)"
+
+#: properties/nm-fortisslvpn-dialog.ui:201
+msgid "_Apply"
+msgstr "लागू (_A)"
+
+#: properties/nm-fortisslvpn-dialog.ui:253
+msgid "Show password"
+msgstr "पासवर्ड दिखाएं"
+
+#: properties/nm-fortisslvpn-dialog.ui:269
+msgid "Password passed to SSLVPN when prompted for it."
+msgstr "संकेत मिलने पर पासवर्ड SSLVPN को भेज दिया गया।"
+
+#: properties/nm-fortisslvpn-dialog.ui:282
+msgid ""
+"Set the name used for authenticating the local system to the peer to "
+"<name>.\n"
+"config: user <name>"
+msgstr ""
+"स्थानीय सिस्टम को प्रमाणित करने के लिए उपयोग किए जाने वाले नाम को <name> पर "
+"निर्धारित करें।\n"
+"विन्यास: उपयोगकर्ता <name>"
+
+#: properties/nm-fortisslvpn-dialog.ui:295
+msgid "_Password"
+msgstr "पासवर्ड (_P)"
+
+#: properties/nm-fortisslvpn-dialog.ui:309
+msgid "User _name"
+msgstr "उपयोक्ता नाम (_n)"
+
+#: properties/nm-fortisslvpn-dialog.ui:323
+msgid "_Gateway"
+msgstr "गेटवे (_G)"
+
+#: properties/nm-fortisslvpn-dialog.ui:369
+msgid "General"
+msgstr "सामान्य"
+
+#: properties/nm-fortisslvpn-dialog.ui:413
+msgid "A_dvanced…"
+msgstr "उन्नत (_d)…"
+
+#: properties/nm-fortisslvpn-dialog.ui:449
+msgid "Default"
+msgstr "तयशुदा"
