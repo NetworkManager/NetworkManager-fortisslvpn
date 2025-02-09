@@ -223,7 +223,7 @@ config: the first parameter of fortisslvpn</property>
     <property name="row_spacing">6</property>
     <property name="column_spacing">6</property>
     <child>
-      <object class="NmaCertChooser" id="ca_chooser">
+      <object class="NMACertChooser" id="ca_chooser">
         <property name="flags">13</property>
         <property name="title">CA</property>
         <property name="visible">True</property>
@@ -236,7 +236,7 @@ config: the first parameter of fortisslvpn</property>
       </packing>
     </child>
     <child>
-      <object class="NmaCertChooser" id="cert_chooser">
+      <object class="NMACertChooser" id="cert_chooser">
         <property name="flags">12</property>
         <property name="title">User</property>
         <property name="visible">True</property>

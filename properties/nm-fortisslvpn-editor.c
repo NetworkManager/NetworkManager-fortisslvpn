@@ -555,5 +555,6 @@ nm_vpn_editor_factory_fortisslvpn (NMVpnEditorPlugin *editor_plugin,
 {
 	g_return_val_if_fail (!error || !*error, NULL);
 
+	g_type_ensure (NMA_TYPE_CERT_CHOOSER);
 	return nm_fortisslvpn_editor_new (connection, error);
 }
