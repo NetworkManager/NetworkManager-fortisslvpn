@@ -6,41 +6,45 @@
 # OKANO Takayoshi <kano@na.rim.or.jp>, 2011.
 # Jiro Matsuzawa <jmatsuzawa@src.gnome.org>, 2012.
 # sicklylife <translation@sicklylife.jp>, 2020.
+# Makoto Sakaguchi <ycco34vx@gmail.com>, 2025.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: NetworkManager-fortisslvpn master\n"
+"Project-Id-Version: NetworkManager-fortisslvpn main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
-"fortisslvpn/\n"
-"POT-Creation-Date: 2022-03-11 16:59+0100\n"
-"PO-Revision-Date: 2020-05-10 21:00+0900\n"
-"Last-Translator: sicklylife <translation@sicklylife.jp>\n"
+"fortisslvpn/issues\n"
+"POT-Creation-Date: 2025-05-12 05:33+0000\n"
+"PO-Revision-Date: 2025-07-27 11:57+0900\n"
+"Last-Translator: Makoto Sakaguchi <ycco34vx@gmail.com>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.6\n"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:9
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:10
 msgid "Fortinet SSLVPN client"
 msgstr "Fortinet SSLVPN クライアント"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:10
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:11
 msgid "Client for Fortinet SSLVPN virtual private networks"
-msgstr ""
+msgstr "Fortinet SSLVPN 仮想プライベートネットワーク用クライアント"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:24
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:25
 msgid ""
 "Support for configuring Fortinet SSLVPN virtual private network connections."
 msgstr ""
+"Fortinet SSLVPN 仮想プライベートネットワーク接続の設定をサポートします。"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:32
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:33
 msgid "The advanced options dialog"
-msgstr ""
+msgstr "詳細オプションダイアログ"
 
-#: appdata/network-manager-fortisslvpn.metainfo.xml.in:41
+#: appdata/network-manager-fortisslvpn.metainfo.xml.in:42
 msgid "The NetworkManager Developers"
-msgstr ""
+msgstr "NetworkManager 開発者"
 
 #. Otherwise, we have no saved password, or the password flags indicated
 #. * that the password should never be saved.
@@ -48,11 +52,11 @@ msgstr ""
 #: auth-dialog/main.c:165
 #, c-format
 msgid "You need to authenticate to access the Virtual Private Network “%s”."
-msgstr "仮想プライベートネットワーク“%s”にアクセスするには認証が必要です。"
+msgstr "仮想プライベートネットワーク “%s” にアクセスするには認証が必要です。"
 
 #: auth-dialog/main.c:174 auth-dialog/main.c:198
 msgid "Authenticate VPN"
-msgstr "認証 VPN"
+msgstr "VPN 認証"
 
 #: auth-dialog/main.c:177
 msgid "Password"
@@ -66,43 +70,43 @@ msgstr "トークン"
 msgid "_Token:"
 msgstr "トークン(_T):"
 
-#: properties/nm-fortisslvpn-editor-plugin.c:38
+#: properties/nm-fortisslvpn-editor-plugin.c:34
 msgid "Fortinet SSLVPN"
-msgstr ""
+msgstr "Fortinet SSLVPN"
 
-#: properties/nm-fortisslvpn-editor-plugin.c:39
+#: properties/nm-fortisslvpn-editor-plugin.c:35
 msgid "Compatible with Fortinet SSLVPN servers."
-msgstr ""
+msgstr "Fortinet SSLVPN サーバーに対応しています。"
 
 #: shared/nm-fortissl-properties.c:125
 #, c-format
 msgid "invalid gateway “%s”"
-msgstr "無効なゲートウェイ“%s”"
+msgstr "無効なゲートウェイ “%s”"
 
 #: shared/nm-fortissl-properties.c:133
 #, c-format
 msgid "invalid certificate authority “%s”"
-msgstr ""
+msgstr "無効な証明機関 “%s”"
 
 #: shared/nm-fortissl-properties.c:147
 #, c-format
 msgid "invalid integer property “%s”"
-msgstr "無効な数値型パラメーターの数値“%s”"
+msgstr "無効な整数型プロパティ “%s”"
 
 #: shared/nm-fortissl-properties.c:157
 #, c-format
 msgid "invalid boolean property “%s” (not yes or no)"
-msgstr "無効なブーリアン型パラメーターの値“%s” (yes、no ではありません)"
+msgstr "無効なブーリアン型プロパティ “%s” (yes または no ではありません)"
 
 #: shared/nm-fortissl-properties.c:164
 #, c-format
 msgid "unhandled property “%s” type %s"
-msgstr "対処できない“%s”型パラメーターの %s"
+msgstr "処理されていないプロパティ “%s” (型: %s)"
 
 #: shared/nm-fortissl-properties.c:175
 #, c-format
 msgid "property “%s” invalid or not supported"
-msgstr "パラメーター“%s”は無効かサポートされていません"
+msgstr "プロパティ “%s” は無効またはサポートされていません"
 
 #: shared/nm-fortissl-properties.c:192
 msgid "No VPN configuration options."
@@ -111,7 +115,7 @@ msgstr "VPN 構成オプションがありません。"
 #: shared/nm-fortissl-properties.c:212
 #, c-format
 msgid "Missing required option “%s”."
-msgstr "必須オプション“%s”が不足しています。"
+msgstr "必須オプション “%s” がありません。"
 
 #: shared/nm-fortissl-properties.c:236
 msgid "No VPN secrets!"
@@ -120,28 +124,31 @@ msgstr "VPN シークレットがありません!"
 #: shared/nm-utils/nm-shared-utils.c:264
 #, c-format
 msgid "object class '%s' has no property named '%s'"
-msgstr ""
+msgstr "オブジェクトクラス '%s' には プロパティ '%s' がありません"
 
 #: shared/nm-utils/nm-shared-utils.c:271
 #, c-format
 msgid "property '%s' of object class '%s' is not writable"
-msgstr ""
+msgstr "オブジェクトクラス '%s' のプロパティ '%s' は書き込みできません"
 
 #: shared/nm-utils/nm-shared-utils.c:278
 #, c-format
 msgid ""
 "construct property \"%s\" for object '%s' can't be set after construction"
 msgstr ""
+"オブジェクト '%s' のコンストラクトプロパティ \"%s\" は構築後に設定できません"
 
 #: shared/nm-utils/nm-shared-utils.c:286
 #, c-format
 msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
 msgstr ""
+"'%s::%s' は有効なプロパティ名ではありません。'%s' は GObject のサブタイプで"
+"はありません"
 
 #: shared/nm-utils/nm-shared-utils.c:295
 #, c-format
 msgid "unable to set property '%s' of type '%s' from value of type '%s'"
-msgstr ""
+msgstr "プロパティ '%s' (型 '%s') に型 '%s' の値を設定できません"
 
 #: shared/nm-utils/nm-shared-utils.c:306
 #, c-format
@@ -149,34 +156,36 @@ msgid ""
 "value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
 "type '%s'"
 msgstr ""
+"プロパティ '%3$s' (型 '%4$s') に対して、型 '%2$s' の値 \"%1$s\" は無効または"
+"範囲外です"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:69
 #, c-format
 msgid "unable to get editor plugin name: %s"
-msgstr ""
+msgstr "エディタープラグイン名を取得できません: %s"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:103
 #, c-format
 msgid "missing plugin file \"%s\""
-msgstr ""
+msgstr "プラグインファイル \"%s\" が見つかりません"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:109
 #, c-format
 msgid "cannot load editor plugin: %s"
-msgstr ""
+msgstr "エディタープラグインを読み込めません: %s"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:118
 #, c-format
 msgid "cannot load factory %s from plugin: %s"
-msgstr ""
+msgstr "プラグインからファクトリ %s を読み込めません: %s"
 
 #: shared/nm-utils/nm-vpn-plugin-utils.c:144
 msgid "unknown error creating editor instance"
-msgstr "エディターインスタンス作成中の不明なエラー"
+msgstr "エディターインスタンスの作成中に不明なエラーが発生しました"
 
 #: src/nm-fortisslvpn-service.c:218
 msgid "Could not find the openfortivpn binary."
-msgstr "openfortivpn のバイナリが見つかりませんでした。"
+msgstr "openfortivpn バイナリが見つかりませんでした。"
 
 #: src/nm-fortisslvpn-service.c:402
 msgid "Missing VPN username."
@@ -184,33 +193,35 @@ msgstr "VPN ユーザー名がありません。"
 
 #: src/nm-fortisslvpn-service.c:411
 msgid "Missing or invalid VPN password."
-msgstr "VPN パスワードが不足しているか、無効です。"
+msgstr "VPN パスワードがないか無効です。"
 
 #: src/nm-fortisslvpn-service.c:536
 msgid "Got new secrets, but nobody asked for them."
-msgstr ""
+msgstr "新しいシークレットを取得しましたが、要求されていません。"
 
 #: src/nm-fortisslvpn-service.c:720
 msgid "Don’t quit when VPN connection terminates"
-msgstr "VPN 接続が切断されても終了しない"
+msgstr "VPN 接続が終了しても終了しない"
 
 #: src/nm-fortisslvpn-service.c:721
 msgid "Enable verbose debug logging (may expose passwords)"
-msgstr "詳細なデバッグ情報の保存を有効にする (パスワードも含まれます)"
+msgstr "詳細なデバッグログを有効にする (パスワードが露出する可能性があります)"
 
 #: src/nm-fortisslvpn-service.c:722
 msgid "D-Bus name to use for this instance"
-msgstr "このインスタンスの D-Bus 名"
+msgstr "このインスタンスで使用する D-Bus 名"
 
 #: src/nm-fortisslvpn-service.c:743
 msgid ""
 "nm-fortisslvpn-service provides integrated SSLVPN capability (compatible "
 "with Fortinet) to NetworkManager."
 msgstr ""
+"nm-fortisslvpn-service は NetworkManager に統合された SSLVPN 機能 (Fortinet "
+"対応) を提供します。"
 
 #: properties/nm-fortisslvpn-dialog.ui:7
 msgid "SSLVPN Advanced Options"
-msgstr "SSLVPN の詳細オプション"
+msgstr "SSLVPN 詳細オプション"
 
 #: properties/nm-fortisslvpn-dialog.ui:50
 #: properties/nm-fortisslvpn-dialog.ui:351
@@ -227,6 +238,8 @@ msgid ""
 "SSLVPN server IP or name.\n"
 "config: the first parameter of fortisslvpn"
 msgstr ""
+"SSLVPN サーバーの IP アドレスまたは名前。\n"
+"設定: fortisslvpn の最初のパラメーター"
 
 #: properties/nm-fortisslvpn-dialog.ui:95
 msgid "Security"
@@ -234,38 +247,39 @@ msgstr "セキュリティ"
 
 #: properties/nm-fortisslvpn-dialog.ui:113
 msgid "Trusted _certificate"
-msgstr "信頼できる証明書(_C)"
+msgstr "信頼された証明書(_C)"
 
 #: properties/nm-fortisslvpn-dialog.ui:127
 msgid ""
 "A SHA256 sum of the X509 certificate that will be accepted even if the "
 "certificate is not trusted by a certificate authority."
 msgstr ""
+"証明機関によって信頼されていない場合でも受け入れられる X509 証明書の SHA256 "
+"ハッシュ値。"
 
 #: properties/nm-fortisslvpn-dialog.ui:142
 msgid "_One time password"
 msgstr "ワンタイムパスワード(_O)"
 
 #: properties/nm-fortisslvpn-dialog.ui:185
-#, fuzzy
 msgid "Advanced Properties"
-msgstr "SSLVPN の詳細オプション"
+msgstr "詳細プロパティ"
 
 #: properties/nm-fortisslvpn-dialog.ui:193
 msgid "_Cancel"
-msgstr ""
+msgstr "キャンセル(_C)"
 
 #: properties/nm-fortisslvpn-dialog.ui:201
 msgid "_Apply"
-msgstr ""
+msgstr "適用(_A)"
 
 #: properties/nm-fortisslvpn-dialog.ui:253
 msgid "Show password"
-msgstr "パスワードを表示する"
+msgstr "パスワードを表示"
 
 #: properties/nm-fortisslvpn-dialog.ui:269
 msgid "Password passed to SSLVPN when prompted for it."
-msgstr ""
+msgstr "要求された時に SSLVPN に渡されるパスワード。"
 
 #: properties/nm-fortisslvpn-dialog.ui:282
 msgid ""
@@ -273,6 +287,9 @@ msgid ""
 "<name>.\n"
 "config: user <name>"
 msgstr ""
+"ピアに対してローカルシステムを認証するために使用される名前を <name> に設定し"
+"ます。\n"
+"設定: user <name>"
 
 #: properties/nm-fortisslvpn-dialog.ui:295
 msgid "_Password"
@@ -309,8 +326,8 @@ msgstr "デフォルト"
 
 #~ msgid "Could not find secrets (connection invalid, no vpn setting)."
 #~ msgstr ""
-#~ "VPN シークレットが見つかりませんでした (接続が無効か、VPN 設定されていませ"
-#~ "ん)。"
+#~ "VPN シークレットが見つかりませんでした (接続が無効か、VPN 設定されていま"
+#~ "せん)。"
 
 #~ msgid "Invalid VPN username."
 #~ msgstr "無効な VPN ユーザー名です。"
