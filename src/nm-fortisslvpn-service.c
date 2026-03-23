@@ -507,6 +507,13 @@ real_need_secrets (NMVpnServicePlugin *plugin,
 	    && !nm_setting_vpn_get_secret (NM_SETTING_VPN (s_vpn), NM_FORTISSLVPN_KEY_PASSWORD))
 		return TRUE;
 
+	/* Ask for OTP when it is configured as a one-time secret and missing. */
+	flags = NM_SETTING_SECRET_FLAG_NONE;
+	nm_setting_get_secret_flags (NM_SETTING (s_vpn), NM_FORTISSLVPN_KEY_OTP, &flags, NULL);
+	if (   (flags & NM_SETTING_SECRET_FLAG_NOT_SAVED)
+	    && !nm_setting_vpn_get_secret (NM_SETTING_VPN (s_vpn), NM_FORTISSLVPN_KEY_OTP))
+		return TRUE;
+
 	/* Otherwise we're fine */
 	*setting_name = NULL;
 	return FALSE;
