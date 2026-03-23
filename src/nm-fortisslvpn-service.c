@@ -320,6 +320,21 @@ handle_set_ip4_config (NMDBusFortisslvpnPpp *object,
 	return TRUE;
 }
 
+static const char *
+normalize_secret_hint (const char *hint)
+{
+	if (!hint)
+		return NULL;
+
+	if (strcmp (hint, NM_FORTISSLVPN_KEY_OTP) == 0 || g_str_has_suffix (hint, "_otp"))
+		return NM_FORTISSLVPN_KEY_OTP;
+
+	if (strcmp (hint, NM_FORTISSLVPN_KEY_PASSWORD) == 0 || g_str_has_suffix (hint, "_password"))
+		return NM_FORTISSLVPN_KEY_PASSWORD;
+
+	return hint;
+}
+
 static gboolean
 handle_get_pin (NMDBusFortisslvpnPpp *object,
                 GDBusMethodInvocation *invocation,
@@ -331,9 +346,10 @@ handle_get_pin (NMDBusFortisslvpnPpp *object,
 {
 	NMFortisslvpnPlugin *plugin = NM_FORTISSLVPN_PLUGIN (user_data);
 	NMFortisslvpnPluginPrivate *priv = NM_FORTISSLVPN_PLUGIN_GET_PRIVATE (plugin);
-	const char *hints[] = { arg_hint, NULL };
+	const char *secret_hint = normalize_secret_hint (arg_hint);
+	const char *hints[] = { secret_hint, NULL };
 
-	_LOGI ("FORTISSLVPN service (%s) password request received.", arg_hint);
+	_LOGI ("FORTISSLVPN service (%s -> %s) password request received.", arg_hint, secret_hint);
 
 	if (!priv->interactive) {
 		g_dbus_method_invocation_return_error_literal (invocation,
@@ -343,20 +359,20 @@ handle_get_pin (NMDBusFortisslvpnPpp *object,
 		return TRUE;
 	}
 
-	if (strcmp (arg_hint, NM_FORTISSLVPN_KEY_OTP) == 0) {
+	if (strcmp (secret_hint, NM_FORTISSLVPN_KEY_OTP) == 0) {
 		NMSettingSecretFlags flags = NM_SETTING_SECRET_FLAG_NONE;
 		NMSetting *s_vpn = nm_connection_get_setting (priv->connection, NM_TYPE_SETTING_VPN);
 
 		g_return_val_if_fail (NM_IS_SETTING_VPN (s_vpn), FALSE);
-		nm_setting_get_secret_flags (s_vpn, arg_hint, &flags, NULL);
+		nm_setting_get_secret_flags (s_vpn, secret_hint, &flags, NULL);
 		if ((flags & NM_SETTING_SECRET_FLAG_NOT_SAVED) == 0) {
 			g_dbus_method_invocation_return_error (invocation,
 			                                       NMV_EDITOR_PLUGIN_ERROR,
 			                                       NMV_EDITOR_PLUGIN_ERROR_FAILED,
-			                                       "Secret '%s' is not configured as required", arg_hint);
+			                                       "Secret '%s' is not configured as required", secret_hint);
 			return TRUE;
 		}
-	} else if (strcmp (arg_hint, NM_FORTISSLVPN_KEY_PASSWORD) != 0) {
+	} else if (strcmp (secret_hint, NM_FORTISSLVPN_KEY_PASSWORD) != 0) {
 		/* nm_fortisslvpn_properties_validate_secrets()() is not tolerant
 		 * towards unknown secrets. Don't make NetworkManager add one. */
 		g_dbus_method_invocation_return_error (invocation,
@@ -507,13 +523,6 @@ real_need_secrets (NMVpnServicePlugin *plugin,
 	    && !nm_setting_vpn_get_secret (NM_SETTING_VPN (s_vpn), NM_FORTISSLVPN_KEY_PASSWORD))
 		return TRUE;
 
-	/* Ask for OTP when it is configured as a one-time secret and missing. */
-	flags = NM_SETTING_SECRET_FLAG_NONE;
-	nm_setting_get_secret_flags (NM_SETTING (s_vpn), NM_FORTISSLVPN_KEY_OTP, &flags, NULL);
-	if (   (flags & NM_SETTING_SECRET_FLAG_NOT_SAVED)
-	    && !nm_setting_vpn_get_secret (NM_SETTING_VPN (s_vpn), NM_FORTISSLVPN_KEY_OTP))
-		return TRUE;
-
 	/* Otherwise we're fine */
 	*setting_name = NULL;
 	return FALSE;
@@ -564,6 +573,7 @@ real_new_secrets (NMVpnServicePlugin *plugin, NMConnection *connection, GError *
 		goto out;
 	}
 
+	hint = normalize_secret_hint (hint);
 	pin = nm_setting_vpn_get_secret (s_vpn, hint);
 	if (!pin) {
 		g_dbus_method_invocation_return_error (priv->get_pin_invocation,
